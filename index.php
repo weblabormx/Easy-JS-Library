@@ -12,5 +12,6 @@
 		<li><a href="p.complements.php">Complements</a></li>
 		<li><a href="p.tables.php">Tables</a></li>
 	</ul>
+	<a href="https://github.com/weblabormx/Easy-JS-Library">See in github</a>
 </body>
 </html>
