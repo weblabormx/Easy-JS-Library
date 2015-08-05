@@ -1,5 +1,5 @@
 (function( $ ){
-     var url = "http://localhost:82/easyJsLibrary/library/";
+     var url = "http://weblabor.mx/libraries/easyJsLibrary/library/";
 
      // Progress bar
      if($('body[data-type~=progressbar]').length) {
