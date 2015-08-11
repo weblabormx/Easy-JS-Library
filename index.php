@@ -4,7 +4,8 @@
 	<title>Inputs plugin</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body data-type="progressbar">
+<body data-type="progressbar" style="text-align:center;">
+	<img src="logo.png" width="400" />
 	<h2>Menu</h2>
 	<ul>
 		<li><a href="p.forms.php">Forms and inputs</a></li>
@@ -12,6 +13,7 @@
 		<li><a href="p.complements.php">Complements</a></li>
 		<li><a href="p.tables.php">Tables</a></li>
 	</ul>
-	<a href="https://github.com/weblabormx/Easy-JS-Library">See in github</a>
+	<br /><br />
+	<a href="https://github.com/weblabormx/Easy-JS-Library" style="font-size:12px;">See in github</a>
 </body>
 </html>
