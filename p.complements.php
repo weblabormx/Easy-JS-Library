@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="library/style.css">
 </head>
 <body data-type="progressbar">
+	<img src="logo.png" width="400" />
 	<ul>
 		<li><a href="index.php">Return</a></li>
 	</ul>
