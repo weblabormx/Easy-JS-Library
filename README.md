@@ -11,8 +11,9 @@ Installation
 - Change the variable called "url" in library/script.js to the direction of the server.
 
 **On our server:**
-- Add Jquery Script
-- Add Easy JS Library in: http://weblabor.mx/libraries/EasyJS/library/script.js
+- Add Jquery Script: http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
+- Add Easy JS Library CSS in: http://weblabor.mx/libraries/easyJsLibrary/library/style.css
+- Add Easy JS Library in: http://weblabor.mx/libraries/easyJsLibrary/library/script.js
 
 Features:
 ------------
