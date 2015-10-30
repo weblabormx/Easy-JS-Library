@@ -45,6 +45,10 @@
 		<input type="text" name="date" data-type="date" lang="es" />
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-type="date" lang="es" />'); ?></code>
 
+		<h3>Date 2nd style</h3>
+		<input type="text" name="midate" data-type="date2" lang="es" />
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-type="date2" lang="es" />'); ?></code>
+
 		<h3>DateTime</h3>
 		<input type="text" name="datetime" data-type="datetime" lang="es" />
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-type="datetime" lang="es" />'); ?></code>
@@ -163,6 +167,12 @@ object(stdClass)#1 (3) {
 		<h3>URL</h3>
 		<input type="text" data-validation="url" />
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-validation="url" />'); ?></code>
+		<h3>Day</h3>
+		<input type="text" data-validation="day" />
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-validation="day" />'); ?></code>
+		<h3>Year</h3>
+		<input type="text" data-validation="year" />
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-validation="year" />'); ?></code>
 		<br /><br />
 		<input type="submit" value="Click aqui" />
 	</form>

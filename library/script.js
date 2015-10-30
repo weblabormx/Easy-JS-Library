@@ -1873,25 +1873,7 @@
                });
           });
      }
-     // Validation with patterns
-     $("input[data-validation]").each(function(cont){
-          var type = $(this).attr("data-validation");
-          var pattern = ".*";
-          if (type=="alphanumeric") {
-               pattern = '[a-zA-Z0-9]+';
-          } else if (type=="numeric") {
-               pattern = '[0-9]+';
-          } else if(type=="url") {
-               pattern = '(https?://|www.).+';
-          } else if(type=="date") {
-               pattern = '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])';
-          } else if(type=="datetime") {
-               pattern = '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01]) (0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])';
-          } else if(type=="time") {
-               pattern = '(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])';
-          }
-          $(this).attr("pattern", pattern);
-     });
+     
 
      // Dynatable
      if(
@@ -1990,6 +1972,74 @@
                
           });
      }
+     // Date 2nd style
+     if($('[data-type~=date2]').length) {
+          function actualizarInputDate2(thisg, name) {
+               var day = $("#"+name+"-day").val();
+               if (day.length<2) {
+                    day = "0"+day;
+               };
+               var res = $("#"+name+"-year").val();
+               res += "-"+$("#"+name+"-month").val();
+               res += "-"+day;
+               $(thisg).val(res);
+               console.log("Entra");
+          }
+
+          $("[data-type~=date2]").each(function(cont){
+               var locale = $(this).attr("lang");
+               var name = $(this).attr("name");
+               var thisg = this;
+               $(this).hide();
+
+               var months = "<select class='date2-month' id='"+name+"-month'>";
+               for (var i = 1; i <= 12; i++) {
+                    i = ""+i;
+                    if (i.length<2) {
+                         i = "0"+i;
+                    };
+                    var date = i+"/01/2010";
+                    var objDate = new Date(date),
+                    month = objDate.toLocaleString(locale, { month: "long" });
+                    months += "<option value='"+i+"'>"+month+"</option>";
+               };
+               months += "</select>";
+
+               $("<input type='text' data-validation='day' class='date2-day'  id='"+name+"-day' />"+months+"<input type='text' data-validation='year' class='date2-year' id='"+name+"-year' />").insertAfter(this);
+               
+               
+               $( "#"+name+"-day, #"+name+"-month, #"+name+"-year" ).keyup(function() {
+                    actualizarInputDate2(thisg, name);
+               });
+               $( "#"+name+"-month" ).change(function() {
+                    actualizarInputDate2(thisg, name);
+               });
+          });
+     }
+     // Validation with patterns
+     $("input[data-validation]").each(function(cont){
+          var type = $(this).attr("data-validation");
+          var pattern = ".*";
+          if (type=="alphanumeric") {
+               pattern = '[a-zA-Z0-9]+';
+          } else if (type=="numeric") {
+               pattern = '[0-9]+';
+          } else if(type=="url") {
+               pattern = '(https?://|www.).+';
+          } else if(type=="date") {
+               pattern = '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])';
+          } else if(type=="datetime") {
+               pattern = '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01]) (0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])';
+          } else if(type=="time") {
+               pattern = '(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])';
+          } else if(type=="day") {
+               pattern = '[0-9]{1,2}';
+          } else if(type=="year") {
+               pattern = '[0-9]{4}';
+          }
+          $(this).attr("pattern", pattern);
+     });
+
 })( jQuery );
 
 //console.log(obj.element.getAttribute("data-type"));
