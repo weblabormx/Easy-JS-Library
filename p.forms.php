@@ -46,7 +46,7 @@
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-type="date" lang="es" />'); ?></code>
 
 		<h3>Date 2nd style</h3>
-		<input type="text" name="midate" data-type="date2" lang="es" />
+		<input type="text" name="midate" data-type="date2" lang="es" value="2015-02-04" />
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-type="date2" lang="es" />'); ?></code>
 
 		<h3>DateTime</h3>
@@ -173,6 +173,9 @@ object(stdClass)#1 (3) {
 		<h3>Year</h3>
 		<input type="text" data-validation="year" />
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-validation="year" />'); ?></code>
+		<h3>Email</h3> 
+		<input type="text" data-validation="email" />
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-validation="email" />'); ?></code>
 		<br /><br />
 		<input type="submit" value="Click aqui" />
 	</form>

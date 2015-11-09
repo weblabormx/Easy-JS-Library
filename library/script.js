@@ -1843,6 +1843,37 @@
                });
           });
      }
+     if($('[data-type~=loadOnHover]').length) {
+          $("[data-type~=loadOnHover]").each(function(cont){
+               var id = $(this).attr("id");
+               $("[for="+id+"]").css("display","none");
+
+               $(this).hover(function(){
+                    $("[for="+id+"]").css("display","block");
+               }, function() {
+                    $("[for="+id+"]").css("display","none");
+               });
+          });
+     }
+     if($('[data-type~=fakeButton]').length) {
+          $("[data-type~=fakeButton]").each(function(cont){
+               var id = $(this).attr("id");
+
+               $(this).click(function(e){
+                    e.preventDefault();
+                    $("[for="+id+"]").trigger('click');    
+               });
+          });
+     }
+     if($('[data-type~=clickOnChange]').length) {
+          $("[data-type~=clickOnChange]").each(function(cont){
+               var id = $(this).attr("id");
+
+               $(this).change(function(e){
+                    $("[for="+id+"]").trigger('click');    
+               });
+          });
+     }
      if($('form[data-type~=ajax]').length) {
           $("form[data-type~=ajax]").each(function(cont){
                $( this ).submit(function( e ) {
@@ -1983,10 +2014,15 @@
                res += "-"+$("#"+name+"-month").val();
                res += "-"+day;
                $(thisg).val(res);
-               console.log("Entra");
           }
 
           $("[data-type~=date2]").each(function(cont){
+               var valoractual = $(this).val();
+               var array = valoractual.split("-");
+               if (array.length<3) {
+                    array = ["","",""];
+               };
+
                var locale = $(this).attr("lang");
                var name = $(this).attr("name");
                var thisg = this;
@@ -1994,6 +2030,10 @@
 
                var months = "<select class='date2-month' id='"+name+"-month'>";
                for (var i = 1; i <= 12; i++) {
+                    var value = "";
+                    if (i==array[1]) {
+                         value = "selected = 'selected'";
+                    };
                     i = ""+i;
                     if (i.length<2) {
                          i = "0"+i;
@@ -2001,11 +2041,11 @@
                     var date = i+"/01/2010";
                     var objDate = new Date(date),
                     month = objDate.toLocaleString(locale, { month: "long" });
-                    months += "<option value='"+i+"'>"+month+"</option>";
+                    months += "<option value='"+i+"' "+value+">"+month+"</option>";
                };
                months += "</select>";
 
-               $("<input type='text' data-validation='day' class='date2-day'  id='"+name+"-day' />"+months+"<input type='text' data-validation='year' class='date2-year' id='"+name+"-year' />").insertAfter(this);
+               $("<input type='text' data-validation='day' class='date2-day' id='"+name+"-day' value='"+array[2]+"' />"+months+"<input type='text' data-validation='year' class='date2-year' id='"+name+"-year' value='"+array[0]+"' />").insertAfter(this);
                
                
                $( "#"+name+"-day, #"+name+"-month, #"+name+"-year" ).keyup(function() {
@@ -2036,6 +2076,8 @@
                pattern = '[0-9]{1,2}';
           } else if(type=="year") {
                pattern = '[0-9]{4}';
+          } else if(type=="email") {
+               pattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
           }
           $(this).attr("pattern", pattern);
      });
