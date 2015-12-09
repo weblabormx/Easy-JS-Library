@@ -1327,7 +1327,7 @@ Paginas:
 	<a data-filter="year" data-filter-value="2014" for="Canciones2" style="background:#000; color:#fff; padding:10px;margin-top:10px; cursor:pointer;display:inline-block;">Filtrar del 2014</a>
 	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<a data-filter="year" data-filter-value="2014" for="Canciones2">Filtrar del 2014</a>'); ?></code>
 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="library/jquery.min.js"></script>
 	<script type="text/javascript" src="library/script.js"></script>
 </body>
 </html>
