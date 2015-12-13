@@ -164,6 +164,27 @@ console.log("Este es un ejemplo de un codigo javascript");
 <span data-carousel-type="play" for="carousel">Autoplay</span>
 <span data-carousel-type="stop" for="carousel">Stop</span>'); ?></code>
 	
+	<h2>Mobile Menu</h2>
+	<a data-type="mobmenu" for="menuizq" data-submenu-pos="left" href="#sidr">Toggle menu</a>
+
+	<div id="menuizq">
+	  <!-- Your content -->
+	  <ul>
+	    <li><a href="#">List 1</a></li>
+	    <li class="active"><a href="#">List 2</a></li>
+	    <li><a href="#">List 3</a></li>
+	  </ul>
+	</div>
+	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<a data-type="mobmenu" for="menuizq" data-submenu-pos="left" href="#sidr">Toggle menu</a>
+
+<div id="menuizq">
+  <!-- Your content -->
+  <ul>
+    <li><a href="#">List 1</a></li>
+    <li class="active"><a href="#">List 2</a></li>
+    <li><a href="#">List 3</a></li>
+  </ul>
+</div>'); ?></code>
 
 	<script type="text/javascript" src="library/jquery.min.js"></script>
 	<script type="text/javascript" src="library/script.js"></script>

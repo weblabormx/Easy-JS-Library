@@ -25,7 +25,7 @@
 		<ul data-type="multiple" data-name="multiple">
 			<li>
 				<label>Nombre</label><input type="text" name="nombre" />
-				<label>Costo</label><input type="text" name="costo" />
+				<label>Costo</label><input type="text" value="100" />
 				<span class="multiple-remove">Eliminar</span>
 			</li>
 		</ul>
@@ -38,6 +38,60 @@
 		<span class="multiple-remove">Eliminar</span>
 	</li>
 </div>'); ?></code>
+		
+		<h3>With some fields and with data</h3>
+		<?php
+			$array = array(
+				0 => array(
+					'nombre' => 'Ejemplo1',
+					'costo'	=> '100',
+				),
+				1 => array(
+					'nombre' => 'Ejemplo2',
+					'costo'	=> '200',
+				),
+				2 => array(
+					'nombre' => 'Ejemplo3',
+					'costo'	=> '300',
+				),
+			);
+			$array = json_encode($array);
+		?>
+
+		<span id="multiple2-add">Agregar</span>
+		<ul data-type="multiple" data-name="multiple2" data-values='<?php echo $array; ?>'>
+			<li>
+				<label>Nombre</label><input type="text" name="nombre" />
+				<label>Costo</label><input type="text" name="costo" />
+				<span class="multiple2-remove">Eliminar</span>
+			</li>
+		</ul>
+		<code data-type="codeeditor" data-lang="php"><?php echo htmlspecialchars('<?php
+$array = array(
+	0 => array(
+		\'nombre\' => \'Ejemplo1\',
+		\'costo\'	=> \'100\',
+	),
+	1 => array(
+		\'nombre\' => \'Ejemplo2\',
+		\'costo\'	=> \'200\',
+	),
+	2 => array(
+		\'nombre\' => \'Ejemplo3\',
+		\'costo\'	=> \'300\',
+	),
+);
+$array = json_encode($array);
+?>'); ?></code>
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<span id="multiple2-add">Agregar</span>
+<ul data-type="multiple" data-name="multiple2" data-values=\'<?php echo $array; ?>\'>
+	<li>
+		<label>Nombre</label><input type="text" name="nombre" />
+		<label>Costo</label><input type="text" name="costo" />
+		<span class="multiple2-remove">Eliminar</span>
+	</li>
+</ul>'); ?></code>
+
 		<h2>Select hierarchical</h2>
 		<input type="text" name="category" id="category" data-type="hselect" src="library/option-tree/demo/get-subtree.php" value="220,226" />
 		<p>Sends $_GET["id"] to php, you need to send a json with title (value) and value (name showed here). Add data-parent attribute to select who should be the default parent. With value will select automatically that value, add "," to separate actions.</p>

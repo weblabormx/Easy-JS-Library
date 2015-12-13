@@ -37,6 +37,18 @@
 	<p>Works with Vimeo, Youtube and Google Maps</p>
 	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<a href="https://www.youtube.com/watch?v=MVvIlcXudK8" data-type="popup" data-popup-type="iframe">Click here</a>'); ?></code>
 
+	<h2>Inline</h2>
+	<div id="popup1" style="background:#fff; width:300px; margin: 0 auto;position:relative;padding:20px;">
+		<h1>Hola Mundo</h1>
+		<p>This is a inline popup!</p>
+	</div>
+	<a href="#popup1" data-type="popup" data-popup-type="inline">Click here</a>
+	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<div id="popup1" style="background:#fff; width:300px; margin: 0 auto;position:relative;padding:20px;">
+	<h1>Hola Mundo</h1>
+	<p>This is a inline popup!</p>
+</div>
+<a href="#popup1" data-type="popup" data-popup-type="inline">Click here</a'); ?></code>
+	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script type="text/javascript" src="library/script.js"></script>
 </body>
