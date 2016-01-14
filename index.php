@@ -13,6 +13,7 @@
 		<li><a href="p.complements.php">Complements</a></li>
 		<li><a href="p.tables.php">Tables</a></li>
 		<li><a href="p.messages.php">Messages</a></li>
+		<li><a href="p.imageuploader.php">Image Uploader</a></li>
 	</ul>
 	<br /><br />
 	<a href="https://github.com/weblabormx/Easy-JS-Library" style="font-size:12px;">See in github</a>

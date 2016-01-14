@@ -93,9 +93,9 @@ $array = json_encode($array);
 </ul>'); ?></code>
 
 		<h2>Select hierarchical</h2>
-		<input type="text" name="category" id="category" data-type="hselect" src="library/option-tree/demo/get-subtree.php" value="220,226" />
+		<input type="text" name="category" id="category" data-type="hselect" src="library/option-tree/demo/get-subtree.php" data-value-select="220,226" />
 		<p>Sends $_GET["id"] to php, you need to send a json with title (value) and value (name showed here). Add data-parent attribute to select who should be the default parent. With value will select automatically that value, add "," to separate actions.</p>
-		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" name="category" id="category" data-type="hselect" src="library/option-tree/demo/get-subtree.php" value="220,226" />'); ?></code>
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" name="category" id="category" data-type="hselect" src="library/option-tree/demo/get-subtree.php" data-value-select="220,226" />'); ?></code>
 		<h2>Date picker</h2>
 		<p>All inputs accepts value attr.</p>
 		<h3>Date</h3>

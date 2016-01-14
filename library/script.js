@@ -2,6 +2,14 @@
 	var url = "http://weblabor.mx/libraries/easyJsLibrary/library/";
 	//url = "http://localhost:82/easy-JS-Library/library/";
 
+	var elements = [];
+	// To search in array
+	function in_array(array, id) {
+	    for(var i=0;i<array.length;i++) {
+	        return (array[i] === id)
+	    }
+	    return false;
+	}
 	// Progress bar
 	if($('body[data-type~=progressbar]').length) {
 		$("body").append("<div id='hideAll'></div>");
@@ -117,26 +125,33 @@
 		return this.each(function() {
 			var thisg = this;
 			var divname = $(this).attr("data-name");
+			var value = "";
+			if ($(this).attr("data-values")!==undefined) {
+				value = $(this).attr("data-values");
+				value = JSON.parse(value);
+			}
+
 			var hasparent = false;
 			var cont = 0;
+
 			$(this).find("input").each(function(){
-					if ($(this).parent().html()==$(thisg).html()) {
-						hasparent = false;
-					} else {
-						hasparent = true;
-					}
-					var name = $(this).attr("name");
-					$(this).attr("name",divname+"[0]["+name+"]");
+				if ($(this).parent().html()==$(thisg).html()) {
+					hasparent = false;
+				} else {
+					hasparent = true;
+				}
+				var name = $(this).attr("name");
+				$(this).attr("name",divname+"[0]["+name+"]");
 			});
 
 			$(this).find("select").each(function(){
-					if ($(this).parent().html()==$(thisg).html()) {
-						hasparent = false;
-					} else {
-						hasparent = true;
-					}
-					var name = $(this).attr("name");
-					$(this).attr("name",divname+"[0]["+name+"]");
+				if ($(this).parent().html()==$(thisg).html()) {
+					hasparent = false;
+				} else {
+					hasparent = true;
+				}
+				var name = $(this).attr("name");
+				$(this).attr("name",divname+"[0]["+name+"]");
 			});
 
 			var html = $(thisg).html();
@@ -147,25 +162,48 @@
 			
 
 			$("#"+divname+"-add").click(function() {
-					cont++;
-					var find = divname+"\\[0\\]";
-					var regex = new RegExp(find, "g");
-					var htmln = html.replace(regex, divname+"["+cont+"]");
+				cont++;
+				var find = divname+"\\[0\\]";
+				var regex = new RegExp(find, "g");
+				var htmln = html.replace(regex, divname+"["+cont+"]");
 
-	
-					$(thisg).append(htmln);
-					loadJqueryUI();
-				
-					$("."+divname+"-remove").click(function() {
-						if ($(this).parent().prop("tagName")=="TD") {
-							$(this).parent().parent().remove();
-						}else {
-							$(this).parent().remove();
-						}
-						
-					});
+
+				$(thisg).append(htmln);
+				loadJqueryUI();
+				loadCalendar();
+				loadTime();
+			
+				$("."+divname+"-remove").click(function() {
+					if ($(this).parent().prop("tagName")=="TD") {
+						$(this).parent().parent().remove();
+					}else {
+						$(this).parent().remove();
+					}
+					
+				});
 			});
 
+			if (value!="") {
+				var array = value;
+	
+				for (var key in array) {
+				   	if (array.hasOwnProperty(key)) {
+				       	var obj = array[key];
+				        for (var prop in obj) {
+				          	// important check that this is objects own property 
+				          	// not from prototype prop inherited
+				          	if(obj.hasOwnProperty(prop)){
+				          		// If it doesn't exist the input add a field
+				          		if ($("[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val()==undefined) {
+				          			$("#"+divname+"-add").trigger("click");
+				          		};
+				          		// Add the values
+				          		$("[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
+				          	}
+				       }
+				    }
+				}
+			};
 			
 			return true;
 		});
@@ -174,46 +212,38 @@
 	};
 	$('input[data-type~=multiple]').multipleInput();
 	$('div[data-type~=multiple], ul[data-type~=multiple], tbody[data-type~=multiple]').multipleDiv();
-	if(
-		$('input[data-type~=date]').length || 
-		$('input[data-type~=time]').length ||
-		$('input[data-type~=datetime]').length
-	) {
-		$.getScript(url+"calendar/script.js", function(){
-			$("input[data-type~=date]").each(function(){
-				var locale = "en";
-				if($(this).attr("lang")) {
-					locale = $(this).attr("lang");
-				}
-				$(this).attr("pattern","[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])");
-				$(this).appendDtpicker({
-					"dateOnly": true,
-					"locale": locale
+	
+	function loadCalendar() {
+		if(
+			$('input[data-type~=date]').length || 
+			$('input[data-type~=datetime]').length
+		) {
+			$.getScript(url+"calendar/script.js", function(){
+				$("input[data-type~=date]").each(function(){
+					var locale = "en";
+					if($(this).attr("lang")) {
+						locale = $(this).attr("lang");
+					}
+					$(this).attr("pattern","[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])");
+					$(this).appendDtpicker({
+						"dateOnly": true,
+						"locale": locale
+					});
+				});
+				$("input[data-type~=datetime]").each(function(){
+					var locale = "en";
+					if($(this).attr("lang")) {
+						locale = $(this).attr("lang");
+					}
+					$(this).attr("pattern","[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01]) (0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])");
+					$(this).appendDtpicker({
+						"locale": locale
+					});
 				});
 			});
-			$("input[data-type~=time]").each(function(){
-				var locale = "en";
-				if($(this).attr("lang")) {
-					locale = $(this).attr("lang");
-				}
-				$(this).attr("pattern","(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])");
-				$(this).appendDtpicker({
-					"timeOnly": true,
-					"locale": locale
-				});
-			});
-			$("input[data-type~=datetime]").each(function(){
-				var locale = "en";
-				if($(this).attr("lang")) {
-					locale = $(this).attr("lang");
-				}
-				$(this).attr("pattern","[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01]) (0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])");
-				$(this).appendDtpicker({
-					"locale": locale
-				});
-			});
-		});
+		}
 	}
+	loadCalendar();
 	
 	// Froala
 	if($('textarea[data-type~=wysiwyg]').length) {
@@ -235,7 +265,10 @@
 				$(this).hide();
 				var thisg = $(this);
 				var value = $(this).attr("data-parent");
-				var select = $(this).val();
+				var select = $(this).attr("data-value-select");
+				if (select == undefined) {
+					select = "";
+				};
 				var name = $(this).attr("name");
 
 				var options = {
@@ -389,24 +422,28 @@
 							$(this).css("display","none");
 							$(this).css("disabled","disabled");
 							var name = $(this).attr("name");
-							var max = parseInt($(this).attr("data-max"));
-							var min = parseInt($(this).attr("data-min"));
-							$("<div id='"+name+"-sl'></div><input name=\""+name+"['max']\" id='"+name+"-sl-max' style='display:none;' /><input name=\""+name+"[\'min\']\" id='"+name+"-sl-min' style='display: none;' />").insertAfter(this);
-							//console.log($( "#"+name+"-sl" ));
-							$( "#"+name+"-sl" ).slider({
-								range: true,
-								min: min,
-								max: max,
-								values: [ min, max ],
-								slide: function( event, ui ) {
-										$( "#"+name+"-min" ).html(ui.values[ 0 ]);
-										$( "#"+name+"-max" ).html(ui.values[ 1 ]);
-										$("#"+name+"-sl-min").val(ui.values[ 0 ]);
-										$("#"+name+"-sl-max").val(ui.values[ 1 ]);
-								}
-							});
-							$("#"+name+"-sl-min").val(min);
-							$("#"+name+"-sl-max").val(max);
+							if (in_array(elements, name)==false) {
+								elements.push(name);
+								var max = parseInt($(this).attr("data-max"));
+								var min = parseInt($(this).attr("data-min"));
+								$("<div id='"+name+"-sl'></div><input name=\""+name+"['max']\" id='"+name+"-sl-max' style='display:none;' /><input name=\""+name+"[\'min\']\" id='"+name+"-sl-min' style='display: none;' />").insertAfter(this);
+								console.log(name);
+								$( "#"+name+"-sl" ).slider({
+									range: true,
+									min: min,
+									max: max,
+									values: [ min, max ],
+									slide: function( event, ui ) {
+											$( "#"+name+"-min" ).html(ui.values[ 0 ]);
+											$( "#"+name+"-max" ).html(ui.values[ 1 ]);
+											$("#"+name+"-sl-min").val(ui.values[ 0 ]);
+											$("#"+name+"-sl-max").val(ui.values[ 1 ]);
+									}
+								});
+								$("#"+name+"-sl-min").val(min);
+								$("#"+name+"-sl-max").val(max);
+							};
+								
 						});
 					} 
 					if($('[data-type~=tooltip]').length) {
@@ -890,36 +927,16 @@
 		});  
 		
 	}
-	// steps
-	if($('[data-type~=steps]').length) {
-		$.getScript(url+"steps/jquery.steps.min.js", function(){
-			$("[data-type~=steps]").each(function(cont){
-				var finish = false;
-				if ( typeof $(this).attr("data-finish") !== typeof undefined ) {
-					finish = $(this).attr("data-finish");
-				}
-				$(this).steps({
-					headerTag: "h3",
-					bodyTag: "section",
-					transitionEffect: "slideLeft",
-					autoFocus: true,
-					onFinished: function (event, currentIndex)
-					{
-						if (finish) {
-							$("#"+finish).trigger('click'); 
-						}; 
-					}
-					
-				});
-			});
-		});
-	}
 	// Magnific Popup
 	if($('[data-type~=popup]').length) {
 		$('head').append('<link rel="stylesheet" href="'+url+'magnific-popup/magnific-popup.css" type="text/css" />');
 		$.getScript(url+"magnific-popup/jquery.magnific-popup.min.js", function(){
 			$("a[data-type~=popup]").each(function(cont){
 				var type = $(this).attr("data-popup-type");
+				if (type=="inline") {
+					var href = $(this).attr("href");
+					$(href).addClass("mfp-hide");
+				};
 				$(this).magnificPopup({
 				  	type: type
 				});
@@ -933,7 +950,7 @@
 			});
 		});
 	}
-	// Magnific Popup
+	// Owl
 	if($('[data-type~=carousel]').length) {
 		$('head').append('<link rel="stylesheet" href="'+url+'owl-carousel/owl.carousel.css" type="text/css" />');
 		$.getScript(url+"owl-carousel/owl.carousel.min.js", function(){
@@ -941,16 +958,21 @@
 				$(this).addClass("owl-carousel");
 				var id = $(this).attr("id");
 				var owl = $(this);
-				var time = 1000;
+				var time = false;
 				if ( typeof $(this).attr("data-carousel-time") !== typeof undefined ) {
-					time = $(this).attr("data-carousel-time");
+					var time = $(this).attr("data-carousel-time");
 				}
 				var items = 5;
 				if ( typeof $(this).attr("data-carousel-items") !== typeof undefined ) {
 					items = $(this).attr("data-carousel-items");
 				}
 				owl.owlCarousel({
+					autoPlay: time,
 					items: items,
+					itemsDesktop: false,
+					itemsDesktopSmall: false,
+					itemsTablet: false,
+					itemsMobile: false
 				});
 
 				// Custom Navigation Events
@@ -968,6 +990,119 @@
 				})
 			});
 		});
+	}
+	//Sidr
+	if($('[data-type~=mobmenu]').length) {
+		$('head').append('<link rel="stylesheet" href="'+url+'sidr/jquery.sidr.dark.css" type="text/css" />');
+		$.getScript(url+"sidr/jquery.sidr.min.js", function(){
+			$("[data-type~=mobmenu]").each(function(cont){
+				var forn = $(this).attr("for");
+				var pos = "left";
+				if ( typeof $(this).attr("data-submenu-pos") !== typeof undefined ) {
+					pos = $(this).attr("data-submenu-pos");
+				}
+				$(this).sidr({
+			      	name: forn,
+			     	side: pos
+			    });
+			});
+		});
+	}
+	//Timepicker
+	function loadTime() {
+		if($('[data-type~=time]').length) {
+			$('head').append('<link rel="stylesheet" href="'+url+'time-picker/jquery.timepicker.css" type="text/css" />');
+			$.getScript(url+"time-picker/jquery.timepicker.min.js", function(){
+				$("[data-type~=time]").each(function(cont){
+					$(this).timepicker({ 'timeFormat': 'H:i' });
+				});
+			});
+		}
+	}
+	loadTime();
+
+	// Image uploader
+	if(
+		$('[data-type~=imageUploader]').length 
+	) {
+		$('head').append('<link rel="stylesheet" href="'+url+'uploader/src/css/uploader.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+url+'uploader/src/css/demo.css" type="text/css" />');
+		$.getScript(url+"uploader/src/js/demo-preview.min.js", function(){
+			$.getScript(url+"uploader/src/js/dmuploader.min.js", function(){
+				$("[data-type~=imageUploader]").each(function(cont){
+					var src = $(this).attr("src");
+					$(this).dmUploader({
+						url: src,
+						dataType: 'json',
+						allowedTypes: 'image/*',
+						onInit: function(){
+							$.danidemo.addLog('#demo-debug', 'default', 'Plugin initialized correctly');
+						},
+						onBeforeUpload: function(id){
+							$.danidemo.addLog('#demo-debug', 'default', 'Starting the upload of #' + id);
+
+							$.danidemo.updateFileStatus(id, 'default', 'Uploading...');
+						},
+						onNewFile: function(id, file){
+							$.danidemo.addFile('#demo-files', id, file);
+
+							/*** Begins Image preview loader ***/
+							if (typeof FileReader !== "undefined"){
+								
+								var reader = new FileReader();
+
+								// Last image added
+								var img = $('#demo-files').find('.demo-image-preview').eq(0);
+
+								reader.onload = function (e) {
+									img.attr('src', e.target.result);
+								}
+
+								reader.readAsDataURL(file);
+
+							} else {
+								// Hide/Remove all Images if FileReader isn't supported
+								$('#demo-files').find('.demo-image-preview').remove();
+							}
+							/*** Ends Image preview loader ***/
+
+						},
+						onComplete: function(){
+							$.danidemo.addLog('#demo-debug', 'default', 'All pending tranfers completed');
+						},
+						onUploadProgress: function(id, percent){
+							var percentStr = percent + '%';
+
+							$.danidemo.updateFileProgress(id, percentStr);
+						},
+						onUploadSuccess: function(id, data){
+							$.danidemo.addLog('#demo-debug', 'success', 'Upload of file #' + id + ' completed');
+
+							$.danidemo.addLog('#demo-debug', 'info', 'Server Response for file #' + id + ': ' + JSON.stringify(data));
+
+							$.danidemo.updateFileStatus(id, 'success', 'Upload Complete');
+
+							$.danidemo.updateFileProgress(id, '100%');
+						},
+						onUploadError: function(id, message){
+							$.danidemo.updateFileStatus(id, 'error', message);
+
+							$.danidemo.addLog('#demo-debug', 'error', 'Failed to Upload file #' + id + ': ' + message);
+						},
+						onFileTypeError: function(file){
+							$.danidemo.addLog('#demo-debug', 'error', 'File \'' + file.name + '\' cannot be added: must be an image');
+						},
+						onFileSizeError: function(file){
+							$.danidemo.addLog('#demo-debug', 'error', 'File \'' + file.name + '\' cannot be added: size excess limit');
+						},
+						onFallbackMode: function(message){
+							$.danidemo.addLog('#demo-debug', 'info', 'Browser not supported(do something else here!): ' + message);
+						}
+					});
+				});
+			});
+		});  
+		
 	}
 })( jQuery );
 
