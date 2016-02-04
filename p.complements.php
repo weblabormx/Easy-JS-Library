@@ -110,15 +110,17 @@ console.log("Este es un ejemplo de un codigo javascript");
 	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input title="Selecciona una fecha" name="tooltip" data-type="tooltip" />'); ?></code>
 
 	<h2>Ajax loader</h2>
-	<span data-type="ajax" src="README.md" for="carga">Load</span>
+	<span data-type="ajaxload" src="README.md" for="carga">Load</span>
+	<span data-type="ajaxload" src="README.md" for="carga">Load</span>
+	<span data-type="ajaxload" src="README.md" for="carga">Load</span>
 	<br /><br />
 	<div id="carga" style="display:block; width:500px; height:300px; padding:20px; border:1px solid #000;"></div>
-	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<span data-type="ajax" src="README.md" for="carga">Load</span>
+	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<span data-type="ajaxload" src="README.md" for="carga">Load</span>
 <br /><br />
 <div id="carga" style="display:block; width:500px; height:300px; padding:20px; border:1px solid #000;"></div>'); ?></code>
 
 	<h2>Carousel</h2>
-	<div data-type="carousel" data-carousel-time="1000" data-carousel-items="10" id="carousel">
+	<div data-type="carousel" data-carousel-time="1000" data-carousel-items="10" data-carousel-items-tablet="5" id="carousel">
 	  	<div class="item"><h1>1</h1></div>
 		<div class="item"><h1>2</h1></div>
 		<div class="item"><h1>3</h1></div>
@@ -141,6 +143,7 @@ console.log("Este es un ejemplo de un codigo javascript");
 	<span data-carousel-type="play" for="carousel">Autoplay</span>
 	<span data-carousel-type="stop" for="carousel">Stop</span>
 	<p>It is necessary to have ID</p>
+	<p>Another variables you can use are data-carousel-items-desktop, data-carousel-items-desktop-small, data-carousel-items-tablet, data-carousel-items-mobile</p>
 	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<div data-type="carousel" data-carousel-time="1000" data-carousel-items="10" id="carousel">
   	<div class="item"><h1>1</h1></div>
 	<div class="item"><h1>2</h1></div>
