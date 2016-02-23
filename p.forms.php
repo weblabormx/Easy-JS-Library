@@ -185,14 +185,22 @@ object(stdClass)#1 (3) {
 </div>'); ?></code>
 
 		<h2>Slider</h2>
+		<h3>Range</h3>
 		<div style="width:200px;">
 			<p>$<span id="slider-min">100</span> - $<span id="slider-max">200</span></p>
-			<input data-type="slider" data-max="200" data-min="100" name="slider" />
+			<input data-type="slider" data-slider="range" data-max="200" data-min="100" name="slider" />
 		</div>
 		<p>El id del span esta conformado por el name del input + "-min" o "-max". Se devuelve en el servidor un arreglo con el name con la llave max y min con sus valores.</p>
  		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<p>$<span id="slider-min">100</span> - $<span id="slider-max">200</span></p>
-<input data-type="slider" data-max="200" data-min="100" name="slider" />'); ?></code>
-
+<input data-type="slider" data-slider="range" data-max="200" data-min="100" name="slider" />'); ?></code>
+		<h3>Increments</h3>
+		<div style="width:200px;">
+			<p>$<span id="slider2-val">0</span></p>
+			<input data-type="slider" data-slider="increments" data-max="20" data-min="0.5" data-step="0.5" name="slider2" />
+		</div>
+		<p>El id del span esta conformado por el name del input + "-min" o "-max". Se devuelve en el servidor un arreglo con el name con la llave max y min con sus valores.</p>
+ 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<p>$<span id="slider-val">100</span></p>
+<input data-type="slider" data-slider="increments" data-max="2000" data-min="100" data-step="100" name="slider2" />'); ?></code>
 		
 		<h2>On / Off selector</h2>	
 		<input name="onoff" data-type="onoff" value="0" data-on = "Activar" data-off="Desactivar" />

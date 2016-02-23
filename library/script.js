@@ -2,14 +2,6 @@
 	var url = "http://weblabor.mx/libraries/easyJsLibrary/library/";
 	//url = "http://localhost:82/easy-JS-Library/library/";
 
-	var elements = [];
-	// To search in array
-	function in_array(array, id) {
-	    for(var i=0;i<array.length;i++) {
-	        return (array[i] === id)
-	    }
-	    return false;
-	}
 	// Progress bar
 	if($('body[data-type~=progressbar]').length) {
 		$("body").append("<div id='hideAll'></div>");
@@ -309,6 +301,7 @@
 			});
 		});
 	}
+	var elements = [];
 	// Jquery UI
 	function loadJqueryUI(){
 		if(
@@ -318,8 +311,10 @@
 			$('input[data-type~=slider]').length || 
 			$('[data-type~=tooltip]').length
 		) {
+
 			$('head').append('<link rel="stylesheet" href="'+url+'jquery-ui/jquery-ui.min.css" type="text/css" />');
 			$.getScript(url+"jquery-ui/jquery-ui.min.js", function(){
+					
 					if($('ul[data-type~=sort]').length) {
 						// Sort
 						$(function() {
@@ -419,29 +414,46 @@
 					if($('input[data-type~=slider]').length) {
 						// Slider
 						$("input[data-type~=slider]").each(function(){
-							$(this).css("display","none");
-							$(this).css("disabled","disabled");
+							/*$(this).css("display","none");
+							$(this).css("disabled","disabled");*/
 							var name = $(this).attr("name");
-							if (in_array(elements, name)==false) {
+							if ( elements.indexOf(name) == -1 ) { 
 								elements.push(name);
-								var max = parseInt($(this).attr("data-max"));
-								var min = parseInt($(this).attr("data-min"));
-								$("<div id='"+name+"-sl'></div><input name=\""+name+"['max']\" id='"+name+"-sl-max' style='display:none;' /><input name=\""+name+"[\'min\']\" id='"+name+"-sl-min' style='display: none;' />").insertAfter(this);
-								console.log(name);
-								$( "#"+name+"-sl" ).slider({
-									range: true,
-									min: min,
-									max: max,
-									values: [ min, max ],
-									slide: function( event, ui ) {
-											$( "#"+name+"-min" ).html(ui.values[ 0 ]);
-											$( "#"+name+"-max" ).html(ui.values[ 1 ]);
-											$("#"+name+"-sl-min").val(ui.values[ 0 ]);
-											$("#"+name+"-sl-max").val(ui.values[ 1 ]);
-									}
-								});
-								$("#"+name+"-sl-min").val(min);
-								$("#"+name+"-sl-max").val(max);
+								var max = parseFloat($(this).attr("data-max"));
+								var min = parseFloat($(this).attr("data-min"));
+								var type = $(this).attr("data-slider");
+								if (type=="range") {
+									$("<div id='"+name+"-sl'></div><input name=\""+name+"['max']\" id='"+name+"-sl-max' style='display:none;' /><input name=\""+name+"[\'min\']\" id='"+name+"-sl-min' style='display: none;' />").insertAfter(this);
+									$( "#"+name+"-sl" ).slider({
+										range: true,
+										min: min,
+										max: max,
+										values: [ min, max ],
+										slide: function( event, ui ) {
+												$( "#"+name+"-min" ).html(ui.values[ 0 ]);
+												$( "#"+name+"-max" ).html(ui.values[ 1 ]);
+												$("#"+name+"-sl-min").val(ui.values[ 0 ]);
+												$("#"+name+"-sl-max").val(ui.values[ 1 ]);
+										}
+									});
+									$("#"+name+"-sl-min").val(min);
+									$("#"+name+"-sl-max").val(max);
+								} else if (type=="increments") {
+									var step = parseFloat($(this).attr("data-step"));
+									$("<div id='"+name+"-sl'></div>").insertAfter(this);
+									var thiss = this;
+									$( "#"+name+"-sl" ).slider({
+										value: min,
+										min: min,
+										max: max,
+										step: step,
+										slide: function( event, ui ) {
+												$( "#"+name+"-val" ).html(ui.value);
+												$(thiss).val(ui.value);
+										}
+									});
+									$(thiss).val(min);
+								}
 							};
 								
 						});
@@ -589,7 +601,6 @@
 	if($('[data-type~=changeOnClick]').length) {
 		$("[data-type~=changeOnClick]").each(function(cont){
 			var id = $(this).attr("id");
-			$("[for="+id+"]").css("display","none");
 
 			$(this).click(function(){
 					$(this).css("display","none");
@@ -1133,6 +1144,14 @@
 		});  
 		
 	}
+
+	if($('[data-type~=html]').length) {
+		$("[data-type~=html]").each(function(){
+			var html = $(this).html();
+			$(this).text(html);
+		});
+	};
+	
 })( jQuery );
 
 //console.log(obj.element.getAttribute("data-type"));
