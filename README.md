@@ -35,6 +35,7 @@ Features:
 - Category Selector
 - Popups
 - Message Box
+- Conditional forms fields
 
 Features to add
 -----------
@@ -51,6 +52,7 @@ Libraries used
 - Option-tree
 - Lobibox
 - Magnific Popup
+- Conditionize
 
 Know issues
 ----------

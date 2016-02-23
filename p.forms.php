@@ -121,14 +121,14 @@ $array = json_encode($array);
 		<h2>Autocomplete</h2>
 		<h3>Normal</h3>
 		<label for="in1">Ejemplo: </label>
-  		<input id="in1" data-type="autocomplete" name="aut" src="autocomplete.php" />
-  		<p>Autocompletes a text field. It is necessary the name attribute. The PHP Code recieves $_GET['term'] with the searched word</p>
-  		<h4>HTML Code</h4>
-  		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input data-type="autocomplete" name="aut" src="autocomplete.php" />'); ?></code>
-  		<h4>PHP Code (autocomplete.php)</h4>
-  		<code data-type="codeeditor" data-lang="php"><?php echo htmlspecialchars('<?php
+			<input id="in1" data-type="autocomplete" name="aut" src="autocomplete.php" />
+			<p>Autocompletes a text field. It is necessary the name attribute. The PHP Code recieves $_GET['term'] with the searched word</p>
+			<h4>HTML Code</h4>
+			<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input data-type="autocomplete" name="aut" src="autocomplete.php" />'); ?></code>
+			<h4>PHP Code (autocomplete.php)</h4>
+			<code data-type="codeeditor" data-lang="php"><?php echo htmlspecialchars('<?php
 
-  	$res = array();
+		$res = array();
 	// id is what is passed to the field
 	$res[] = array("label"=>$_GET["term"], "id" => 99, "value" => $_GET["term"]);
 	$res[] = array("label"=>"dos", "id" => 2, "value" => "dos");
@@ -140,25 +140,25 @@ $array = json_encode($array);
 		<h3>With reload and with action</h3>
 		<p>It will be send a $_POST variable called "result" with the selected data. First the action will be called and then it will be reloaded.</p>
 		<label for="in2">Example: </label>
-  		<input id="in2" data-type="autocomplete" name="aut2" src="autocomplete.php" data-reload="true" data-action="sautocomplete.php" />
-  		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input data-type="autocomplete" name="aut2" src="autocomplete.php" data-reload="true" data-action="sautocomplete.php" />'); ?></code>
+			<input id="in2" data-type="autocomplete" name="aut2" src="autocomplete.php" data-reload="true" data-action="sautocomplete.php" />
+			<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input data-type="autocomplete" name="aut2" src="autocomplete.php" data-reload="true" data-action="sautocomplete.php" />'); ?></code>
 
-  		<p>Example of $_POST["result"]</p>
-  		<code data-type="codeeditor" data-lang="html">
+			<p>Example of $_POST["result"]</p>
+			<code data-type="codeeditor" data-lang="html">
 object(stdClass)#1 (3) {
-  ["label"]=>
-  string(3) "aaa"
-  ["id"]=>
-  int(99)
-  ["value"]=>
-  string(3) "aaa"
+	["label"]=>
+	string(3) "aaa"
+	["id"]=>
+	int(99)
+	["value"]=>
+	string(3) "aaa"
 }
-  		</code>
-  		<h3>With selected data</h3>
-  		<input id="in012" data-type="autocomplete" data-selected-text="Hola" data-selected-value="valor" name="aut20" src="autocomplete.php" />
-  		<p>Put a default value</p>
-  		<h4>HTML Code</h4>
-  		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input id="in012" data-type="autocomplete" data-selected-text="Hola" data-selected-value="valor" name="aut20" src="autocomplete.php" />'); ?></code>
+			</code>
+			<h3>With selected data</h3>
+			<input id="in012" data-type="autocomplete" data-selected-text="Hola" data-selected-value="valor" name="aut20" src="autocomplete.php" />
+			<p>Put a default value</p>
+			<h4>HTML Code</h4>
+			<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input id="in012" data-type="autocomplete" data-selected-text="Hola" data-selected-value="valor" name="aut20" src="autocomplete.php" />'); ?></code>
 
 		<h2>Button</h2>
 		<h3>Checkbox</h3>
@@ -191,7 +191,7 @@ object(stdClass)#1 (3) {
 			<input data-type="slider" data-slider="range" data-max="200" data-min="100" name="slider" />
 		</div>
 		<p>El id del span esta conformado por el name del input + "-min" o "-max". Se devuelve en el servidor un arreglo con el name con la llave max y min con sus valores.</p>
- 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<p>$<span id="slider-min">100</span> - $<span id="slider-max">200</span></p>
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<p>$<span id="slider-min">100</span> - $<span id="slider-max">200</span></p>
 <input data-type="slider" data-slider="range" data-max="200" data-min="100" name="slider" />'); ?></code>
 		<h3>Increments</h3>
 		<div style="width:200px;">
@@ -199,7 +199,7 @@ object(stdClass)#1 (3) {
 			<input data-type="slider" data-slider="increments" data-max="20" data-min="0.5" data-step="0.5" name="slider2" />
 		</div>
 		<p>El id del span esta conformado por el name del input + "-min" o "-max". Se devuelve en el servidor un arreglo con el name con la llave max y min con sus valores.</p>
- 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<p>$<span id="slider-val">100</span></p>
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<p>$<span id="slider-val">100</span></p>
 <input data-type="slider" data-slider="increments" data-max="2000" data-min="100" data-step="100" name="slider2" />'); ?></code>
 		
 		<h2>On / Off selector</h2>	
@@ -209,12 +209,12 @@ object(stdClass)#1 (3) {
 		<p>It can be selected the color between: black, white, gray and blue with data-color property</p>
 		<h3>Editor</h3>
 		<textarea data-type="codeeditor" data-lang="javascript" data-color="black" name="code">function foo(items) {
-    var x = "All this is syntax highlighted";
-    return x;
+		var x = "All this is syntax highlighted";
+		return x;
 }</textarea>
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<textarea data-type="codeeditor" data-lang="javascript" data-color="black" name="code">function foo(items) {
-    var x = "All this is syntax highlighted";
-    return x;
+		var x = "All this is syntax highlighted";
+		return x;
 }</textarea>'); ?></code>
 
 		<h2>Send form in Ajax</h2>
@@ -224,39 +224,97 @@ object(stdClass)#1 (3) {
 // Content
 </form>'); ?></code>
 	
-		<h2>Form with steps</h2>
-		<div data-type="steps" data-finish="submit">
-			<h3>Select gener</h3>
-			<section>
-				<input type="text" class="required"  />
-			</section>
-			<h3>Select name</h3>
-			<section>
-				<input type="text" />
-			</section>
-			<h3>Select age</h3>
-			<section>
-				<input type="text" />
-				<input type="submit" style="display:none;" id="submit">
-			</section>
-		</div>	
-		<p>id of the value of "Data finish" will click automatically when click in finish</p>
-		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<div data-type="steps" data-finish="submit">
-	<h3>Select gener</h3>
-	<section>
-		<input type="text" class="required"  />
-	</section>
-	<h3>Select name</h3>
-	<section>
-		<input type="text" />
-	</section>
-	<h3>Select age</h3>
-	<section>
-		<input type="text" />
-		<input type="submit" style="display:none;" id="submit">
-	</section>
-</div>	'); ?></code>
+		<h2>Conditional forms fields</h2>
+		<label><input type="radio" name="example1" value="yes"><span></span> Yes</label>
+		<label><input type="radio" name="example1" value="no"><span></span> No</label>
 
+		<div data-type="conditional" data-cond-option="example1" data-cond-value="yes">
+			<label><input type="checkbox" name="example2"><span></span> Are you sure?</label>
+			<label><input type="checkbox" name="example3"><span></span> Really super sure?</label>
+			
+			<div data-type="conditional" data-cond-option="example2" data-cond-value="on">
+				Hooray!
+			</div>
+			<div data-type="conditional" data-cond-option="example3" data-cond-value="on">
+				Don't get cocky!
+			</div>
+		</div>
+		
+		<div data-type="conditional" data-cond-option="example1" data-cond-value="no">
+			<p>That's a shame. Will you change your mind?</p>
+			
+			<label><input type="radio" name="example4" value="yes"><span></span> Yes</label>
+			<label><input type="radio" name="example4" value="no"><span></span> No</label>
+			
+			<div data-type="conditional" data-cond-option="example4" data-cond-value="yes">
+				Great!
+			</div>
+		</div>
+		
+		<p>
+			<label>or choose:</label>
+			<select class="select" name="example5">
+				<option>Pick one!</option>
+				<option value="yes">Yes!</option>
+				<option value="no">No!</option>
+			</select>
+		</p>
+		<div data-type="conditional" data-cond-option="example5" data-cond-value="yes">
+			Works with selects!
+		</div>
+		 <p>
+			<label>or type:</label>
+			<input type="text" name="example6" placeholder="yay">
+		</p>
+		<div data-type="conditional" data-cond-option="example6" data-cond-value="yay">
+			Works with text input
+		</div>
+
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<label><input type="radio" name="example1" value="yes"><span></span> Yes</label>
+<label><input type="radio" name="example1" value="no"><span></span> No</label>
+
+<div data-type="conditional" data-cond-option="example1" data-cond-value="yes">
+	<label><input type="checkbox" name="example2"><span></span> Are you sure?</label>
+	<label><input type="checkbox" name="example3"><span></span> Really super sure?</label>
+	
+	<div data-type="conditional" data-cond-option="example2" data-cond-value="on">
+		Hooray!
+	</div>
+	<div data-type="conditional" data-cond-option="example3" data-cond-value="on">
+		Don\'t get cocky!
+	</div>
+</div>
+
+<div data-type="conditional" data-cond-option="example1" data-cond-value="no">
+	<p>That\'s a shame. Will you change your mind?</p>
+	
+	<label><input type="radio" name="example4" value="yes"><span></span> Yes</label>
+	<label><input type="radio" name="example4" value="no"><span></span> No</label>
+	
+	<div data-type="conditional" data-cond-option="example4" data-cond-value="yes">
+		Great!
+	</div>
+</div>
+
+<p>
+	<label>or choose:</label>
+	<select class="select" name="example5">
+		<option>Pick one!</option>
+		<option value="yes">Yes!</option>
+		<option value="no">No!</option>
+	</select>
+</p>
+<div data-type="conditional" data-cond-option="example5" data-cond-value="yes">
+	Works with selects!
+</div>
+ <p>
+	<label>or type:</label>
+	<input type="text" name="example6" placeholder="yay">
+</p>
+<div data-type="conditional" data-cond-option="example6" data-cond-value="yay">
+	Works with text input
+</div>'); ?></code>
+		
 		<h2>Validation</h2>
 		<p>Works with date, time, datetime too.</p>
 		<h3>Alpha Numeric</h3>

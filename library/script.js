@@ -414,8 +414,6 @@
 					if($('input[data-type~=slider]').length) {
 						// Slider
 						$("input[data-type~=slider]").each(function(){
-							/*$(this).css("display","none");
-							$(this).css("disabled","disabled");*/
 							var name = $(this).attr("name");
 							if ( elements.indexOf(name) == -1 ) { 
 								elements.push(name);
@@ -423,6 +421,10 @@
 								var min = parseFloat($(this).attr("data-min"));
 								var type = $(this).attr("data-slider");
 								if (type=="range") {
+									// Hide becouse array with the name and variables max and min is createad
+									$(this).css("display","none");
+									$(this).css("disabled","disabled");
+									
 									$("<div id='"+name+"-sl'></div><input name=\""+name+"['max']\" id='"+name+"-sl-max' style='display:none;' /><input name=\""+name+"[\'min\']\" id='"+name+"-sl-min' style='display: none;' />").insertAfter(this);
 									$( "#"+name+"-sl" ).slider({
 										range: true,
@@ -1149,6 +1151,12 @@
 		$("[data-type~=html]").each(function(){
 			var html = $(this).html();
 			$(this).text(html);
+		});
+	};
+
+	if($('[data-type~=conditional]').length) {
+		$.getScript(url+"conditionize/conditionize.jquery.js", function(){
+			$("[data-type~=conditional]").conditionize();
 		});
 	};
 	
