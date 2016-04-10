@@ -816,18 +816,22 @@
 
 			var months = "<select class='date2-month' id='"+name+"-month'>";
 			for (var i = 1; i <= 12; i++) {
-					var value = "";
-					if (i==array[1]) {
-						value = "selected = 'selected'";
-					};
-					i = ""+i;
-					if (i.length<2) {
-						i = "0"+i;
-					};
-					var date = i+"/01/2010";
-					var objDate = new Date(date),
-					month = objDate.toLocaleString(locale, { month: "long" });
-					months += "<option value='"+i+"' "+value+">"+month+"</option>";
+				var value = "";
+				if (i==array[1]) {
+					value = "selected = 'selected'";
+				};
+				i = ""+i;
+				if (i.length<2) {
+					i = "0"+i;
+				};
+				var date = i+"/01/2010";
+				var objDate = new Date(date),
+				month = objDate.toLocaleString(locale, { month: "long" });
+				monthsplit = month.split(" ");
+				if (monthsplit.length!=1) {
+					month = monthsplit[2];
+				}
+				months += "<option value='"+i+"' "+value+">"+month+"</option>";
 			};
 			months += "</select>";
 
@@ -1160,6 +1164,14 @@
 		});
 	};
 	
+	if($('[data-type~=imgur]').length) {
+		$.getScript('http://weblabor.mx/imgur-js-uploader/imgur-js-uploader.min.js', function(){
+			$("[data-type~=imgur]").each(function(cont){
+				$(this).imgurUploader();
+			});
+		});
+	}
+
 })( jQuery );
 
 //console.log(obj.element.getAttribute("data-type"));

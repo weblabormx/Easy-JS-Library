@@ -223,7 +223,12 @@ object(stdClass)#1 (3) {
 <form action="send.php" method="POST" data-type="ajax" id="form">
 // Content
 </form>'); ?></code>
-	
+		
+		<h2>Imgur JS Uploader</h2>
+		<input data-type='imgur' type="text" />
+
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input data-type=\'imgur\' type="text" />'); ?></code>
+
 		<h2>Conditional forms fields</h2>
 		<label><input type="radio" name="example1" value="yes"><span></span> Yes</label>
 		<label><input type="radio" name="example1" value="no"><span></span> No</label>
