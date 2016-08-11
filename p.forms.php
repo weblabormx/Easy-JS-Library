@@ -45,14 +45,17 @@
 				0 => array(
 					'nombre' => 'Ejemplo1',
 					'costo'	=> '100',
+					'required' => 1
 				),
 				1 => array(
 					'nombre' => 'Ejemplo2',
 					'costo'	=> '200',
+					'required' => 0
 				),
 				2 => array(
 					'nombre' => 'Ejemplo3',
 					'costo'	=> '300',
+					'required' => 1
 				),
 			);
 			$array = json_encode($array);
@@ -63,6 +66,7 @@
 			<li>
 				<label>Nombre</label><input type="text" name="nombre" />
 				<label>Costo</label><input type="text" name="costo" />
+				<label>Requerido</label><input type="checkbox" value="1" name="required" />
 				<span class="multiple2-remove">Eliminar</span>
 			</li>
 		</ul>
@@ -121,7 +125,7 @@ $array = json_encode($array);
 		<h2>Autocomplete</h2>
 		<h3>Normal</h3>
 		<label for="in1">Ejemplo: </label>
-			<input id="in1" data-type="autocomplete" name="aut" src="autocomplete.php" />
+			<input id="in1" data-type="autocomplete" name="aut" src="autocomplete.php" style="width:50%;" />
 			<p>Autocompletes a text field. It is necessary the name attribute. The PHP Code recieves $_GET['term'] with the searched word</p>
 			<h4>HTML Code</h4>
 			<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input data-type="autocomplete" name="aut" src="autocomplete.php" />'); ?></code>

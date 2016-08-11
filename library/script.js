@@ -190,7 +190,10 @@
 				          			$("#"+divname+"-add").trigger("click");
 				          		};
 				          		// Add the values
-				          		$("[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
+				          		$("input[type=text][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
+				          		$("input[type=select][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
+				          		if(obj[prop]==1)
+				          			$("input[type=checkbox][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").attr('checked', 'checked');
 				          	}
 				       }
 				    }
@@ -348,7 +351,9 @@
 							name = name+"ce";
 							var required = "";
 							if ($(this).attr("required")) { required = " required"; };
-							if (isSelected) { required = required+" value='"+selectedText+"'"};
+							if ($(this).attr("class")) { required = required + " class='"+$(this).attr("class")+"'"; };
+							if ($(this).attr("style")) { required = required + " style='"+$(this).attr("style")+"'"; };
+							if (isSelected) { required = required + " value='"+selectedText+"'"};
 							$("<div class='autclt'><input type='text' name='"+name+"'"+required+" /><span class='closeauto'>x</span></div>").insertAfter(this);
 							$(this).css("display","none");
 							var auto = $("input[name="+name+"]");

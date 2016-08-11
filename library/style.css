@@ -363,7 +363,6 @@ li.multipleInput-email {
 /* Auto complete*/
 .autclt {
      position: relative;
-     display: inline-block;
 }
 .autclt .closeauto {
      position: absolute;
