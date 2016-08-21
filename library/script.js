@@ -191,7 +191,7 @@
 				          		};
 				          		// Add the values
 				          		$("input[type=text][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
-				          		$("input[type=select][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
+				          		$("select[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
 				          		if(obj[prop]==1)
 				          			$("input[type=checkbox][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").attr('checked', 'checked');
 				          	}
@@ -242,14 +242,46 @@
 	
 	// Froala
 	if($('textarea[data-type~=wysiwyg]').length) {
-		$('head').append('<link rel="stylesheet" href="'+url+'froala/css/font-awesome.min.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+url+'froala/css/froala_editor.min.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+url+'froala/css/froala_style.min.css" type="text/css" />');
-		$.getScript(url+"froala/js/froala_editor.min.js", function(){
-	
-			$(function() {
-				$('textarea[data-type=wysiwyg]').editable({inlineMode: false, height: '300'})
+		var froala_base = 'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.4/';
+		$('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/froala_editor.min.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/froala_style.min.css" type="text/css" />');
+
+		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/code_view.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/colors.css" type="text/css" />');
+		//$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/file.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/fullscreen.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/image.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/table.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/video.css" type="text/css" />');
+
+		$.getScript(froala_base+'js/froala_editor.min.js', function() {
+			$.getScript(froala_base+'js/plugins/align.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/code_beautifier.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/code_view.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/colors.min.js', function(){});
+			//$.getScript(froala_base+'js/plugins/file.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/font_size.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/fullscreen.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/image.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/inline_style.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/link.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/lists.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/paragraph_format.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/table.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/url.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/video.min.js', function(){});
+			$.getScript(froala_base+'js/languages/es.js', function(){
+				$(function() {
+					$('textarea[data-type=wysiwyg]').froalaEditor({
+						language: 'es',
+						imageUploadURL: 'http://localhost:82/Imgur-JS-Uploader/includes/uploader.php',
+						requestWithCORS: true,
+						imageUploadMethod: 'POST',
+					});
+				});
 			});
+			
 		});
 	}
 	// Jquery optionTree

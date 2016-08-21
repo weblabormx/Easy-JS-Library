@@ -65,7 +65,11 @@
 		<ul data-type="multiple" data-name="multiple2" data-values='<?php echo $array; ?>'>
 			<li>
 				<label>Nombre</label><input type="text" name="nombre" />
-				<label>Costo</label><input type="text" name="costo" />
+				<label>Costo</label><select name="costo">
+					<option value="100">100</option>
+					<option value="200">200</option>
+					<option value="300">300</option>
+				</select>
 				<label>Requerido</label><input type="checkbox" value="1" name="required" />
 				<span class="multiple2-remove">Eliminar</span>
 			</li>
