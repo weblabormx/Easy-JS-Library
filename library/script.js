@@ -1,4 +1,4 @@
-(function( $ ){
+function loadEJL() {
 	var url = "http://weblabor.mx/libraries/easyJsLibrary/library/";
 	//url = "http://localhost:82/easy-JS-Library/library/";
 
@@ -11,6 +11,7 @@
 			$("body[data-type~=progressbar]").removeClass("hideScroll");
 		});
 	};
+	
 	$.fn.copyCSS = function (source) {
 		var dom = $(source).get(0);
 		var dest = {};
@@ -111,7 +112,6 @@
 			return $(this).attr('disabled','disabled').hide();
  
 		});
- 
 	};
 	$.fn.multipleDiv = function() {
 		return this.each(function() {
@@ -202,9 +202,8 @@
 			
 			return true;
 		});
-
- 
 	};
+
 	$('input[data-type~=multiple]').multipleInput();
 	$('div[data-type~=multiple], ul[data-type~=multiple], tbody[data-type~=multiple]').multipleDiv();
 	
@@ -1208,7 +1207,9 @@
 			});
 		});
 	}
-
+}
+(function( $ ){
+	loadEJL();
 })( jQuery );
 
 //console.log(obj.element.getAttribute("data-type"));
