@@ -164,6 +164,7 @@ function loadEJL() {
 				loadJqueryUI();
 				loadCalendar();
 				loadTime();
+				loadOnoff();
 			
 				$("."+divname+"-remove").click(function() {
 					if ($(this).parent().prop("tagName")=="TD") {
@@ -511,47 +512,50 @@ function loadEJL() {
 	}
 	loadJqueryUI();
 	// http://devgrow.com/iphone-style-switches/
-	if($('[data-type~=onoff]').length) {
-		$("[data-type~=onoff]").each(function(){
-			$(this).css("display","none");
-			var valor = $(this).val();
-			valor = parseInt(valor);
-			
-			var name = $(this).attr("name");
-			var ontitle = $(this).attr("data-on");
-			var offtitle = $(this).attr("data-off");
-			if (ontitle==undefined) {
-					ontitle = "Enable";
-			}
-			if (offtitle==undefined) {
-					offtitle = "Disable";
-			}
+	function loadOnoff() {
+		if($('[data-type~=onoff]').length) {
+			$("[data-type~=onoff]").each(function(){
+				$(this).css("display","none");
+				var valor = $(this).val();
+				valor = parseInt(valor);
+				
+				var name = $(this).attr("name");
+				var ontitle = $(this).attr("data-on");
+				var offtitle = $(this).attr("data-off");
+				if (ontitle==undefined) {
+						ontitle = "Enable";
+				}
+				if (offtitle==undefined) {
+						offtitle = "Disable";
+				}
 
-			if (valor===0) {
-					$('<div class="field switch"><label class="cb-enable" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable selected" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(this)
-					$(this).val(0);
-			} else {
-					$('<div class="field switch"><label class="cb-enable selected" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(this)
-					$(this).val(1);
-			}
-			
-		});
-		$(".cb-enable").click(function(){
-			var parentname = $(this).attr("data-nameparent");
-			var parent = $(this).parents('.switch');
-			$('.cb-disable',parent).removeClass('selected');
-			$(this).addClass('selected');
-			$('input[name='+parentname+']').val(1);
-		});
-		$(".cb-disable").click(function(){
-			var parentname = $(this).attr("data-nameparent");
-			var parent = $(this).parents('.switch');
-			$('.cb-enable',parent).removeClass('selected');
-			$(this).addClass('selected');
-			$('input[name='+parentname+']').val(0);
-		});
-			
+				if (valor===0) {
+						$('<div class="field switch"><label class="cb-enable" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable selected" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(this)
+						$(this).val(0);
+				} else {
+						$('<div class="field switch"><label class="cb-enable selected" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(this)
+						$(this).val(1);
+				}
+				
+			});
+			$(".cb-enable").click(function(){
+				var parentname = $(this).attr("data-nameparent");
+				var parent = $(this).parents('.switch');
+				$('.cb-disable',parent).removeClass('selected');
+				$(this).addClass('selected');
+				$('input[name='+parentname+']').val(1);
+			});
+			$(".cb-disable").click(function(){
+				var parentname = $(this).attr("data-nameparent");
+				var parent = $(this).parents('.switch');
+				$('.cb-enable',parent).removeClass('selected');
+				$(this).addClass('selected');
+				$('input[name='+parentname+']').val(0);
+			});
+				
+		}
 	}
+	loadOnoff();
 	// Editarea
 	if($('[data-type~=codeeditor]').length) {
 		$.getScript(url+"ace-builds-master/src-noconflict/ace.js", function(){
