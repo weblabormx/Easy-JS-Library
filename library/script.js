@@ -515,6 +515,8 @@ function loadEJL() {
 	function loadOnoff() {
 		if($('[data-type~=onoff]').length) {
 			$("[data-type~=onoff]").each(function(){
+				if($(this).attr('data-activated') == 'on')
+					return true;
 				$(this).css("display","none");
 				var valor = $(this).val();
 				valor = parseInt(valor);
@@ -522,19 +524,20 @@ function loadEJL() {
 				var name = $(this).attr("name");
 				var ontitle = $(this).attr("data-on");
 				var offtitle = $(this).attr("data-off");
-				if (ontitle==undefined) {
-						ontitle = "Enable";
-				}
-				if (offtitle==undefined) {
-						offtitle = "Disable";
-				}
-
+				$(this).attr('data-activated', 'on');
+				
+				if (ontitle==undefined)
+					ontitle = "Enable";
+				
+				if (offtitle==undefined)
+					offtitle = "Disable";
+				
 				if (valor===0) {
-						$('<div class="field switch"><label class="cb-enable" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable selected" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(this)
-						$(this).val(0);
+					$('<div class="field switch"><label class="cb-enable" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable selected" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(this)
+					$(this).val(0);
 				} else {
-						$('<div class="field switch"><label class="cb-enable selected" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(this)
-						$(this).val(1);
+					$('<div class="field switch"><label class="cb-enable selected" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(this)
+					$(this).val(1);
 				}
 				
 			});

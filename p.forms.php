@@ -26,6 +26,10 @@
 			<li>
 				<label>Nombre</label><input type="text" name="nombre" />
 				<label>Costo</label><input type="text" value="100" />
+				<label>Obligatorio</label>
+				<div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
+		        	<input data-type="onoff" name="needess" value="0" />
+		        </div>
 				<span class="multiple-remove">Eliminar</span>
 			</li>
 		</ul>
