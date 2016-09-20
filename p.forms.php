@@ -21,8 +21,8 @@
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-type="multiple" name="hola">'); ?></code>
 
 		<h3>With some fields</h3>
-		<span id="multiple-add">Agregar</span>
-		<ul data-type="multiple" data-name="multiple">
+		<span id="shipment.weight_costs-add">Agregar</span>
+		<ul data-type="multiple" data-name="shipment.weight_costs">
 			<li>
 				<label>Nombre</label><input type="text" name="nombre" />
 				<label>Costo</label><input type="text" value="100" />
@@ -30,7 +30,7 @@
 				<div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
 		        	<input data-type="onoff" name="needess" value="0" />
 		        </div>
-				<span class="multiple-remove">Eliminar</span>
+				<span class="shipment.weight_costs-remove">Eliminar</span>
 			</li>
 		</ul>
 		<p>Envia al servidor $_POST[data-name][cont][nameinput], para los botones se debe usar el nombre {data-name}-[add|remove]</p>

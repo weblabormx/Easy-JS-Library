@@ -152,7 +152,7 @@ function loadEJL() {
 			}
 			$(thisg).find("."+divname+"-remove").css("display","none");
 			
-
+			divname = divname.replace('.', '\\.');
 			$("#"+divname+"-add").click(function() {
 				cont++;
 				var find = divname+"\\[0\\]";
@@ -546,14 +546,14 @@ function loadEJL() {
 				var parent = $(this).parents('.switch');
 				$('.cb-disable',parent).removeClass('selected');
 				$(this).addClass('selected');
-				$('input[name='+parentname+']').val(1);
+				$('input[name="'+parentname+'"]').val(1);
 			});
 			$(".cb-disable").click(function(){
 				var parentname = $(this).attr("data-nameparent");
 				var parent = $(this).parents('.switch');
 				$('.cb-enable',parent).removeClass('selected');
 				$(this).addClass('selected');
-				$('input[name='+parentname+']').val(0);
+				$('input[name="'+parentname+'"]').val(0);
 			});
 				
 		}
