@@ -1209,9 +1209,7 @@ function loadEJL() {
 	
 	if($('[data-type~=imgur]').length) {
 		$.getScript('http://weblabor.mx/imgur-js-uploader/imgur-js-uploader.min.js', function(){
-			$("[data-type~=imgur]").each(function(cont){
-				$(this).imgurUploader();
-			});
+			$('[data-type~=imgur]').imgurUploader();
 		});
 	}
 }
