@@ -1212,6 +1212,20 @@ function loadEJL() {
 			$('[data-type~=imgur]').imgurUploader();
 		});
 	}
+
+	if($('[data-type~=slug]').length) {
+		$('[data-type~=slug]').each(function() {
+			var parent = $(this).attr('for');
+			var gthis = this;
+			$(this).attr('disabled','disabled');
+			$( "#"+parent ).keyup(function() {
+			  	var val = $("#"+parent).val();
+			  	val = val.toLowerCase();
+			  	val = val.replace(/ /g, '-');
+			  	$(gthis).val(val);
+			});
+		});
+	}
 }
 (function( $ ){
 	loadEJL();

@@ -36,6 +36,8 @@ Features:
 - Popups
 - Message Box
 - Conditional forms fields
+- Imgur Input
+- Slug Input
 
 Features to add
 -----------
