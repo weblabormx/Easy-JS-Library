@@ -280,9 +280,8 @@ function loadEJL() {
 						imageUploadMethod: 'POST',
 					});
 					$('.fr-box a').each(function() {
-						console.log($(this).text());
 						if($(this).text()=='Unlicensed Froala Editor') {
-							$(this).hide();
+							$(this).css('visibility', 'hidden');
 						}
 					});
 				});
