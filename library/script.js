@@ -279,6 +279,12 @@ function loadEJL() {
 						requestWithCORS: true,
 						imageUploadMethod: 'POST',
 					});
+					$('.fr-box a').each(function() {
+						console.log($(this).text());
+						if($(this).text()=='Unlicensed Froala Editor') {
+							$(this).hide();
+						}
+					});
 				});
 			});
 			
