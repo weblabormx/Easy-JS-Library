@@ -148,17 +148,17 @@ function loadEJL() {
 
 			var html = $(thisg).html();
 			if(!hasparent) {
-					html = "<div>"+html+"</div>";
+				html = "<div>"+html+"</div>";
 			}
 			$(thisg).find("."+divname+"-remove").css("display","none");
 			
+			var divname2 = divname;
 			divname = divname.replace('.', '\\.');
 			$("#"+divname+"-add").click(function() {
 				cont++;
 				var find = divname+"\\[0\\]";
 				var regex = new RegExp(find, "g");
-				var htmln = html.replace(regex, divname+"["+cont+"]");
-
+				var htmln = html.replace(regex, divname2+"["+cont+"]");
 
 				$(thisg).append(htmln);
 				loadJqueryUI();

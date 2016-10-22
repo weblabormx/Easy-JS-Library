@@ -25,7 +25,7 @@
 		<ul data-type="multiple" data-name="shipment.weight_costs">
 			<li>
 				<label>Nombre</label><input type="text" name="nombre" />
-				<label>Costo</label><input type="text" value="100" />
+				<label>Costo</label><input type="text" name="costo" value="100" />
 				<label>Obligatorio</label>
 				<div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
 		        	<input data-type="onoff" name="needess" value="0" />
@@ -177,23 +177,23 @@ object(stdClass)#1 (3) {
 		<div data-type='button'>
 			<input type="checkbox" name="checkbutton[]" value="l" id="check1"><label for="check1">Lunes</label>
 			<input type="checkbox" name="checkbutton[]" value="m" id="check2"><label for="check2">Martes</label>
-			<input type="checkbox" name="checkbutton[]" value="w" id="check3"><label for="check3">MiÃ©rcoles</label>
+			<input type="checkbox" name="checkbutton[]" value="w" id="check3"><label for="check3">Miércoles</label>
 		</div>
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<div data-type="button">
 	<input type="checkbox" name="checkbutton[]" value="l" id="check1"><label for="check1">Lunes</label>
 	<input type="checkbox" name="checkbutton[]" value="m" id="check2"><label for="check2">Martes</label>
-	<input type="checkbox" name="checkbutton[]" value="w" id="check3"><label for="check3">MiÃ©rcoles</label>
+	<input type="checkbox" name="checkbutton[]" value="w" id="check3"><label for="check3">Miércoles</label>
 </div>'); ?></code>
 		<h3>Radio</h3>
 		<div data-type='button'>
 			<input type="radio" name="radiobutton" value="l" id="scheck1"><label for="scheck1">Lunes</label>
 			<input type="radio" name="radiobutton" value="m" id="scheck2"><label for="scheck2">Martes</label>
-			<input type="radio" name="radiobutton" value="w" id="scheck3"><label for="scheck3">MiÃ©rcoles</label>
+			<input type="radio" name="radiobutton" value="w" id="scheck3"><label for="scheck3">Miércoles</label>
 		</div>
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<div data-type="button">
 	<input type="radio" name="radiobutton" value="l" id="scheck1"><label for="scheck1">Lunes</label>
 	<input type="radio" name="radiobutton" value="m" id="scheck2"><label for="scheck2">Martes</label>
-	<input type="radio" name="radiobutton" value="w" id="scheck3"><label for="scheck3">MiÃ©rcoles</label>
+	<input type="radio" name="radiobutton" value="w" id="scheck3"><label for="scheck3">Miércoles</label>
 </div>'); ?></code>
 
 		<h2>Slider</h2>
