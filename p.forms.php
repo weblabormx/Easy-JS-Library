@@ -352,6 +352,11 @@ object(stdClass)#1 (3) {
 		<h3>Email</h3> 
 		<input type="text" data-validation="email" />
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-validation="email" />'); ?></code>
+		<h3>Two Fields Check</h3> 
+		<input type="text" data-validation="same" for="field-two" />
+		<input type="text" id="field-two" />
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-validation="same" for="field-two" />
+<input type="text" id="field-two" />'); ?></code>
 		
 		<h2>Slug generator</h2>
 		<input type="text" id="copyHere" placeholder="Titulo" /><br /><br />
