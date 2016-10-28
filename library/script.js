@@ -1264,6 +1264,12 @@ function loadEJL() {
 			});
 		});
 	}
+
+	if($('[data-type~=color]').length) {
+		$.getScript(url+'color-picker/jqColorPicker.min.js', function(){
+			$('[data-type~=color]').colorPicker();
+		});
+	}
 }
 (function( $ ){
 	loadEJL();

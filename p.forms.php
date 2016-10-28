@@ -364,6 +364,11 @@ object(stdClass)#1 (3) {
 
 		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" id="copyHere" placeholder="Titulo" />
 <input data-type="slug" for="copyHere" type="text" />'); ?></code>
+
+		<h2>Color Picker</h2>
+		<input type="text" data-type="color" value="#ccc" />
+
+		<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<input type="text" data-type="color" />'); ?></code>
 		<br /><br />
 		<input type="submit" value="Click aqui" />
 	</form>
