@@ -255,37 +255,40 @@ function loadEJL() {
 		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/table.css" type="text/css" />');
 		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/video.css" type="text/css" />');
 
-		$.getScript(froala_base+'js/froala_editor.min.js', function() {
-			$.getScript(froala_base+'js/plugins/align.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/code_beautifier.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/code_view.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/colors.min.js', function(){});
-			//$.getScript(froala_base+'js/plugins/file.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/font_size.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/fullscreen.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/image.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/inline_style.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/link.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/lists.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/paragraph_format.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/table.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/url.min.js', function(){});
-			$.getScript(froala_base+'js/plugins/video.min.js', function(){});
-			$.getScript(froala_base+'js/languages/es.js', function(){
-				$(function() {
-					$('textarea[data-type=wysiwyg]').froalaEditor({
-						language: 'es',
-						imageUploadURL: 'http://localhost:82/Imgur-JS-Uploader/includes/uploader.php',
-						requestWithCORS: true,
-						imageUploadMethod: 'POST',
-					});
-					$('.fr-box a').each(function() {
-						if($(this).text()=='Unlicensed Froala Editor') {
-							$(this).css('visibility', 'hidden');
-						}
-					});
+		var froalaScriptsLoaded = 0;
+		function executeFroala() {
+			froalaScriptsLoaded++;
+			if(froalaScriptsLoaded>=15) {
+				$('textarea[data-type=wysiwyg]').froalaEditor({
+					language: 'es',
+					imageUploadURL: 'http://weblabor.mx/imgur-js-uploader/includes/uploader.php',
+					requestWithCORS: true,
+					imageUploadMethod: 'POST',
 				});
-			});
+				$('.fr-box a').each(function() {
+					if($(this).text()=='Unlicensed Froala Editor') {
+						$(this).css('visibility', 'hidden');
+					}
+				});
+			}	
+		}
+		$.getScript(froala_base+'js/froala_editor.min.js', function() {
+			$.getScript(froala_base+'js/plugins/align.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/code_beautifier.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/code_view.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/colors.min.js', function(){ executeFroala(); });
+			//$.getScript(froala_base+'js/plugins/file.min.js', function(){});
+			$.getScript(froala_base+'js/plugins/font_size.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/fullscreen.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/image.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/inline_style.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/link.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/lists.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/paragraph_format.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/table.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/url.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/plugins/video.min.js', function(){ executeFroala(); });
+			$.getScript(froala_base+'js/languages/es.js', function(){ executeFroala(); });
 			
 		});
 	}
