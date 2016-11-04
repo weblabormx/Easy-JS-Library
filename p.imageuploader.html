@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inputs plugin</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="library/style.css">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+</head>
+<body data-type="progressbar">
+	<img src="logo.png" width="400" />
+	<ul>
+		<li><a href="index.html">Return</a></li>
+	</ul>
+	<span id="form-msg"></span>
+	<h1>Ajax Image Uploader</h1>
+
+	<div class="w3-row">
+		<div class="w3-container w3-half">
+			<!-- D&D Zone-->
+			<div data-type="imageUploader" src="http://libraries.weblabor.mx/easy-js-library/upload.php" class="uploader">
+				<div>Drag &amp; Drop Images Here</div>
+				<div class="or">-or-</div>
+				<div class="browser">
+					<label>
+						<span>Click to open the file Browser</span>
+						<input type="file" name="files[]"  accept="image/*" multiple="multiple" title='Click to add Images'>
+					</label>
+				</div>
+			</div>
+			<!-- /D&D Zone -->
+			<!-- Debug box -->
+			<div class="panel panel-default w3-card">
+				<div class="w3-container w3-light-grey">
+					<h4>Debug</h4>
+				</div>
+				<div class="panel-body demo-panel-debug w3-container">
+					<ul id="demo-debug">
+					</ul>
+				</div>
+			</div>
+			<!-- /Debug box -->
+		</div>
+		<div class="w3-container w3-half">
+			<div class="w3-card">
+				<div class="w3-container w3-light-grey">
+					<h4>Uploads</h4>
+				</div>
+				<div class="panel-body demo-panel-files w3-container" id='demo-files'>
+					<span class="demo-note">No Files have been selected/droped yet...</span>
+				</div>
+			</div>
+				
+		</div>
+	</div>
+	<h3>HTML</h3>
+	<code data-type="codeeditor" data-lang="html">&lt;div class=&quot;w3-row&quot;&gt;
+	&lt;div class=&quot;w3-container w3-half&quot;&gt;
+		&lt;!-- D&amp;D Zone--&gt;
+		&lt;div data-type=&quot;imageUploader&quot; src=&quot;upload.php&quot; class=&quot;uploader&quot;&gt;
+			&lt;div&gt;Drag &amp;amp; Drop Images Here&lt;/div&gt;
+			&lt;div class=&quot;or&quot;&gt;-or-&lt;/div&gt;
+			&lt;div class=&quot;browser&quot;&gt;
+				&lt;label&gt;
+					&lt;span&gt;Click to open the file Browser&lt;/span&gt;
+					&lt;input type=&quot;file&quot; name=&quot;files[]&quot;  accept=&quot;image/*&quot; multiple=&quot;multiple&quot; title='Click to add Images'&gt;
+				&lt;/label&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;!-- /D&amp;D Zone --&gt;
+		&lt;!-- Debug box --&gt;
+		&lt;div class=&quot;panel panel-default w3-card&quot;&gt;
+			&lt;div class=&quot;w3-container w3-light-grey&quot;&gt;
+				&lt;h4&gt;Debug&lt;/h4&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;panel-body demo-panel-debug w3-container&quot;&gt;
+				&lt;ul id=&quot;demo-debug&quot;&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;!-- /Debug box --&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;w3-container w3-half&quot;&gt;
+		&lt;div class=&quot;w3-card&quot;&gt;
+			&lt;div class=&quot;w3-container w3-light-grey&quot;&gt;
+				&lt;h4&gt;Uploads&lt;/h4&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;panel-body demo-panel-files w3-container&quot; id='demo-files'&gt;
+				&lt;span class=&quot;demo-note&quot;&gt;No Files have been selected/droped yet...&lt;/span&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+			
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+
+	<h3>PHP</h3>
+	<code data-type="codeeditor" data-lang="php">&lt;?php
+$res = &quot;failed&quot;;
+foreach ($_FILES as $file) {
+	$tmp_name = $file[&quot;tmp_name&quot;];
+  	$name = $file[&quot;name&quot;];
+  	$res = &quot;Successfull&quot;;
+  	move_uploaded_file($tmp_name, $name);
+}
+
+echo json_encode(array('status' =&gt; $res));
+
+?&gt;</code>
+
+	<script type="text/javascript" src="library/jquery.min.js"></script>
+	<script type="text/javascript" src="library/script.js"></script>
+	
+
+</body>
+</html>

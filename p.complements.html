@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inputs plugin</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="library/style.css">
+	<style type="text/css">
+	#carousel .item{
+	  background: #3fbf79;
+	  padding: 30px 0px;
+	  margin: 10px;
+	  color: #FFF;
+	  -webkit-border-radius: 3px;
+	  -moz-border-radius: 3px;
+	  border-radius: 3px;
+	  text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<img src="logo.png" width="400" />
+	<ul>
+		<li><a href="index.html">Return</a></li>
+	</ul>
+	<h1>Complements</h1>
+	<h2>Sortable</h2>
+	<ul id="sortable" data-type="sort">
+	  	<li>Item 1</li>
+	  	<li>Item 2</li>
+	  	<li>Item 3</li>
+	  	<li>Item 4</li>
+	  	<li>Item 5</li>
+	  	<li>Item 6</li>
+	  	<li>Item 7</li>
+	  	<li>Item 8</li>
+	</ul>
+	<p>Works just with list (ul) elements. Style is not included.</p>
+	<code data-type="codeeditor" data-lang="html">&lt;ul data-type=&quot;sort&quot;&gt;
+  	&lt;li&gt;Item 1&lt;/li&gt;
+  	&lt;li&gt;Item 2&lt;/li&gt;
+  	&lt;li&gt;Item 3&lt;/li&gt;
+  	&lt;li&gt;Item 4&lt;/li&gt;
+  	&lt;li&gt;Item 5&lt;/li&gt;
+  	&lt;li&gt;Item 6&lt;/li&gt;
+  	&lt;li&gt;Item 7&lt;/li&gt;
+  	&lt;li&gt;Item 8&lt;/li&gt;
+&lt;/ul&gt;</code>
+
+	<h2>Show code</h2>	
+	<p>It can be selected the color between: black, white, gray and blue with data-color property</p>
+	<h3>Highlight</h3>
+	<code data-type="codeeditor" data-lang="javascript">function ejemplo() {
+console.log("Este es un ejemplo de un codigo javascript");
+}</code>
+	<code data-type="codeeditor" data-lang="html">&lt;code data-type=&quot;codeeditor&quot; data-lang=&quot;javascript&quot;&gt;function ejemplo() {
+	console.log(&quot;Este es un ejemplo de un codigo javascript&quot;);
+}&lt;/code&gt;</code>
+
+	<h2>Change on click</h2>
+	<div id="country" data-type="changeOnClick">
+		<img src="http://www.ssn.unam.mx/imagenes/bandera-mexico.png" />México
+	</div>
+	<div for="country">
+		<input data-type="autocomplete" name="aut2" src="autocomplete.php" />
+	</div>
+	<code data-type="codeeditor" data-lang="html">&lt;div id=&quot;country&quot; data-type=&quot;changeOnClick&quot;&gt;
+	&lt;img src=&quot;http://www.ssn.unam.mx/imagenes/bandera-mexico.png&quot; /&gt;México
+&lt;/div&gt;
+&lt;div for=&quot;country&quot;&gt;
+	&lt;input data-type=&quot;autocomplete&quot; name=&quot;aut2&quot; src=&quot;autocomplete.php&quot; /&gt;
+&lt;/div&gt;</code>
+	
+	<h2>Click on change</h2>
+	<p>When changing the data in the input type file will automatically click in the submit input.</p>
+	
+	<form action="envia.php">
+		<input data-type="clickOnChange" type="file" id="coc" name="archivos[]" multiple="true"/>
+		<input type="submit" for="coc" style="display:none;" />
+ 	</form>
+	<code data-type="codeeditor" data-lang="html">&lt;form action=&quot;envia.php&quot;&gt;
+	&lt;input data-type=&quot;clickOnChange&quot; type=&quot;file&quot; id=&quot;coc&quot; name=&quot;archivos[]&quot; multiple=&quot;true&quot;/&gt;
+	&lt;input type=&quot;submit&quot; for=&quot;coc&quot; style=&quot;display:none;&quot; /&gt;
+&lt;/form&gt;</code>
+
+	<h2>Load on hover</h2>
+	<div style="width:200px;background:#ccc;height:200px;" data-type="loadOnHover" id="square">
+		<p  for="square">Mostrar</p>
+	</div>
+	<code data-type="codeeditor" data-lang="html">&lt;div style=&quot;width:200px;background:#ccc;height:200px;&quot; data-type=&quot;loadOnHover&quot; id=&quot;square&quot;&gt;
+	&lt;p  for=&quot;square&quot;&gt;Mostrar&lt;/p&gt;
+&lt;/div&gt;</code>
+
+	<h2>Progress Bar</h2>
+	<p>Demo can be seen in this form, while loading a progress bar appears. It needs to be added in the body.</p>
+	<code data-type="codeeditor" data-lang="html">&lt;body data-type=&quot;progressbar&quot;&gt;
+// All the content goes here
+&lt;/body&gt;</code>
+
+	<h2>Fake click</h2>
+	<p>Click in some place and automatically clicks in something else. Ideally to put a fake button for a select file input for example.</p>
+	<button data-type="fakeButton" id="mifake">Agregar foto de perfil</button>
+	<input for="mifake" type="file" id="file" name="archivos[]" multiple="true" style="display:none"/>
+
+	<code data-type="codeeditor" data-lang="html">&lt;button data-type=&quot;fakeButton&quot; id=&quot;mifake&quot;&gt;Agregar foto de perfil&lt;/button&gt;
+&lt;input for=&quot;mifake&quot; type=&quot;file&quot; id=&quot;file&quot; name=&quot;archivos[]&quot; multiple=&quot;true&quot; required style=&quot;display:none&quot;/&gt;</code>
+	
+	<h2>Tooltip</h2>	
+	<input title="Selecciona una fecha" name="tooltip" data-type="tooltip" />
+	<p>Puede ser agregado a cualquier tag, directamente en el input, en un div o en el form y aplicará con todos los datos con tittle.</p>
+	<code data-type="codeeditor" data-lang="html">&lt;input title=&quot;Selecciona una fecha&quot; name=&quot;tooltip&quot; data-type=&quot;tooltip&quot; /&gt;</code>
+
+	<h2>Ajax loader</h2>
+	<span data-type="ajaxload" src="README.md" for="carga">Load</span>
+	<span data-type="ajaxload" src="README.md" for="carga">Load</span>
+	<span data-type="ajaxload" src="README.md" for="carga">Load</span>
+	<br /><br />
+	<div id="carga" style="display:block; width:500px; height:300px; padding:20px; border:1px solid #000;"></div>
+	<code data-type="codeeditor" data-lang="html">&lt;span data-type=&quot;ajaxload&quot; src=&quot;README.md&quot; for=&quot;carga&quot;&gt;Load&lt;/span&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;div id=&quot;carga&quot; style=&quot;display:block; width:500px; height:300px; padding:20px; border:1px solid #000;&quot;&gt;&lt;/div&gt;</code>
+
+	<h2>Carousel</h2>
+	<div data-type="carousel" data-carousel-time="1000" data-carousel-items="10" data-carousel-items-tablet="5" id="carousel">
+	  	<div class="item"><h1>1</h1></div>
+		<div class="item"><h1>2</h1></div>
+		<div class="item"><h1>3</h1></div>
+		<div class="item"><h1>4</h1></div>
+		<div class="item"><h1>5</h1></div>
+		<div class="item"><h1>6</h1></div>
+		<div class="item"><h1>7</h1></div>
+		<div class="item"><h1>8</h1></div>
+		<div class="item"><h1>9</h1></div>
+		<div class="item"><h1>10</h1></div>
+		<div class="item"><h1>11</h1></div>
+		<div class="item"><h1>12</h1></div>
+		<div class="item"><h1>13</h1></div>
+		<div class="item"><h1>14</h1></div>
+		<div class="item"><h1>15</h1></div>
+		<div class="item"><h1>16</h1></div>
+	</div>
+	<span data-carousel-type="prev" for="carousel">Previous</span>
+	<span data-carousel-type="next" for="carousel">Next</span>
+	<span data-carousel-type="play" for="carousel">Autoplay</span>
+	<span data-carousel-type="stop" for="carousel">Stop</span>
+	<p>It is necessary to have ID</p>
+	<p>Another variables you can use are data-carousel-items-desktop, data-carousel-items-desktop-small, data-carousel-items-tablet, data-carousel-items-mobile</p>
+	<code data-type="codeeditor" data-lang="html">&lt;div data-type=&quot;carousel&quot; data-carousel-time=&quot;1000&quot; data-carousel-items=&quot;10&quot; id=&quot;carousel&quot;&gt;
+  	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;1&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;2&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;3&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;4&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;5&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;6&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;7&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;8&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;9&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;10&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;11&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;12&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;13&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;14&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;15&lt;/h1&gt;&lt;/div&gt;
+	&lt;div class=&quot;item&quot;&gt;&lt;h1&gt;16&lt;/h1&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;span data-carousel-type=&quot;prev&quot; for=&quot;carousel&quot;&gt;Previous&lt;/span&gt;
+&lt;span data-carousel-type=&quot;next&quot; for=&quot;carousel&quot;&gt;Next&lt;/span&gt;
+&lt;span data-carousel-type=&quot;play&quot; for=&quot;carousel&quot;&gt;Autoplay&lt;/span&gt;
+&lt;span data-carousel-type=&quot;stop&quot; for=&quot;carousel&quot;&gt;Stop&lt;/span&gt;</code>
+	
+	<h2>Mobile Menu</h2>
+	<a data-type="mobmenu" for="menuizq" data-submenu-pos="left" href="#sidr">Toggle menu</a>
+
+	<div id="menuizq">
+	  <!-- Your content -->
+	  <ul>
+	    <li><a href="#">List 1</a></li>
+	    <li class="active"><a href="#">List 2</a></li>
+	    <li><a href="#">List 3</a></li>
+	  </ul>
+	</div>
+	<code data-type="codeeditor" data-lang="html">&lt;a data-type=&quot;mobmenu&quot; for=&quot;menuizq&quot; data-submenu-pos=&quot;left&quot; href=&quot;#sidr&quot;&gt;Toggle menu&lt;/a&gt;
+
+&lt;div id=&quot;menuizq&quot;&gt;
+  &lt;!-- Your content --&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;List 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;List 2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;List 3&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code>
+
+	<script type="text/javascript" src="library/jquery.min.js"></script>
+	<script type="text/javascript" src="library/script.js"></script>
+</body>
+</html>

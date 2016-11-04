@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <body data-type="progressbar">
 	<img src="logo.png" width="400" />
 	<ul>
-		<li><a href="index.php">Return</a></li>
+		<li><a href="index.html">Return</a></li>
 	</ul>
 	<span id="form-msg"></span>
 	<h1>Tables</h1>
@@ -1151,37 +1152,37 @@
 	<ul id="my-table-navigation" data-navigation-prev="Anterior" data-navigation-next="Siguiente">
 	</ul>
 
-	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('Mostrar:
-<select id="my-table-show"></select>
-<span style="float:right; display:block;">
-	Buscar: <input type="search" id="my-table-search">
-</span>
-<table id="my-table">
-	<thead>
-		<tr>
-			<th>Rank</th>
-			<th>Country</th>
-			<th>US $</th>
-			<th>Year</th>
-		</tr>
-	</thead>
-	<tr>
-		<td>1</td>
-		<td align="left"><span class="flagicon"><img alt="" src="https://s3.amazonaws.com/dynatable-docs-assets/images/flag_icons/22px-Flag_of_Luxembourg.svg.png" width="22" height="13" class="thumbborder" />&#160;</span><a target="_blank" href="http://en.wikipedia.org/wiki/Luxembourg" title="Luxembourg">Luxembourg</a></td>
-		<td>113,533</td>
-		<td>2011</td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td align="left"><span class="flagicon"><img alt="" src="https://s3.amazonaws.com/dynatable-docs-assets/images/flag_icons/22px-Flag_of_Qatar.svg.png" width="22" height="9" class="thumbborder" />&#160;</span><a target="_blank" href="http://en.wikipedia.org/wiki/Qatar" title="Qatar">Qatar</a></td>
-		<td>98,329</td>
-		<td>2011</td>
-	</tr>
-</table>
-Mostrando <span id="my-table-count-init"></span> a <span id="my-table-count-final"></span> de <span id="my-table-count-total"></span>
+	<code data-type="codeeditor" data-lang="html">Mostrar:
+&lt;select id=&quot;my-table-show&quot;&gt;&lt;/select&gt;
+&lt;span style=&quot;float:right; display:block;&quot;&gt;
+	Buscar: &lt;input type=&quot;search&quot; id=&quot;my-table-search&quot;&gt;
+&lt;/span&gt;
+&lt;table id=&quot;my-table&quot;&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;Rank&lt;/th&gt;
+			&lt;th&gt;Country&lt;/th&gt;
+			&lt;th&gt;US $&lt;/th&gt;
+			&lt;th&gt;Year&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tr&gt;
+		&lt;td&gt;1&lt;/td&gt;
+		&lt;td align=&quot;left&quot;&gt;&lt;span class=&quot;flagicon&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;https://s3.amazonaws.com/dynatable-docs-assets/images/flag_icons/22px-Flag_of_Luxembourg.svg.png&quot; width=&quot;22&quot; height=&quot;13&quot; class=&quot;thumbborder&quot; /&gt;&amp;#160;&lt;/span&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://en.wikipedia.org/wiki/Luxembourg&quot; title=&quot;Luxembourg&quot;&gt;Luxembourg&lt;/a&gt;&lt;/td&gt;
+		&lt;td&gt;113,533&lt;/td&gt;
+		&lt;td&gt;2011&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;2&lt;/td&gt;
+		&lt;td align=&quot;left&quot;&gt;&lt;span class=&quot;flagicon&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;https://s3.amazonaws.com/dynatable-docs-assets/images/flag_icons/22px-Flag_of_Qatar.svg.png&quot; width=&quot;22&quot; height=&quot;9&quot; class=&quot;thumbborder&quot; /&gt;&amp;#160;&lt;/span&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://en.wikipedia.org/wiki/Qatar&quot; title=&quot;Qatar&quot;&gt;Qatar&lt;/a&gt;&lt;/td&gt;
+		&lt;td&gt;98,329&lt;/td&gt;
+		&lt;td&gt;2011&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+Mostrando &lt;span id=&quot;my-table-count-init&quot;&gt;&lt;/span&gt; a &lt;span id=&quot;my-table-count-final&quot;&gt;&lt;/span&gt; de &lt;span id=&quot;my-table-count-total&quot;&gt;&lt;/span&gt;
 Paginas:
-<ul id="my-table-navigation" data-navigation-prev="Anterior" data-navigation-next="Siguiente">
-</ul>'); ?></code>
+&lt;ul id=&quot;my-table-navigation&quot; data-navigation-prev=&quot;Anterior&quot; data-navigation-next=&quot;Siguiente&quot;&gt;
+&lt;/ul&gt;</code>
 
 	<h3>Via AJAX with JSON</h3>
 	Mostrar:
@@ -1189,7 +1190,7 @@ Paginas:
 	<span style="float:right; display:block;">
 		Buscar: <input type="search" id="Canciones-search">
 	</span>
-	<table data-type="tableof" data-ajax-url="tablejson.php" id="Canciones">
+	<table data-type="tableof" data-ajax-url="http://libraries.weblabor.mx/easy-js-library/tablejson.php" id="Canciones">
 	  <thead>
 	    <th>Band</th>
 	    <th>Song</th>
@@ -1200,14 +1201,14 @@ Paginas:
 	Paginas:
 	<ul id="Canciones-navigation" data-navigation-prev="Anterior" data-navigation-next="Siguiente">
 	</ul>
-	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<table data-type="tableof" data-ajax-url="tablejson.php" id="Canciones">
-  <thead>
-    <th>Band</th>
-    <th></th>
-  </thead>
-  <tbody>
-  </tbody>
-</table>'); ?></code>
+	<code data-type="codeeditor" data-lang="html">&lt;table data-type=&quot;tableof&quot; data-ajax-url=&quot;tablejson.php&quot; id=&quot;Canciones&quot;&gt;
+  &lt;thead&gt;
+    &lt;th&gt;Band&lt;/th&gt;
+    &lt;th&gt;&lt;/th&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code>
 	<h3>Via AJAX with JSON, PHP and DB</h3>
 	<p>This options send the queries, the sorts, elements per page and number of page and offset</p>
 	Mostrar:
@@ -1215,7 +1216,7 @@ Paginas:
 	<span style="float:right; display:block;">
 		Buscar: <input type="search" id="Canciones2-search">
 	</span>
-	<table data-type="tableof" data-ajax-url="tablejsondb.php" data-ajax-db="true" id="Canciones2">
+	<table data-type="tableof" data-ajax-url="http://libraries.weblabor.mx/easy-js-library/tablejsondb.php" data-ajax-db="true" id="Canciones2">
 	  <thead>
 	    <th data-dynatable-column="band">Banda</th>
 	    <th data-dynatable-column="song">Canción</th>
@@ -1227,105 +1228,105 @@ Paginas:
 	<ul id="Canciones2-navigation" data-navigation-prev="Anterior" data-navigation-next="Siguiente">
 	</ul>
 	<h4>HTML</h4>
-	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<select id="Canciones2-show"></select>
-	<span style="float:right; display:block;">
-		Buscar: <input type="search" id="Canciones2-search">
-	</span>
-	<table data-type="tableof" data-ajax-url="tablejsondb.php" data-ajax-db="true" id="Canciones2">
-	  <thead>
-	    <th data-dynatable-column="band">Banda</th>
-	    <th data-dynatable-column="song">Canción</th>
-	  </thead>
-	  <tbody>
-	  </tbody>
-	</table>
+	<code data-type="codeeditor" data-lang="html">&lt;select id=&quot;Canciones2-show&quot;&gt;&lt;/select&gt;
+	&lt;span style=&quot;float:right; display:block;&quot;&gt;
+		Buscar: &lt;input type=&quot;search&quot; id=&quot;Canciones2-search&quot;&gt;
+	&lt;/span&gt;
+	&lt;table data-type=&quot;tableof&quot; data-ajax-url=&quot;tablejsondb.php&quot; data-ajax-db=&quot;true&quot; id=&quot;Canciones2&quot;&gt;
+	  &lt;thead&gt;
+	    &lt;th data-dynatable-column=&quot;band&quot;&gt;Banda&lt;/th&gt;
+	    &lt;th data-dynatable-column=&quot;song&quot;&gt;Canción&lt;/th&gt;
+	  &lt;/thead&gt;
+	  &lt;tbody&gt;
+	  &lt;/tbody&gt;
+	&lt;/table&gt;
 	Paginas:
-	<ul id="Canciones2-navigation" data-navigation-prev="Anterior" data-navigation-next="Siguiente">
-	</ul>'); ?></code>
+	&lt;ul id=&quot;Canciones2-navigation&quot; data-navigation-prev=&quot;Anterior&quot; data-navigation-next=&quot;Siguiente&quot;&gt;
+	&lt;/ul&gt;</code>
 	<h4>PHP</h4>
-	<code data-type="codeeditor" data-lang="php"><?php echo htmlspecialchars('<?php 
-  header(\'Content-Type: application/json\');
-  if (!isset($_GET["page"])) {
-    $_GET["page"] = "null";
+	<code data-type="codeeditor" data-lang="php">&lt;?php 
+  header('Content-Type: application/json');
+  if (!isset($_GET[&quot;page&quot;])) {
+    $_GET[&quot;page&quot;] = &quot;null&quot;;
   } 
-  if (!isset($_GET["perPage"])) {
-    $_GET["perPage"] = "null";
+  if (!isset($_GET[&quot;perPage&quot;])) {
+    $_GET[&quot;perPage&quot;] = &quot;null&quot;;
   }
-  if (!isset($_GET["queries"]["search"])) {
-    $_GET["queries"]["search"] = "null";
+  if (!isset($_GET[&quot;queries&quot;][&quot;search&quot;])) {
+    $_GET[&quot;queries&quot;][&quot;search&quot;] = &quot;null&quot;;
   }
-  if (!isset($_GET["sorts"])) {
-    $_GET["sorts"] = "null";
+  if (!isset($_GET[&quot;sorts&quot;])) {
+    $_GET[&quot;sorts&quot;] = &quot;null&quot;;
   } else {
-    foreach ($_GET["sorts"] as $key => $value) {
-      $_GET["sorts"] = $key."=".$value;
+    foreach ($_GET[&quot;sorts&quot;] as $key =&gt; $value) {
+      $_GET[&quot;sorts&quot;] = $key.&quot;=&quot;.$value;
       break;
     }
   }
-  if (!isset($_GET["offset"])) {
-    $_GET["offset"] = "null";
+  if (!isset($_GET[&quot;offset&quot;])) {
+    $_GET[&quot;offset&quot;] = &quot;null&quot;;
   }
-?>
+?&gt;
 {
-  "records": [
+  &quot;records&quot;: [
     {
-      "band": "<?php echo $_GET["page"]; ?>",
-      "year": "",
-      "song": "<?php echo $_GET["queries"]["search"]; ?>"
+      &quot;band&quot;: &quot;&lt;?php echo $_GET[&quot;page&quot;]; ?&gt;&quot;,
+      &quot;year&quot;: &quot;&quot;,
+      &quot;song&quot;: &quot;&lt;?php echo $_GET[&quot;queries&quot;][&quot;search&quot;]; ?&gt;&quot;
     },
     {
-      "band": "<?php echo $_GET["sorts"]; ?>",
-      "year": "", 
-      "song": "<?php echo $_GET["offset"]; ?>"
+      &quot;band&quot;: &quot;&lt;?php echo $_GET[&quot;sorts&quot;]; ?&gt;&quot;,
+      &quot;year&quot;: &quot;&quot;, 
+      &quot;song&quot;: &quot;&lt;?php echo $_GET[&quot;offset&quot;]; ?&gt;&quot;
     },
     {
-      "band": "<?php echo $_GET["perPage"]; ?>",
-      "year": 2015,
-      "song": "El Scorcho"
+      &quot;band&quot;: &quot;&lt;?php echo $_GET[&quot;perPage&quot;]; ?&gt;&quot;,
+      &quot;year&quot;: 2015,
+      &quot;song&quot;: &quot;El Scorcho&quot;
     },
     {
-      "band": "Chevelle",
-      "year": 2015, 
-      "song": "Family System"
+      &quot;band&quot;: &quot;Chevelle&quot;,
+      &quot;year&quot;: 2015, 
+      &quot;song&quot;: &quot;Family System&quot;
     },
     {
-      "band": "Weezer",
-      "year": 2015,
-      "song": "El Scorcho"
+      &quot;band&quot;: &quot;Weezer&quot;,
+      &quot;year&quot;: 2015,
+      &quot;song&quot;: &quot;El Scorcho&quot;
     },
     {
-      "band": "Chevelle",
-      "year": 2015, 
-      "song": "Family System"
+      &quot;band&quot;: &quot;Chevelle&quot;,
+      &quot;year&quot;: 2015, 
+      &quot;song&quot;: &quot;Family System&quot;
     },
     {
-      "band": "Chevelle",
-      "year": 2015, 
-      "song": "Family System"
+      &quot;band&quot;: &quot;Chevelle&quot;,
+      &quot;year&quot;: 2015, 
+      &quot;song&quot;: &quot;Family System&quot;
     },
     {
-      "band": "Weezer",
-      "year": 2015,
-      "song": "El Scorcho"
+      &quot;band&quot;: &quot;Weezer&quot;,
+      &quot;year&quot;: 2015,
+      &quot;song&quot;: &quot;El Scorcho&quot;
     },
     {
-      "band": "Chevelle",
-      "year": 2015, 
-      "song": "Family System"
+      &quot;band&quot;: &quot;Chevelle&quot;,
+      &quot;year&quot;: 2015, 
+      &quot;song&quot;: &quot;Family System&quot;
     },
     {
-      "band": "Chevelle",
-      "year": 2015, 
-      "song": "Family System"
+      &quot;band&quot;: &quot;Chevelle&quot;,
+      &quot;year&quot;: 2015, 
+      &quot;song&quot;: &quot;Family System&quot;
     }
   ],
-  "queryRecordCount": 300,
-  "totalRecordCount": 10
-}'); ?></code>
+  &quot;queryRecordCount&quot;: 300,
+  &quot;totalRecordCount&quot;: 10
+}</code>
 	<h3>Filter with another data not in the table (works with AJAX only)</h3>
 	<p>With json and html direct the column needs to be placed.</p>
 	<a data-filter="year" data-filter-value="2014" for="Canciones2" style="background:#000; color:#fff; padding:10px;margin-top:10px; cursor:pointer;display:inline-block;">Filtrar del 2014</a>
-	<code data-type="codeeditor" data-lang="html"><?php echo htmlspecialchars('<a data-filter="year" data-filter-value="2014" for="Canciones2">Filtrar del 2014</a>'); ?></code>
+	<code data-type="codeeditor" data-lang="html">&lt;a data-filter=&quot;year&quot; data-filter-value=&quot;2014&quot; for=&quot;Canciones2&quot;&gt;Filtrar del 2014&lt;/a&gt;</code>
 
 	<script type="text/javascript" src="library/jquery.min.js"></script>
 	<script type="text/javascript" src="library/script.js"></script>
