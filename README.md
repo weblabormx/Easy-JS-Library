@@ -2,7 +2,7 @@
 
 **Description:** Javascript and Jquery Library to make easy to implement all kind of data. It makes a mix of others libraries to make an only one big library.
 
-**Demo and form of use it:** http://weblabor.mx/libraries/easyJsLibrary/
+**Demo and form of use it:** https://weblabormx.github.io/Easy-JS-Library
 
 Installation 
 --------------
@@ -12,7 +12,7 @@ Installation
 
 **On our server:**
 - Add Jquery Script
-- Add Easy JS Library in: http://weblabor.mx/libraries/EasyJS/library/script.js
+- Add Easy JS Library in: https://weblabormx.github.io/Easy-JS-Library/library/script.js
 
 Features:
 ------------

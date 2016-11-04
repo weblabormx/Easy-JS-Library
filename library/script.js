@@ -261,7 +261,7 @@ function loadEJL() {
 			if(froalaScriptsLoaded>=15) {
 				$('textarea[data-type=wysiwyg]').froalaEditor({
 					language: 'es',
-					imageUploadURL: 'http://libraries.weblabor.mx/imgur-js-uploader/uploader.php',
+					imageUploadURL: 'https://libraries.weblabor.mx/imgur-js-uploader/uploader.php',
 					requestWithCORS: true,
 					imageUploadMethod: 'POST',
 				});

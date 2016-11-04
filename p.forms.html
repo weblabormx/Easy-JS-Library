@@ -12,7 +12,7 @@
 		<li><a href="index.html">Return</a></li>
 	</ul>
 	<span id="form-msg"></span>
-	<form action="http://libraries.weblabor.mx/easy-js-library/send.php" method="POST" data-type="ajax" id="form">
+	<form action="https://libraries.weblabor.mx/easy-js-library/send.php" method="POST" data-type="ajax" id="form">
 		<h1>Forms and inputs</h1>
 		
 		<h2>Multiple</h2>
@@ -114,7 +114,7 @@ $array = json_encode($array);
 		<h2>Autocomplete</h2>
 		<h3>Normal</h3>
 		<label for="in1">Ejemplo: </label>
-			<input id="in1" data-type="autocomplete" name="aut" src="http://libraries.weblabor.mx/easy-js-library/autocomplete.php" style="width:50%;" />
+			<input id="in1" data-type="autocomplete" name="aut" src="https://libraries.weblabor.mx/easy-js-library/autocomplete.php" style="width:50%;" />
 			<p>Autocompletes a text field. It is necessary the name attribute. The PHP Code recieves $_GET['term'] with the searched word</p>
 			<h4>HTML Code</h4>
 			<code data-type="codeeditor" data-lang="html">&lt;input data-type=&quot;autocomplete&quot; name=&quot;aut&quot; src=&quot;autocomplete.php&quot; /&gt;</code>
@@ -133,7 +133,7 @@ $array = json_encode($array);
 		<h3>With reload and with action</h3>
 		<p>It will be send a $_POST variable called "result" with the selected data. First the action will be called and then it will be reloaded.</p>
 		<label for="in2">Example: </label>
-			<input id="in2" data-type="autocomplete" name="aut2" src="autocomplete.php" data-reload="true" data-action="http://libraries.weblabor.mx/easy-js-library/sautocomplete.php" />
+			<input id="in2" data-type="autocomplete" name="aut2" src="autocomplete.php" data-reload="true" data-action="https://libraries.weblabor.mx/easy-js-library/sautocomplete.php" />
 			<code data-type="codeeditor" data-lang="html">&lt;input data-type=&quot;autocomplete&quot; name=&quot;aut2&quot; src=&quot;autocomplete.php&quot; data-reload=&quot;true&quot; data-action=&quot;sautocomplete.php&quot; /&gt;</code>
 
 			<p>Example of $_POST["result"]</p>
