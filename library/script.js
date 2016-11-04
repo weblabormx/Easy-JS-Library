@@ -1,5 +1,5 @@
 function loadEJL() {
-	var url = "http://weblabor.mx/libraries/easyJsLibrary/library/";
+	var url = "https://weblabormx.github.io/Easy-JS-Library/library/";
 	//url = "http://localhost:82/easy-JS-Library/library/";
 
 	// Progress bar
@@ -261,7 +261,7 @@ function loadEJL() {
 			if(froalaScriptsLoaded>=15) {
 				$('textarea[data-type=wysiwyg]').froalaEditor({
 					language: 'es',
-					imageUploadURL: 'http://weblabor.mx/imgur-js-uploader/includes/uploader.php',
+					imageUploadURL: 'http://libraries.weblabor.mx/imgur-js-uploader/uploader.php',
 					requestWithCORS: true,
 					imageUploadMethod: 'POST',
 				});
@@ -1249,7 +1249,7 @@ function loadEJL() {
 	};
 	
 	if($('[data-type~=imgur]').length) {
-		$.getScript('http://weblabor.mx/imgur-js-uploader/imgur-js-uploader.min.js', function(){
+		$.getScript('https://weblabormx.github.io/Imgur-JS-Uploader/imgur-js-uploader.min.js', function(){
 			$('[data-type~=imgur]').imgurUploader();
 		});
 	}
