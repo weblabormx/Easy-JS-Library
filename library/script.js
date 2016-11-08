@@ -175,7 +175,6 @@ function loadEJL() {
 					
 				});
 			});
-
 			if (value!="") {
 				var array = value;
 	
@@ -188,17 +187,37 @@ function loadEJL() {
 				          	if(obj.hasOwnProperty(prop)){
 				          		// If it doesn't exist the input add a field
 				          		if ($("[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val()==undefined) {
-				          			$("#"+divname+"-add").trigger("click");
+				          			cont++;
+									var find = divname+"\\[0\\]";
+									var regex = new RegExp(find, "g");
+									var htmln = html.replace(regex, divname2+"["+cont+"]");
+
+									$(thisg).append(htmln);
+									
+								
+									$("."+divname+"-remove").click(function() {
+										if ($(this).parent().prop("tagName")=="TD") {
+											$(this).parent().parent().remove();
+										}else {
+											$(this).parent().remove();
+										}
+									});
 				          		};
 				          		// Add the values
 				          		$("input[type=text][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
 				          		$("select[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
 				          		if(obj[prop]==1)
 				          			$("input[type=checkbox][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").attr('checked', 'checked');
+
+
 				          	}
 				       }
 				    }
 				}
+				loadJqueryUI();
+				loadCalendar();
+				loadTime();
+				loadOnoff();
 			};
 			
 			return true;

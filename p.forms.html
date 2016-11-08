@@ -29,7 +29,7 @@
 				<label>Costo</label><input type="text" name="costo" value="100" />
 				<label>Obligatorio</label>
 				<div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
-		        	<input data-type="onoff" name="needess" value="0" />
+		        	<input data-type="onoff" name="needess" value="1" />
 		        </div>
 				<span class="shipment.weight_costs-remove">Eliminar</span>
 			</li>
@@ -55,7 +55,9 @@
 					<option value="200">200</option>
 					<option value="300">300</option>
 				</select>
-				<label>Requerido</label><input type="checkbox" value="1" name="required" />
+				<div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
+		        	<input type="text" data-type="onoff" name="required" value="0" />
+		        </div>
 				<span class="multiple2-remove">Eliminar</span>
 			</li>
 		</ul>
