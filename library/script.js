@@ -986,11 +986,19 @@ function loadEJL() {
 				var action = $(this).attr("data-action");
 				var yestext = "Yes";
 				var notext = "No";
+				var data = "{}";
+				var redirection = "";
 				if ( typeof $(this).attr("data-button-yes") !== typeof undefined ) {
 					yestext = $(this).attr("data-button-yes");
 				};
 				if ( typeof $(this).attr("data-button-no") !== typeof undefined ) {
 					notext = $(this).attr("data-button-no");
+				};
+				if ( typeof $(this).attr("data-variables") !== typeof undefined ) {
+					data = $(this).attr("data-variables");
+				};
+				if ( typeof $(this).attr("data-redirection") !== typeof undefined ) {
+					redirection = $(this).attr("data-redirection");
 				};
 				$(this).click(function() {
 					Lobibox.confirm({
@@ -1006,10 +1014,17 @@ function loadEJL() {
 						},
 						callback: function ($this, type) {
 							if (type=="yes") {
-									$.post( action, function( data ) {
+								$.ajax({
+									type: 'POST',
+									url: action,
+									data: data
+								}).done(function( msg ) {
+									if(redirection=="") {
 										location.reload();
-									});
-									
+									} else {
+										window.location = redirection;
+									}
+								});
 							};
 						}
 					});
