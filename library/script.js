@@ -996,20 +996,22 @@ function loadEJL() {
 				};
 				if ( typeof $(this).attr("data-variables") !== typeof undefined ) {
 					data = $(this).attr("data-variables");
+					data = JSON.parse(data);
 				};
 				if ( typeof $(this).attr("data-redirection") !== typeof undefined ) {
 					redirection = $(this).attr("data-redirection");
 				};
+
 				$(this).click(function() {
 					Lobibox.confirm({
 						msg: info,
 						title: title,
 						buttons: {
 							yes: {
-									text: yestext,
+								text: yestext,
 							}, 
 							no: {
-									text: notext,
+								text: notext,
 							}
 						},
 						callback: function ($this, type) {
