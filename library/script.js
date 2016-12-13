@@ -263,27 +263,27 @@ function loadEJL() {
 	if($('textarea[data-type~=wysiwyg]').length) {
 		var froala_base = 'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.4/';
 		$('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/froala_editor.min.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/froala_style.min.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/froala_editor.min.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/froala_style.min.css" type="text/css" />');
 
-		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/code_view.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/colors.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/plugins/code_view.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/plugins/colors.css" type="text/css" />');
 		//$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/file.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/fullscreen.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/image.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/table.css" type="text/css" />');
-		$('head').append('<link rel="stylesheet" href="'+froala_base+'css/plugins/video.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/plugins/fullscreen.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/plugins/image.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/plugins/table.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/plugins/video.css" type="text/css" />');
 
 		var froalaScriptsLoaded = 0;
 		function executeFroala() {
 			froalaScriptsLoaded++;
 			if(froalaScriptsLoaded>=15) {
 				$('textarea[data-type=wysiwyg]').froalaEditor({
+					requestWithCredentials: false,
+					requestWithCORS: false,
 					language: 'es',
 					imageUploadURL: 'https://libraries.weblabor.mx/imgur-js-uploader/uploader.php',
-					requestWithCORS: true,
-					imageUploadMethod: 'POST',
-					requestWithCredentials: false
+					imageUploadMethod: 'POST',					
 				});
 				$('.fr-box a').each(function() {
 					if($(this).text()=='Unlicensed Froala Editor') {
