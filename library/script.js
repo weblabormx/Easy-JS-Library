@@ -283,6 +283,7 @@ function loadEJL() {
 					imageUploadURL: 'https://libraries.weblabor.mx/imgur-js-uploader/uploader.php',
 					requestWithCORS: true,
 					imageUploadMethod: 'POST',
+					requestWithCredentials: false
 				});
 				$('.fr-box a').each(function() {
 					if($(this).text()=='Unlicensed Froala Editor') {
