@@ -1311,7 +1311,7 @@ function loadEJL() {
 		});
 	}
 
-	// Froala
+	// Viewer 360
 	if($('div[data-type~=viewer-360]').length) {
 		var ps_base = 'https://photo-sphere-viewer.js.org/dist/';
 		$('head').append('<link rel="stylesheet" href="'+ps_base+'Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.css" type="text/css" />');
@@ -1354,11 +1354,8 @@ function loadEJL() {
 		$.getScript(ps_base+'three.js/three.min.js', function(){ executePS(); });
 		$.getScript(ps_base+'D.js/lib/D.min.js', function(){ executePS(); });
 		$.getScript(ps_base+'doT/doT.min.js', function(){ executePS(); });
-		
 	}
 }
 (function( $ ){
 	loadEJL();
 })( jQuery );
-
-//console.log(obj.element.getAttribute("data-type"));
