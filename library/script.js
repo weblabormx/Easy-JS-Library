@@ -1,6 +1,6 @@
 function loadEJL() {
 	var url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-	//url = "http://localhost:82/easy-JS-Library/library/";
+	//url = "http://localhost/easy-JS-Library/library/";
 
 	// Progress bar
 	if($('body[data-type~=progressbar]').length) {
@@ -1313,24 +1313,22 @@ function loadEJL() {
 
 	// Viewer 360
 	if($('div[data-type~=viewer-360]').length) {
-		var ps_base = 'https://photo-sphere-viewer.js.org/dist/';
-		$('head').append('<link rel="stylesheet" href="'+ps_base+'Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.css" type="text/css" />');
+		$('head').append('<link rel="stylesheet" href="'+url+'photo-sphere/photo-sphere-viewer.min.css" type="text/css" />');
 
 		var ps_loaded = 0;
 		function executePS() {
 			ps_loaded++;
-			if(ps_loaded>=3) {
-				$.getScript(ps_base+'uevent/uevent.min.js', function(){ executePS2(); });
-				$.getScript(ps_base+'three.js-examples/examples/js/renderers/CanvasRenderer.js', function(){ executePS2(); });
-				$.getScript(ps_base+'three.js-examples/examples/js/renderers/Projector.js', function(){ executePS2(); });
-				$.getScript(ps_base+'Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.js', function(){ executePS2(); });	
+			if(ps_loaded>=4) {
+				$.getScript(url+'three.js/examples/js/renderers/CanvasRenderer.js', function(){ executePS2(); });
+				$.getScript(url+'three.js/examples/js/renderers/Projector.js', function(){ executePS2(); });
+				$.getScript(url+'photo-sphere/photo-sphere-viewer.min.js', function(){ executePS2(); });	
 			}	
 		}
 
 		var ps_loaded2 = 0;
 		function executePS2() {
 			ps_loaded2++;
-			if(ps_loaded2>=4) {
+			if(ps_loaded2>=3) {
 					
 				$('div[data-type~=viewer-360]').each(function() {
 					var src = $(this).attr('src');
@@ -1351,9 +1349,10 @@ function loadEJL() {
 				}); 	
 			}	
 		}
-		$.getScript(ps_base+'three.js/three.min.js', function(){ executePS(); });
-		$.getScript(ps_base+'D.js/lib/D.min.js', function(){ executePS(); });
-		$.getScript(ps_base+'doT/doT.min.js', function(){ executePS(); });
+		$.getScript(url+'three.js/build/three.min.js', function(){ executePS(); });
+		$.getScript(url+'photo-sphere/D.min.js', function(){ executePS(); });
+		$.getScript(url+'photo-sphere/doT.min.js', function(){ executePS(); });
+		$.getScript(url+'photo-sphere/uevent.min.js', function(){ executePS(); });
 	}
 }
 (function( $ ){
