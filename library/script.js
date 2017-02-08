@@ -1313,7 +1313,7 @@ function loadEJL() {
 
 	// Froala
 	if($('div[data-type~=viewer-360]').length) {
-		var ps_base = 'http://photo-sphere-viewer.js.org/dist/';
+		var ps_base = 'https://photo-sphere-viewer.js.org/dist/';
 		$('head').append('<link rel="stylesheet" href="'+ps_base+'Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.css" type="text/css" />');
 
 		var ps_loaded = 0;
