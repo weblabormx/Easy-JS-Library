@@ -1310,6 +1310,52 @@ function loadEJL() {
 			$('[data-type~=color]').colorPicker();
 		});
 	}
+
+	// Froala
+	if($('div[data-type~=viewer-360]').length) {
+		var ps_base = 'http://photo-sphere-viewer.js.org/dist/';
+		$('head').append('<link rel="stylesheet" href="'+ps_base+'Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.css" type="text/css" />');
+
+		var ps_loaded = 0;
+		function executePS() {
+			ps_loaded++;
+			if(ps_loaded>=3) {
+				$.getScript(ps_base+'uevent/uevent.min.js', function(){ executePS2(); });
+				$.getScript(ps_base+'three.js-examples/examples/js/renderers/CanvasRenderer.js', function(){ executePS2(); });
+				$.getScript(ps_base+'three.js-examples/examples/js/renderers/Projector.js', function(){ executePS2(); });
+				$.getScript(ps_base+'Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.js', function(){ executePS2(); });	
+			}	
+		}
+
+		var ps_loaded2 = 0;
+		function executePS2() {
+			ps_loaded2++;
+			if(ps_loaded2>=4) {
+					
+				$('div[data-type~=viewer-360]').each(function() {
+					var src = $(this).attr('src');
+					var id = $(this).attr('id');
+					var title = $(this).attr('data-title');
+					var PSV = new PhotoSphereViewer({
+				      	panorama: src,
+				      	container: id,
+				      	caption: title,
+				      	loading_img: 'http://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
+				      	navbar: 'autorotate zoom download caption',
+				      	default_fov: 70,
+				      	mousewheel: false,
+				      	size: {
+				        	height: 500
+				      	}
+				    });			
+				}); 	
+			}	
+		}
+		$.getScript(ps_base+'three.js/three.min.js', function(){ executePS(); });
+		$.getScript(ps_base+'D.js/lib/D.min.js', function(){ executePS(); });
+		$.getScript(ps_base+'doT/doT.min.js', function(){ executePS(); });
+		
+	}
 }
 (function( $ ){
 	loadEJL();
