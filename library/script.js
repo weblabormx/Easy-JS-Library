@@ -1369,6 +1369,6 @@ function loadEJL() {
 		$.getScript(url+'photo-sphere/uevent.min.js', function(){ executePS(); });
 	}
 }
-(function( $ ){
+jQuery(document).ready(function($){
 	loadEJL();
-})( jQuery );
+});
