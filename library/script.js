@@ -1,4 +1,4 @@
-function loadEJL() {
+function loadEJL($) {
 	var url = "https://weblabormx.github.io/Easy-JS-Library/library/";
 	//url = "http://localhost/easy-JS-Library/library/";
 
@@ -1370,5 +1370,5 @@ function loadEJL() {
 	}
 }
 jQuery(document).ready(function($){
-	loadEJL();
+	loadEJL($);
 });
