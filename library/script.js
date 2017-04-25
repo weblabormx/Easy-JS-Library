@@ -1083,6 +1083,20 @@ function loadEJL() {
 				$(this).magnificPopup({
 				  	type: type
 				});
+				var automatic = $(this).attr("data-automatic");
+				if (typeof automatic !== typeof undefined && automatic !== false) {
+					var days = $(this).attr("data-days");
+					if (typeof days !== typeof undefined && days !== false) {
+						if (document.cookie.indexOf('visited=true') == -1) {
+							var fifteenDays = 1000*60*60*24*15;
+							var expires = new Date((new Date()).valueOf() + fifteenDays);
+							document.cookie = "visited=true;expires=" + expires.toUTCString();
+							$(this).magnificPopup('open');
+						}
+					} else {
+						$(this).magnificPopup('open');
+					}
+				}
 			});
 			$("div[data-type~=popup],ul[data-type~=popup]").each(function(cont){
 				var type = $(this).attr("data-popup-type");
