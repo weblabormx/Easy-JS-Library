@@ -1368,6 +1368,12 @@ function loadEJL($) {
 		$.getScript(url+'photo-sphere/doT.min.js', function(){ executePS(); });
 		$.getScript(url+'photo-sphere/uevent.min.js', function(){ executePS(); });
 	}
+
+	if($('[data-type~=zoom]').length) {
+		$.getScript('http://www.jacklmoore.com/js/jquery.zoom.js', function(){
+			$('[data-type~=zoom]').zoom();
+		});
+	}
 }
 jQuery(document).ready(function($){
 	loadEJL($);
