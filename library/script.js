@@ -690,12 +690,19 @@ function loadEJL($) {
 				var src = $(this).attr("src");
 
 				if(src.match(/\.(jpeg|jpg|gif|png)$/) != null) { // is an image
-					$( "#"+id).html('<img src="'+src+'" />' );
+					var zoom = $(this).attr("data-zoom");
+					// if has zoom enabled
+					var html = '<img src="'+src+'" />';
+					if (typeof zoom !== typeof undefined && zoom !== false) {
+						html = '<div data-type="zoom"><img src="'+src+'" /></div>';
+					};
+					$( "#"+id).html( html );
 					$("[data-type~=ajaxload].selected").each(function(cont){
 						$(this).removeClass("selected");
 					});
 					$(thisg).addClass("selected");
 					loadPopup();
+					loadZoom();
 				} else {
 					$.post( src, function( data ) {
 						$( "#"+id).html( data );
@@ -1379,11 +1386,15 @@ function loadEJL($) {
 		$.getScript(url+'photo-sphere/uevent.min.js', function(){ executePS(); });
 	}
 
-	if($('[data-type~=zoom]').length) {
-		$.getScript(url+'zoom/jquery.zoom.js', function(){
-			$('[data-type~=zoom]').zoom();
-		});
+	loadZoom();
+	function loadZoom() {
+		if($('[data-type~=zoom]').length) {
+			$.getScript(url+'zoom/jquery.zoom.js', function(){
+				$('[data-type~=zoom]').zoom();
+			});
+		}
 	}
+		
 }
 jQuery(document).ready(function($){
 	loadEJL($);
