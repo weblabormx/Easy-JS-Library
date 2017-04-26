@@ -685,17 +685,27 @@ function loadEJL($) {
 		$("[data-type~=ajaxload]").each(function(cont){
 			$(this).click(function() {
 				var thisg = this;
-					var id = $(this).attr("for");
+				var id = $(this).attr("for");
 				$("#"+id).html("<img src='"+url+"images/ajax-loader.gif' class='ajax-loader' />")
-					var src = $(this).attr("src");
-					$.post( src, function( data ) {
-					$( "#"+id).html( data );
+				var src = $(this).attr("src");
+
+				if(src.match(/\.(jpeg|jpg|gif|png)$/) != null) { // is an image
+					$( "#"+id).html('<img src="'+src+'" />' );
 					$("[data-type~=ajaxload].selected").each(function(cont){
 						$(this).removeClass("selected");
 					});
 					$(thisg).addClass("selected");
 					loadPopup();
+				} else {
+					$.post( src, function( data ) {
+						$( "#"+id).html( data );
+						$("[data-type~=ajaxload].selected").each(function(cont){
+							$(this).removeClass("selected");
+						});
+						$(thisg).addClass("selected");
+						loadPopup();
 					});
+				}
 			});
 			
 		});
