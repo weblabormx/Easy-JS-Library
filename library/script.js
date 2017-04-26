@@ -1380,7 +1380,7 @@ function loadEJL($) {
 	}
 
 	if($('[data-type~=zoom]').length) {
-		$.getScript('http://www.jacklmoore.com/js/jquery.zoom.js', function(){
+		$.getScript(url+'zoom/jquery.zoom.js', function(){
 			$('[data-type~=zoom]').zoom();
 		});
 	}
