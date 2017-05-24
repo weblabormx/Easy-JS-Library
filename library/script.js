@@ -1075,12 +1075,14 @@ function loadEJL($) {
 						},
 						callback: function ($this, type, ev) {
 							if (type=="ok") {
-									var valor = lobibox.getValue();
-									$.post( action, { value: valor })
-									.done(function( data ) {
-										location.reload();
-									});
-									
+								var valor = lobibox.getValue();
+								$.post( action, { value: valor })
+								.done(function( data ) {
+									location.reload();
+								})
+								.fail(function( error ) {
+								    console.log(error);
+								});
 							};
 						}
 					});
