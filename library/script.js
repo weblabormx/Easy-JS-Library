@@ -575,6 +575,7 @@ function loadEJL($) {
 				$('.cb-disable',parent).removeClass('selected');
 				$(this).addClass('selected');
 				$('input[name="'+parentname+'"]').val(1);
+				$('input[name="'+parentname+'"]').change();
 			});
 			$(".cb-disable").click(function(){
 				var parentname = $(this).attr("data-nameparent");
@@ -582,6 +583,7 @@ function loadEJL($) {
 				$('.cb-enable',parent).removeClass('selected');
 				$(this).addClass('selected');
 				$('input[name="'+parentname+'"]').val(0);
+				$('input[name="'+parentname+'"]').change();
 			});
 				
 		}
