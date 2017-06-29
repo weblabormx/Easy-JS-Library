@@ -229,7 +229,11 @@ function loadEJL($) {
 				}
 
 			};
-			
+			// Initial charge
+			if ($(thisg).attr("data-load")!==undefined) {
+				var value = $(thisg).attr("data-load");
+				window[value]();
+			}
 			return true;
 		});
 	};
