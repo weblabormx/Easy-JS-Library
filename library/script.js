@@ -165,7 +165,11 @@ function loadEJL($) {
 				loadCalendar();
 				loadTime();
 				loadOnoff();
-			
+				if ($(thisg).attr("data-load")!==undefined) {
+					var value = $(thisg).attr("data-load");
+					window[value]();
+				}
+
 				$("."+divname+"-remove").click(function() {
 					if ($(this).parent().prop("tagName")=="TD") {
 						$(this).parent().parent().remove();
@@ -211,6 +215,7 @@ function loadEJL($) {
 
 
 				          	}
+
 				       }
 				    }
 				}
@@ -218,6 +223,11 @@ function loadEJL($) {
 				loadCalendar();
 				loadTime();
 				loadOnoff();
+				if ($(thisg).attr("data-load")!==undefined) {
+					var value = $(thisg).attr("data-load");
+					window[value]();
+				}
+
 			};
 			
 			return true;
