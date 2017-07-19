@@ -155,6 +155,7 @@ function loadEJL($) {
 				loadCalendar();
 				loadTime();
 				loadOnoff();
+				loadImgur();
 				if ($(thisg).attr("data-load")!==undefined) {
 					var value = $(thisg).attr("data-load");
 					window[value]();
@@ -198,7 +199,7 @@ function loadEJL($) {
 									});
 				          		};
 				          		// Add the values
-				          		$("input[type=text][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
+				          		$("input[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
 				          		$("select[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
 				          		$("textarea[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
 				          		if(obj[prop]==1)
@@ -1325,11 +1326,14 @@ function loadEJL($) {
 		});
 	};
 	
-	if($('[data-type~=imgur]').length) {
-		$.getScript('https://weblabormx.github.io/Imgur-JS-Uploader/imgur-js-uploader.min.js', function(){
-			$('[data-type~=imgur]').imgurUploader();
-		});
+	function loadImgur() {
+		if($('[data-type~=imgur]').length) {
+			$.getScript('https://weblabormx.github.io/Imgur-JS-Uploader/imgur-js-uploader.min.js', function(){
+				$('[data-type~=imgur]').imgurUploader();
+			});
+		}
 	}
+	loadImgur();
 
 	if($('[data-type~=slug]').length) {
 		$('[data-type~=slug]').each(function() {
