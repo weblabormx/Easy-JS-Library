@@ -155,7 +155,6 @@ function loadEJL($) {
 				loadCalendar();
 				loadTime();
 				loadOnoff();
-				loadImgur();
 				if ($(thisg).attr("data-load")!==undefined) {
 					var value = $(thisg).attr("data-load");
 					window[value]();
@@ -1326,14 +1325,11 @@ function loadEJL($) {
 		});
 	};
 	
-	function loadImgur() {
-		if($('[data-type~=imgur]').length) {
-			$.getScript('https://weblabormx.github.io/Imgur-JS-Uploader/imgur-js-uploader.min.js', function(){
-				$('[data-type~=imgur]').imgurUploader();
-			});
-		}
+	if($('[data-type~=imgur]').length) {
+		$.getScript('https://weblabormx.github.io/Imgur-JS-Uploader/imgur-js-uploader.min.js', function(){
+			$('[data-type~=imgur]').imgurUploader();
+		});
 	}
-	loadImgur();
 
 	if($('[data-type~=slug]').length) {
 		$('[data-type~=slug]').each(function() {
