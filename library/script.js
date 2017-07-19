@@ -200,6 +200,7 @@ function loadEJL($) {
 				          		// Add the values
 				          		$("input[type=text][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
 				          		$("select[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
+				          		$("textarea[name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
 				          		if(obj[prop]==1)
 				          			$("input[type=checkbox][name="+divname+"\\["+key+"\\]\\["+prop+"\\]]").attr('checked', 'checked');
 
