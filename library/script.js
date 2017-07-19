@@ -126,17 +126,7 @@ function loadEJL($) {
 			var hasparent = false;
 			var cont = 0;
 
-			$(this).find("input").each(function(){
-				if ($(this).parent().html()==$(thisg).html()) {
-					hasparent = false;
-				} else {
-					hasparent = true;
-				}
-				var name = $(this).attr("name");
-				$(this).attr("name",divname+"[0]["+name+"]");
-			});
-
-			$(this).find("select").each(function(){
+			$(this).find("input, select, textarea").each(function(){
 				if ($(this).parent().html()==$(thisg).html()) {
 					hasparent = false;
 				} else {
