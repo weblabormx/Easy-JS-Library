@@ -416,6 +416,7 @@ function loadEJL($) {
 							name = name+"ce";
 							var required = "";
 							if ($(this).attr("required")) { required = " required"; };
+							if ($(this).attr("placeholder")) { required = " placeholder='"+$(this).attr("placeholder")+"'"; };
 							if ($(this).attr("class")) { required = required + " class='"+$(this).attr("class")+"'"; };
 							if ($(this).attr("style")) { required = required + " style='"+$(this).attr("style")+"'"; };
 							if (isSelected) { required = required + " value='"+selectedText+"'"};
