@@ -161,16 +161,15 @@ function loadEJL($) {
 				}
 
 				$("."+divname+"-remove").click(function() {
+					if ($(thisg).attr("data-remove")!==undefined) {
+						var value = $(thisg).attr("data-remove");
+						window[value](this);
+					}
 					if ($(this).parent().prop("tagName")=="TD") {
 						$(this).parent().parent().remove();
 					}else {
 						$(this).parent().remove();
 					}
-					if ($(thisg).attr("data-remove")!==undefined) {
-						var value = $(thisg).attr("data-remove");
-						window[value](this);
-					}
-					
 				});
 			});
 			if (value!="") {
