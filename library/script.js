@@ -166,6 +166,10 @@ function loadEJL($) {
 					}else {
 						$(this).parent().remove();
 					}
+					if ($(thisg).attr("data-remove")!==undefined) {
+						var value = $(thisg).attr("data-remove");
+						window[value](this);
+					}
 					
 				});
 			});
