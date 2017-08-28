@@ -117,10 +117,10 @@ function loadEJL($) {
 		return this.each(function() {
 			var thisg = this;
 			var divname = $(this).attr("data-name");
-			var value = "";
+			var data_values = "";
 			if ($(this).attr("data-values")!==undefined) {
-				value = $(this).attr("data-values");
-				value = JSON.parse(value);
+				data_values = $(this).attr("data-values");
+				data_values = JSON.parse(data_values);
 			}
 
 			var hasparent = false;
@@ -172,8 +172,8 @@ function loadEJL($) {
 					}
 				});
 			});
-			if (value!="") {
-				var array = value;
+			if (data_values!="") {
+				var array = data_values;
 	
 				for (var key in array) {
 				   	if (array.hasOwnProperty(key)) {
