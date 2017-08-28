@@ -191,8 +191,16 @@ function loadEJL($) {
 
 									$(thisg).append(htmln);
 									
-								
+									if ($(thisg).attr("data-load")!==undefined) {
+										var value = $(thisg).attr("data-load");
+										window[value]();
+									}
+				
 									$("."+divname+"-remove").click(function() {
+										if ($(thisg).attr("data-remove")!==undefined) {
+											var value = $(thisg).attr("data-remove");
+											window[value](this);
+										}
 										if ($(this).parent().prop("tagName")=="TD") {
 											$(this).parent().parent().remove();
 										}else {
@@ -217,10 +225,7 @@ function loadEJL($) {
 				loadCalendar();
 				loadTime();
 				loadOnoff();
-				if ($(thisg).attr("data-load")!==undefined) {
-					var value = $(thisg).attr("data-load");
-					window[value]();
-				}
+				
 
 			};
 			// Initial charge
