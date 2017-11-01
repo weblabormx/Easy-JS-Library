@@ -155,8 +155,10 @@ function loadEJL($) {
                 loadCalendar();
                 loadTime();
                 loadOnoff();
-                loadColorPicker();
                 
+                var selector = '[data-type~=multiple] > li:nth-child('+(cont+1)+') [data-type~=color]';
+                loadColorPicker(selector);
+
                 if ($(thisg).attr("data-load")!==undefined) {
                     var value = $(thisg).attr("data-load");
                     window[value]();
@@ -1356,11 +1358,11 @@ function loadEJL($) {
         });
     }
 
-    loadColorPicker();
-    function loadColorPicker() {
-        if($('[data-type~=color]').length) {
+    loadColorPicker('[data-type~=color]');
+    function loadColorPicker(selector) {
+        if($(selector).length) {
             $.getScript(url+'color-picker/jqColorPicker.min.js', function(){
-                $('[data-type~=color]').colorPicker();
+                $(selector).colorPicker();
             });
         }
     }
