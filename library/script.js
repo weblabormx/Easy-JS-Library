@@ -1,6 +1,6 @@
 function loadEJL($) {
     var url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-    //url = "http://localhost/easy-JS-Library/library/";
+    //url = "http://localhost/libraries/Easy-JS-Library/library/";
 
     // Progress bar
     if($('body[data-type~=progressbar]').length) {
@@ -156,8 +156,8 @@ function loadEJL($) {
                 loadTime();
                 loadOnoff();
                 
-                var selector = '[data-type~=multiple] > li:nth-child('+(cont+1)+') [data-type~=color]';
-                loadColorPicker(selector);
+                $('[data-type~=color]').colorPicker.destroy();
+                loadColorPicker();
 
                 if ($(thisg).attr("data-load")!==undefined) {
                     var value = $(thisg).attr("data-load");
@@ -1358,11 +1358,11 @@ function loadEJL($) {
         });
     }
 
-    loadColorPicker('[data-type~=color]');
-    function loadColorPicker(selector) {
-        if($(selector).length) {
+    loadColorPicker();
+    function loadColorPicker() {
+        if($('[data-type~=color]').length) {
             $.getScript(url+'color-picker/jqColorPicker.min.js', function(){
-                $(selector).colorPicker();
+                $('[data-type~=color]').colorPicker();
             });
         }
     }
