@@ -1412,6 +1412,19 @@ function loadEJL($) {
 			});
 		}
 	}
+
+	if($('[data-type~=tagsinput]').length) {
+		$('head').append('<link rel="stylesheet" href="https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.css" type="text/css" />');
+		$.getScript('https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/lib/js/typeahead.bundle.min.js', function(){
+			$.getScript('https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.js', function(){
+				$('[data-type~=tagsinput]').tagInput({
+					tagDataSeparator: '|',
+					allowDuplicates: false,
+					typeahead: false
+				});
+			});
+		});
+	}
 		
 }
 jQuery(document).ready(function($){
