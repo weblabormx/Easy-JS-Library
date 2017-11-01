@@ -155,6 +155,8 @@ function loadEJL($) {
                 loadCalendar();
                 loadTime();
                 loadOnoff();
+                loadColorPicker();
+                
                 if ($(thisg).attr("data-load")!==undefined) {
                     var value = $(thisg).attr("data-load");
                     window[value]();
@@ -1353,11 +1355,14 @@ function loadEJL($) {
             });
         });
     }
-    
-    if($('[data-type~=color]').length) {
-        $.getScript(url+'color-picker/jqColorPicker.min.js', function(){
-            $('[data-type~=color]').colorPicker();
-        });
+
+    loadColorPicker();
+    function loadColorPicker() {
+        if($('[data-type~=color]').length) {
+            $.getScript(url+'color-picker/jqColorPicker.min.js', function(){
+                $('[data-type~=color]').colorPicker();
+            });
+        }
     }
 
     // Viewer 360
