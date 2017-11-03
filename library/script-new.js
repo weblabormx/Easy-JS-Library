@@ -1,13 +1,30 @@
 function LibraryLoaded() {
+    
+    this.js_total  = 0;
+    this.js_loaded = 0;
+    this.eachable  = false;
 
     this.name;
     this.function_ex;
-    this.js_total  = 0;
-    this.js_loaded = 0;
+    this.function_af;
 
+    this.executeFunction = function() {
+        var selector = $(this.name);
+
+        if(this.eachable) {
+            var these = this;
+            selector.each(function() {
+                these.function_ex($(this));
+            });
+        } else {
+            this.function_ex(selector);
+        }
+        if(this.function_af!=null && this.function_af!=undefined)
+            this.function_af(selector)
+    }
 }
 
-function EasyJsLibrary() {
+function EasyController() {
 
     this.scripts   = [];
     this.css       = [];
@@ -15,93 +32,542 @@ function EasyJsLibrary() {
 
     this.addScript = function(url, library_id) {
 
-        if(this.scripts.indexOf(url)!=-1)
-            return;
-
-        this.scripts.push(url);
         var library = this.libraries[library_id];
-
-        return $.getScript(url).done(function(){
+        if(this.scripts.indexOf(url)!==-1) {
             library.js_loaded++;
-            console.log(url+' loaded');
             if(library.js_loaded == library.js_total)
-                library.function_ex($(library.name));
+                library.executeFunction();
+            return;
+        }
+
+        var these = this;
+        return $.getScript(url).done(function(){
+            these.scripts.push(url);
+            library.js_loaded++;
+            if(library.js_loaded == library.js_total) {
+                library.executeFunction();
+                console.log('EJL: '+url+' js loaded');
+            }
         });
 
     }
 
     this.addCss = function(url) {
-        console.log(url+' css recibido');
+        if(this.css.indexOf(url)!=-1)
+            return;
+        this.css.push(url);
+        $('head').append('<link rel="stylesheet" href="'+url+'" type="text/css" />');
+        console.log('EJL: '+url+' css loaded');
     }
 
-    this.addFunctionality = function(variables, function_ex) {
+    this.addFunctionality = function(variables, function_ex, remove_func = null) {
 
-        
+        // Format variables
+        if(variables.js === undefined)
+            variables.js = [];
+        if(variables.css === undefined)
+            variables.css = [];
+        if(variables.js instanceof Array==false)
+            variables.js = [variables.js];
+        if(variables.css instanceof Array==false)
+            variables.css = [variables.css];
 
         // make the selector
         var selector_name = '[data-type~='+variables.data_type+']';
         if(variables.selector !== undefined)
             selector_name = variables.selector+selector_name;
         
-        selector = $(selector_name);
-
         // Look if exist selector
-        if(selector.length) {
+        if($(selector_name).length) {
+            if(variables.type=='createAndDestroy')
+                return this.functionalityCreateAndDestroy(selector_name, variables, function_ex, remove_func);
+            if(variables.type=='oneByOne')
+                return this.functionalityOneByOne(selector_name, variables, function_ex, remove_func);
+            if(variables.type=='each')
+                return this.functionalityEach(selector_name, variables, function_ex, remove_func);
+        };
+    }
 
-            // Load the js
-            if(variables.js !== undefined) {
-                if(variables.js instanceof Array==false)
-                    variables.js = [variables.js];
+    this.functionalityCreateAndDestroy = function(selector_name, variables, function_ex, remove_func) {
 
-                var library = new LibraryLoaded();
+        if(this.existLibrary(selector_name)) {
 
-                library.name        = selector_name;
-                library.js_total    = variables.js.length;
-                library.function_ex = function_ex;
+            console.log('EJL: Reloading '+selector_name);
+            var selector = $(selector_name);
+            if(remove_func!==null)
+                remove_func(selector);
+            function_ex(selector);
 
-                var library_id = this.libraries.push(library);
-                library_id--;
-                var these = this;
+        } else {
 
-                variables.js.forEach(function(item) {
-                    these.addScript(item, library_id);
-                });
+            console.log('EJL: Loading '+selector_name);
+            var library = new LibraryLoaded();
+
+            library.name        = selector_name;
+            library.js_total    = variables.js.length;
+            library.function_ex = function_ex;
+
+            var library_id = this.libraries.push(library);
+            library_id--;
+            var these = this;
+
+            variables.js.forEach(function(item) {
+                these.addScript(item, library_id);
+            });
+
+            variables.css.forEach(function(item) {
+                these.addCss(item);
+            });
+
+        }
+    }
+
+    this.functionalityOneByOne = function(selector_name, variables, function_ex, remove_func) {
+
+        selector_name = selector_name+':not(.EJLClass)';
+
+        if(this.existLibrary(selector_name)) {
+
+            var library = this.getLibrary(selector_name);
+            library.executeFunction();
+
+        } else {
+
+            console.log('EJL: Loading '+selector_name);
+            var library = new LibraryLoaded();
+
+            library.name        = selector_name;
+            library.js_total    = variables.js.length;
+            library.function_ex = function_ex;
+            library.function_af = function(item) {
+                item.addClass('EJLClass');
             }
 
-        };
+            var library_id = this.libraries.push(library);
+            library_id--;
+            var these = this;
+
+            variables.js.forEach(function(item) {
+                these.addScript(item, library_id);
+            });
+
+            variables.css.forEach(function(item) {
+                these.addCss(item);
+            });
+
+        }
+    }
+
+    this.functionalityEach = function(selector_name, variables, function_ex, remove_func) {
+
+        selector_name = selector_name+':not(.EJLClass)';
+
+        if(this.existLibrary(selector_name)) {
+
+            var library = this.getLibrary(selector_name);
+            library.executeFunction();
+
+        } else {
+
+            console.log('EJL: Loading '+selector_name);
+            var library = new LibraryLoaded();
+
+            library.name        = selector_name;
+            library.js_total    = variables.js.length;
+            library.function_ex = function_ex;
+            library.eachable    = true;
+            library.function_af = function(item) {
+                item.addClass('EJLClass');
+            }
+
+            var library_id = this.libraries.push(library);
+            library_id--;
+            var these = this;
+
+            variables.js.forEach(function(item) {
+                these.addScript(item, library_id);
+            });
+
+            variables.css.forEach(function(item) {
+                these.addCss(item);
+            });
+
+        }
+    }
+
+    this.existLibrary = function(name) {
+        return this.getLibrary(name)!==undefined;
+    }
+
+    this.getLibrary = function(name) {
+        return this.libraries.find(function(library) {
+            return library.name == name;
+        });
+    }
+}
+
+function EasyJsLibrary() {
+    
+    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    this.controller = new EasyController();
+
+    this.execute = function() { 
+        this.loadForms();
+        this.loadComplements();
+    }
+
+    this.loadForms = function() { 
+
+        this.controller.addFunctionality({
+            type: 'createAndDestroy',
+            data_type: 'color',
+            selector: 'input',
+            js: this.url+'color-picker/jqColorPicker.min.js'
+        }, function(item) {
+            item.colorPicker();
+        }, function(item) {
+            item.colorPicker.destroy();
+        });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'tagsinput',
+            selector: 'input',
+            js: [
+                'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/lib/js/typeahead.bundle.min.js',
+                'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.js'
+            ],
+            css: 'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.css'
+        }, function(item) {
+            item.tagInput({
+                tagDataSeparator: '|',
+                allowDuplicates: false,
+                typeahead: false
+            });
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'date',
+            selector: 'input',
+            js: this.url+"calendar/script.js"
+        }, function(item) {
+            var locale = "en";
+            if(item.attr("lang")) {
+                locale = $(this).attr("lang");
+            }
+            item.attr("pattern","[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])");
+            item.appendDtpicker({
+                "dateOnly": true,
+                "locale": locale
+            });
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'datetime',
+            selector: 'input',
+            js: this.url+"calendar/script.js"
+        }, function(item) {
+            var locale = "en";
+            if(item.attr("lang")) {
+                locale = item.attr("lang");
+            }
+            item.attr("pattern","[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01]) (0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])");
+            item.appendDtpicker({
+                "locale": locale
+            });
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'hselect',
+            selector: 'input',
+            js: this.url+"option-tree/jquery.optionTree.js"
+        }, function(item) {
+            var src = item.attr("src");
+            item.hide();
+            var thisg = item;
+            var value = item.attr("data-parent");
+            var select = item.attr("data-value-select");
+            if (select == undefined) {
+                select = "";
+            };
+            var name = item.attr("name");
+
+            var options = {
+                empty_value: 'null',
+                indexed: true,  // the data in tree is indexed by values (ids), not by labels
+                on_each_change: src, // this file will be called with 'id' parameter, JSON data must be returned
+                choose: function(level) {
+                    return 'Choose level ' + level;
+                },
+                loading_image: '',
+                show_multiple: 10, // if true - will set the size to show all options
+                choose: '' // no choose item
+            };
+            var erase = {};
+            var erase2 = new Array();
+            var split = select.split(",");
+            for (var i = 0; i < split.length; i++) {
+                erase2[i] = split[i];
+            };
+            erase[name] = erase2;
+            options.preselect = erase;
+
+            var displayParents = function() {
+                var labels = []; // initialize array
+                item.siblings('select') // find all select
+                    .find(':selected') // and their current options
+                    .each(function() { labels.push(item.text()); }); // and add option text to array
+                //$('<div>').text(this.value + ':' + labels.join(' > ')).appendTo('#demo7-result');  // and display the labels
+            }
+            $.getJSON(src, {id: value}, function(tree) { // initialize the tree by loading the file first
+                $(thisg).optionTree(tree, options).change(displayParents);
+                $(thisg).val("");
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                var err = textStatus + ", " + error;
+                console.log( "Request Failed: " + err );
+            });
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'autocomplete',
+            selector: 'input',
+            js: this.url+"jquery-ui/jquery-ui.min.js",
+            css: this.url+'jquery-ui/jquery-ui.min.css'
+        }, function(item) {
+            var selectedValue = item.attr("data-selected-value");
+            var selectedText = item.attr("data-selected-text");
+            var isSelected = false;
+            if (selectedText!==undefined && selectedValue!==undefined) {
+                isSelected = true;
+            };
+
+            var reload = item.attr("data-reload");
+            if (reload==undefined) {
+                reload = false;
+            }
+            var actions = item.attr("data-action");
+            if (actions==undefined) {
+                actions = false;
+            }
+
+            var name = item.attr("name");
+            name = name.replace(/\[/g,"");
+            name = name.replace(/\]/g,"");
+            name = name+"ce";
+            var required = "";
+            if (item.attr("required")) { required = " required"; };
+            if (item.attr("placeholder")) { required = " placeholder='"+item.attr("placeholder")+"'"; };
+            if (item.attr("class")) { required = required + " class='"+item.attr("class")+"'"; };
+            if (item.attr("style")) { required = required + " style='"+item.attr("style")+"'"; };
+            if (isSelected) { required = required + " value='"+selectedText+"'"};
+            $("<div class='autclt'><input type='text' name='"+name+"'"+required+" /><span class='closeauto'>x</span></div>").insertAfter(item);
+            item.css("display","none");
+            var auto = $("input[name="+name+"]");
+            var action = item.attr("src");
+            var cache = {};
+            var thisg = item;
+            var id;
+            //console.log("action: "+action);
+            $( auto ).autocomplete({
+                minLength: 2,
+                source: function( request, response ) {
+                    $.ajax({
+                        url: action,
+                        dataType: "json",
+                        data: {
+                            term: request.term
+                        },
+                        success: function( data ) {
+                            response( data );
+                        }
+                    });
+                },
+                select: function( event, ui ) {
+                    if (actions!==false) {
+                        console.log(actions);
+                        var uis = ui.item;
+                        var myJsonString = JSON.stringify(uis);
+                        $.post( actions, { result: myJsonString })
+                        .done(function( data ) {
+                            // nothing
+                            console.log(data);
+                        });
+                    };
+                    if (reload==="true" || reload) {
+                        //location.reload();
+                    };
+                    var id = ui.item.id;
+                    $(thisg).val(id);
+                    $(auto).attr("disabled","disabled");
+                    $(auto).parent().find(".closeauto").css("display","inline");
+                }
+            });
+            $(auto).parent().find(".closeauto").click(function() {
+                $(auto).val("");
+                $(thisg).val("");
+                $(auto).removeAttr("disabled");
+                item.css("display","none");
+            });
+            item.removeAttr("data-type");
+            if (isSelected) {
+                item.val(selectedValue);
+                $(auto).attr("disabled","disabled");
+                $(auto).parent().find(".closeauto").css("display","inline");
+            };
+        });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'button',
+            selector: 'div',
+            js: this.url+"jquery-ui/jquery-ui.min.js",
+            css: this.url+'jquery-ui/jquery-ui.min.css'
+        }, function(item) {
+            item.buttonset();
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'slider',
+            selector: 'input',
+            js: this.url+"jquery-ui/jquery-ui.min.js",
+            css: this.url+'jquery-ui/jquery-ui.min.css'
+        }, function(item) {
+            var name = item.attr("name");
+            var max = parseFloat(item.attr("data-max"));
+            var min = parseFloat(item.attr("data-min"));
+            var type = item.attr("data-slider");
+            if (type=="range") {
+                // Hide becouse array with the name and variables max and min is createad
+                item.css("display","none");
+                item.css("disabled","disabled");
+                
+                $("<div id='"+name+"-sl'></div><input name=\""+name+"['max']\" id='"+name+"-sl-max' style='display:none;' /><input name=\""+name+"[\'min\']\" id='"+name+"-sl-min' style='display: none;' />").insertAfter(item);
+                $( "#"+name+"-sl" ).slider({
+                    range: true,
+                    min: min,
+                    max: max,
+                    values: [ min, max ],
+                    slide: function( event, ui ) {
+                            $( "#"+name+"-min" ).html(ui.values[ 0 ]);
+                            $( "#"+name+"-max" ).html(ui.values[ 1 ]);
+                            $("#"+name+"-sl-min").val(ui.values[ 0 ]);
+                            $("#"+name+"-sl-max").val(ui.values[ 1 ]);
+                    }
+                });
+                $("#"+name+"-sl-min").val(min);
+                $("#"+name+"-sl-max").val(max);
+            } else if (type=="increments") {
+                var step = parseFloat(item.attr("data-step"));
+                $("<div id='"+name+"-sl'></div>").insertAfter(item);
+                var thiss = item;
+                $( "#"+name+"-sl" ).slider({
+                    value: min,
+                    min: min,
+                    max: max,
+                    step: step,
+                    slide: function( event, ui ) {
+                            $( "#"+name+"-val" ).html(ui.value);
+                            $(thiss).val(ui.value);
+                    }
+                });
+                $(thiss).val(min);
+            }
+        });
+
+        var froala_base = 'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.4/';
+        var froala_base_css = 'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/';
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'wysiwyg',
+            selector: 'textarea',
+            js: [
+                froala_base+'js/froala_editor.min.js',
+                froala_base+'js/plugins/align.min.js',
+                froala_base+'js/plugins/code_beautifier.min.js',
+                froala_base+'js/plugins/code_view.min.js',
+                froala_base+'js/plugins/colors.min.js',
+                froala_base+'js/plugins/font_size.min.js',
+                froala_base+'js/plugins/fullscreen.min.js',
+                froala_base+'js/plugins/image.min.js',
+                froala_base+'js/plugins/inline_style.min.js',
+                froala_base+'js/plugins/link.min.js',
+                froala_base+'js/plugins/lists.min.js',
+                froala_base+'js/plugins/paragraph_format.min.js',
+                froala_base+'js/plugins/table.min.js',
+                froala_base+'js/plugins/url.min.js',
+                froala_base+'js/plugins/video.min.js',
+                froala_base+'js/languages/es.js'
+            ],
+            css: [
+                '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css',
+                froala_base_css+'froala_editor.min.css',
+                froala_base_css+'froala_style.min.css',
+                froala_base_css+'plugins/code_view.css',
+                froala_base_css+'plugins/colors.css',
+                froala_base_css+'plugins/fullscreen.css',
+                froala_base_css+'plugins/image.css',
+                froala_base_css+'plugins/table.css',
+                froala_base_css+'plugins/video.css'
+            ]
+        }, function(item) {
+            item.froalaEditor({
+                requestWithCredentials: false,
+                requestWithCORS: false,
+                language: 'es',
+                imageUploadURL: 'https://libraries.weblabor.mx/imgur-js-uploader/uploader.php',
+                imageUploadMethod: 'POST',                  
+            });
+            $('.fr-box a').each(function() {
+                if($(this).text()=='Unlicensed Froala Editor') {
+                    $(this).css('visibility', 'hidden');
+                }
+            });
+        });
+        
+    }
+
+    this.loadComplements = function() {
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'sort',
+            selector: 'ul',
+            js: this.url+"jquery-ui/jquery-ui.min.js",
+            css: this.url+'jquery-ui/jquery-ui.min.css'
+        }, function(item) {
+            item.sortable();
+            item.disableSelection();
+            item.find("li").css("cursor","move");
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'tooltip',
+            js: this.url+"jquery-ui/jquery-ui.min.js",
+            css: this.url+'jquery-ui/jquery-ui.min.css'
+        }, function(item) {
+            item.tooltip({
+                position: {
+                    my: "left top",
+                    at: "right+5 top-5"
+                }
+            });
+        });
 
     }
 }
- 
+
 jQuery(document).ready(function($){
-
-    var url = "https://weblabormx.github.io/Easy-JS-Library/library/";
     var script = new EasyJsLibrary();
-
-    //********* Forms **************
-
-    script.addFunctionality({
-        data_type: 'color',
-        selector: 'input',
-        js: url+'color-picker/jqColorPicker.min.js'
-    }, function(item) {
-        item.colorPicker();
-    });
-
-    script.addFunctionality({
-        data_type: 'tagsinput',
-        selector: 'input',
-        js: [
-            'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/lib/js/typeahead.bundle.min.js',
-            'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.js'
-        ],
-        css: 'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.css'
-    }, function(item) {
-        item.tagInput({
-            tagDataSeparator: '|',
-            allowDuplicates: false,
-            typeahead: false
-        });
-    });
+    script.execute();
+    setTimeout(function() {
+        script.execute();
+    }, 3000);
     
 });
