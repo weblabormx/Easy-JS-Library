@@ -244,8 +244,6 @@ function loadEJL($) {
     $('input[data-type~=multiple]').multipleInput();
     $('div[data-type~=multiple], ul[data-type~=multiple], tbody[data-type~=multiple]').multipleDiv();
     
-    
-
     // http://devgrow.com/iphone-style-switches/
     function loadOnoff() {
         if($('[data-type~=onoff]').length) {
@@ -296,90 +294,7 @@ function loadEJL($) {
         }
     }
     loadOnoff();
-    // Editarea
-    if($('[data-type~=codeeditor]').length) {
-        $.getScript(url+"ace-builds-master/src-noconflict/ace.js", function(){
-            var cont = 0;
-            $("textarea[data-type~=codeeditor]").each(function(cont){
-                    var thisg = this;
-                    var ide = "codeeditor-"+cont;
-                    var cont = $(this).html();
-                    $("<div class='codeeditortext' id='"+ide+"'></div>").insertAfter(this);
-                    $(this).css("display","none");
-                    $("#"+ide).html(cont);
-                    var typec = $(this).attr("data-lang");
-
-                    // Color
-                    var color = "white";
-                    var attr = $(this).attr("data-color");
-                    if (typeof attr !== typeof undefined && attr !== false) {
-                        color = $(this).attr("data-color");
-                    };
-
-                    // Theme
-                    var theme = "ace/theme/tomorrow"; // white for default
-                    if (color=="black") {
-                        theme = "ace/theme/monokai";
-                    } else if (color=="blue") {
-                        theme = "ace/theme/cobalt";
-                    } else if (color=="gray") {
-                        theme = "ace/theme/idle_fingers";
-                    }
-
-                    ace.config.set("basePath", url+"ace-builds-master/src-noconflict/");
-                    var editor1 = ace.edit(ide);
-                    editor1.setTheme(theme);
-                    editor1.session.setMode("ace/mode/"+typec);
-                    editor1.setAutoScrollEditorIntoView(true);
-                    editor1.setOption("maxLines", 30);
-                    cont++;
-                    editor1.getSession().on('change', function(e) {
-                        var value = editor1.getValue();
-                        $(thisg).html(value);
-                    });
-            });
-            $.getScript(url+"ace-builds-master/src-noconflict/ext-static_highlight.js", function(){
-                    ace.config.set("basePath", url+"ace-builds-master/src-noconflict/");
-                    var highlight = ace.require("ace/ext/static_highlight")
-                    var dom = ace.require("ace/lib/dom")
-                    function qsa(sel) {
-                        return Array.apply(null, document.querySelectorAll(sel));
-                    }
-
-                    qsa("code[data-type~=codeeditor]").forEach(function (codeEl) {
-                        var typec = $(codeEl).attr("data-lang");
-                        // Color
-                        var color = "white";
-                        var attr = $(codeEl).attr("data-color");
-                        if (typeof attr !== typeof undefined && attr !== false) {
-                            color = $(codeEl).attr("data-color");
-                        };
-
-                        // Theme
-                        var theme = "ace/theme/tomorrow"; // white for default
-                        if (color=="black") {
-                            theme = "ace/theme/monokai";
-                        } else if (color=="blue") {
-                            theme = "ace/theme/cobalt";
-                        } else if (color=="gray") {
-                            theme = "ace/theme/idle_fingers";
-                        }
-
-                        highlight(codeEl, {
-                            mode: "ace/mode/"+typec,
-                            theme: theme,
-                            startLineNumber: 1,
-                            showGutter: true,
-                            trim: true
-                        }, function (highlighted) {
-                        
-                        });
-                    });
-                    
-            });
-        });
-            
-    }    
+ 
     if($('[data-type~=changeOnClick]').length) {
         $("[data-type~=changeOnClick]").each(function(cont){
             var id = $(this).attr("id");

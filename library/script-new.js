@@ -41,13 +41,15 @@ function EasyController() {
         }
 
         var these = this;
-        return $.getScript(url).done(function(){
+        $.holdReady(true);
+        return $.getScript(url, function(){
             these.scripts.push(url);
             library.js_loaded++;
             if(library.js_loaded == library.js_total) {
                 library.executeFunction();
                 console.log('EJL: '+url+' js loaded');
             }
+            $.holdReady(false);
         });
 
     }
@@ -208,7 +210,8 @@ function EasyController() {
 
 function EasyJsLibrary() {
     
-    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    //this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    this.url = "http://localhost/libraries/Easy-JS-Library/library/";
     this.controller = new EasyController();
 
     this.execute = function() { 
@@ -480,40 +483,14 @@ function EasyJsLibrary() {
             }
         });
 
-        var froala_base = 'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.3.4/';
-        var froala_base_css = 'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.0/css/';
         this.controller.addFunctionality({
             type: 'oneByOne',
             data_type: 'wysiwyg',
             selector: 'textarea',
-            js: [
-                froala_base+'js/froala_editor.min.js',
-                froala_base+'js/plugins/align.min.js',
-                froala_base+'js/plugins/code_beautifier.min.js',
-                froala_base+'js/plugins/code_view.min.js',
-                froala_base+'js/plugins/colors.min.js',
-                froala_base+'js/plugins/font_size.min.js',
-                froala_base+'js/plugins/fullscreen.min.js',
-                froala_base+'js/plugins/image.min.js',
-                froala_base+'js/plugins/inline_style.min.js',
-                froala_base+'js/plugins/link.min.js',
-                froala_base+'js/plugins/lists.min.js',
-                froala_base+'js/plugins/paragraph_format.min.js',
-                froala_base+'js/plugins/table.min.js',
-                froala_base+'js/plugins/url.min.js',
-                froala_base+'js/plugins/video.min.js',
-                froala_base+'js/languages/es.js'
-            ],
+            js: this.url+'froala/plugins.min.js',
             css: [
                 '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css',
-                froala_base_css+'froala_editor.min.css',
-                froala_base_css+'froala_style.min.css',
-                froala_base_css+'plugins/code_view.css',
-                froala_base_css+'plugins/colors.css',
-                froala_base_css+'plugins/fullscreen.css',
-                froala_base_css+'plugins/image.css',
-                froala_base_css+'plugins/table.css',
-                froala_base_css+'plugins/video.css'
+                this.url+'froala/style.css'
             ]
         }, function(item) {
             item.froalaEditor({
@@ -527,6 +504,51 @@ function EasyJsLibrary() {
                 if($(this).text()=='Unlicensed Froala Editor') {
                     $(this).css('visibility', 'hidden');
                 }
+            });
+        });
+
+        var these = this;
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'codeeditor',
+            selector: 'textarea',
+            js: this.url+"ace-builds-master/src-noconflict/ace.js"
+        }, function(item) {
+            var thisg = item;
+            var ide = "codeeditor-"+cont;
+            var cont = item.html();
+            $("<div class='codeeditortext' id='"+ide+"'></div>").insertAfter(item);
+            item.css("display","none");
+            $("#"+ide).html(cont);
+            var typec = item.attr("data-lang");
+
+            // Color
+            var color = "white";
+            var attr = item.attr("data-color");
+            if (typeof attr !== typeof undefined && attr !== false) {
+                color = item.attr("data-color");
+            };
+
+            // Theme
+            var theme = "ace/theme/tomorrow"; // white for default
+            if (color=="black") {
+                theme = "ace/theme/monokai";
+            } else if (color=="blue") {
+                theme = "ace/theme/cobalt";
+            } else if (color=="gray") {
+                theme = "ace/theme/idle_fingers";
+            }
+
+            ace.config.set("basePath", these.url+"ace-builds-master/src-noconflict/");
+            var editor1 = ace.edit(ide);
+            editor1.setTheme(theme);
+            editor1.session.setMode("ace/mode/"+typec);
+            editor1.setAutoScrollEditorIntoView(true);
+            editor1.setOption("maxLines", 30);
+            cont++;
+            editor1.getSession().on('change', function(e) {
+                var value = editor1.getValue();
+                $(thisg).html(value);
             });
         });
         
@@ -558,6 +580,40 @@ function EasyJsLibrary() {
                     at: "right+5 top-5"
                 }
             });
+        });
+
+        var these = this;
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'codeeditor',
+            selector: 'code',
+            js: [
+                'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js',
+            ],
+            css: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css'
+        }, function(item) {
+            item.wrap( "<pre></pre>" );
+            var typec = item.attr("data-lang");
+
+            // Color
+            var color = "white";
+            var attr = item.attr("data-color");
+            if (typeof attr !== typeof undefined && attr !== false) {
+                color = item.attr("data-color");
+            };
+
+            // Theme
+            var theme = "ace/theme/tomorrow"; // white for default
+            if (color=="black") {
+                theme = "ace/theme/monokai";
+            } else if (color=="blue") {
+                theme = "ace/theme/cobalt";
+            } else if (color=="gray") {
+                theme = "ace/theme/idle_fingers";
+            }
+
+            item.addClass(typec);
+            hljs.initHighlightingOnLoad();
         });
 
     }
