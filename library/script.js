@@ -295,16 +295,6 @@ function loadEJL($) {
     }
     loadOnoff();
  
-    if($('[data-type~=changeOnClick]').length) {
-        $("[data-type~=changeOnClick]").each(function(cont){
-            var id = $(this).attr("id");
-
-            $(this).click(function(){
-                    $(this).css("display","none");
-                    $("[for="+id+"]").css("display","block");
-            });
-        });
-    }
     if($('[data-type~=ajaxload]').length) {
         $("[data-type~=ajaxload]").each(function(cont){
             $(this).click(function() {

@@ -121,6 +121,9 @@ function EasyController() {
                 these.addCss(item);
             });
 
+            if(variables.js.length == 0)
+                library.executeFunction();
+
         }
     }
 
@@ -156,6 +159,9 @@ function EasyController() {
             variables.css.forEach(function(item) {
                 these.addCss(item);
             });
+
+            if(variables.js.length == 0)
+                library.executeFunction();
 
         }
     }
@@ -193,6 +199,9 @@ function EasyController() {
             variables.css.forEach(function(item) {
                 these.addCss(item);
             });
+
+            if(variables.js.length == 0)
+                library.executeFunction();
 
         }
     }
@@ -594,26 +603,20 @@ function EasyJsLibrary() {
         }, function(item) {
             item.wrap( "<pre></pre>" );
             var typec = item.attr("data-lang");
-
-            // Color
-            var color = "white";
-            var attr = item.attr("data-color");
-            if (typeof attr !== typeof undefined && attr !== false) {
-                color = item.attr("data-color");
-            };
-
-            // Theme
-            var theme = "ace/theme/tomorrow"; // white for default
-            if (color=="black") {
-                theme = "ace/theme/monokai";
-            } else if (color=="blue") {
-                theme = "ace/theme/cobalt";
-            } else if (color=="gray") {
-                theme = "ace/theme/idle_fingers";
-            }
-
             item.addClass(typec);
             hljs.initHighlightingOnLoad();
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'changeOnClick',
+        }, function(item) {
+            var id = item.attr("id");
+            $("[for="+id+"]").css("display","none");
+            item.click(function(){
+                item.css("display","none");
+                $("[for="+id+"]").css("display","block");
+            });
         });
 
     }
