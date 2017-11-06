@@ -399,19 +399,20 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
 
                                 <div id="autocomplete" class="section-block">
                                     <h3>Autocomplete</h3>
+                                    <p>Autocompletes a text field. It is necessary the name attribute. The PHP Code recieves <em>$_GET['term']</em> with the searched word</p>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="https://jqueryui.com" target="_blank">
+                                                        Jquery UI
                                                     </a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>Unknown</td>
+                                                <td>v1.11.4</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -419,25 +420,82 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                             </tr>
                                             <tr>
                                                 <th scope="row">Required Attributes</th>
-                                                <td>None</td>
+                                                <td><em>name</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-selected-value</em>, <em>data-selected-text</em>, <em>data-reload</em>, <em>data-action</em></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The Key of the selected value
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <h4>Empty Field</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <input data-type="autocomplete" name="aut" src="https://libraries.weblabor.mx/easy-js-library/autocomplete.php" />
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input data-type=&quot;autocomplete&quot; name=&quot;aut&quot; src=&quot;autocomplete.php&quot; /&gt;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>PHP Code</h6>
+                                        <code data-type="codeeditor" data-lang="php">&#x3C;?php
+$res = array();
+// id is what is passed to the field
+$res[] = array(&#x22;label&#x22;=&#x3E;$_GET[&#x22;term&#x22;], &#x22;id&#x22; =&#x3E; 99, &#x22;value&#x22; =&#x3E; $_GET[&#x22;term&#x22;]);
+$res[] = array(&#x22;label&#x22;=&#x3E;&#x22;dos&#x22;, &#x22;id&#x22; =&#x3E; 2, &#x22;value&#x22; =&#x3E; &#x22;dos&#x22;);
+$res[] = array(&#x22;label&#x22;=&#x3E;&#x22;tres&#x22;, &#x22;id&#x22; =&#x3E; 3, &#x22;value&#x22; =&#x3E; &#x22;tres&#x22;);
+print json_encode($res);
+?&#x3E;</code>
+                                    </div>
+                                    <h4>With selected data</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input data-type="autocomplete" data-selected-text="Hola" data-selected-value="valor" name="aut20" src="https://libraries.weblabor.mx/easy-js-library/autocomplete.php" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input 
+    data-type=&quot;autocomplete&quot; 
+    data-selected-text=&quot;Hola&quot; 
+    data-selected-value=&quot;valor&quot; 
+    name=&quot;aut20&quot;
+    src=&quot;autocomplete.php&quot; 
+/&gt;</code>
+                                    </div>
+                                    <h4>With reload and with action</h4>
+                                    <p>It will be send a <em>$_POST['result']</em> variable with the selected data. First the action will be called and then it will be reloaded.</p>
+                                    <p>This option is used for saving the selected data and then reload the website, ideally for saving languages, timezones, etc.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input data-type="autocomplete" name="aut2" src="https://libraries.weblabor.mx/easy-js-library/autocomplete.php" data-reload="true" data-action="https://libraries.weblabor.mx/easy-js-library/sautocomplete.php" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html" data-lines="false">&lt;input data-type=&quot;autocomplete&quot; name=&quot;aut2&quot; src=&quot;autocomplete.php&quot; data-reload=&quot;true&quot; data-action=&quot;sautocomplete.php&quot; /&gt;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>Example of <em>$_POST["result"]</em></h6>
+                                        <code data-type="codeeditor" data-lang="html">object(stdClass)#1 (3) {
+    ["label"]=>
+    string(3) "aaa"
+    ["id"]=>
+    int(99)
+    ["value"]=>
+    string(3) "aaa"
+}</code>
                                     </div>
                                 </div>
 
@@ -448,14 +506,14 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="https://jqueryui.com" target="_blank">
+                                                        Jquery UI
                                                     </a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>Unknown</td>
+                                                <td>v1.11.4</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -468,38 +526,67 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The selected value(s)
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <h4>Checkbox</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <div data-type='button'>
+                                                <input type="checkbox" name="checkbutton[]" value="l" id="check1"><label for="check1">Lunes</label>
+                                                <input type="checkbox" name="checkbutton[]" value="m" id="check2"><label for="check2">Martes</label>
+                                                <input type="checkbox" name="checkbutton[]" value="w" id="check3"><label for="check3">Miércoles</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;div data-type=&#x27;button&#x27;&#x3E;
+    &#x3C;input type=&#x22;checkbox&#x22; name=&#x22;checkbutton[]&#x22; value=&#x22;l&#x22; id=&#x22;check1&#x22;&#x3E;&#x3C;label for=&#x22;check1&#x22;&#x3E;Lunes&#x3C;/label&#x3E;
+    &#x3C;input type=&#x22;checkbox&#x22; name=&#x22;checkbutton[]&#x22; value=&#x22;m&#x22; id=&#x22;check2&#x22;&#x3E;&#x3C;label for=&#x22;check2&#x22;&#x3E;Martes&#x3C;/label&#x3E;
+    &#x3C;input type=&#x22;checkbox&#x22; name=&#x22;checkbutton[]&#x22; value=&#x22;w&#x22; id=&#x22;check3&#x22;&#x3E;&#x3C;label for=&#x22;check3&#x22;&#x3E;Mi&#xE9;rcoles&#x3C;/label&#x3E;
+&#x3C;/div&#x3E;</code>
+                                    </div>
+                                    <h4>Radiobutton</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type='button'>
+                                                <input type="radio" name="radiobutton" value="l" id="scheck1"><label for="scheck1">Lunes</label>
+                                                <input type="radio" name="radiobutton" value="m" id="scheck2"><label for="scheck2">Martes</label>
+                                                <input type="radio" name="radiobutton" value="w" id="scheck3"><label for="scheck3">Miércoles</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;div data-type=&#x27;button&#x27;&#x3E;
+    &#x3C;input type=&#x22;radio&#x22; name=&#x22;radiobutton&#x22; value=&#x22;l&#x22; id=&#x22;scheck1&#x22;&#x3E;&#x3C;label for=&#x22;scheck1&#x22;&#x3E;Lunes&#x3C;/label&#x3E;
+    &#x3C;input type=&#x22;radio&#x22; name=&#x22;radiobutton&#x22; value=&#x22;m&#x22; id=&#x22;scheck2&#x22;&#x3E;&#x3C;label for=&#x22;scheck2&#x22;&#x3E;Martes&#x3C;/label&#x3E;
+    &#x3C;input type=&#x22;radio&#x22; name=&#x22;radiobutton&#x22; value=&#x22;w&#x22; id=&#x22;scheck3&#x22;&#x3E;&#x3C;label for=&#x22;scheck3&#x22;&#x3E;Mi&#xE9;rcoles&#x3C;/label&#x3E;
+&#x3C;/div&#x3E;</code>
                                     </div>
                                 </div>
 
                                 <div id="slider" class="section-block">
                                     <h3>Sliders</h3>
+
                                     <table class="table descriptional">
                                         <tbody>
-                                            <tr>
+                                           <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="https://jqueryui.com" target="_blank">
+                                                        Jquery UI
                                                     </a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>Unknown</td>
+                                                <td>v1.11.4</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -507,25 +594,51 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                             </tr>
                                             <tr>
                                                 <th scope="row">Required Attributes</th>
-                                                <td>None</td>
+                                                <td><em>data-max</em>,  <em>data-min</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-step</em></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The value of the slider
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <h4>Range</h4>
+                                    <p>To show the values dynamictly you should call <em>name+'min'</em> or <em>name+'max'</em>. For example if the name of the input is <em>example</em> to show the minimum value selected you shoud add <em>&#x3C;span id=&#x22;example-min&#x22;&#x3E;&#x3C;/span&#x3E;</em></p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <div style="width:200px;">
+                                                <p>$<span id="slider-min">100</span> - $<span id="slider-max">200</span></p>
+                                                <input data-type="slider" data-slider="range" data-max="200" data-min="100" name="slider" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;p&gt;$&lt;span id=&quot;slider-min&quot;&gt;100&lt;/span&gt; - $&lt;span id=&quot;slider-max&quot;&gt;200&lt;/span&gt;&lt;/p&gt;
+&lt;input data-type=&quot;slider&quot; data-slider=&quot;range&quot; data-max=&quot;200&quot; data-min=&quot;100&quot; name=&quot;slider&quot; /&gt;</code>
+                                    </div>
+                                    <h4>Increments</h4>
+                                    <p>To show the values dynamictly you should call <em>name+'val'</em>. For example if the name of the input is <em>example</em> to show the minimum value selected you shoud add <em>&#x3C;span id=&#x22;example-val&#x22;&#x3E;&#x3C;/span&#x3E;</em></p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div style="width:200px;">
+                                                <p>$<span id="slider2-val">0</span></p>
+                                                <input data-type="slider" data-slider="increments" data-max="20" data-min="0.5" data-step="0.5" name="slider2" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;p&gt;$&lt;span id=&quot;slider2-val&quot;&gt;100&lt;/span&gt;&lt;/p&gt;
+&lt;input data-type=&quot;slider&quot; data-slider=&quot;increments&quot; data-max=&quot;20&quot; data-min=&quot;0.5&quot; data-step=&quot;0.5&quot; name=&quot;slider2&quot; /&gt;</code>
                                     </div>
                                 </div>
 

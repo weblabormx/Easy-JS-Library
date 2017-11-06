@@ -361,7 +361,10 @@ function EasyJsLibrary() {
             data_type: 'autocomplete',
             selector: 'input',
             js: this.url+"jquery-ui/jquery-ui.min.js",
-            css: this.url+'jquery-ui/jquery-ui.min.css'
+            css: [
+                this.url+'jquery-ui/jquery-ui.min.css',
+                this.url+"autocomplete/style.css"
+            ]
         }, function(item) {
             var selectedValue = item.attr("data-selected-value");
             var selectedText = item.attr("data-selected-text");
@@ -419,11 +422,11 @@ function EasyJsLibrary() {
                         $.post( actions, { result: myJsonString })
                         .done(function( data ) {
                             // nothing
-                            console.log(data);
+                            //console.log(data);
                         });
                     };
                     if (reload==="true" || reload) {
-                        //location.reload();
+                        location.reload();
                     };
                     var id = ui.item.id;
                     $(thisg).val(id);
@@ -487,6 +490,7 @@ function EasyJsLibrary() {
                 $("#"+name+"-sl-min").val(min);
                 $("#"+name+"-sl-max").val(max);
             } else if (type=="increments") {
+                item.css("display","none");
                 var step = parseFloat(item.attr("data-step"));
                 $("<div id='"+name+"-sl'></div>").insertAfter(item);
                 var thiss = item;

@@ -1,0 +1,13 @@
+/* Auto complete*/
+.autclt {
+     position: relative;
+     display: inline-block;
+}
+.autclt .closeauto {
+     position: absolute;
+     top: 5px;
+     right: 8px;
+     font-size: 12px;
+     cursor: pointer;
+     display: none;
+}

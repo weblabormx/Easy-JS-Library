@@ -451,7 +451,7 @@ select {
   padding-bottom: 15px;
 }
 .doc-section .section-title {
-  font-size: 26px;
+  font-size: 28px;
   margin-top: 0;
   margin-bottom: 0;
   font-weight: bold;
@@ -463,16 +463,20 @@ select {
   font-weight: bold;
 }
 .doc-section h2 {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: bold;
 }
 .doc-section h3 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
 }
 .doc-section h4 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
 }
 .doc-section h5 {
   font-size: 16px;
@@ -1264,6 +1268,12 @@ select {
 /* Large devices (large desktops, 1200px and up) */
 .table.descriptional {
   margin-top: 30px;
+}
+.table.descriptional th {
+  background: #f1f1f1;
+}
+.table.descriptional th, .table.descriptional td {
+  border-top: 1px solid #eee;
 }
 .table.descriptional [scope=row] {
   width: 200px;
