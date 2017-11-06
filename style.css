@@ -70,12 +70,6 @@ h4 {
 body {
      padding: 50px;
 }
-code {
-     background: #f1f1f1;
-     padding: 20px;
-     margin: 20px;
-     display: block;
-}
 #sortable li {
      display: block;width: 100px;
      padding: 10px; background: #ccc;

@@ -739,8 +739,8 @@ function EasyJsLibrary() {
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'confirm',
-            js: this.url+"lobibox/js/Lobibox.js",
-            css: this.url+'lobibox/css/lobibox.css'
+            js: this.url+"lobibox/Lobibox.js",
+            css: this.url+'lobibox/lobibox.css'
         }, function(item) {
             var title = item.attr("title");
             var info = item.attr("data-info");
@@ -794,8 +794,8 @@ function EasyJsLibrary() {
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'prompt',
-            js: this.url+"lobibox/js/Lobibox.js",
-            css: this.url+'lobibox/css/lobibox.css'
+            js: this.url+"lobibox/Lobibox.js",
+            css: this.url+'lobibox/lobibox.css'
         }, function(item) {
             var title = item.attr("title");
             var action = item.attr("data-action");
