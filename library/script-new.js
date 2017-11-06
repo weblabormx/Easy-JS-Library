@@ -262,8 +262,8 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'date',
             selector: 'input',
-            js: this.url+"calendar/script.js",
-            css: this.url+"calendar/style.css"
+            js: this.url+"weblabormx/calendar.js",
+            css: this.url+"weblabormx/calendar.css"
         }, function(item) {
             var locale = "en";
             if(item.attr("lang")) {
@@ -280,8 +280,8 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'datetime',
             selector: 'input',
-            js: this.url+"calendar/script.js",
-            css: this.url+"calendar/style.css"
+            js: this.url+"weblabormx/calendar.js",
+            css: this.url+"weblabormx/calendar.css"
         }, function(item) {
             var locale = "en";
             if(item.attr("lang")) {
@@ -363,7 +363,7 @@ function EasyJsLibrary() {
             js: this.url+"jquery-ui/jquery-ui.min.js",
             css: [
                 this.url+'jquery-ui/jquery-ui.min.css',
-                this.url+"autocomplete/style.css"
+                this.url+"weblabormx/autocomplete.css"
             ]
         }, function(item) {
             var selectedValue = item.attr("data-selected-value");
@@ -438,7 +438,7 @@ function EasyJsLibrary() {
                 $(auto).val("");
                 $(thisg).val("");
                 $(auto).removeAttr("disabled");
-                item.css("display","none");
+                $(this).css("display","none");
             });
             item.removeAttr("data-type");
             if (isSelected) {
@@ -574,6 +574,42 @@ function EasyJsLibrary() {
             editor1.getSession().on('change', function(e) {
                 var value = editor1.getValue();
                 $(thisg).html(value);
+            });
+        });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'imgur',
+            selector: 'input',
+            js: 'https://weblabormx.github.io/Imgur-JS-Uploader/imgur-js-uploader.min.js'
+        }, function(item) {
+            item.imgurUploader();
+        });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'conditional',
+            selector: 'div',
+            js: this.url+"conditionize/conditionize.jquery.js"
+        }, function(item) {
+            item.conditionize();
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'slug',
+            selector: 'input',
+        }, function(item) {
+
+            var parent = item.attr('for');
+            console.log("#"+parent );
+            //item.attr('disabled','disabled');
+            $( "#"+parent ).keyup(function() {
+                var val = $("#"+parent).val();
+                val = val.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                val = val.toLowerCase();
+                val = val.replace(/ /g, '-');
+                item.val(val);
             });
         });
         

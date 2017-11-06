@@ -52,7 +52,8 @@
                                         Easy JS Library will help you use libraries easilier now, just with adding the js library you will able to use a lot of features just with HTML Tags!
                                     </p>
 
-                                    <code data-type="codeeditor" data-lines="false" data-lang="html">&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;https://weblabormx.github.io/Easy-JS-Library/library/script.js&#x22;&#x3E;&#x3C;/script&#x3E;</code>
+                                    <code data-type="codeeditor" data-lines="false" data-lang="html">&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;https://code.jquery.com/jquery-2.2.4.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;https://weblabormx.github.io/Easy-JS-Library/library/script.js&#x22;&#x3E;&#x3C;/script&#x3E;</code>
 
                                     <p>
                                         The library load the javascripts and css automatically every time a library is called, so, dont worry about adding all the librarys every time, this plugin will do it for you!
@@ -644,13 +645,14 @@ print json_encode($res);
 
                                 <div id="code-editor" class="section-block">
                                     <h3>Code Editor</h3>
+                                    <p>Se color can be selected between: black, white, gray and blue with data-color property</p>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="https://ace.c9.io/" target="_blank">
+                                                        Ace
                                                     </a>
                                                 </td>
                                             </tr>
@@ -660,16 +662,16 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
-                                                <td><em>input</em></td>
+                                                <td><em>textarea</em></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Required Attributes</th>
-                                                <td>None</td>
+                                                <td><em>data-lang</em></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The code written
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -677,24 +679,33 @@ print json_encode($res);
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <textarea data-type="codeeditor" data-lang="javascript" data-color="black" name="code">function foo(items) {
+    var x = "All this is syntax highlighted";
+    return x;
+}</textarea>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;textarea data-type=&quot;codeeditor&quot; data-lang=&quot;javascript&quot; data-color=&quot;black&quot; name=&quot;code&quot;&gt;
+    function foo(items) {
+        var x = &quot;All this is syntax highlighted&quot;;
+        return x;
+    }
+&lt;/textarea&gt;</code>
                                     </div>
                                 </div>
 
                                 <div id="imgur" class="section-block">
                                     <h3>Imgur Uploader</h3>
+                                    <p>Librery used for uploading images easily to Imgur. You will get the final url on the input.</p>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="https://weblabormx.github.io/Imgur-JS-Uploader" target="_blank">
+                                                        Imgur JS Uploader
                                                     </a>
                                                 </td>
                                             </tr>
@@ -713,7 +724,7 @@ print json_encode($res);
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The image url
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -721,12 +732,12 @@ print json_encode($res);
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <input data-type='imgur' type="text" />
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input data-type='imgur' type=&quot;text&quot; /&gt;</code>
                                     </div>
                                 </div>
 
@@ -737,8 +748,8 @@ print json_encode($res);
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="https://github.com/renvrant/conditionize.js" target="_blank">
+                                                        Conditionize.js
                                                     </a>
                                                 </td>
                                             </tr>
@@ -748,29 +759,109 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
-                                                <td><em>input</em></td>
+                                                <td><em>div</em></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Required Attributes</th>
                                                 <td>None</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Returns</th>
-                                                <td>
-                                                    Unknown
-                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <label><input type="radio" name="example1" value="yes"><span></span> Yes</label>
+                                            <label><input type="radio" name="example1" value="no"><span></span> No</label>
+
+                                            <div data-type="conditional" data-cond-option="example1" data-cond-value="yes">
+                                                <label><input type="checkbox" name="example2"><span></span> Are you sure?</label>
+                                                <label><input type="checkbox" name="example3"><span></span> Really super sure?</label>
+                                                
+                                                <div data-type="conditional" data-cond-option="example2" data-cond-value="on">
+                                                    Hooray!
+                                                </div>
+                                                <div data-type="conditional" data-cond-option="example3" data-cond-value="on">
+                                                    Don't get cocky!
+                                                </div>
+                                            </div>
+                                            
+                                            <div data-type="conditional" data-cond-option="example1" data-cond-value="no">
+                                                <p>That's a shame. Will you change your mind?</p>
+                                                
+                                                <label><input type="radio" name="example4" value="yes"><span></span> Yes</label>
+                                                <label><input type="radio" name="example4" value="no"><span></span> No</label>
+                                                
+                                                <div data-type="conditional" data-cond-option="example4" data-cond-value="yes">
+                                                    Great!
+                                                </div>
+                                            </div>
+                                            
+                                            <p>
+                                                <label>or choose:</label>
+                                                <select class="select" name="example5">
+                                                    <option>Pick one!</option>
+                                                    <option value="yes">Yes!</option>
+                                                    <option value="no">No!</option>
+                                                </select>
+                                            </p>
+                                            <div data-type="conditional" data-cond-option="example5" data-cond-value="yes">
+                                                Works with selects!
+                                            </div>
+                                             <p>
+                                                <label>or type:</label>
+                                                <input type="text" name="example6" placeholder="yay">
+                                            </p>
+                                            <div data-type="conditional" data-cond-option="example6" data-cond-value="yay">
+                                                Works with text input
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
+
+&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example1&quot; data-cond-value=&quot;yes&quot;&gt;
+    &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example2&quot;&gt;&lt;span&gt;&lt;/span&gt; Are you sure?&lt;/label&gt;
+    &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example3&quot;&gt;&lt;span&gt;&lt;/span&gt; Really super sure?&lt;/label&gt;
+    
+    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example2&quot; data-cond-value=&quot;on&quot;&gt;
+        Hooray!
+    &lt;/div&gt;
+    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example3&quot; data-cond-value=&quot;on&quot;&gt;
+        Don't get cocky!
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example1&quot; data-cond-value=&quot;no&quot;&gt;
+    &lt;p&gt;That's a shame. Will you change your mind?&lt;/p&gt;
+    
+    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
+    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
+    
+    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example4&quot; data-cond-value=&quot;yes&quot;&gt;
+        Great!
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+    &lt;label&gt;or choose:&lt;/label&gt;
+    &lt;select class=&quot;select&quot; name=&quot;example5&quot;&gt;
+        &lt;option&gt;Pick one!&lt;/option&gt;
+        &lt;option value=&quot;yes&quot;&gt;Yes!&lt;/option&gt;
+        &lt;option value=&quot;no&quot;&gt;No!&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/p&gt;
+&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example5&quot; data-cond-value=&quot;yes&quot;&gt;
+    Works with selects!
+&lt;/div&gt;
+ &lt;p&gt;
+    &lt;label&gt;or type:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; name=&quot;example6&quot; placeholder=&quot;yay&quot;&gt;
+&lt;/p&gt;
+&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example6&quot; data-cond-value=&quot;yay&quot;&gt;
+    Works with text input
+&lt;/div&gt;</code>
                                     </div>
                                 </div>
 
@@ -845,7 +936,7 @@ print json_encode($res);
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The slug
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -853,12 +944,16 @@ print json_encode($res);
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <label>Title</label><br />
+                                            <input type="text" id="copyHere" placeholder="Title" /><br /><br />
+                                            <label>Slug</label><br />
+                                            <input data-type='slug' for="copyHere" type="text" />
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&&lt;input type=&quot;text&quot; id=&quot;copyHere&quot; placeholder=&quot;Title&quot; /&gt;
+&lt;input data-type=&quot;slug&quot; for=&quot;copyHere&quot; type=&quot;text&quot; /&gt;</code>
                                     </div>
                                 </div>
 
@@ -869,14 +964,14 @@ print json_encode($res);
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="http://www.dematte.at/tinyColorPicker/" target="_blank">
+                                                        jqColorPicker
                                                     </a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>Unknown</td>
+                                                <td>v1.0.4</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -889,7 +984,7 @@ print json_encode($res);
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The color in hexadecimal
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -897,12 +992,12 @@ print json_encode($res);
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <input type="text" data-type="color" value="#ccc" />
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;color&quot; /&gt;</code>
                                     </div>
                                 </div>
                             </section><!--//doc-section-->

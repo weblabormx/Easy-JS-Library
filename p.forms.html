@@ -97,120 +97,12 @@ $array = json_encode($array);
 		<h2>On / Off selector</h2>	
 		<input name="onoff" data-type="onoff" value="0" data-on = "Activar" data-off="Desactivar" />
 		<code data-type="codeeditor" data-lang="html">&lt;input name=&quot;onoff&quot; data-type=&quot;onoff&quot; type=&quot;text&quot; value=&quot;0&quot; data-on = &quot;Activar&quot; data-off=&quot;Desactivar&quot; /&gt;</code>
-		<h2>Show code</h2>	
-		<p>It can be selected the color between: black, white, gray and blue with data-color property</p>
-		<h3>Editor</h3>
-		<textarea data-type="codeeditor" data-lang="javascript" data-color="black" name="code">function foo(items) {
-	var x = "All this is syntax highlighted";
-	return x;
-}</textarea>
-		<code data-type="codeeditor" data-lang="html">&lt;textarea data-type=&quot;codeeditor&quot; data-lang=&quot;javascript&quot; data-color=&quot;black&quot; name=&quot;code&quot;&gt;function foo(items) {
-		var x = &quot;All this is syntax highlighted&quot;;
-		return x;
-}&lt;/textarea&gt;</code>
-
 		<h2>Send form in Ajax</h2>
 		<p>Demo can be seen in this form, the form is send via ajax and not in php direct. The id is needed. With id+"-msg" the data is print. If the php file returns a url it will redirect to there.</p>
 		<code data-type="codeeditor" data-lang="html">&lt;span id=&quot;form-msg&quot;&gt;&lt;/span&gt;
 &lt;form action=&quot;send.php&quot; method=&quot;POST&quot; data-type=&quot;ajax&quot; id=&quot;form&quot;&gt;
 	// Content
 &lt;/form&gt;</code>
-		
-		<h2>Imgur JS Uploader</h2>
-		<input data-type='imgur' type="text" />
-
-		<code data-type="codeeditor" data-lang="html">&lt;input data-type='imgur' type=&quot;text&quot; /&gt;</code>
-
-		<h2>Conditional forms fields</h2>
-		<label><input type="radio" name="example1" value="yes"><span></span> Yes</label>
-		<label><input type="radio" name="example1" value="no"><span></span> No</label>
-
-		<div data-type="conditional" data-cond-option="example1" data-cond-value="yes">
-			<label><input type="checkbox" name="example2"><span></span> Are you sure?</label>
-			<label><input type="checkbox" name="example3"><span></span> Really super sure?</label>
-			
-			<div data-type="conditional" data-cond-option="example2" data-cond-value="on">
-				Hooray!
-			</div>
-			<div data-type="conditional" data-cond-option="example3" data-cond-value="on">
-				Don't get cocky!
-			</div>
-		</div>
-		
-		<div data-type="conditional" data-cond-option="example1" data-cond-value="no">
-			<p>That's a shame. Will you change your mind?</p>
-			
-			<label><input type="radio" name="example4" value="yes"><span></span> Yes</label>
-			<label><input type="radio" name="example4" value="no"><span></span> No</label>
-			
-			<div data-type="conditional" data-cond-option="example4" data-cond-value="yes">
-				Great!
-			</div>
-		</div>
-		
-		<p>
-			<label>or choose:</label>
-			<select class="select" name="example5">
-				<option>Pick one!</option>
-				<option value="yes">Yes!</option>
-				<option value="no">No!</option>
-			</select>
-		</p>
-		<div data-type="conditional" data-cond-option="example5" data-cond-value="yes">
-			Works with selects!
-		</div>
-		 <p>
-			<label>or type:</label>
-			<input type="text" name="example6" placeholder="yay">
-		</p>
-		<div data-type="conditional" data-cond-option="example6" data-cond-value="yay">
-			Works with text input
-		</div>
-
-		<code data-type="codeeditor" data-lang="html">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
-&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
-
-&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example1&quot; data-cond-value=&quot;yes&quot;&gt;
-	&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example2&quot;&gt;&lt;span&gt;&lt;/span&gt; Are you sure?&lt;/label&gt;
-	&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example3&quot;&gt;&lt;span&gt;&lt;/span&gt; Really super sure?&lt;/label&gt;
-	
-	&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example2&quot; data-cond-value=&quot;on&quot;&gt;
-		Hooray!
-	&lt;/div&gt;
-	&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example3&quot; data-cond-value=&quot;on&quot;&gt;
-		Don't get cocky!
-	&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example1&quot; data-cond-value=&quot;no&quot;&gt;
-	&lt;p&gt;That's a shame. Will you change your mind?&lt;/p&gt;
-	
-	&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
-	&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
-	
-	&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example4&quot; data-cond-value=&quot;yes&quot;&gt;
-		Great!
-	&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;
-	&lt;label&gt;or choose:&lt;/label&gt;
-	&lt;select class=&quot;select&quot; name=&quot;example5&quot;&gt;
-		&lt;option&gt;Pick one!&lt;/option&gt;
-		&lt;option value=&quot;yes&quot;&gt;Yes!&lt;/option&gt;
-		&lt;option value=&quot;no&quot;&gt;No!&lt;/option&gt;
-	&lt;/select&gt;
-&lt;/p&gt;
-&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example5&quot; data-cond-value=&quot;yes&quot;&gt;
-	Works with selects!
-&lt;/div&gt;
- &lt;p&gt;
-	&lt;label&gt;or type:&lt;/label&gt;
-	&lt;input type=&quot;text&quot; name=&quot;example6&quot; placeholder=&quot;yay&quot;&gt;
-&lt;/p&gt;
-&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example6&quot; data-cond-value=&quot;yay&quot;&gt;
-	Works with text input
-&lt;/div&gt;</code>
 		
 		<h2>Validation</h2>
 		<p>Works with date, time, datetime too.</p>
@@ -238,17 +130,7 @@ $array = json_encode($array);
 		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-validation=&quot;same&quot; for=&quot;field-two&quot; /&gt;
 &lt;input type=&quot;text&quot; id=&quot;field-two&quot; /&gt;</code>
 		
-		<h2>Slug generator</h2>
-		<input type="text" id="copyHere" placeholder="Titulo" /><br /><br />
-		<input data-type='slug' for="copyHere" type="text" />
 
-		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; id=&quot;copyHere&quot; placeholder=&quot;Titulo&quot; /&gt;
-&lt;input data-type=&quot;slug&quot; for=&quot;copyHere&quot; type=&quot;text&quot; /&gt;</code>
-
-		<h2>Color Picker</h2>
-		<input type="text" data-type="color" value="#ccc" />
-
-		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;color&quot; /&gt;</code>
 		<br /><br />
 		<input type="submit" value="Click aqui" />
 	</form>

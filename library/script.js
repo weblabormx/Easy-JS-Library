@@ -925,33 +925,7 @@ function loadEJL($) {
             $(this).text(html);
         });
     };
-
-    if($('[data-type~=conditional]').length) {
-        $.getScript(url+"conditionize/conditionize.jquery.js", function(){
-            $("[data-type~=conditional]").conditionize();
-        });
-    };
     
-    if($('[data-type~=imgur]').length) {
-        $.getScript('https://weblabormx.github.io/Imgur-JS-Uploader/imgur-js-uploader.min.js', function(){
-            $('[data-type~=imgur]').imgurUploader();
-        });
-    }
-
-    if($('[data-type~=slug]').length) {
-        $('[data-type~=slug]').each(function() {
-            var parent = $(this).attr('for');
-            var gthis = this;
-            $(this).attr('disabled','disabled');
-            $( "#"+parent ).keyup(function() {
-                var val = $("#"+parent).val();
-                val = val.toLowerCase();
-                val = val.replace(/ /g, '-');
-                $(gthis).val(val);
-            });
-        });
-    }
-
     // Viewer 360
     if($('div[data-type~=viewer-360]').length) {
         $('head').append('<link rel="stylesheet" href="'+url+'photo-sphere/photo-sphere-viewer.min.css" type="text/css" />');
