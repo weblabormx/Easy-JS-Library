@@ -58,6 +58,11 @@
                                     <p>
                                         The library load the javascripts and css automatically every time a library is called, so, dont worry about adding all the librarys every time, this plugin will do it for you!
                                     </p>
+
+                                    <p>
+                                        Do you want some features to be intregrated on Easy Js Library? Please email us to <em>carlosescobar@weblabor.mx</em> or just collaborate on github.
+                                    </p>
+                                    <a href="https://github.com/weblabormx/Easy-JS-Library" class="btn btn-green" target="_blank"><i class="fa fa-github"></i> See on GitHub</a>
                                 </div>
                             </section><!--//doc-section-->
                             <section id="forms-section" class="doc-section">
@@ -351,6 +356,18 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
                                         <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; name=&#x22;time&#x22; data-type=&#x22;time&#x22; value=&#x22;15:06&#x22;/&#x3E;</code>
+                                    </div>
+
+                                    <h4>Date 2nd style</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="midate" data-type="date2" lang="es" value="2015-02-04" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;date2&quot; lang=&quot;es&quot; /&gt;</code>
                                     </div>
                                 </div>
 
@@ -867,6 +884,7 @@ print json_encode($res);
 
                                 <div id="validation" class="section-block">
                                     <h3>Validation</h3>
+                                    <p>This features add patterns automatically for validating the data.</p>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
@@ -887,7 +905,7 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Required Attributes</th>
-                                                <td>None</td>
+                                                <td><em>data-validation</em></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Returns</th>
@@ -897,15 +915,84 @@ print json_encode($res);
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <h4>Alpha Numeric</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <input type="text" data-validation="alphanumeric" />
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;alphanumeric&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Numeric</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="numeric" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;numeric&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>URL</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="url" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;url&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Day</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="day" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;day&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Year</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="year" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;year&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Email</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="email" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;email&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Two fields check</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="same" for="field-two" />
+                                            <input type="text" id="field-two" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-validation=&quot;same&quot; for=&quot;field-two&quot; /&gt;
+&lt;input type=&quot;text&quot; id=&quot;field-two&quot; /&gt;</code>
                                     </div>
                                 </div>
 

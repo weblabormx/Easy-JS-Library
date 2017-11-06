@@ -78,6 +78,9 @@ function EasyController() {
         var selector_name = '[data-type~='+variables.data_type+']';
         if(variables.selector !== undefined)
             selector_name = variables.selector+selector_name;
+
+        if(variables.force_selector !== undefined)
+            selector_name = variables.force_selector;
         
         // Look if exist selector
         if($(selector_name).length) {
@@ -611,6 +614,24 @@ function EasyJsLibrary() {
                 val = val.replace(/ /g, '-');
                 item.val(val);
             });
+        });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'date2',
+            selector: 'input',
+            js: this.url+"weblabormx/date2.js"
+        }, function(item) {
+            item.date2();
+        });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'data-validation',
+            force_selector: 'input[data-validation]',
+            js: this.url+"weblabormx/data-validation.js"
+        }, function(item) {
+            item.dataValidate();
         });
         
     }
