@@ -40,7 +40,7 @@
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Documentation</h1>
-                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: Nov 5th, 2017</div>
+                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: Nov 6th, 2017</div>
                 </div><!--//doc-header-->
                 <div class="doc-body">
                     <div class="doc-content">
@@ -912,7 +912,7 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>Unknown</td>
+                                                <td>Newest (Using CDN)</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -1272,7 +1272,127 @@ print json_encode($res);
                                     </div>
                                 </div>
                             </section><!--//doc-section-->
-                            
+                            <section id="messages-section" class="doc-section">
+                                <h2 class="section-title">Messages</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Examples of code used for messages.
+                                    </p>
+                                </div>
+                                <div id="tags" class="section-block">
+                                    <h3>Confirm</h3>
+                                    <p><em>data-action</em> will tell you what to load (in ajax and in post) after someone click yes, then it will reload.</p>
+                                    <p>You can use <em>data-redirection</em> to put a redirection url, and <em>data-variables</em> to put the variables to send via ajax. The data is sent via post.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://lobianijs.com/site/lobibox" target="_blank">
+                                                        Lobibox
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>a</em>, <em>button</em>, etc</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-action</em>, <em>data-info</em>, <em>title</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-button-yes</em>, <em>data-button-no</em> (By default on English)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Actions</th>
+                                                <td>
+                                                    Make a post request to the file added on <em>data-action</em>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <button data-type="confirm" title="Are you sure?" data-info="This will delete all the data" data-button-yes="Yep" data-button-no="Noup" data-action="README.md">Delete</button>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;button 
+    data-type=&quot;confirm&quot; 
+    title=&quot;Are you sure?&quot; 
+    data-info=&quot;This will delete all the data&quot; 
+    data-button-yes=&quot;Yep&quot; 
+    data-button-no=&quot;Noup&quot; 
+    data-action=&quot;README.md&quot;&gt;
+        Delete
+&lt;/button&gt;</code>
+                                    </div>
+                                </div>
+                                <div id="prompt" class="section-block">
+                                    <h3>Prompt</h3>
+                                    <p>Ask for data easily.</p>
+                                    <p><em>data-action</em> will tell you what to load (in ajax and in post will send a variable called "value") after someone click Ok, then it will reload.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://lobianijs.com/site/lobibox" target="_blank">
+                                                        Lobibox
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>a</em>, <em>button</em>, etc</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-action</em>, <em>title</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-button-ok</em>, <em>data-button-cancel</em> (By default on English)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Actions</th>
+                                                <td>
+                                                    Make a post request to the file added on <em>data-action</em>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <button data-type="prompt" title="Whats your name" data-button-ok="Chido one" data-button-cancel="Nopi" data-action="README.md">Add a name</button>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;button 
+    data-type=&quot;prompt&quot; 
+    title=&quot;Whats your name&quot; 
+    data-button-ok=&quot;Chido one&quot; 
+    data-button-cancel=&quot;Nopi&quot; 
+    data-action=&quot;README.md&quot;&gt;
+        Add a name
+&lt;/button&gt;</code>
+                                    </div>
+                                </div>
+                            </section>
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar hidden-xs">
@@ -1298,7 +1418,13 @@ print json_encode($res);
                                         <li><a class="scrollto" href="#color">Color picker</a></li>
                                     </ul><!--//nav-->
                                 </li>
-                                <li><a class="scrollto" href="#callouts-section">Callouts</a></li>
+                                <li>
+                                    <a class="scrollto" href="#messages-section">Messages</a>
+                                    <ul class="nav doc-sub-menu">
+                                        <li><a class="scrollto" href="#confirm">Confirm</a></li>
+                                        <li><a class="scrollto" href="#prompt">Prompt</a></li>
+                                    </ul>
+                                </li>
                             </ul><!--//doc-menu-->
                         </nav>
                     </div><!--//doc-sidebar-->

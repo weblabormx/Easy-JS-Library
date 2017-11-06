@@ -248,6 +248,7 @@ function EasyJsLibrary() {
     this.execute = function() { 
         this.loadForms();
         this.loadComplements();
+        this.loadMessages();
     }
 
     this.loadForms = function() { 
@@ -732,6 +733,104 @@ function EasyJsLibrary() {
             });
         });
 
+    }
+
+    this.loadMessages = function() {
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'confirm',
+            js: this.url+"lobibox/js/Lobibox.js",
+            css: this.url+'lobibox/css/lobibox.css'
+        }, function(item) {
+            var title = item.attr("title");
+            var info = item.attr("data-info");
+            var action = item.attr("data-action");
+            var yestext = "Yes";
+            var notext = "No";
+            var data = "{}";
+            var redirection = "";
+            if ( typeof item.attr("data-button-yes") !== typeof undefined )
+                yestext = item.attr("data-button-yes");
+            if ( typeof item.attr("data-button-no") !== typeof undefined )
+                notext = item.attr("data-button-no");
+            if ( typeof item.attr("data-variables") !== typeof undefined ) {
+                data = item.attr("data-variables");
+                data = JSON.parse(data);
+            };
+            if ( typeof item.attr("data-redirection") !== typeof undefined )
+                redirection = item.attr("data-redirection");
+
+            item.click(function() {
+                Lobibox.confirm({
+                    msg: info,
+                    title: title,
+                    buttons: {
+                        yes: {
+                            text: yestext,
+                        }, 
+                        no: {
+                            text: notext,
+                        }
+                    },
+                    callback: function ($this, type) {
+                        if (type=="yes") {
+                            $.ajax({
+                                type: 'POST',
+                                url: action,
+                                data: data
+                            }).done(function( msg ) {
+                                if(redirection=="") {
+                                    location.reload();
+                                } else {
+                                    window.location = redirection;
+                                }
+                            });
+                        };
+                    }
+                });
+            });
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'prompt',
+            js: this.url+"lobibox/js/Lobibox.js",
+            css: this.url+'lobibox/css/lobibox.css'
+        }, function(item) {
+            var title = item.attr("title");
+            var action = item.attr("data-action");
+            var oktext = "OK";
+            var canceltext = "Cancel";
+            if ( typeof item.attr("data-button-ok") !== typeof undefined )
+                oktext = item.attr("data-button-ok");
+            if ( typeof item.attr("data-button-cancel") !== typeof undefined )
+                canceltext = item.attr("data-button-cancel");
+            item.click(function() {
+                var lobibox = Lobibox.prompt('text', {
+                    title: title,
+                    buttons: {
+                        cancel: {
+                                text: canceltext,
+                        }, 
+                        ok: {
+                                text: oktext,
+                        }
+                    },
+                    callback: function ($this, type, ev) {
+                        if (type=="ok") {
+                            var valor = lobibox.getValue();
+                            $.post( action, { value: valor })
+                            .done(function( data ) {
+                                location.reload();
+                            })
+                            .fail(function( error ) {
+                                console.log(error);
+                            });
+                        };
+                    }
+                });
+            });
+        });
     }
 }
 
