@@ -1,21 +1,1466 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Inputs plugin</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body data-type="progressbar" style="text-align:center;">
-	<img src="logo.png" width="400" />
-	<h2>Menu</h2>
-	<ul>
-		<li><a href="p.forms.html">Forms and inputs</a></li>
-		<li><a href="p.popups.html">Popups</a></li>
-		<li><a href="p.complements.html">Complements</a></li>
-		<li><a href="p.tables.html">Tables</a></li>
-		<li><a href="p.messages.html">Messages</a></li>
-		<li><a href="p.imageuploader.html">Image Uploader</a></li>
-	</ul>
-	<br /><br />
-	<a href="https://github.com/weblabormx/Easy-JS-Library" style="font-size:12px;">See in github</a>
+    <title>Easy JS Library - Call libraries easily</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+
+</head> 
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <img src="logo.png" width="300" />
+                        </a>
+                    </h1>
+                </div><!--//branding-->
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Documentation</li>
+                </ol>
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Documentation</h1>
+                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: Nov 6th, 2017</div>
+                </div><!--//doc-header-->
+                <div class="doc-body">
+                    <div class="doc-content">
+                        <div class="content-inner">
+                            <div class="callout-block callout-info">
+                                <div class="icon-holder">
+                                    <i class="fa fa-info-circle"></i>
+                                </div><!--//icon-holder-->
+                                <div class="content">
+                                    <h4 class="callout-title">Library actually migrating</h4>
+                                    <p>The full library is being improved. Because of the quantity of libraries this is being made by steps. The old version can be accesed from <a href="index-old.html">here</a>, there you will be able to see libraries that are not in the new version. In our side we are mixing this 2 versions (old and new) to continue having all the features. So you dont need to change anything on your code.</p>
+                                    <p>Once we finished, all the documentation will be on this single page.</p>
+                                </div><!--//content-->
+                            </div>
+                            <section id="use-section" class="doc-section">
+                                <h2 class="section-title">Use</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Easy JS Library will help you use libraries easilier now, just with adding the js library you will able to use a lot of features just with HTML Tags!
+                                    </p>
+
+                                    <code data-type="codeeditor" data-lines="false" data-lang="html">&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;https://code.jquery.com/jquery-2.2.4.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
+&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;https://weblabormx.github.io/Easy-JS-Library/library/script.js&#x22;&#x3E;&#x3C;/script&#x3E;</code>
+
+                                    <p>
+                                        The library load the javascripts and css automatically every time a library is called, so, dont worry about adding all the librarys every time, this plugin will do it for you!
+                                    </p>
+
+                                    <p>
+                                        Do you want some features to be intregrated on Easy Js Library? Please email us to <em>carlosescobar@weblabor.mx</em> or just collaborate on github.
+                                    </p>
+                                    <a href="https://github.com/weblabormx/Easy-JS-Library" class="btn btn-green" target="_blank"><i class="fa fa-github"></i> See on GitHub</a>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="forms-section" class="doc-section">
+                                <h2 class="section-title">Forms</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Examples of code used for forms.
+                                    </p>
+                                </div>
+                                <div id="tags" class="section-block">
+                                    <h3>Tags</h3>
+                                    <p>Add tags clicking next the last item, write it and then press enter.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input" target="_blank">
+                                                        Jquery Tags Input Plugin
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The list of tags added divided with |. 
+                                                    <i class="example">Example: </i>
+                                                    <em>
+                                                        one|two|three
+                                                    </em>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="multiple" class="section-block">
+                                    <h3>Multiple</h3>
+                                    <p>Library to add dynamic fields easily.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td>Everything</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-name</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td>
+                                                    <em>data-load</em>: if you want that everytime is loaded the script should load a js function.<br />
+                                                    <em>data-remove</em>: load a function when its removed an object, the item is sent.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    An array with the data
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Empty</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="costs-add">Add</span>
+                                            <ul data-type="multiple" data-name="costs">
+                                                <li>
+                                                    <label>Name</label><input type="text" name="name" />
+                                                    <label>Cost</label><input type="text" name="cost" value="100" />
+                                                    <span class="costs-remove">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;costs-add&#x22;&#x3E;Add&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;multiple&#x22; data-name=&#x22;costs&#x22;&#x3E;
+    &#x3C;li&#x3E;
+        &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;name&#x22; /&#x3E;
+        &#x3C;label&#x3E;Cost&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;cost&#x22; value=&#x22;100&#x22; /&#x3E;
+        &#x3C;span class=&#x22;costs-remove&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+    &#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>Request sent</h6>
+                                        <code data-type="codeeditor" data-lang="javascript">$POST[&#x27;costs&#x27;] = [
+&#x9;[
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;value&#x27;,
+&#x9;&#x9;&#x27;cost&#x27; =&#x3E; &#x27;value&#x27;
+&#x9;],
+&#x9;[
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;value&#x27;,
+&#x9;&#x9;&#x27;cost&#x27; =&#x3E; &#x27;value&#x27;
+&#x9;],
+&#x9;....
+];</code>
+                                    </div>
+                                    <h4>With selected data</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple2-add">Add</span>
+                                            <ul data-type="multiple" data-name="multiple2" data-values='[{"name":"Ejemplo1","cost":"100"},{"name":"Ejemplo2","cost":"200"},{"name":"Ejemplo3","cost":"300"}]'>
+                                                <li>
+                                                    <label>Name</label><input type="text" name="name" />
+                                                    <label>Cost</label><select name="cost">
+                                                        <option value="100">100</option>
+                                                        <option value="200">200</option>
+                                                        <option value="300">300</option>
+                                                    </select>
+                                                    <span class="multiple2-remove">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>PHP Code</h6>
+                                        <code data-type="codeeditor" data-lang="php">&#x3C;?php
+$array = array(
+&#x9;0 =&#x3E; array(
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;Ejemplo1&#x27;,
+&#x9;&#x9;&#x27;cost&#x27;&#x9;=&#x3E; &#x27;100&#x27;,
+&#x9;),
+&#x9;1 =&#x3E; array(
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;Ejemplo2&#x27;,
+&#x9;&#x9;&#x27;cost&#x27;&#x9;=&#x3E; &#x27;200&#x27;,
+&#x9;),
+&#x9;2 =&#x3E; array(
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;Ejemplo3&#x27;,
+&#x9;&#x9;&#x27;cost&#x27;&#x9;=&#x3E; &#x27;300&#x27;,
+&#x9;),
+);
+$array = json_encode($array);
+?&#x3E;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;costs-add&#x22;&#x3E;Add&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;multiple&#x22; data-name=&#x22;costs&#x22; data-values=&#x27;&#x3C;?php echo $array; ?&#x3E;&#x27;&#x3E;
+&#x9;&#x3C;li&#x3E;
+&#x9;    &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;name&#x22; /&#x3E;
+&#x9;    &#x3C;label&#x3E;Cost&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;cost&#x22; value=&#x22;100&#x22; /&#x3E;
+&#x9;    &#x3C;span class=&#x22;costs-remove&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+&#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+
+                                    <h4>Works with this library</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple3-add">Add</span>
+                                            <ul data-type="multiple" data-name="multiple3">
+                                                <li>
+                                                    <label>Name</label><input type="text" name="name" />
+                                                    <label>Date</label><input type="text" data-type="date" name="name" />
+                                                    <label>Color</label><input type="text" data-type="color" name="name" />
+                                                    <span class="multiple3-remove">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple3-add&#x22;&#x3E;Add&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;multiple&#x22; data-name=&#x22;multiple3&#x22;&#x3E;
+&#x9;&#x3C;li&#x3E;
+&#x9;    &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;name&#x22; /&#x3E;
+&#x9;    &#x3C;label&#x3E;Date&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;date&#x22; name=&#x22;name&#x22; /&#x3E;
+&#x9;    &#x3C;label&#x3E;Color&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; name=&#x22;name&#x22; /&#x3E;
+&#x9;    &#x3C;span class=&#x22;multiple3-remove&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+&#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                    <h4>Bidimensional</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple4-add-row">Add row</span>
+                                            <ul data-type="bimultiple" data-name="multiple4">
+                                                <li>
+                                                    <ul>
+                                                        <li>
+                                                            <label>Name</label><input type="text" data-type="color" />
+                                                            <span class="multiple4-remove-column">Remove</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span class="multiple4-add-column">Add</span>
+                                                    <span class="multiple4-remove-row">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple4-add-row&#x22;&#x3E;Add row&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;bimultiple&#x22; data-name=&#x22;multiple4&#x22;&#x3E;
+    &#x3C;li&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li&#x3E;
+                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; /&#x3E;
+                &#x3C;span class=&#x22;multiple4-remove-column&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+            &#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+        &#x3C;span class=&#x22;multiple4-add-column&#x22;&#x3E;Add&#x3C;/span&#x3E;
+        &#x3C;span class=&#x22;multiple4-remove-row&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+    &#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                    <h4>Bidimensional with data</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple5-add-row">Add row</span>
+                                            <ul data-type="bimultiple" data-name="multiple5" data-values='[["#fff","#000","#ddd"],["#333","#fff","#ddd", "#888"]]'>
+                                                <li>
+                                                    <ul>
+                                                        <li>
+                                                            <label>Name</label><input type="text" data-type="color" />
+                                                            <span class="multiple5-remove-column">Remove</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span class="multiple5-add-column">Add</span>
+                                                    <span class="multiple5-remove-row">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple5-add-row&#x22;&#x3E;Add row&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;bimultiple&#x22; data-name=&#x22;multiple5&#x22; data-values=&#x27;[[&#x22;#fff&#x22;,&#x22;#000&#x22;,&#x22;#ddd&#x22;],[&#x22;#333&#x22;,&#x22;#fff&#x22;,&#x22;#ddd&#x22;, &#x22;#888&#x22;]]&#x27;&#x3E;
+    &#x3C;li&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li&#x3E;
+                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; /&#x3E;
+                &#x3C;span class=&#x22;multiple5-remove-column&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+            &#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+        &#x3C;span class=&#x22;multiple5-add-column&#x22;&#x3E;Add&#x3C;/span&#x3E;
+        &#x3C;span class=&#x22;multiple5-remove-row&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+    &#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="hierarchical" class="section-block">
+                                    <h3>Hierarchical</h3>
+                                    <p>Sends <em>$_GET["id"]</em> to file, you need to send a json with key and value (title). Add <em>data-parent</em> attribute to select who should be the default parent. With <em>data-value-parent</em> will select automatically the value, add "," to separate actions.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://code.google.com/archive/p/jquery-option-tree/" target="_blank">
+                                                        OptionTree
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>src</em>, <em>name</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Additional Attributes</th>
+                                                <td>
+                                                    <em>data-value-select</em>: Allow to preselect values
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Key of the last selected children.
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="category" data-type="hselect" src="https://libraries.weblabor.mx/easy-js-library/get-subtree.php" data-value-select="220,226" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input 
+    type=&quot;text&quot; 
+    name=&quot;category&quot; 
+    data-type=&quot;hselect&quot; 
+    src=&quot;get-subtree.php&quot; 
+    data-value-select=&quot;220,226&quot;
+/&gt;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>PHP Code</h6>
+                                        <code data-type="codeeditor" data-lang="php">&#x3C;?php
+header(&#x27;Access-Control-Allow-Origin: *&#x27;);
+$id = (isset($_GET[&#x27;id&#x27;]) &#x26;&#x26; is_numeric($_GET[&#x27;id&#x27;]) ? (int) $_GET[&#x27;id&#x27;] : null);
+echo json_encode(getChildsOf($id)); // Call method for getting childs in base of an ID
+?&#x3E;
+</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>JSON Example</h6>
+                                        <code data-type="codeeditor" data-lang="json">{
+&#x9;&#x22;0&#x22;:&#x22;Animals&#x22;,
+&#x9;&#x22;18&#x22;:&#x22;Arts &#x26; Entertainment&#x22;,
+&#x9;&#x22;220&#x22;:&#x22;Baby &#x26; Toddler&#x22;,
+&#x9;&#x22;252&#x22;:&#x22;Business &#x26; Industrial&#x22;,
+&#x9;&#x22;340&#x22;:&#x22;Cameras &#x26; Optics&#x22;,
+&#x9;&#x22;412&#x22;:&#x22;Clothing &#x26; Accessories&#x22;,
+&#x9;&#x22;602&#x22;:&#x22;Electronics&#x22;,
+&#x9;&#x22;954&#x22;:&#x22;Food, Beverages &#x26; Tobacco&#x22;,
+&#x9;&#x22;1048&#x22;:&#x22;Furniture&#x22;,
+&#x9;&#x22;1123&#x22;:&#x22;Hardware&#x22;,
+&#x9;&#x22;1528&#x22;:&#x22;Health &#x26; Beauty&#x22;,
+&#x9;&#x22;1694&#x22;:&#x22;Home &#x26; Garden&#x22;,
+&#x9;&#x22;2247&#x22;:&#x22;Luggage&#x22;,
+&#x9;&#x22;2272&#x22;:&#x22;Mature&#x22;,
+&#x9;&#x22;2296&#x22;:&#x22;Media&#x22;,
+&#x9;&#x22;2635&#x22;:&#x22;Office Supplies&#x22;,
+&#x9;&#x22;2744&#x22;:&#x22;Software&#x22;,
+&#x9;&#x22;2790&#x22;:&#x22;Sporting Goods&#x22;,
+&#x9;&#x22;3369&#x22;:&#x22;Toys &#x26; Games&#x22;,
+&#x9;&#x22;3496&#x22;:&#x22;Vehicles &#x26; Parts&#x22;
+}
+</code>
+                                    </div>
+                                </div>
+
+                                <div id="date" class="section-block">
+                                    <h3>Dates</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>lang</em>: (Default <em>en</em>) for selecting the language (Example <em>en</em>, <em>es</em>, etc) </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The date value
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Date</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="date" data-type="date" lang="es" value="2015-12-01" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; name=&#x22;date&#x22; data-type=&#x22;date&#x22; lang=&#x22;es&#x22; value=&#x22;2015-12-01&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Datetime</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="date" data-type="datetime" lang="es" value="2015-12-01 00:00" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; name=&#x22;datetime&#x22; data-type=&#x22;datetime&#x22; lang=&#x22;es&#x22; value=&#x22;2015-12-01 00:00&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Time</h4>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="http://jonthornton.github.io/jquery-timepicker/" target="_blank">
+                                                        Jquery.timepicker
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.8.8</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The time value
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="time" data-type="time" value="15:06"/>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; name=&#x22;time&#x22; data-type=&#x22;time&#x22; value=&#x22;15:06&#x22;/&#x3E;</code>
+                                    </div>
+
+                                    <h4>Date 2nd style</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="midate" data-type="date2" lang="es" value="2015-02-04" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;date2&quot; lang=&quot;es&quot; /&gt;</code>
+                                    </div>
+                                </div>
+
+                                <div id="wysiwyg" class="section-block">
+                                    <h3>WYSIWYG</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://www.froala.com/wysiwyg-editor" target="_blank">
+                                                        Froala Editor
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v2.4.0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>textarea</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The text in HTML Format
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <textarea data-type="wysiwyg" name="wysiwyg"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;textarea data-type=&quot;wysiwyg&quot;&gt;&lt;/textarea&gt;</code>
+                                    </div>
+                                </div>
+
+                                <div id="autocomplete" class="section-block">
+                                    <h3>Autocomplete</h3>
+                                    <p>Autocompletes a text field. It is necessary the name attribute. The PHP Code recieves <em>$_GET['term']</em> with the searched word</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://jqueryui.com" target="_blank">
+                                                        Jquery UI
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.11.4</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>name</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-selected-value</em>, <em>data-selected-text</em>, <em>data-reload</em>, <em>data-action</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The Key of the selected value
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Empty Field</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input data-type="autocomplete" name="aut" src="https://libraries.weblabor.mx/easy-js-library/autocomplete.php" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input data-type=&quot;autocomplete&quot; name=&quot;aut&quot; src=&quot;autocomplete.php&quot; /&gt;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>PHP Code</h6>
+                                        <code data-type="codeeditor" data-lang="php">&#x3C;?php
+$res = array();
+// id is what is passed to the field
+$res[] = array(&#x22;label&#x22;=&#x3E;$_GET[&#x22;term&#x22;], &#x22;id&#x22; =&#x3E; 99, &#x22;value&#x22; =&#x3E; $_GET[&#x22;term&#x22;]);
+$res[] = array(&#x22;label&#x22;=&#x3E;&#x22;dos&#x22;, &#x22;id&#x22; =&#x3E; 2, &#x22;value&#x22; =&#x3E; &#x22;dos&#x22;);
+$res[] = array(&#x22;label&#x22;=&#x3E;&#x22;tres&#x22;, &#x22;id&#x22; =&#x3E; 3, &#x22;value&#x22; =&#x3E; &#x22;tres&#x22;);
+print json_encode($res);
+?&#x3E;</code>
+                                    </div>
+                                    <h4>With selected data</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input data-type="autocomplete" data-selected-text="Hola" data-selected-value="valor" name="aut20" src="https://libraries.weblabor.mx/easy-js-library/autocomplete.php" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input 
+    data-type=&quot;autocomplete&quot; 
+    data-selected-text=&quot;Hola&quot; 
+    data-selected-value=&quot;valor&quot; 
+    name=&quot;aut20&quot;
+    src=&quot;autocomplete.php&quot; 
+/&gt;</code>
+                                    </div>
+                                    <h4>With reload and with action</h4>
+                                    <p>It will be send a <em>$_POST['result']</em> variable with the selected data. First the action will be called and then it will be reloaded.</p>
+                                    <p>This option is used for saving the selected data and then reload the website, ideally for saving languages, timezones, etc.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input data-type="autocomplete" name="aut2" src="https://libraries.weblabor.mx/easy-js-library/autocomplete.php" data-reload="true" data-action="https://libraries.weblabor.mx/easy-js-library/sautocomplete.php" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html" data-lines="false">&lt;input data-type=&quot;autocomplete&quot; name=&quot;aut2&quot; src=&quot;autocomplete.php&quot; data-reload=&quot;true&quot; data-action=&quot;sautocomplete.php&quot; /&gt;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>Example of <em>$_POST["result"]</em></h6>
+                                        <code data-type="codeeditor" data-lang="html">object(stdClass)#1 (3) {
+    ["label"]=>
+    string(3) "aaa"
+    ["id"]=>
+    int(99)
+    ["value"]=>
+    string(3) "aaa"
+}</code>
+                                    </div>
+                                </div>
+
+                                <div id="button" class="section-block">
+                                    <h3>Buttons</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://jqueryui.com" target="_blank">
+                                                        Jquery UI
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.11.4</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The selected value(s)
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Checkbox</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type='button'>
+                                                <input type="checkbox" name="checkbutton[]" value="l" id="check1"><label for="check1">Lunes</label>
+                                                <input type="checkbox" name="checkbutton[]" value="m" id="check2"><label for="check2">Martes</label>
+                                                <input type="checkbox" name="checkbutton[]" value="w" id="check3"><label for="check3">Miércoles</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;div data-type=&#x27;button&#x27;&#x3E;
+    &#x3C;input type=&#x22;checkbox&#x22; name=&#x22;checkbutton[]&#x22; value=&#x22;l&#x22; id=&#x22;check1&#x22;&#x3E;&#x3C;label for=&#x22;check1&#x22;&#x3E;Lunes&#x3C;/label&#x3E;
+    &#x3C;input type=&#x22;checkbox&#x22; name=&#x22;checkbutton[]&#x22; value=&#x22;m&#x22; id=&#x22;check2&#x22;&#x3E;&#x3C;label for=&#x22;check2&#x22;&#x3E;Martes&#x3C;/label&#x3E;
+    &#x3C;input type=&#x22;checkbox&#x22; name=&#x22;checkbutton[]&#x22; value=&#x22;w&#x22; id=&#x22;check3&#x22;&#x3E;&#x3C;label for=&#x22;check3&#x22;&#x3E;Mi&#xE9;rcoles&#x3C;/label&#x3E;
+&#x3C;/div&#x3E;</code>
+                                    </div>
+                                    <h4>Radiobutton</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type='button'>
+                                                <input type="radio" name="radiobutton" value="l" id="scheck1"><label for="scheck1">Lunes</label>
+                                                <input type="radio" name="radiobutton" value="m" id="scheck2"><label for="scheck2">Martes</label>
+                                                <input type="radio" name="radiobutton" value="w" id="scheck3"><label for="scheck3">Miércoles</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;div data-type=&#x27;button&#x27;&#x3E;
+    &#x3C;input type=&#x22;radio&#x22; name=&#x22;radiobutton&#x22; value=&#x22;l&#x22; id=&#x22;scheck1&#x22;&#x3E;&#x3C;label for=&#x22;scheck1&#x22;&#x3E;Lunes&#x3C;/label&#x3E;
+    &#x3C;input type=&#x22;radio&#x22; name=&#x22;radiobutton&#x22; value=&#x22;m&#x22; id=&#x22;scheck2&#x22;&#x3E;&#x3C;label for=&#x22;scheck2&#x22;&#x3E;Martes&#x3C;/label&#x3E;
+    &#x3C;input type=&#x22;radio&#x22; name=&#x22;radiobutton&#x22; value=&#x22;w&#x22; id=&#x22;scheck3&#x22;&#x3E;&#x3C;label for=&#x22;scheck3&#x22;&#x3E;Mi&#xE9;rcoles&#x3C;/label&#x3E;
+&#x3C;/div&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="slider" class="section-block">
+                                    <h3>Sliders</h3>
+
+                                    <table class="table descriptional">
+                                        <tbody>
+                                           <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://jqueryui.com" target="_blank">
+                                                        Jquery UI
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.11.4</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-max</em>,  <em>data-min</em>, <em>data-slider</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-step</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The value of the slider
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Range</h4>
+                                    <p>To show the values dynamictly you should call <em>name+'min'</em> or <em>name+'max'</em>. For example if the name of the input is <em>example</em> to show the minimum value selected you shoud add <em>&#x3C;span id=&#x22;example-min&#x22;&#x3E;&#x3C;/span&#x3E;</em></p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div style="width:200px;">
+                                                <p>$<span id="slider-min">100</span> - $<span id="slider-max">200</span></p>
+                                                <input data-type="slider" data-slider="range" data-max="200" data-min="100" name="slider" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;p&gt;$&lt;span id=&quot;slider-min&quot;&gt;100&lt;/span&gt; - $&lt;span id=&quot;slider-max&quot;&gt;200&lt;/span&gt;&lt;/p&gt;
+&lt;input data-type=&quot;slider&quot; data-slider=&quot;range&quot; data-max=&quot;200&quot; data-min=&quot;100&quot; name=&quot;slider&quot; /&gt;</code>
+                                    </div>
+                                    <h4>Increments</h4>
+                                    <p>To show the values dynamictly you should call <em>name+'val'</em>. For example if the name of the input is <em>example</em> to show the minimum value selected you shoud add <em>&#x3C;span id=&#x22;example-val&#x22;&#x3E;&#x3C;/span&#x3E;</em></p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div style="width:200px;">
+                                                <p>$<span id="slider2-val">0</span></p>
+                                                <input data-type="slider" data-slider="increments" data-max="20" data-min="0.5" data-step="0.5" name="slider2" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;p&gt;$&lt;span id=&quot;slider2-val&quot;&gt;100&lt;/span&gt;&lt;/p&gt;
+&lt;input data-type=&quot;slider&quot; data-slider=&quot;increments&quot; data-max=&quot;20&quot; data-min=&quot;0.5&quot; data-step=&quot;0.5&quot; name=&quot;slider2&quot; /&gt;</code>
+                                    </div>
+                                </div>
+
+                                <div id="code-editor" class="section-block">
+                                    <h3>Code Editor</h3>
+                                    <p>Se color can be selected between: black, white, gray and blue with data-color property</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://ace.c9.io/" target="_blank">
+                                                        Ace
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>textarea</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-lang</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The code written
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <textarea data-type="codeeditor" data-lang="javascript" data-color="black" name="code">function foo(items) {
+    var x = "All this is syntax highlighted";
+    return x;
+}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;textarea data-type=&quot;codeeditor&quot; data-lang=&quot;javascript&quot; data-color=&quot;black&quot; name=&quot;code&quot;&gt;
+    function foo(items) {
+        var x = &quot;All this is syntax highlighted&quot;;
+        return x;
+    }
+&lt;/textarea&gt;</code>
+                                    </div>
+                                </div>
+
+                                <div id="imgur" class="section-block">
+                                    <h3>Imgur Uploader</h3>
+                                    <p>Librery used for uploading images easily to Imgur. You will get the final url on the input.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://weblabormx.github.io/Imgur-JS-Uploader" target="_blank">
+                                                        Imgur JS Uploader
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Newest (Using CDN)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The image url
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input data-type='imgur' type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input data-type='imgur' type=&quot;text&quot; /&gt;</code>
+                                    </div>
+                                </div>
+
+                                <div id="conditional" class="section-block">
+                                    <h3>Conditional</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://github.com/renvrant/conditionize.js" target="_blank">
+                                                        Conditionize.js
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>div</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <label><input type="radio" name="example1" value="yes"><span></span> Yes</label>
+                                            <label><input type="radio" name="example1" value="no"><span></span> No</label>
+
+                                            <div data-type="conditional" data-cond-option="example1" data-cond-value="yes">
+                                                <label><input type="checkbox" name="example2"><span></span> Are you sure?</label>
+                                                <label><input type="checkbox" name="example3"><span></span> Really super sure?</label>
+                                                
+                                                <div data-type="conditional" data-cond-option="example2" data-cond-value="on">
+                                                    Hooray!
+                                                </div>
+                                                <div data-type="conditional" data-cond-option="example3" data-cond-value="on">
+                                                    Don't get cocky!
+                                                </div>
+                                            </div>
+                                            
+                                            <div data-type="conditional" data-cond-option="example1" data-cond-value="no">
+                                                <p>That's a shame. Will you change your mind?</p>
+                                                
+                                                <label><input type="radio" name="example4" value="yes"><span></span> Yes</label>
+                                                <label><input type="radio" name="example4" value="no"><span></span> No</label>
+                                                
+                                                <div data-type="conditional" data-cond-option="example4" data-cond-value="yes">
+                                                    Great!
+                                                </div>
+                                            </div>
+                                            
+                                            <p>
+                                                <label>or choose:</label>
+                                                <select class="select" name="example5">
+                                                    <option>Pick one!</option>
+                                                    <option value="yes">Yes!</option>
+                                                    <option value="no">No!</option>
+                                                </select>
+                                            </p>
+                                            <div data-type="conditional" data-cond-option="example5" data-cond-value="yes">
+                                                Works with selects!
+                                            </div>
+                                             <p>
+                                                <label>or type:</label>
+                                                <input type="text" name="example6" placeholder="yay">
+                                            </p>
+                                            <div data-type="conditional" data-cond-option="example6" data-cond-value="yay">
+                                                Works with text input
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
+
+&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example1&quot; data-cond-value=&quot;yes&quot;&gt;
+    &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example2&quot;&gt;&lt;span&gt;&lt;/span&gt; Are you sure?&lt;/label&gt;
+    &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example3&quot;&gt;&lt;span&gt;&lt;/span&gt; Really super sure?&lt;/label&gt;
+    
+    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example2&quot; data-cond-value=&quot;on&quot;&gt;
+        Hooray!
+    &lt;/div&gt;
+    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example3&quot; data-cond-value=&quot;on&quot;&gt;
+        Don't get cocky!
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example1&quot; data-cond-value=&quot;no&quot;&gt;
+    &lt;p&gt;That's a shame. Will you change your mind?&lt;/p&gt;
+    
+    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
+    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
+    
+    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example4&quot; data-cond-value=&quot;yes&quot;&gt;
+        Great!
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+    &lt;label&gt;or choose:&lt;/label&gt;
+    &lt;select class=&quot;select&quot; name=&quot;example5&quot;&gt;
+        &lt;option&gt;Pick one!&lt;/option&gt;
+        &lt;option value=&quot;yes&quot;&gt;Yes!&lt;/option&gt;
+        &lt;option value=&quot;no&quot;&gt;No!&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/p&gt;
+&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example5&quot; data-cond-value=&quot;yes&quot;&gt;
+    Works with selects!
+&lt;/div&gt;
+ &lt;p&gt;
+    &lt;label&gt;or type:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; name=&quot;example6&quot; placeholder=&quot;yay&quot;&gt;
+&lt;/p&gt;
+&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example6&quot; data-cond-value=&quot;yay&quot;&gt;
+    Works with text input
+&lt;/div&gt;</code>
+                                    </div>
+                                </div>
+
+                                <div id="validation" class="section-block">
+                                    <h3>Validation</h3>
+                                    <p>This features add patterns automatically for validating the data.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-validation</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Alpha Numeric</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="alphanumeric" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;alphanumeric&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Numeric</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="numeric" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;numeric&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>URL</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="url" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;url&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Day</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="day" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;day&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Year</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="year" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;year&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Email</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="email" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-validation=&#x22;email&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Two fields check</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-validation="same" for="field-two" />
+                                            <input type="text" id="field-two" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-validation=&quot;same&quot; for=&quot;field-two&quot; /&gt;
+&lt;input type=&quot;text&quot; id=&quot;field-two&quot; /&gt;</code>
+                                    </div>
+                                </div>
+
+                                <div id="slug" class="section-block">
+                                    <h3>Slug Generator</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The slug
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <label>Title</label><br />
+                                            <input type="text" id="copyHere" placeholder="Title" /><br /><br />
+                                            <label>Slug</label><br />
+                                            <input data-type='slug' for="copyHere" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&&lt;input type=&quot;text&quot; id=&quot;copyHere&quot; placeholder=&quot;Title&quot; /&gt;
+&lt;input data-type=&quot;slug&quot; for=&quot;copyHere&quot; type=&quot;text&quot; /&gt;</code>
+                                    </div>
+                                </div>
+
+                                <div id="color" class="section-block">
+                                    <h3>Color Picker</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="http://www.dematte.at/tinyColorPicker/" target="_blank">
+                                                        jqColorPicker
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.0.4</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The color in hexadecimal
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="color" value="#ccc" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;color&quot; /&gt;</code>
+                                    </div>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="messages-section" class="doc-section">
+                                <h2 class="section-title">Messages</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Examples of code used for messages.
+                                    </p>
+                                </div>
+                                <div id="confirm" class="section-block">
+                                    <h3>Confirm</h3>
+                                    <p><em>data-action</em> will tell you what to load (in ajax and in post) after someone click yes, then it will reload.</p>
+                                    <p>You can use <em>data-redirection</em> to put a redirection url, and <em>data-variables</em> to put the variables to send via ajax. The data is sent via post.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://lobianijs.com/site/lobibox" target="_blank">
+                                                        Lobibox
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>a</em>, <em>button</em>, etc</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-action</em>, <em>data-info</em>, <em>title</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-button-yes</em>, <em>data-button-no</em> (By default on English)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Actions</th>
+                                                <td>
+                                                    Make a post request to the file added on <em>data-action</em>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <button data-type="confirm" title="Are you sure?" data-info="This will delete all the data" data-button-yes="Yep" data-button-no="Noup" data-action="README.md">Delete</button>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;button 
+    data-type=&quot;confirm&quot; 
+    title=&quot;Are you sure?&quot; 
+    data-info=&quot;This will delete all the data&quot; 
+    data-button-yes=&quot;Yep&quot; 
+    data-button-no=&quot;Noup&quot; 
+    data-action=&quot;README.md&quot;&gt;
+        Delete
+&lt;/button&gt;</code>
+                                    </div>
+                                </div>
+                                <div id="prompt" class="section-block">
+                                    <h3>Prompt</h3>
+                                    <p>Ask for data easily.</p>
+                                    <p><em>data-action</em> will tell you what to load (in ajax and in post will send a variable called "value") after someone click Ok, then it will reload.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://lobianijs.com/site/lobibox" target="_blank">
+                                                        Lobibox
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>a</em>, <em>button</em>, etc</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-action</em>, <em>title</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-button-ok</em>, <em>data-button-cancel</em> (By default on English)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Actions</th>
+                                                <td>
+                                                    Make a post request to the file added on <em>data-action</em>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <button data-type="prompt" title="Whats your name" data-button-ok="Chido one" data-button-cancel="Nopi" data-action="README.md">Add a name</button>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;button 
+    data-type=&quot;prompt&quot; 
+    title=&quot;Whats your name&quot; 
+    data-button-ok=&quot;Chido one&quot; 
+    data-button-cancel=&quot;Nopi&quot; 
+    data-action=&quot;README.md&quot;&gt;
+        Add a name
+&lt;/button&gt;</code>
+                                    </div>
+                                </div>
+                            </section>
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar hidden-xs">
+                        <nav id="doc-nav">
+                            <ul id="doc-menu" class="nav doc-menu" data-spy="affix">
+                                <li><a class="scrollto" href="#use-section">Use</a></li>
+                                <li>
+                                    <a class="scrollto" href="#forms-section">Forms</a>
+                                    <ul class="nav doc-sub-menu">
+                                        <li><a class="scrollto" href="#tags">Tags</a></li>
+                                        <li><a class="scrollto" href="#multiple">Multiple</a></li>
+                                        <li><a class="scrollto" href="#hierarchical">Hierarchical</a></li>
+                                        <li><a class="scrollto" href="#date">Dates</a></li>
+                                        <li><a class="scrollto" href="#wysiwyg">WYSIWYG Editor</a></li>
+                                        <li><a class="scrollto" href="#autocomplete">Autocomplete</a></li>
+                                        <li><a class="scrollto" href="#button">Buttons</a></li>
+                                        <li><a class="scrollto" href="#slider">Sliders</a></li>
+                                        <li><a class="scrollto" href="#code-editor">Code Editor</a></li>
+                                        <li><a class="scrollto" href="#imgur">Imgur Uploader</a></li>
+                                        <li><a class="scrollto" href="#conditional">Conditional</a></li>
+                                        <li><a class="scrollto" href="#validation">Validation</a></li>
+                                        <li><a class="scrollto" href="#slug">Slug Generator</a></li>
+                                        <li><a class="scrollto" href="#color">Color picker</a></li>
+                                    </ul><!--//nav-->
+                                </li>
+                                <li>
+                                    <a class="scrollto" href="#messages-section">Messages</a>
+                                    <ul class="nav doc-sub-menu">
+                                        <li><a class="scrollto" href="#confirm">Confirm</a></li>
+                                        <li><a class="scrollto" href="#prompt">Prompt</a></li>
+                                    </ul>
+                                </li>
+                            </ul><!--//doc-menu-->
+                        </nav>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <small class="copyright">Library made with <i class="fa fa-heart"></i> by <a href="http://weblabor.mx/" targe="_blank">Carlos Escobar</a> for developers</small><br />
+            
+            <small class="copyright">Template Designed by <a href="http://themes.3rdwavemedia.com/" targe="_blank">Xiaoying Riley</a></small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>                  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="library/script.js"></script>
+    
 </body>
-</html>
+</html> 
+
