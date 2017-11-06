@@ -63,7 +63,9 @@
                 var these = this;
                 var find = this.divname+"\\[0\\]";
                 var regex = new RegExp(find, "g");
-                var htmln = this.html.replace(regex, this.divname+"["+this.cont+"]");
+                var htmln = this.html
+                    .replace(regex, this.divname+"["+this.cont+"]")
+                    .replace('EJLClass', '');
 
                 item.append(htmln);
 

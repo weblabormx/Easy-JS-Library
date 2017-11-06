@@ -12,7 +12,6 @@ function LibraryLoaded() {
     this.executeFunction = function() {
         if(!this.loaded)
             return;
-
         var selector = $(this.name);
 
         if(this.function_be!=null && this.function_be!=undefined)
@@ -21,13 +20,20 @@ function LibraryLoaded() {
         if(this.eachable) {
             var these = this;
             selector.each(function() {
-                these.function_ex($(this));
+                var sel = $(this);
+                these.function_ex(sel);
+                these.executeFunctionAfter(sel);
             });
         } else {
             this.function_ex(selector);
+            this.executeFunctionAfter(selector);
         }
+            
+    }
+
+    this.executeFunctionAfter = function(selector) {
         if(this.function_af!=null && this.function_af!=undefined)
-            this.function_af(selector)
+            this.function_af(selector);
     }
 }
 
@@ -131,8 +137,10 @@ function EasyController() {
                 these.addCss(item);
             });
 
-            if(variables.js.length == 0)
+            if(variables.js.length == 0) {
+                library.loaded = true;
                 library.executeFunction();
+            }
 
         }
     }
@@ -170,8 +178,10 @@ function EasyController() {
                 these.addCss(item);
             });
 
-            if(variables.js.length == 0)
+            if(variables.js.length == 0) {
+                library.loaded = true;
                 library.executeFunction();
+            }
 
         }
     }
@@ -210,8 +220,10 @@ function EasyController() {
                 these.addCss(item);
             });
 
-            if(variables.js.length == 0)
+            if(variables.js.length == 0) {
+                library.loaded = true;
                 library.executeFunction();
+            }
 
         }
     }
@@ -610,9 +622,7 @@ function EasyJsLibrary() {
             data_type: 'slug',
             selector: 'input',
         }, function(item) {
-
             var parent = item.attr('for');
-            console.log("#"+parent );
             //item.attr('disabled','disabled');
             $( "#"+parent ).keyup(function() {
                 var val = $("#"+parent).val();
@@ -647,6 +657,14 @@ function EasyJsLibrary() {
             js: this.url+"weblabormx/multipleDiv.js"
         }, function(item) {
             item.multipleDiv(function() { these.execute(); });
+        });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'bimultiple',
+            js: this.url+"weblabormx/biMultiple.js"
+        }, function(item) {
+            item.biMultiple(function() { these.execute(); });
         });
         
     }

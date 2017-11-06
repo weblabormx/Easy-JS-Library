@@ -204,18 +204,18 @@
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <span id="multiple2-add">Agregar</span>
-        <ul data-type="multiple" data-name="multiple2" data-values='[{"nombre":"Ejemplo1","costo":"100"},{"nombre":"Ejemplo2","costo":"200"},{"nombre":"Ejemplo3","costo":"300"}]'>
-            <li>
-                <label>Nombre</label><input type="text" name="nombre" />
-                <label>Costo</label><select name="costo">
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                    <option value="300">300</option>
-                </select>
-                <span class="multiple2-remove">Eliminar</span>
-            </li>
-        </ul>
+                                            <span id="multiple2-add">Add</span>
+                                            <ul data-type="multiple" data-name="multiple2" data-values='[{"name":"Ejemplo1","cost":"100"},{"name":"Ejemplo2","cost":"200"},{"name":"Ejemplo3","cost":"300"}]'>
+                                                <li>
+                                                    <label>Name</label><input type="text" name="name" />
+                                                    <label>Cost</label><select name="cost">
+                                                        <option value="100">100</option>
+                                                        <option value="200">200</option>
+                                                        <option value="300">300</option>
+                                                    </select>
+                                                    <span class="multiple2-remove">Remove</span>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div class="code-block">
@@ -247,6 +247,104 @@ $array = json_encode($array);
 &#x9;    &#x3C;label&#x3E;Cost&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;cost&#x22; value=&#x22;100&#x22; /&#x3E;
 &#x9;    &#x3C;span class=&#x22;costs-remove&#x22;&#x3E;Remove&#x3C;/span&#x3E;
 &#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+
+                                    <h4>Works with this library</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple3-add">Add</span>
+                                            <ul data-type="multiple" data-name="multiple3">
+                                                <li>
+                                                    <label>Name</label><input type="text" name="name" />
+                                                    <label>Date</label><input type="text" data-type="date" name="name" />
+                                                    <label>Color</label><input type="text" data-type="color" name="name" />
+                                                    <span class="multiple3-remove">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple3-add&#x22;&#x3E;Add&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;multiple&#x22; data-name=&#x22;multiple3&#x22;&#x3E;
+&#x9;&#x3C;li&#x3E;
+&#x9;    &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;name&#x22; /&#x3E;
+&#x9;    &#x3C;label&#x3E;Date&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;date&#x22; name=&#x22;name&#x22; /&#x3E;
+&#x9;    &#x3C;label&#x3E;Color&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; name=&#x22;name&#x22; /&#x3E;
+&#x9;    &#x3C;span class=&#x22;multiple3-remove&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+&#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                    <h4>Bidimensional</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple4-add-row">Add row</span>
+                                            <ul data-type="bimultiple" data-name="multiple4">
+                                                <li>
+                                                    <ul>
+                                                        <li>
+                                                            <label>Name</label><input type="text" data-type="color" />
+                                                            <span class="multiple4-remove-column">Remove</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span class="multiple4-add-column">Add</span>
+                                                    <span class="multiple4-remove-row">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple4-add-row&#x22;&#x3E;Add row&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;bimultiple&#x22; data-name=&#x22;multiple4&#x22;&#x3E;
+    &#x3C;li&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li&#x3E;
+                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; /&#x3E;
+                &#x3C;span class=&#x22;multiple4-remove-column&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+            &#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+        &#x3C;span class=&#x22;multiple4-add-column&#x22;&#x3E;Add&#x3C;/span&#x3E;
+        &#x3C;span class=&#x22;multiple4-remove-row&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+    &#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                    <h4>Bidimensional with data</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple5-add-row">Add row</span>
+                                            <ul data-type="bimultiple" data-name="multiple5" data-values='[["#fff","#000","#ddd"],["#333","#fff","#ddd", "#888"]]'>
+                                                <li>
+                                                    <ul>
+                                                        <li>
+                                                            <label>Name</label><input type="text" data-type="color" />
+                                                            <span class="multiple5-remove-column">Remove</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span class="multiple5-add-column">Add</span>
+                                                    <span class="multiple5-remove-row">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple5-add-row&#x22;&#x3E;Add row&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;bimultiple&#x22; data-name=&#x22;multiple5&#x22; data-values=&#x27;[[&#x22;#fff&#x22;,&#x22;#000&#x22;,&#x22;#ddd&#x22;],[&#x22;#333&#x22;,&#x22;#fff&#x22;,&#x22;#ddd&#x22;, &#x22;#888&#x22;]]&#x27;&#x3E;
+    &#x3C;li&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li&#x3E;
+                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; /&#x3E;
+                &#x3C;span class=&#x22;multiple5-remove-column&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+            &#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+        &#x3C;span class=&#x22;multiple5-add-column&#x22;&#x3E;Add&#x3C;/span&#x3E;
+        &#x3C;span class=&#x22;multiple5-remove-row&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+    &#x3C;/li&#x3E;
 &#x3C;/ul&#x3E;</code>
                                     </div>
                                 </div>
@@ -698,7 +796,7 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Required Attributes</th>
-                                                <td><em>data-max</em>,  <em>data-min</em></td>
+                                                <td><em>data-max</em>,  <em>data-min</em>, <em>data-slider</em></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Optional Attributes</th>
