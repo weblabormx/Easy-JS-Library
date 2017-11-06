@@ -633,6 +633,14 @@ function EasyJsLibrary() {
         }, function(item) {
             item.dataValidate();
         });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
+            data_type: 'multiple',
+            js: this.url+"weblabormx/multipleDiv.js"
+        }, function(item) {
+            item.multipleDiv(function() { these.execute(); });
+        });
         
     }
 

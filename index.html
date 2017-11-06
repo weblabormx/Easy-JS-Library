@@ -139,7 +139,7 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
-                                                <td><em>input</em></td>
+                                                <td>Everything</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Required Attributes</th>
@@ -156,12 +156,30 @@
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <span id="shipment.weight_costs-add">Agregar</span>
+                                            <ul data-type="multiple" data-name="shipment.weight_costs" data-load="loadEveryTime">
+                                                <li>
+                                                    <label>Nombre</label><input type="text" name="nombre" />
+                                                    <label>Costo</label><input type="text" name="costo" value="100" />
+                                                    <label>Obligatorio</label>
+                                                    <div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
+                                                        <input data-type="color" name="needess" value="1" />
+                                                    </div>
+                                                    <span class="shipment.weight_costs-remove">Eliminar</span>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;span id=&quot;multiple-add&quot;&gt;Agregar&lt;/span&gt;
+&lt;div data-type=&quot;multiple&quot; data-name=&quot;multiple&quot;&gt;
+    &lt;li&gt;
+        &lt;label&gt;Nombre&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;nombre&quot; /&gt;
+        &lt;label&gt;Costo&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;costo&quot; /&gt;
+        &lt;span class=&quot;multiple-remove&quot;&gt;Eliminar&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/div&gt;</code>
                                     </div>
                                 </div>
 
