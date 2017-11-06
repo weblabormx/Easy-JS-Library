@@ -167,8 +167,8 @@
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="https://code.google.com/archive/p/jquery-option-tree/" target="_blank">
+                                                        OptionTree
                                                     </a>
                                                 </td>
                                             </tr>
@@ -187,13 +187,13 @@
                                             <tr>
                                                 <th scope="row">Additional Attributes</th>
                                                 <td>
-                                                    <em>data-value-select</em>: Allow to preselect default values selected
+                                                    <em>data-value-select</em>: Allow to preselect values
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    Key of the last selected children.
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -276,40 +276,53 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                                 <td>None</td>
                                             </tr>
                                             <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>lang</em>: (Default <em>en</em>) for selecting the language (Example <em>en</em>, <em>es</em>, etc) </td>
+                                            </tr>
+                                            <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The date value
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <h4>Date</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <input type="text" name="date" data-type="date" lang="es" value="2015-12-01" />
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; name=&#x22;date&#x22; data-type=&#x22;date&#x22; lang=&#x22;es&#x22; value=&#x22;2015-12-01&#x22; /&#x3E;</code>
                                     </div>
-                                </div>
-
-                                <div id="wysiwyg" class="section-block">
-                                    <h3>WYSIWYG</h3>
+                                    <h4>Datetime</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="date" data-type="datetime" lang="es" value="2015-12-01 00:00" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; name=&#x22;datetime&#x22; data-type=&#x22;datetime&#x22; lang=&#x22;es&#x22; value=&#x22;2015-12-01 00:00&#x22; /&#x3E;</code>
+                                    </div>
+                                    <h4>Time</h4>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="#" target="_blank">
-                                                        Unknown
+                                                    <a href="http://jonthornton.github.io/jquery-timepicker/" target="_blank">
+                                                        Jquery.timepicker
                                                     </a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>Unknown</td>
+                                                <td>v1.8.8</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -322,7 +335,52 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    The time value
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="time" data-type="time" value="15:06"/>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; name=&#x22;time&#x22; data-type=&#x22;time&#x22; value=&#x22;15:06&#x22;/&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="wysiwyg" class="section-block">
+                                    <h3>WYSIWYG</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://www.froala.com/wysiwyg-editor" target="_blank">
+                                                        Froala Editor
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v2.4.0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>textarea</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The text in HTML Format
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -330,12 +388,12 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                            <textarea data-type="wysiwyg" name="wysiwyg"></textarea>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;textarea data-type=&quot;wysiwyg&quot;&gt;&lt;/textarea&gt;</code>
                                     </div>
                                 </div>
 

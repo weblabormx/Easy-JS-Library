@@ -21,11 +21,6 @@
 		<p>In jquery get the multiples values with commas, in the server you get an array with the same name. The name and type attribute are mandatory. You can apply styles to the input and it will work all right</p>
 		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;multiple&quot; name=&quot;hola&quot;&gt;</code>
 
-		<h3>Tags Type</h3>
-		<input type="text" data-type="tagsinput" value="uno|dos|tres" name="tags">
-		<p>In jquery get the multiples values with commas, in the server you get an array with the same name. The name and type attribute are mandatory. You can apply styles to the input and it will work all right</p>
-		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;tagsinput&quot; name=&quot;uno|dos|tres&quot;&gt;</code>
-
 		<h3>With some fields</h3>
 		<span id="shipment.weight_costs-add">Agregar</span>
 		<ul data-type="multiple" data-name="shipment.weight_costs" data-load="loadEveryTime">
@@ -92,27 +87,12 @@ $array = json_encode($array);
 	&lt;/li&gt;
 &lt;/ul&gt;</code>
 
-		<h2>Select hierarchical</h2>
-		<input type="text" name="category" id="category" data-type="hselect" src="https://libraries.weblabor.mx/easy-js-library/get-subtree.php" data-value-select="220,226" />
-		<p>Sends $_GET["id"] to php, you need to send a json with title (value) and value (name showed here). Add data-parent attribute to select who should be the default parent. With value will select automatically that value, add "," to separate actions.</p>
-		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; name=&quot;category&quot; id=&quot;category&quot; data-type=&quot;hselect&quot; src=&quot;library/option-tree/demo/get-subtree.php&quot; data-value-select=&quot;220,226&quot; /&gt;</code>
 		<h2>Date picker</h2>
 		<p>All inputs accepts value attr.</p>
-		<h3>Date</h3>
-		<input type="text" name="date" data-type="date" lang="es" value="2015-12-01" />
-		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;date&quot; lang=&quot;es&quot; /&gt;</code>
 
 		<h3>Date 2nd style</h3>
 		<input type="text" name="midate" data-type="date2" lang="es" value="2015-02-04" />
 		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;date2&quot; lang=&quot;es&quot; /&gt;</code>
-
-		<h3>DateTime</h3>
-		<input type="text" name="datetime" data-type="datetime" lang="es" value="2015-12-04 00:00" />
-		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;datetime&quot; lang=&quot;es&quot; /&gt;</code>
-
-		<h3>Time</h3>
-		<input type="text" name="time" data-type="time" value="15:06"/>
-		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;time&quot; /&gt;</code>
 		
 		<h2>WYSIWYG</h2>
 		<textarea data-type="wysiwyg" name="wysiwyg"></textarea>

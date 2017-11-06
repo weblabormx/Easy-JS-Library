@@ -262,7 +262,8 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'date',
             selector: 'input',
-            js: this.url+"calendar/script.js"
+            js: this.url+"calendar/script.js",
+            css: this.url+"calendar/style.css"
         }, function(item) {
             var locale = "en";
             if(item.attr("lang")) {
@@ -279,7 +280,8 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'datetime',
             selector: 'input',
-            js: this.url+"calendar/script.js"
+            js: this.url+"calendar/script.js",
+            css: this.url+"calendar/style.css"
         }, function(item) {
             var locale = "en";
             if(item.attr("lang")) {
@@ -289,6 +291,16 @@ function EasyJsLibrary() {
             item.appendDtpicker({
                 "locale": locale
             });
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'time',
+            selector: 'input',
+            js: this.url+"time-picker/jquery.timepicker.min.js",
+            css: this.url+"time-picker/jquery.timepicker.css"
+        }, function(item) {
+            item.timepicker({ 'timeFormat': 'H:i' });
         });
 
         this.controller.addFunctionality({
@@ -606,7 +618,6 @@ function EasyJsLibrary() {
             var lines = true;
             if(item.attr("data-lines")!==undefined)
                 lines = item.attr("data-lines");
-            console.log(lines);
 
             item.wrap("<pre></pre>")
                 .addClass('language-'+lang);
