@@ -596,15 +596,23 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'codeeditor',
             selector: 'code',
-            js: [
-                'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js',
-            ],
-            css: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css'
+            js: this.url+"prismjs/prism.js",
+            css: this.url+"prismjs/prism.css",
         }, function(item) {
-            item.wrap( "<pre></pre>" );
-            var typec = item.attr("data-lang");
-            item.addClass(typec);
-            hljs.initHighlightingOnLoad();
+            var lang = item.attr("data-lang");
+            if(lang=='html')
+                lang = 'markup';
+
+            var lines = true;
+            if(item.attr("data-lines")!==undefined)
+                lines = item.attr("data-lines");
+            console.log(lines);
+
+            item.wrap("<pre></pre>")
+                .addClass('language-'+lang);
+
+            if(lines==true) 
+                item.addClass('line-numbers');
         });
 
         this.controller.addFunctionality({

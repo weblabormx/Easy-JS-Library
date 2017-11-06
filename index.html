@@ -1,21 +1,793 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Inputs plugin</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body data-type="progressbar" style="text-align:center;">
-	<img src="logo.png" width="400" />
-	<h2>Menu</h2>
-	<ul>
-		<li><a href="p.forms.html">Forms and inputs</a></li>
-		<li><a href="p.popups.html">Popups</a></li>
-		<li><a href="p.complements.html">Complements</a></li>
-		<li><a href="p.tables.html">Tables</a></li>
-		<li><a href="p.messages.html">Messages</a></li>
-		<li><a href="p.imageuploader.html">Image Uploader</a></li>
-	</ul>
-	<br /><br />
-	<a href="https://github.com/weblabormx/Easy-JS-Library" style="font-size:12px;">See in github</a>
+    <title>Easy JS Library - Call libraries easily</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+
+</head> 
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <img src="logo.png" width="300" />
+                        </a>
+                    </h1>
+                </div><!--//branding-->
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Documentation</li>
+                </ol>
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Documentation</h1>
+                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: Nov 5th, 2017</div>
+                </div><!--//doc-header-->
+                <div class="doc-body">
+                    <div class="doc-content">
+                        <div class="content-inner">
+                            <section id="use-section" class="doc-section">
+                                <h2 class="section-title">Use</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Easy JS Library will help you use libraries easilier now, just with adding the js library you will able to use a lot of features just with HTML Tags!
+                                    </p>
+
+                                    <code data-type="codeeditor" data-lines="false" data-lang="html">&#x3C;script type=&#x22;text/javascript&#x22; src=&#x22;https://weblabormx.github.io/Easy-JS-Library/library/script.js&#x22;&#x3E;&#x3C;/script&#x3E;</code>
+
+                                    <p>
+                                        The library load the javascripts and css automatically every time a library is called, so, dont worry about adding all the librarys every time, this plugin will do it for you!
+                                    </p>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="forms-section" class="doc-section">
+                                <h2 class="section-title">Forms</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Examples of code used for forms.
+                                    </p>
+                                </div>
+                                <div id="tags" class="section-block">
+                                    <h3>Tags</h3>
+                                    <p>Add tags clicking next the last item, write it and then press enter.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input" target="_blank">
+                                                        Jquery Tags Input Plugin
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    The list of tags added divided with |. 
+                                                    <i class="example">Example: </i>
+                                                    <em>
+                                                        one|two|three
+                                                    </em>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="multiple" class="section-block">
+                                    <h3>Multiple</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="hierarchical" class="section-block">
+                                    <h3>Hierarchical</h3>
+                                    <p>Sends <em>$_GET["id"]</em> to file, you need to send a json with key and value (title). Add <em>data-parent</em> attribute to select who should be the default parent. With <em>data-value-parent</em> will select automatically the value, add "," to separate actions.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>src</em>, <em>name</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Additional Attributes</th>
+                                                <td>
+                                                    <em>data-value-select</em>: Allow to preselect default values selected
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" name="category" data-type="hselect" src="https://libraries.weblabor.mx/easy-js-library/get-subtree.php" data-value-select="220,226" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input 
+    type=&quot;text&quot; 
+    name=&quot;category&quot; 
+    data-type=&quot;hselect&quot; 
+    src=&quot;get-subtree.php&quot; 
+    data-value-select=&quot;220,226&quot;
+/&gt;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>PHP Code</h6>
+                                        <code data-type="codeeditor" data-lang="php">&#x3C;?php
+header(&#x27;Access-Control-Allow-Origin: *&#x27;);
+$id = (isset($_GET[&#x27;id&#x27;]) &#x26;&#x26; is_numeric($_GET[&#x27;id&#x27;]) ? (int) $_GET[&#x27;id&#x27;] : null);
+echo json_encode(getChildsOf($id)); // Call method for getting childs in base of an ID
+?&#x3E;
+</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>JSON Example</h6>
+                                        <code data-type="codeeditor" data-lang="json">{
+&#x9;&#x22;0&#x22;:&#x22;Animals&#x22;,
+&#x9;&#x22;18&#x22;:&#x22;Arts &#x26; Entertainment&#x22;,
+&#x9;&#x22;220&#x22;:&#x22;Baby &#x26; Toddler&#x22;,
+&#x9;&#x22;252&#x22;:&#x22;Business &#x26; Industrial&#x22;,
+&#x9;&#x22;340&#x22;:&#x22;Cameras &#x26; Optics&#x22;,
+&#x9;&#x22;412&#x22;:&#x22;Clothing &#x26; Accessories&#x22;,
+&#x9;&#x22;602&#x22;:&#x22;Electronics&#x22;,
+&#x9;&#x22;954&#x22;:&#x22;Food, Beverages &#x26; Tobacco&#x22;,
+&#x9;&#x22;1048&#x22;:&#x22;Furniture&#x22;,
+&#x9;&#x22;1123&#x22;:&#x22;Hardware&#x22;,
+&#x9;&#x22;1528&#x22;:&#x22;Health &#x26; Beauty&#x22;,
+&#x9;&#x22;1694&#x22;:&#x22;Home &#x26; Garden&#x22;,
+&#x9;&#x22;2247&#x22;:&#x22;Luggage&#x22;,
+&#x9;&#x22;2272&#x22;:&#x22;Mature&#x22;,
+&#x9;&#x22;2296&#x22;:&#x22;Media&#x22;,
+&#x9;&#x22;2635&#x22;:&#x22;Office Supplies&#x22;,
+&#x9;&#x22;2744&#x22;:&#x22;Software&#x22;,
+&#x9;&#x22;2790&#x22;:&#x22;Sporting Goods&#x22;,
+&#x9;&#x22;3369&#x22;:&#x22;Toys &#x26; Games&#x22;,
+&#x9;&#x22;3496&#x22;:&#x22;Vehicles &#x26; Parts&#x22;
+}
+</code>
+                                    </div>
+                                </div>
+
+                                <div id="date" class="section-block">
+                                    <h3>Dates</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="wysiwyg" class="section-block">
+                                    <h3>WYSIWYG</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="autocomplete" class="section-block">
+                                    <h3>Autocomplete</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="button" class="section-block">
+                                    <h3>Buttons</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="slider" class="section-block">
+                                    <h3>Sliders</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="code-editor" class="section-block">
+                                    <h3>Code Editor</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="imgur" class="section-block">
+                                    <h3>Imgur Uploader</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="conditional" class="section-block">
+                                    <h3>Conditional</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="validation" class="section-block">
+                                    <h3>Validation</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="slug" class="section-block">
+                                    <h3>Slug Generator</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+
+                                <div id="color" class="section-block">
+                                    <h3>Color Picker</h3>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    Unknown
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input type="text" data-type="tagsinput" value="one|two|three" name="tags">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;input type=&#x22;text&#x22; data-type=&#x22;tagsinput&#x22; value=&#x22;one|two|three&#x22; name=&#x22;tags&#x22;&#x3E;</code>
+                                    </div>
+                                </div>
+                            </section><!--//doc-section-->
+                            
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar hidden-xs">
+                        <nav id="doc-nav">
+                            <ul id="doc-menu" class="nav doc-menu" data-spy="affix">
+                                <li><a class="scrollto" href="#use-section">Use</a></li>
+                                <li>
+                                    <a class="scrollto" href="#forms-section">Forms</a>
+                                    <ul class="nav doc-sub-menu">
+                                        <li><a class="scrollto" href="#tags">Tags</a></li>
+                                        <li><a class="scrollto" href="#multiple">Multiple</a></li>
+                                        <li><a class="scrollto" href="#hierarchical">Hierarchical</a></li>
+                                        <li><a class="scrollto" href="#date">Dates</a></li>
+                                        <li><a class="scrollto" href="#wysiwyg">WYSIWYG Editor</a></li>
+                                        <li><a class="scrollto" href="#autocomplete">Autocomplete</a></li>
+                                        <li><a class="scrollto" href="#button">Buttons</a></li>
+                                        <li><a class="scrollto" href="#slider">Sliders</a></li>
+                                        <li><a class="scrollto" href="#code-editor">Code Editor</a></li>
+                                        <li><a class="scrollto" href="#imgur">Imgur Uploader</a></li>
+                                        <li><a class="scrollto" href="#conditional">Conditional</a></li>
+                                        <li><a class="scrollto" href="#validation">Validation</a></li>
+                                        <li><a class="scrollto" href="#slug">Slug Generator</a></li>
+                                        <li><a class="scrollto" href="#color">Color picker</a></li>
+                                    </ul><!--//nav-->
+                                </li>
+                                <li><a class="scrollto" href="#callouts-section">Callouts</a></li>
+                            </ul><!--//doc-menu-->
+                        </nav>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <small class="copyright">Library made with <i class="fa fa-heart"></i> by <a href="http://weblabor.mx/" targe="_blank">Carlos Escobar</a> for developers</small><br />
+            
+            <small class="copyright">Template Designed by <a href="http://themes.3rdwavemedia.com/" targe="_blank">Xiaoying Riley</a></small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>                  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="library/script-new.js"></script>
+    
 </body>
-</html>
+</html> 
+
