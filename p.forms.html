@@ -17,33 +17,10 @@
 		
 		<h2>Multiple</h2>
 		<h3>Email Type</h3>
-		<input type="text" data-type="multiple" name="hola">
+		<input type="text" data-type="amultipleInput" name="hola">
 		<p>In jquery get the multiples values with commas, in the server you get an array with the same name. The name and type attribute are mandatory. You can apply styles to the input and it will work all right</p>
 		<code data-type="codeeditor" data-lang="html">&lt;input type=&quot;text&quot; data-type=&quot;multiple&quot; name=&quot;hola&quot;&gt;</code>
 
-		<h3>With some fields</h3>
-		<span id="shipment.weight_costs-add">Agregar</span>
-		<ul data-type="multiple" data-name="shipment.weight_costs" data-load="loadEveryTime">
-			<li>
-				<label>Nombre</label><input type="text" name="nombre" />
-				<label>Costo</label><input type="text" name="costo" value="100" />
-				<label>Obligatorio</label>
-				<div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
-		        	<input data-type="color" name="needess" value="1" />
-		        </div>
-				<span class="shipment.weight_costs-remove">Eliminar</span>
-			</li>
-		</ul>
-		<p>Envia al servidor $_POST[data-name][cont][nameinput], para los botones se debe usar el nombre {data-name}-[add|remove]</p>
-		<code data-type="codeeditor" data-lang="html">&lt;span id=&quot;multiple-add&quot;&gt;Agregar&lt;/span&gt;
-&lt;div data-type=&quot;multiple&quot; data-name=&quot;multiple&quot;&gt;
-	&lt;li&gt;
-		&lt;label&gt;Nombre&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;nombre&quot; /&gt;
-		&lt;label&gt;Costo&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;costo&quot; /&gt;
-		&lt;span class=&quot;multiple-remove&quot;&gt;Eliminar&lt;/span&gt;
-	&lt;/li&gt;
-&lt;/div&gt;</code>
-		
 		<h3>With some fields and with data</h3>
 		
 		<span id="multiple2-add">Agregar</span>
@@ -55,25 +32,22 @@
 					<option value="200">200</option>
 					<option value="300">300</option>
 				</select>
-				<div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
-		        	<input type="text" data-type="color" name="required" value="0" />
-		        </div>
 				<span class="multiple2-remove">Eliminar</span>
 			</li>
 		</ul>
 		<code data-type="codeeditor" data-lang="php">&lt;?php
 $array = array(
 	0 =&gt; array(
-		'nombre' =&gt; 'Ejemplo1',
-		'costo'	=&gt; '100',
+		'name' =&gt; 'Ejemplo1',
+		'cost'	=&gt; '100',
 	),
 	1 =&gt; array(
-		'nombre' =&gt; 'Ejemplo2',
-		'costo'	=&gt; '200',
+		'name' =&gt; 'Ejemplo2',
+		'cost'	=&gt; '200',
 	),
 	2 =&gt; array(
-		'nombre' =&gt; 'Ejemplo3',
-		'costo'	=&gt; '300',
+		'name' =&gt; 'Ejemplo3',
+		'cost'	=&gt; '300',
 	),
 );
 $array = json_encode($array);

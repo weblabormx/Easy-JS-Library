@@ -123,6 +123,7 @@
 
                                 <div id="multiple" class="section-block">
                                     <h3>Multiple</h3>
+                                    <p>Library to add dynamic fields easily.</p>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
@@ -143,43 +144,110 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Required Attributes</th>
-                                                <td>None</td>
+                                                <td><em>data-name</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td>
+                                                    <em>data-load</em>: if you want that everytime is loaded the script should load a js function.<br />
+                                                    <em>data-remove</em>: load a function when its removed an object, the item is sent.
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Returns</th>
                                                 <td>
-                                                    Unknown
+                                                    An array with the data
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <h4>Empty</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <span id="shipment.weight_costs-add">Agregar</span>
-                                            <ul data-type="multiple" data-name="shipment.weight_costs" data-load="loadEveryTime">
+                                            <span id="costs-add">Add</span>
+                                            <ul data-type="multiple" data-name="costs">
                                                 <li>
-                                                    <label>Nombre</label><input type="text" name="nombre" />
-                                                    <label>Costo</label><input type="text" name="costo" value="100" />
-                                                    <label>Obligatorio</label>
-                                                    <div style="display:inline-block;vertical-align:bottom;margin-left:10px;">
-                                                        <input data-type="color" name="needess" value="1" />
-                                                    </div>
-                                                    <span class="shipment.weight_costs-remove">Eliminar</span>
+                                                    <label>Name</label><input type="text" name="name" />
+                                                    <label>Cost</label><input type="text" name="cost" value="100" />
+                                                    <span class="costs-remove">Remove</span>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;span id=&quot;multiple-add&quot;&gt;Agregar&lt;/span&gt;
-&lt;div data-type=&quot;multiple&quot; data-name=&quot;multiple&quot;&gt;
-    &lt;li&gt;
-        &lt;label&gt;Nombre&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;nombre&quot; /&gt;
-        &lt;label&gt;Costo&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;costo&quot; /&gt;
-        &lt;span class=&quot;multiple-remove&quot;&gt;Eliminar&lt;/span&gt;
-    &lt;/li&gt;
-&lt;/div&gt;</code>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;costs-add&#x22;&#x3E;Add&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;multiple&#x22; data-name=&#x22;costs&#x22;&#x3E;
+    &#x3C;li&#x3E;
+        &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;name&#x22; /&#x3E;
+        &#x3C;label&#x3E;Cost&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;cost&#x22; value=&#x22;100&#x22; /&#x3E;
+        &#x3C;span class=&#x22;costs-remove&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+    &#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>Request sent</h6>
+                                        <code data-type="codeeditor" data-lang="javascript">$POST[&#x27;costs&#x27;] = [
+&#x9;[
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;value&#x27;,
+&#x9;&#x9;&#x27;cost&#x27; =&#x3E; &#x27;value&#x27;
+&#x9;],
+&#x9;[
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;value&#x27;,
+&#x9;&#x9;&#x27;cost&#x27; =&#x3E; &#x27;value&#x27;
+&#x9;],
+&#x9;....
+];</code>
+                                    </div>
+                                    <h4>With selected data</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple2-add">Agregar</span>
+        <ul data-type="multiple" data-name="multiple2" data-values='[{"nombre":"Ejemplo1","costo":"100"},{"nombre":"Ejemplo2","costo":"200"},{"nombre":"Ejemplo3","costo":"300"}]'>
+            <li>
+                <label>Nombre</label><input type="text" name="nombre" />
+                <label>Costo</label><select name="costo">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300">300</option>
+                </select>
+                <span class="multiple2-remove">Eliminar</span>
+            </li>
+        </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>PHP Code</h6>
+                                        <code data-type="codeeditor" data-lang="php">&#x3C;?php
+$array = array(
+&#x9;0 =&#x3E; array(
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;Ejemplo1&#x27;,
+&#x9;&#x9;&#x27;cost&#x27;&#x9;=&#x3E; &#x27;100&#x27;,
+&#x9;),
+&#x9;1 =&#x3E; array(
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;Ejemplo2&#x27;,
+&#x9;&#x9;&#x27;cost&#x27;&#x9;=&#x3E; &#x27;200&#x27;,
+&#x9;),
+&#x9;2 =&#x3E; array(
+&#x9;&#x9;&#x27;name&#x27; =&#x3E; &#x27;Ejemplo3&#x27;,
+&#x9;&#x9;&#x27;cost&#x27;&#x9;=&#x3E; &#x27;300&#x27;,
+&#x9;),
+);
+$array = json_encode($array);
+?&#x3E;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;costs-add&#x22;&#x3E;Add&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;multiple&#x22; data-name=&#x22;costs&#x22; data-values=&#x27;&#x3C;?php echo $array; ?&#x3E;&#x27;&#x3E;
+&#x9;&#x3C;li&#x3E;
+&#x9;    &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;name&#x22; /&#x3E;
+&#x9;    &#x3C;label&#x3E;Cost&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;cost&#x22; value=&#x22;100&#x22; /&#x3E;
+&#x9;    &#x3C;span class=&#x22;costs-remove&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+&#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
                                     </div>
                                 </div>
 

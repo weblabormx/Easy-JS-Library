@@ -159,6 +159,11 @@ function loadEJL($) {
                 $('[data-type~=color]').colorPicker.destroy();
                 loadColorPicker();
 
+                if ($(thisg).attr("data-load")!==undefined) {
+                    var value = $(thisg).attr("data-load");
+                    window[value]();
+                }
+
                 $("."+divname+"-remove").click(function() {
                     if ($(thisg).attr("data-remove")!==undefined) {
                         var value = $(thisg).attr("data-remove");

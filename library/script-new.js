@@ -3,13 +3,20 @@ function LibraryLoaded() {
     this.js_total  = 0;
     this.js_loaded = 0;
     this.eachable  = false;
+    this.loaded    = false;
 
     this.name;
     this.function_ex;
     this.function_af;
 
     this.executeFunction = function() {
+        if(!this.loaded)
+            return;
+
         var selector = $(this.name);
+
+        if(this.function_be!=null && this.function_be!=undefined)
+            this.function_be(selector)
 
         if(this.eachable) {
             var these = this;
@@ -39,13 +46,13 @@ function EasyController() {
                 library.executeFunction();
             return;
         }
-
         var these = this;
         $.holdReady(true);
         return $.getScript(url, function(){
             these.scripts.push(url);
             library.js_loaded++;
             if(library.js_loaded == library.js_total) {
+                library.loaded = true;
                 library.executeFunction();
                 console.log('EJL: '+url+' js loaded');
             }
@@ -147,7 +154,7 @@ function EasyController() {
             library.name        = selector_name;
             library.js_total    = variables.js.length;
             library.function_ex = function_ex;
-            library.function_af = function(item) {
+            library.function_be = function(item) {
                 item.addClass('EJLClass');
             }
 
@@ -713,8 +720,4 @@ function EasyJsLibrary() {
 jQuery(document).ready(function($){
     var script = new EasyJsLibrary();
     script.execute();
-    setTimeout(function() {
-        script.execute();
-    }, 3000);
-    
 });
