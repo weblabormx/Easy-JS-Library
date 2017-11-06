@@ -537,7 +537,7 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'codeeditor',
             selector: 'textarea',
-            js: this.url+"ace-builds-master/src-noconflict/ace.js"
+            js: this.url+"ace-builds-master/ace.js"
         }, function(item) {
             var thisg = item;
             var ide = "codeeditor-"+cont;
@@ -564,7 +564,7 @@ function EasyJsLibrary() {
                 theme = "ace/theme/idle_fingers";
             }
 
-            ace.config.set("basePath", these.url+"ace-builds-master/src-noconflict/");
+            ace.config.set("basePath", these.url+"ace-builds-master/");
             var editor1 = ace.edit(ide);
             editor1.setTheme(theme);
             editor1.session.setMode("ace/mode/"+typec);
