@@ -1151,7 +1151,6 @@
           return this.each(function(i) {
                /* Checking exist a picker */
                var input = this;
-               console.log(input);
                if(0 < $(PickerObjects[$(input).data('pickerId')]).length) {
                     console.log("dtpicker - Already exist appended picker");
                     return;

@@ -160,7 +160,8 @@
                                                 <th scope="row">Optional Attributes</th>
                                                 <td>
                                                     <em>data-load</em>: if you want that everytime is loaded the script should load a js function.<br />
-                                                    <em>data-remove</em>: load a function when its removed an object, the item is sent.
+                                                    <em>data-remove</em>: load a function when its removed an object, the item is sent.<br />
+                                                    <em>data-values</em>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -287,7 +288,47 @@ $array = json_encode($array);
 &#x9;&#x3C;/li&#x3E;
 &#x3C;/ul&#x3E;</code>
                                     </div>
-                                    <h4>Bidimensional</h4>
+                                </div>
+                                <div id="bidimensional" class="section-block">
+                                    <h3>Bidimensional</h3>
+                                    <p>Library to add bidimensional dynamic fields easily.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="#" target="_blank">
+                                                        Unknown
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>Unknown</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>ul</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-name</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td>
+                                                    <em>data-values</em>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Returns</th>
+                                                <td>
+                                                    An array with the data
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Empty</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
@@ -296,7 +337,7 @@ $array = json_encode($array);
                                                 <li>
                                                     <ul>
                                                         <li>
-                                                            <label>Name</label><input type="text" data-type="color" />
+                                                            <label>Name</label><input type="text" data-type="color" name="color" />
                                                             <span class="multiple4-remove-column">Remove</span>
                                                         </li>
                                                     </ul>
@@ -313,7 +354,7 @@ $array = json_encode($array);
     &#x3C;li&#x3E;
         &#x3C;ul&#x3E;
             &#x3C;li&#x3E;
-                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; /&#x3E;
+                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; name=&#x22;color&#x22; /&#x3E;
                 &#x3C;span class=&#x22;multiple4-remove-column&#x22;&#x3E;Remove&#x3C;/span&#x3E;
             &#x3C;/li&#x3E;
         &#x3C;/ul&#x3E;
@@ -322,16 +363,38 @@ $array = json_encode($array);
     &#x3C;/li&#x3E;
 &#x3C;/ul&#x3E;</code>
                                     </div>
-                                    <h4>Bidimensional with data</h4>
+                                    <div class="code-block">
+                                        <h6>Request sent</h6>
+                                        <code data-type="codeeditor" data-lang="javascript">$POST[&#x27;multiple4&#x27;] = [
+    0 =&#x3E; [
+        &#x27;color&#x27; =&#x3E; [
+            &#x27;#fff&#x27;,
+            &#x27;#000&#x27;,
+            &#x27;#ddd&#x27;,
+            &#x27;#777&#x27;,
+            ....
+        ]
+    ],
+    1 =&#x3E; [
+        &#x27;color&#x27; =&#x3E; [
+            &#x27;#f9f9f9&#x27;,
+            ...
+        ]
+    ],
+    ....
+];
+</code>
+                                    </div>
+                                    <h4>With default data</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
                                             <span id="multiple5-add-row">Add row</span>
-                                            <ul data-type="bimultiple" data-name="multiple5" data-values='[["#fff","#000","#ddd"],["#333","#fff","#ddd", "#888"]]'>
+                                            <ul data-type="bimultiple" data-name="multiple5" data-values='[{"color":["#fff","#000","#ddd"]},{"color":["#333","#fff","#ddd","#888"]},{"color":["#ccc"]}]'>
                                                 <li>
                                                     <ul>
                                                         <li>
-                                                            <label>Name</label><input type="text" data-type="color" />
+                                                            <label>Name</label><input type="text" data-type="color" name="color" />
                                                             <span class="multiple5-remove-column">Remove</span>
                                                         </li>
                                                     </ul>
@@ -344,16 +407,123 @@ $array = json_encode($array);
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
                                         <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple5-add-row&#x22;&#x3E;Add row&#x3C;/span&#x3E;
-&#x3C;ul data-type=&#x22;bimultiple&#x22; data-name=&#x22;multiple5&#x22; data-values=&#x27;[[&#x22;#fff&#x22;,&#x22;#000&#x22;,&#x22;#ddd&#x22;],[&#x22;#333&#x22;,&#x22;#fff&#x22;,&#x22;#ddd&#x22;, &#x22;#888&#x22;]]&#x27;&#x3E;
+&#x3C;ul data-type=&#x22;bimultiple&#x22; data-name=&#x22;multiple5&#x22; data-values=&#x27;[{&#x22;color&#x22;:[&#x22;#fff&#x22;,&#x22;#000&#x22;,&#x22;#ddd&#x22;]},{&#x22;color&#x22;:[&#x22;#333&#x22;,&#x22;#fff&#x22;,&#x22;#ddd&#x22;,&#x22;#888&#x22;]},{&#x22;color&#x22;:[&#x22;#ccc&#x22;]}]&#x27;&#x3E;
     &#x3C;li&#x3E;
         &#x3C;ul&#x3E;
             &#x3C;li&#x3E;
-                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; /&#x3E;
+                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; name=&#x22;color&#x22; /&#x3E;
                 &#x3C;span class=&#x22;multiple5-remove-column&#x22;&#x3E;Remove&#x3C;/span&#x3E;
             &#x3C;/li&#x3E;
         &#x3C;/ul&#x3E;
         &#x3C;span class=&#x22;multiple5-add-column&#x22;&#x3E;Add&#x3C;/span&#x3E;
         &#x3C;span class=&#x22;multiple5-remove-row&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+    &#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                    <h4>Empty but with extra fields</h4>
+                                    <p>Used if you need to send some extra fields</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple6-add-row">Add row</span>
+                                            <ul data-type="bimultiple" data-name="multiple6">
+                                                <li>
+                                                    <ul>
+                                                        <li class="extra">
+                                                            <label>Name</label><input type="text" name="name" />
+                                                        </li>
+                                                        <li>
+                                                            <input type="text" data-type="color" name="color" />
+                                                            <span class="multiple6-remove-column">Remove</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span class="multiple6-add-column">Add</span>
+                                                    <span class="multiple6-remove-row">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple6-add-row&#x22;&#x3E;Add row&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;bimultiple&#x22; data-name=&#x22;multiple6&#x22;&#x3E;
+    &#x3C;li&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li class=&#x22;extra&#x22;&#x3E;
+                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;name&#x22; /&#x3E;
+            &#x3C;/li&#x3E;
+            &#x3C;li&#x3E;
+                &#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; name=&#x22;color&#x22; /&#x3E;
+                &#x3C;span class=&#x22;multiple6-remove-column&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+            &#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+        &#x3C;span class=&#x22;multiple6-add-column&#x22;&#x3E;Add&#x3C;/span&#x3E;
+        &#x3C;span class=&#x22;multiple6-remove-row&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+    &#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>Request sent</h6>
+                                        <code data-type="codeeditor" data-lang="javascript">$POST[&#x27;multiple6&#x27;] = [
+    0 =&#x3E; [
+        &#x27;name&#x27; =&#x3E; &#x27;Home&#x27;,
+        &#x27;color&#x27; =&#x3E; [
+            &#x27;#fff&#x27;,
+            &#x27;#000&#x27;,
+            &#x27;#ddd&#x27;,
+            &#x27;#777&#x27;,
+            ....
+        ]
+    ],
+    1 =&#x3E; [
+        &#x27;name&#x27; =&#x3E; &#x27;Away&#x27;,
+        &#x27;color&#x27; =&#x3E; [
+            &#x27;#f9f9f9&#x27;,
+            ...
+        ]
+    ],
+    ....
+];
+</code>
+                                    </div>
+                                    <h4>Extra fields with data</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <span id="multiple7-add-row">Add row</span>
+                                            <ul data-type="bimultiple" data-name="multiple7" data-values='[{"name":"Home","color":["#fff","#000","#ddd"]},{"name":"Away","color":["#333","#fff","#ddd","#888"]},{"name":"Special","color":["#ccc"]}]'>
+                                                <li>
+                                                    <ul>
+                                                        <li class="extra">
+                                                            <label>Name</label><input type="text" name="name" />
+                                                        </li>
+                                                        <li>
+                                                            <input type="text" data-type="color" name="color" />
+                                                            <span class="multiple7-remove-column">Remove</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span class="multiple7-add-column">Add</span>
+                                                    <span class="multiple7-remove-row">Remove</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&#x3C;span id=&#x22;multiple7-add-row&#x22;&#x3E;Add row&#x3C;/span&#x3E;
+&#x3C;ul data-type=&#x22;bimultiple&#x22; data-name=&#x22;multiple7&#x22; data-values=&#x27;[{&#x22;name&#x22;:&#x22;Home&#x22;,&#x22;color&#x22;:[&#x22;#fff&#x22;,&#x22;#000&#x22;,&#x22;#ddd&#x22;]},{&#x22;name&#x22;:&#x22;Away&#x22;,&#x22;color&#x22;:[&#x22;#333&#x22;,&#x22;#fff&#x22;,&#x22;#ddd&#x22;,&#x22;#888&#x22;]},{&#x22;name&#x22;:&#x22;Special&#x22;,&#x22;color&#x22;:[&#x22;#ccc&#x22;]}]&#x27;&#x3E;
+    &#x3C;li&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li class=&#x22;extra&#x22;&#x3E;
+                &#x3C;label&#x3E;Name&#x3C;/label&#x3E;&#x3C;input type=&#x22;text&#x22; name=&#x22;name&#x22; /&#x3E;
+            &#x3C;/li&#x3E;
+            &#x3C;li&#x3E;
+                &#x3C;input type=&#x22;text&#x22; data-type=&#x22;color&#x22; name=&#x22;color&#x22; /&#x3E;
+                &#x3C;span class=&#x22;multiple7-remove-column&#x22;&#x3E;Remove&#x3C;/span&#x3E;
+            &#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+        &#x3C;span class=&#x22;multiple7-add-column&#x22;&#x3E;Add&#x3C;/span&#x3E;
+        &#x3C;span class=&#x22;multiple7-remove-row&#x22;&#x3E;Remove&#x3C;/span&#x3E;
     &#x3C;/li&#x3E;
 &#x3C;/ul&#x3E;</code>
                                     </div>
@@ -1414,6 +1584,7 @@ print json_encode($res);
                                     <ul class="nav doc-sub-menu">
                                         <li><a class="scrollto" href="#tags">Tags</a></li>
                                         <li><a class="scrollto" href="#multiple">Multiple</a></li>
+                                        <li><a class="scrollto" href="#bidimensional">Bidimensional</a></li>
                                         <li><a class="scrollto" href="#hierarchical">Hierarchical</a></li>
                                         <li><a class="scrollto" href="#date">Dates</a></li>
                                         <li><a class="scrollto" href="#wysiwyg">WYSIWYG Editor</a></li>
@@ -1459,7 +1630,7 @@ print json_encode($res);
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>                  
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-    <script type="text/javascript" src="library/script.js"></script>
+    <script type="text/javascript" src="library/script-new.js"></script>
     
 </body>
 </html> 

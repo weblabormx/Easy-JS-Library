@@ -35,6 +35,7 @@ function LibraryLoaded() {
         if(this.function_af!=null && this.function_af!=undefined)
             this.function_af(selector);
     }
+
 }
 
 function EasyController() {
@@ -48,8 +49,10 @@ function EasyController() {
         var library = this.libraries[library_id];
         if(this.scripts.indexOf(url)!==-1) {
             library.js_loaded++;
-            if(library.js_loaded == library.js_total)
-                library.executeFunction();
+            if(library.js_loaded != library.js_total)
+                return;
+            
+            library.executeFunction();
             return;
         }
         var these = this;

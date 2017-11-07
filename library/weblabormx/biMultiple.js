@@ -26,16 +26,23 @@
 
             this.prepareFirstRow = function() {
                 var these = this;
+                var first_li = item.find('li:first-child > ul:first-child > li:not(.extra)').first();
+                var first_li_not = item.find('li:first-child > ul:first-child > li.extra').first();
+
                 // Change inputs names
-                item.find("input, select, textarea").each(function(){
+                first_li.find("input, select, textarea").each(function(){
                     var name = $(this).attr("name");
-                    $(this).attr("name",these.divname+"[0][0]");
+                    $(this).attr("name",these.divname+"[0]["+name+"][0]");
+                });
+                first_li_not.find("input, select, textarea").each(function(){
+                    var name = $(this).attr("name");
+                    $(this).attr("name",these.divname+"[0]["+name+"]");
                 });
 
                 // Make html
                 this.html = item.html();
 
-                this.inside_html = item.find('li:first-child > ul:first-child > li:first-child').html();
+                this.inside_html = first_li.html();
                 this.executeActions();
 
                 $("#"+this.divname+"-add-row").click(function() {
@@ -76,20 +83,33 @@
                     } else {
                         these.addRow();
                     }
-                    for (var prop in obj) {
+                    for (var name in obj) {
+                        var element = obj[name];
+                        if(Array.isArray(element)) {
+                            for (var prop in element) {
 
-                        if(first_column) {
-                            first_column = false;
+                                if(first_column) {
+                                    first_column = false;
+                                } else {
+                                    item.find('li:nth-child('+(key+1)+') .'+these.divname+'-add-column').click();
+                                }
+
+                                $("input[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
+                                $("select[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
+                                $("textarea[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
+                                if(element[prop]==1)
+                                    $("input[type=checkbox][name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").attr('checked', 'checked');
+                            }
                         } else {
-                            item.find('li:nth-child('+(key+1)+') .'+these.divname+'-add-column').click();
+                            $("input[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").val(element);
+                            $("select[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").val(element);
+                            $("textarea[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").val(element);
+                            if(element==1)
+                                $("input[type=checkbox][name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").attr('checked', 'checked');
                         }
-
-                        $("input[name="+these.divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
-                        $("select[name="+these.divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
-                        $("textarea[name="+these.divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
-                        if(obj[prop]==1)
-                            $("input[type=checkbox][name="+these.divname+"\\["+key+"\\]\\["+prop+"\\]]").attr('checked', 'checked');
-                   }
+                            
+                    }
+                        
                 });
                 reload_function();
             }
@@ -116,23 +136,21 @@
                     .find('ul > li:last-child > input')
                     .attr('name');
 
-                if(split!==undefined) {
-                    split = split.replace(this.divname, '')
-                        .split('][');
-                    var value = split[0].replace('[', '');
-                    var count = split[1].replace(']', '');
-                    count++;
-                } else {
-                    value = $(item).parent().parent().find('> li').size();
-                    value--;
-                    count = 0;
-                }
+                if(split===undefined)
+                    return;
+
+                split = split.replace(this.divname, '')
+                    .split('][');
+                var value = split[0].replace('[', '');
+                var count = split[2].replace(']', '');
+                var name = split[1].replace(']', '');
+                count++;
 
                 // Get html
-                var find = this.divname+"\\[0\\]\\[0\\]";
+                var find = this.divname+"\\[0\\]\\["+name+"\\]\\[0\\]";
                 var regex = new RegExp(find, "g");
                 var html = this.inside_html
-                    .replace(regex, this.divname+"["+value+"]"+"["+count+"]")
+                    .replace(regex, this.divname+"["+value+"]["+name+"]["+count+"]")
                     .replace('EJLClass', '');
 
                 $(item).parent().find('ul:first-child').append('<li>'+html+'</li>');
@@ -140,6 +158,9 @@
             }
 
             this.removeColumn = function(item) {
+                var size = $(item).parent().parent().find('li:not(.extra)').size();
+                if(size<=1)
+                    return;
                 $(item).parent().remove();
             }
 
