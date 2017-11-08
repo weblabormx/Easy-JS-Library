@@ -8,6 +8,7 @@ function LibraryLoaded() {
     this.name;
     this.function_ex;
     this.function_af;
+    this.function_destroy;
 
     this.executeFunction = function() {
         if(!this.loaded)
@@ -34,6 +35,15 @@ function LibraryLoaded() {
     this.executeFunctionAfter = function(selector) {
         if(this.function_af!=null && this.function_af!=undefined)
             this.function_af(selector);
+    }
+
+    this.destroyFunction = function() {
+        if(!this.loaded)
+            return;
+
+        var selector = $(this.name);
+        if(this.function_destroy!==null)
+            this.function_destroy(selector);
     }
 
 }
@@ -113,20 +123,19 @@ function EasyController() {
 
         if(this.existLibrary(selector_name)) {
 
-            console.log('EJL: Reloading '+selector_name);
-            var selector = $(selector_name);
-            if(remove_func!==null)
-                remove_func(selector);
-            function_ex(selector);
+            var library = this.getLibrary(selector_name);
+            library.destroyFunction();
+            library.executeFunction();
 
         } else {
 
             console.log('EJL: Loading '+selector_name);
             var library = new LibraryLoaded();
 
-            library.name        = selector_name;
-            library.js_total    = variables.js.length;
-            library.function_ex = function_ex;
+            library.name             = selector_name;
+            library.js_total         = variables.js.length;
+            library.function_ex      = function_ex;
+            library.function_destroy = remove_func;
 
             var library_id = this.libraries.push(library);
             library_id--;
