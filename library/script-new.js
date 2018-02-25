@@ -685,13 +685,22 @@ function EasyJsLibrary() {
     this.loadComplements = function() {
 
         this.controller.addFunctionality({
-            type: 'oneByOne',
+            type: 'each',
             data_type: 'sort',
             selector: 'ul',
             js: this.url+"jquery-ui/jquery-ui.min.js",
             css: this.url+'jquery-ui/jquery-ui.min.css'
         }, function(item) {
-            item.sortable();
+            var connect = item.attr("data-connect");
+            console.log(connect);
+            console.log(item);
+            if (connect == undefined) {
+                item.sortable();
+            } else {
+                item.sortable({
+                    connectWith: "."+connect
+                });
+            }
             item.disableSelection();
             item.find("li").css("cursor","move");
         });
