@@ -158,7 +158,7 @@
             }
 
             this.removeColumn = function(item) {
-                var size = $(item).parent().parent().find('li:not(.extra)').size();
+                var size = $(item).parent().parent().find('li:not(.extra)').length;
                 if(size<=1)
                     return;
                 $(item).parent().remove();

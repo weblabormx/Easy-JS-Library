@@ -73,7 +73,7 @@ function EasyController() {
             if(library.js_loaded == library.js_total) {
                 library.loaded = true;
                 library.executeFunction();
-                console.log('EJL: '+url+' js loaded');
+                //console.log('EJL: '+url+' js loaded');
             }
             $.holdReady(false);
         });
@@ -85,7 +85,7 @@ function EasyController() {
             return;
         this.css.push(url);
         $('head').append('<link rel="stylesheet" href="'+url+'" type="text/css" />');
-        console.log('EJL: '+url+' css loaded');
+        //console.log('EJL: '+url+' css loaded');
     }
 
     this.addFunctionality = function(variables, function_ex, remove_func = null) {
@@ -129,7 +129,7 @@ function EasyController() {
 
         } else {
 
-            console.log('EJL: Loading '+selector_name);
+            //console.log('EJL: Loading '+selector_name);
             var library = new LibraryLoaded();
 
             library.name             = selector_name;
@@ -168,7 +168,7 @@ function EasyController() {
 
         } else {
 
-            console.log('EJL: Loading '+selector_name);
+            //console.log('EJL: Loading '+selector_name);
             var library = new LibraryLoaded();
 
             library.name        = selector_name;
@@ -209,7 +209,7 @@ function EasyController() {
 
         } else {
 
-            console.log('EJL: Loading '+selector_name);
+            //console.log('EJL: Loading '+selector_name);
             var library = new LibraryLoaded();
 
             library.name        = selector_name;
@@ -266,14 +266,12 @@ function EasyJsLibrary() {
     this.loadForms = function() { 
 
         this.controller.addFunctionality({
-            type: 'createAndDestroy',
+            type: 'each',
             data_type: 'color',
             selector: 'input',
-            js: this.url+'color-picker/jqColorPicker.min.js'
+            js: 'http://www.dematte.at/tinyColorPicker/jqColorPicker.min.js'
         }, function(item) {
             item.colorPicker();
-        }, function(item) {
-            item.colorPicker.destroy();
         });
 
         this.controller.addFunctionality({
@@ -395,9 +393,9 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'autocomplete',
             selector: 'input',
-            js: this.url+"jquery-ui/jquery-ui.min.js",
+            js: "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js",
             css: [
-                this.url+'jquery-ui/jquery-ui.min.css',
+                'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
                 this.url+"weblabormx/autocomplete.css"
             ]
         }, function(item) {
@@ -451,7 +449,6 @@ function EasyJsLibrary() {
                 },
                 select: function( event, ui ) {
                     if (actions!==false) {
-                        console.log(actions);
                         var uis = ui.item;
                         var myJsonString = JSON.stringify(uis);
                         $.post( actions, { result: myJsonString })
@@ -487,8 +484,8 @@ function EasyJsLibrary() {
             type: 'oneByOne',
             data_type: 'button',
             selector: 'div',
-            js: this.url+"jquery-ui/jquery-ui.min.js",
-            css: this.url+'jquery-ui/jquery-ui.min.css'
+            js: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
+            css: 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
         }, function(item) {
             item.buttonset();
         });
@@ -497,8 +494,8 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'slider',
             selector: 'input',
-            js: this.url+"jquery-ui/jquery-ui.min.js",
-            css: this.url+'jquery-ui/jquery-ui.min.css'
+            js: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
+            css: 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
         }, function(item) {
             var name = item.attr("name");
             var max = parseFloat(item.attr("data-max"));
@@ -688,12 +685,10 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'sort',
             selector: 'ul',
-            js: this.url+"jquery-ui/jquery-ui.min.js",
-            css: this.url+'jquery-ui/jquery-ui.min.css'
+            js: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
+            css: 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
         }, function(item) {
             var connect = item.attr("data-connect");
-            console.log(connect);
-            console.log(item);
             if (connect == undefined) {
                 item.sortable();
             } else {
@@ -708,8 +703,8 @@ function EasyJsLibrary() {
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'tooltip',
-            js: this.url+"jquery-ui/jquery-ui.min.js",
-            css: this.url+'jquery-ui/jquery-ui.min.css'
+            js: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
+            css: 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
         }, function(item) {
             item.tooltip({
                 position: {
