@@ -39,7 +39,7 @@
                 // Make html
                 var html = item.html();
                 if(!this.hasparent) {
-                    this.html = "<div>"+html+"</div>";
+                    this.html = html;
                 }
 
                 // Hide first remove
