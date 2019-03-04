@@ -48,6 +48,7 @@
 
                 $("#"+this.divname+"-add-row").click(function() {
                     these.addRow();
+                    reload_function();
                 });
 
                 // Hide first remove
@@ -79,28 +80,27 @@
                 // Create rows
                 this.data_values.forEach(function(obj, key) {
                     var first_column = true;
-                    if(first) {
-                        first = false;
-                    } else {
+                    if(first==false) {
                         these.addRow();
                     }
                     for (var name in obj) {
                         var element = obj[name];
                         if(Array.isArray(element)) {
                             for (var prop in element) {
-
                                 if(first_column) {
                                     first_column = false;
                                 } else {
                                     var element2 = item.find('li:nth-child('+(key+1)+') .'+these.divname+'-add-column');
                                     these.addColumn(element2);
                                 }
-
                                 $("input[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
                                 $("select[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
                                 $("textarea[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
                                 if(element[prop]==1) {
                                     $("input[type=checkbox][name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").attr('checked', 'checked');
+                                }
+                                if(first) {
+                                    $("[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").removeClass('EJLClass');
                                 }
                             }
                         } else {
@@ -110,7 +110,13 @@
                             if(element==1) {
                                 $("input[type=checkbox][name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").attr('checked', 'checked');
                             }
+                            if(first) {
+                                $("[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").removeClass('EJLClass');
+                            }
                         }
+                    }
+                    if(first) {
+                        first = false;
                     }
                 });
             }
