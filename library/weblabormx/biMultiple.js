@@ -14,6 +14,7 @@
                 this.setter();
                 this.prepareFirstRow();
                 this.addData();
+                reload_function();
             }
 
             this.setter = function() {
@@ -91,27 +92,27 @@
                                 if(first_column) {
                                     first_column = false;
                                 } else {
-                                    item.find('li:nth-child('+(key+1)+') .'+these.divname+'-add-column').click();
+                                    var element2 = item.find('li:nth-child('+(key+1)+') .'+these.divname+'-add-column');
+                                    these.addColumn(element2);
                                 }
 
                                 $("input[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
                                 $("select[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
                                 $("textarea[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").val(element[prop]);
-                                if(element[prop]==1)
+                                if(element[prop]==1) {
                                     $("input[type=checkbox][name="+these.divname+"\\["+key+"\\]\\["+name+"\\]\\["+prop+"\\]]").attr('checked', 'checked');
+                                }
                             }
                         } else {
                             $("input[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").val(element);
                             $("select[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").val(element);
                             $("textarea[name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").val(element);
-                            if(element==1)
+                            if(element==1) {
                                 $("input[type=checkbox][name="+these.divname+"\\["+key+"\\]\\["+name+"\\]]").attr('checked', 'checked');
+                            }
                         }
-                            
                     }
-                        
                 });
-                reload_function();
             }
 
             this.executeActions = function() {
@@ -122,13 +123,12 @@
 
                 $("."+this.divname+"-add-column:not(.mdp)").click(function() {
                     these.addColumn(this);
+                    reload_function();
                 }).addClass('mdp');
 
                 $("."+this.divname+"-remove-column:not(.mdp)").click(function() {
                     these.removeColumn(this);
                 }).addClass('mdp');
-
-                reload_function();
             }
 
             this.addColumn = function(item) {
@@ -136,8 +136,9 @@
                     .find('ul > li:last-child > input')
                     .attr('name');
 
-                if(split===undefined)
+                if(split===undefined) {
                     return;
+                }
 
                 split = split.replace(this.divname, '')
                     .split('][');
