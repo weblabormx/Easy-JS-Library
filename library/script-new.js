@@ -269,7 +269,7 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'color',
             selector: 'input',
-            js: 'http://www.dematte.at/tinyColorPicker/jqColorPicker.min.js'
+            js: this.url+'colorPicker/jqColorPicker.min.js'
         }, function(item) {
             item.colorPicker();
         });
