@@ -855,6 +855,6 @@ function EasyJsLibrary() {
 }
 
 jQuery(document).ready(function($){
-    var script = new EasyJsLibrary();
+    window.script = new EasyJsLibrary();
     script.execute();
 });
