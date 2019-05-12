@@ -99,7 +99,15 @@
                         these.addRow();
                     }
                     for (var prop in obj) {
-                        $("input[name="+these.divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
+                        $("input[name="+these.divname+"\\["+key+"\\]\\["+prop+"\\]]").each(function() {
+                            if($(this).attr('data-not-change')=='true') {
+                                return;
+                            }
+                            if($(this).attr('type')=='checkbox' && (obj[prop]==1 || obj[prop]==0)) {
+                                return;
+                            }
+                            $(this).val(obj[prop])
+                        });
                         $("select[name="+these.divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
                         $("textarea[name="+these.divname+"\\["+key+"\\]\\["+prop+"\\]]").val(obj[prop]);
                         if(obj[prop]==1)

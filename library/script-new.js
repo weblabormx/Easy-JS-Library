@@ -680,6 +680,55 @@ function EasyJsLibrary() {
         }, function(item) {
             item.biMultiple(function() { these.execute(); });
         });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'onoff',
+            css: this.url+"onoff/style.css"
+        }, function(item) {
+            if($(item).attr('data-activated') == 'on') {
+                return true;
+            }
+            $(item).css("display","none");
+            var valor = $(item).val();
+            valor = parseInt(valor);
+            
+            var name = $(item).attr("name");
+            var ontitle = $(item).attr("data-on");
+            var offtitle = $(item).attr("data-off");
+            $(item).attr('data-activated', 'on');
+            
+            if (ontitle==undefined)
+                ontitle = "Enable";
+            
+            if (offtitle==undefined)
+                offtitle = "Disable";
+            
+            if (valor===0) {
+                $('<div class="field switch"><label class="cb-enable" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable selected" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(item)
+                $(item).val(0);
+            } else {
+                $('<div class="field switch"><label class="cb-enable selected" data-nameparent="'+name+'"><span>'+ontitle+'</span></label><label class="cb-disable" data-nameparent="'+name+'"><span>'+offtitle+'</span></label><div style="clear: left;"></div></div>').insertAfter(item)
+                $(item).val(1);
+            }
+                
+            $(item).parent().find(".cb-enable").click(function(){
+                var parentname = $(this).attr("data-nameparent");
+                var parent = $(this).parents('.switch');
+                $('.cb-disable',parent).removeClass('selected');
+                $(this).addClass('selected');
+                $('input[name="'+parentname+'"]').val(1);
+                $('input[name="'+parentname+'"]').change();
+            });
+            $(item).parent().find(".cb-disable").click(function(){
+                var parentname = $(this).attr("data-nameparent");
+                var parent = $(this).parents('.switch');
+                $('.cb-enable',parent).removeClass('selected');
+                $(this).addClass('selected');
+                $('input[name="'+parentname+'"]').val(0);
+                $('input[name="'+parentname+'"]').change();
+            });
+        });
         
     }
 
