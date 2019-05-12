@@ -485,7 +485,7 @@ function EasyJsLibrary() {
         });
 
         this.controller.addFunctionality({
-            type: 'oneByOne',
+            type: 'each',
             data_type: 'button',
             selector: 'div',
             js: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
