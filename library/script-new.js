@@ -559,7 +559,8 @@ function EasyJsLibrary() {
                 requestWithCORS: false,
                 language: 'es',
                 imageUploadURL: 'https://libraries.weblabor.mx/imgur-js-uploader/uploader.php',
-                imageUploadMethod: 'POST',                  
+                imageUploadMethod: 'POST',
+                heightMin: 250,
             });
             $('.fr-box a').each(function() {
                 if($(this).text()=='Unlicensed Froala Editor') {
