@@ -414,6 +414,10 @@ function EasyJsLibrary() {
             if (actions==undefined) {
                 actions = false;
             }
+            var show_text_input = item.attr("data-text-input");
+            if  show_text_input==undefined) {
+                show_text_input = true;
+            }
 
             var name = item.attr("name");
             name = name.replace(/\[/g,"");
@@ -427,10 +431,14 @@ function EasyJsLibrary() {
             if (item.attr("style")) { required = required + " style='"+item.attr("style")+"'"; };
             if (isSelected) { required = required + " value='"+selectedText+"'"};
             $("<div class='autclt'><input type='text' name='"+name+"'"+required+" /><span class='closeauto'>x</span></div>").insertAfter(item);
-            $("<input type='hidden' name='"+org_name+"_text' />").insertAfter(item);
+            if(show_text_input) {
+                $("<input type='hidden' name='"+org_name+"_text' />").insertAfter(item);    
+            }
             item.css("display","none");
             var auto = $("input[name="+name+"]");
-            var text = $("input[name="+org_name+"_text]");
+            if(show_text_input) {
+                var text = $("input[name="+org_name+"_text]");
+            }
             var action = item.attr("src");
             var cache = {};
             var thisg = item;
@@ -465,7 +473,9 @@ function EasyJsLibrary() {
                     };
                     var id = ui.item.id;
                     $(thisg).val(id);
-                    $(text).val(ui.item.label);
+                    if(show_text_input) {
+                        $(text).val(ui.item.label);
+                    }
                     $(auto).attr("disabled","disabled");
                     $(auto).parent().find(".closeauto").css("display","inline");
                 }

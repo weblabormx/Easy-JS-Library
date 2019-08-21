@@ -782,7 +782,8 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
 
                                 <div id="autocomplete" class="section-block">
                                     <h3>Autocomplete</h3>
-                                    <p>Autocompletes a text field. It is necessary the name attribute. The PHP Code recieves <em>$_GET['term']</em> with the searched word</p>
+                                    <p>Autocompletes a text field. It is necessary the name attribute. The PHP Code recieves <em>$_GET['term']</em> with the searched word. The php url should accept $_GET Responses.</p>
+                                    <p>It generates automatically a new input with name+'_text' with the text value. If you want to remove it use <em>data-text-input=false</em></p>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
