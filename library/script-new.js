@@ -415,7 +415,7 @@ function EasyJsLibrary() {
                 actions = false;
             }
             var show_text_input = item.attr("data-text-input");
-            if  show_text_input==undefined) {
+            if (show_text_input==undefined) {
                 show_text_input = true;
             }
 
