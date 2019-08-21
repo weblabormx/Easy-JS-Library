@@ -417,6 +417,8 @@ function EasyJsLibrary() {
             var show_text_input = item.attr("data-text-input");
             if (show_text_input==undefined) {
                 show_text_input = true;
+            } else if(show_text_input=='false' || show_text_input=='0') {
+                show_text_input = false;
             }
 
             var name = item.attr("name");

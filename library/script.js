@@ -1,5 +1,5 @@
 var url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-//var url = "http://easy-js-library.oo//library/";
+//var url = "library/";
 
 jQuery(document).ready(function($){
     $.getScript(url+'script-old.js', function(){
