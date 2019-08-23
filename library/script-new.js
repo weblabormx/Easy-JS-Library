@@ -440,6 +440,9 @@ function EasyJsLibrary() {
             var auto = $("input[name="+name+"]");
             if(show_text_input) {
                 var text = $("input[name="+org_name+"_text]");
+                if(isSelected) {
+                    $(text).val(selectedText);
+                }
             }
             var action = item.attr("src");
             var cache = {};
