@@ -625,7 +625,7 @@ function EasyJsLibrary() {
             cont++;
             editor1.getSession().on('change', function(e) {
                 var value = editor1.getValue();
-                $(thisg).html(value);
+                $(thisg).val(value);
             });
         });
 
