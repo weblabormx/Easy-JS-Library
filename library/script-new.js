@@ -401,6 +401,8 @@ function EasyJsLibrary() {
         }, function(item) {
             var selectedValue = item.attr("data-selected-value");
             var selectedText = item.attr("data-selected-text");
+            selectedText = selectedText.replace('"', "");
+            selectedText = selectedText.replace("'", "");
             var isSelected = false;
             if (selectedText!==undefined && selectedValue!==undefined) {
                 isSelected = true;
