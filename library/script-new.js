@@ -279,7 +279,7 @@ function EasyJsLibrary() {
             data_type: 'tagsinput',
             selector: 'input',
             js: [
-                'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/lib/js/typeahead.bundle.min.js',
+                'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/typeahead.bundle.min.js',
                 'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.js'
             ],
             css: 'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.css'
@@ -571,11 +571,21 @@ function EasyJsLibrary() {
                 this.url+'froala/style.css'
             ]
         }, function(item) {
+            var language = 'en';
+            if (typeof item.attr("data-lang") !== typeof undefined && item.attr("data-lang") !== false) {
+                language = item.attr("data-lang");
+            };
+
+            var uploader = 'https://libraries.weblabor.mx/imgur-js-uploader/uploader.php';
+            if (typeof item.attr("data-upload-url") !== typeof undefined && item.attr("data-upload-url") !== false) {
+                uploader = item.attr("data-upload-url");
+            };
+
             item.froalaEditor({
                 requestWithCredentials: false,
                 requestWithCORS: false,
-                language: 'es',
-                imageUploadURL: 'https://libraries.weblabor.mx/imgur-js-uploader/uploader.php',
+                language: language,
+                imageUploadURL: uploader,
                 imageUploadMethod: 'POST',
                 heightMin: 250,
             });
