@@ -1,6 +1,6 @@
 function loadEJL($) {
     var url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-    //url = "http://localhost/libraries/Easy-JS-Library/library/";
+    //url = "http://easy-js-library.test/libraries/Easy-JS-Library/library/";
 
     // Progress bar
     if($('body[data-type~=progressbar]').length) {
@@ -344,6 +344,18 @@ function loadEJL($) {
                 $(this).magnificPopup({
                     type: type,
                     delegate: 'a',
+                });
+            });
+            $("div[data-type~=popup-gallery],ul[data-type~=popup-gallery]").each(function(cont){
+                var type = $(this).attr("data-popup-type");
+                $(this).magnificPopup({
+                    type: type,
+                    delegate: 'a',
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                      },
                 });
             });
     };
