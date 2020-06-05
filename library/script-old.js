@@ -348,6 +348,7 @@ function loadEJL($) {
             });
             $("div[data-type~=popup-gallery],ul[data-type~=popup-gallery]").each(function(cont){
                 var type = $(this).attr("data-popup-type");
+                var title_src = 'title';
                 $(this).magnificPopup({
                     type: type,
                     delegate: 'a',
@@ -355,7 +356,27 @@ function loadEJL($) {
                         enabled: true,
                         navigateByImgClick: true,
                         preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-                      },
+                    },
+                    image: {
+                        // options for image content type
+                        titleSrc: function(item) {
+                            text_url = item.el.attr('data-text-url');
+                            if (typeof text_url !== typeof undefined && text_url !== false) {
+                                var text = null;
+                                $.ajax({
+                                    url: text_url,
+                                    type: 'get',
+                                    dataType: 'html',
+                                    async: false,
+                                    success: function(data) {
+                                        result = data;
+                                    } 
+                                });
+                                return result;
+                            }
+                            return item.el.attr('title');
+                        }
+                      }
                 });
             });
     };
