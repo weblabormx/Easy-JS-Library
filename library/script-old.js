@@ -360,7 +360,7 @@ function loadEJL($) {
             });
     };
 
-    if($('[data-type~=popup]').length) {
+    if($('[data-type~=popup]').length || $('[data-type~=popup-gallery]').length) {
         $('head').append('<link rel="stylesheet" href="'+url+'magnific-popup/magnific-popup.css" type="text/css" />');
         $.getScript(url+"magnific-popup/jquery.magnific-popup.min.js", function(){
             loadPopup();
