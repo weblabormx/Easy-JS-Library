@@ -604,7 +604,8 @@ function EasyJsLibrary() {
             js: this.url+"ace-builds-master/ace.js"
         }, function(item) {
             var thisg = item;
-            var ide = "codeeditor-"+cont;
+            var name = item.attr('name');
+            var ide = "codeeditor-"+name;
             var cont = item.html();
             $("<div class='codeeditortext' id='"+ide+"'></div>").insertAfter(item);
             item.css("display","none");
@@ -634,7 +635,6 @@ function EasyJsLibrary() {
             editor1.session.setMode("ace/mode/"+typec);
             editor1.setAutoScrollEditorIntoView(true);
             editor1.setOption("maxLines", 30);
-            cont++;
             editor1.getSession().on('change', function(e) {
                 var value = editor1.getValue();
                 $(thisg).val(value);
