@@ -769,16 +769,26 @@ function EasyJsLibrary() {
             js: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
             css: 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
         }, function(item) {
-            var connect = item.attr("data-connect");
-            if (connect == undefined) {
-                item.sortable();
-            } else {
-                item.sortable({
-                    connectWith: "."+connect
-                });
+
+            // Check connect
+            var data_connect = item.attr("data-connect");
+            var connect = false;
+            if (data_connect != undefined) {
+                connect = "."+data_connect;
             }
-            item.disableSelection();
-            item.find("li").css("cursor","move");
+
+            // Check handle
+            var data_handle = item.attr("data-handle");
+            var handle = false;
+            if (data_handle != undefined) {
+                handle = "."+data_handle;
+            }
+
+            // Call sortable function
+            item.sortable({
+                connectWith: connect,
+                handle: handle,
+            });
         });
 
         this.controller.addFunctionality({
