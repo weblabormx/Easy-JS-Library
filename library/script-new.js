@@ -938,6 +938,34 @@ function EasyJsLibrary() {
                 });
             });
         });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'cropper',
+            js: "https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/2.0.4/js/Jcrop.min.js",
+            css: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/2.0.4/css/Jcrop.min.css'
+        }, function(item) {
+            var image = item.attr("data-image");
+            var box_width = 0;
+            var box_height = 0;
+            if ( typeof item.attr("data-width") !== typeof undefined ) {
+                box_width = item.attr("data-width");
+            }
+            if ( typeof item.attr("data-height") !== typeof undefined ) {
+                box_height = item.attr("data-height");
+            }
+
+            function showCoords(c) {
+                $(item).val(JSON.stringify(c));
+            }
+
+            $('#'+image).Jcrop({
+                onChange: showCoords,
+                onSelect: showCoords,
+                boxWidth: box_width,
+                boxHeight: box_height
+            });
+        });
     }
 }
 
