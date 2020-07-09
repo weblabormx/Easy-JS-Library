@@ -1741,8 +1741,8 @@ print json_encode($res);
                                     </div>
 
                                 </div>
-                                <div id="image-croper" class="section-block">
-                                    <h3>Image Crooper</h3>
+                                <div id="image-cropper" class="section-block">
+                                    <h3>Image Cropper</h3>
                                     <p>This tool allows you to get the x and y coordiates from 2 points from an image</p>
                                     <table class="table descriptional">
                                         <tbody>
@@ -1768,16 +1768,16 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Optional Attributes</th>
-                                                <td><em>data-width</em>, <em>data-height</em></td>
+                                                <td><em>data-width</em>, <em>data-height</em>, <em>data-ratio</em></td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <h4>One sortable</h4>
+                                    <h4>Normal Use</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
                                             <img src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg" id="image-to-crop" />
-                                            <input type="text" data-type="cropper" data-image="image-to-crop" data-width="500" />
+                                            <input type="text" data-type="cropper" data-image="image-to-crop" data-width="500" data-ratio="1" />
                                         </div>
                                     </div>
                                     <div class="code-block">
@@ -1825,7 +1825,7 @@ print json_encode($res);
                                     <a class="scrollto" href="#complements-section">Complements</a>
                                     <ul class="nav doc-sub-menu">
                                         <li><a class="scrollto" href="#sortable">Sortable</a></li>
-                                        <li><a class="scrollto" href="#image-croper">Image Crooper</a></li>
+                                        <li><a class="scrollto" href="#image-cropper">Image Cropper</a></li>
                                     </ul>
                                 </li>
                             </ul><!--//doc-menu-->

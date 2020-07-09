@@ -942,28 +942,39 @@ function EasyJsLibrary() {
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'cropper',
-            js: "https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/2.0.4/js/Jcrop.min.js",
-            css: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/2.0.4/css/Jcrop.min.css'
+            js: "http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js",
+            css: 'http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css'
         }, function(item) {
             var image = item.attr("data-image");
             var box_width = 0;
             var box_height = 0;
+            var ratio = null;
             if ( typeof item.attr("data-width") !== typeof undefined ) {
                 box_width = item.attr("data-width");
             }
             if ( typeof item.attr("data-height") !== typeof undefined ) {
                 box_height = item.attr("data-height");
             }
+            if ( typeof item.attr("data-ratio") !== typeof undefined ) {
+                ratio = item.attr("data-ratio");
+            }
 
             function showCoords(c) {
                 $(item).val(JSON.stringify(c));
             }
 
+            function clearCoords()
+            {
+                $(item).val('');
+             };
+
             $('#'+image).Jcrop({
                 onChange: showCoords,
                 onSelect: showCoords,
+                onRelease:  clearCoords,
                 boxWidth: box_width,
-                boxHeight: box_height
+                boxHeight: box_height,
+                aspectRatio: ratio
             });
         });
     }
