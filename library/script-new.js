@@ -949,6 +949,7 @@ function EasyJsLibrary() {
             var box_width = 0;
             var box_height = 0;
             var ratio = null;
+            var handler = null;
             if ( typeof item.attr("data-width") !== typeof undefined ) {
                 box_width = item.attr("data-width");
             }
@@ -958,9 +959,16 @@ function EasyJsLibrary() {
             if ( typeof item.attr("data-ratio") !== typeof undefined ) {
                 ratio = item.attr("data-ratio");
             }
+            if ( typeof item.attr("data-handler") !== typeof undefined ) {
+                handler = item.attr("data-handler");
+            }
 
             function showCoords(c) {
                 $(item).val(JSON.stringify(c));
+                if(handler !== null) {
+                    window[handler](c);
+                }
+                
             }
 
             function clearCoords()

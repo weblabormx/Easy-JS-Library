@@ -40,7 +40,7 @@
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Documentation</h1>
-                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: July 3rd, 2020</div>
+                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: August 4th, 2020</div>
                 </div><!--//doc-header-->
                 <div class="doc-body">
                     <div class="doc-content">
@@ -1768,7 +1768,7 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Optional Attributes</th>
-                                                <td><em>data-width</em>, <em>data-height</em>, <em>data-ratio</em></td>
+                                                <td><em>data-width</em>, <em>data-height</em>, <em>data-ratio</em>, <em>data-handler</em></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1784,6 +1784,31 @@ print json_encode($res);
                                         <h6>HTML Code</h6>
                                         <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop&quot; /&gt;
 &lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop&quot; data-width=&quot;500&quot; /&gt;</code>
+                                    </div>
+                                    <h4>Call handler</h4>
+                                    <p>To execute a javascript function every time the cropper is moved</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <img src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg" id="image-to-crop2" />
+                                            <input type="text" data-type="cropper" data-image="image-to-crop2" data-width="500" data-handler="functionName" />
+                                            <script type="text/javascript">
+                                                function functionName(c) {
+                                                    console.log('Entra');
+                                                }
+                                            </script>
+                                        </div>
+                                            
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop2&quot; /&gt; 
+&lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop2&quot; data-width=&quot;500&quot; data-handler=&quot;functionName&quot; /&gt; 
+&lt;script type=&quot;text/javascript&quot;&gt; 
+    function functionName(c) { 
+        console.log('Entra'); 
+    } 
+&lt;/script&gt;</code>
                                     </div>
                                 </div>
                             </section>
