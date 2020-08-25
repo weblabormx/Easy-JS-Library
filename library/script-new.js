@@ -942,8 +942,8 @@ function EasyJsLibrary() {
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'cropper',
-            js: "http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js",
-            css: 'http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css'
+            js: "https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/js/jquery.Jcrop.min.js",
+            css: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css'
         }, function(item) {
             var image = item.attr("data-image");
             var box_width = 0;
