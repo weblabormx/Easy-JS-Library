@@ -985,6 +985,34 @@ function EasyJsLibrary() {
                 aspectRatio: ratio
             });
         });
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'image-coordinate',
+        }, function(item) {
+            var image = item.attr("data-image");
+
+            $('#'+image).wrap( "<div style='position:relative; cursor:pointer;'></div>" );
+            $("<i class='marker' style='display: none; position: absolute; width:20px;height:20px;border-radius:20px;background:rgb(231,231,231,0.7);border: 1px solid #777;'></i>").insertBefore('#'+image);
+            $('#'+image).click(function(event) 
+            {
+                bounds=this.getBoundingClientRect();
+                var left = bounds.left + window.scrollX;
+                var top  = bounds.top  + window.scrollY;
+                var x    = event.pageX - left;
+                var y    = event.pageY - top;
+                
+                var cw = this.clientWidth;
+                var ch = this.clientHeight;
+                var iw = this.naturalWidth;
+                var ih = this.naturalHeight;
+                var px = Math.round( x / cw * iw );
+                var py = Math.round( y / ch * ih );
+
+                //console.log("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
+                $(item).val(px+','+py);
+                $(this).parent().find('.marker').css('left', x-10).css('top', y-10).show();
+            });
+        });
     }
 }
 

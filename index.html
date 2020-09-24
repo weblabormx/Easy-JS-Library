@@ -1574,6 +1574,45 @@ print json_encode($res);
 &lt;/script&gt;</code>
                                     </div>
                                 </div>
+                                <div id="image-coordinate" class="section-block">
+                                    <h3>Image Coordinate</h3>
+                                    <p>This tool allows you to get the x and y coordiates from 1 point from an image</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    Created from scratch
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>??</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-image</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Normal Use</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <img src="https://atayahmet.github.io/jquery.easypin/img/avengers.jpg" id="image-to-get-coordinates" width="100%" />
+                                            <input type="text" data-type="image-coordinate" data-image="image-to-get-coordinates" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://atayahmet.github.io/jquery.easypin/img/avengers.jpg&quot; id=&quot;image-to-get-coordinates&quot; width=&quot;100%&quot; /&gt;
+&lt;input type=&quot;text&quot; data-type=&quot;image-coordinate&quot; data-image=&quot;image-to-get-coordinates&quot; /&gt;</code>
+                                    </div>
+                                </div>
                             </section><!--//doc-section-->
                             <section id="messages-section" class="doc-section">
                                 <h2 class="section-title">Messages</h2>
@@ -1838,6 +1877,7 @@ print json_encode($res);
                                         <li><a class="scrollto" href="#color">Color picker</a></li>
                                         <li><a class="scrollto" href="#onoff">On Off</a></li>
                                         <li><a class="scrollto" href="#image-cropper">Image Cropper</a></li>
+                                        <li><a class="scrollto" href="#image-coordinate">Image Coordinate</a></li>
                                     </ul><!--//nav-->
                                 </li>
                                 <li>
