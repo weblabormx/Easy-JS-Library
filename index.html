@@ -1548,6 +1548,19 @@ print json_encode($res);
                                         <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop&quot; /&gt;
 &lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop&quot; data-width=&quot;500&quot; /&gt;</code>
                                     </div>
+                                    <h4>Normal Use With Default Values</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <img src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg" id="image-to-crop3" />
+                                            <input type="text" data-type="cropper" data-image="image-to-crop3" data-width="500" data-ratio="1" value='{"x":314.88,"y":220.16,"x2":596.48,"y2":501.76,"w":281.6,"h":281.6}' />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop&quot; /&gt;
+&lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop&quot; data-width=&quot;500&quot; value='{&quot;x&quot;:314.88,&quot;y&quot;:220.16,&quot;x2&quot;:596.48,&quot;y2&quot;:501.76,&quot;w&quot;:281.6,&quot;h&quot;:281.6}' /&gt;</code>
+                                    </div>
                                     <h4>Call handler</h4>
                                     <p>To execute a javascript function every time the cropper is moved</p>
                                     <div class="result-block">

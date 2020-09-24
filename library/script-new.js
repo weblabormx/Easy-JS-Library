@@ -945,6 +945,7 @@ function EasyJsLibrary() {
             js: "https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/js/jquery.Jcrop.min.js",
             css: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css'
         }, function(item) {
+            var value = item.val();
             var image = item.attr("data-image");
             var box_width = 0;
             var box_height = 0;
@@ -974,16 +975,25 @@ function EasyJsLibrary() {
             function clearCoords()
             {
                 $(item).val('');
-             };
+            };
 
+            var api;
             $('#'+image).Jcrop({
                 onChange: showCoords,
                 onSelect: showCoords,
                 onRelease:  clearCoords,
                 boxWidth: box_width,
                 boxHeight: box_height,
-                aspectRatio: ratio
+                aspectRatio: ratio,
+            },function(){
+                api = this;
             });
+
+            if(value.length > 0) {
+                value = JSON.parse(value);
+                var coords = [value.x, value.y, value.x2, value.y2];
+                api.setSelect(coords);
+            }
         });
         this.controller.addFunctionality({
             type: 'each',
