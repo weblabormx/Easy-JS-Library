@@ -999,6 +999,7 @@ function EasyJsLibrary() {
             type: 'each',
             data_type: 'image-coordinate',
         }, function(item) {
+            var value = item.val();
             var image = item.attr("data-image");
 
             $('#'+image).wrap( "<div style='position:relative; cursor:pointer;'></div>" );
@@ -1022,6 +1023,21 @@ function EasyJsLibrary() {
                 $(item).val(px+','+py);
                 $(this).parent().find('.marker').css('left', x-10).css('top', y-10).show();
             });
+
+            // Show default value
+            if(value.length > 0) {
+                value = value.split(',');
+                var img = document.querySelector("#"+image);
+                var iw = img.naturalWidth;
+                var ih = img.naturalHeight;
+                var cw = img.width;
+                var ch = img.height;
+                var diff = iw / cw;
+
+                var x = Math.round( value[0] / diff );
+                var y = Math.round( value[1] / diff );
+                $('#'+image).parent().find('.marker').css('left', x-10).css('top', y-10).show();
+            }
         });
     }
 }
