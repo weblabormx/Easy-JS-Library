@@ -1512,7 +1512,7 @@ print json_encode($res);
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="http://deepliquid.com/projects/Jcrop" target="_blank">
+                                                    <a href="https://jcrop.com/" target="_blank">
                                                         Jcrop
                                                     </a>
                                                 </td>
@@ -1540,7 +1540,7 @@ print json_encode($res);
                                         <h6>Result</h6>
                                         <div class="result">
                                             <img src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg" id="image-to-crop" />
-                                            <input type="text" data-type="cropper" data-image="image-to-crop" data-width="500" data-ratio="1" />
+                                            <input type="text" data-type="cropper" data-image="image-to-crop" data-width="500" />
                                         </div>
                                     </div>
                                     <div class="code-block">
@@ -1548,18 +1548,31 @@ print json_encode($res);
                                         <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop&quot; /&gt;
 &lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop&quot; data-width=&quot;500&quot; /&gt;</code>
                                     </div>
-                                    <h4>Normal Use With Default Values</h4>
+                                    <h4>With Default Values</h4>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
                                             <img src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg" id="image-to-crop3" />
-                                            <input type="text" data-type="cropper" data-image="image-to-crop3" data-width="500" data-ratio="1" value='{"x":314.88,"y":220.16,"x2":596.48,"y2":501.76,"w":281.6,"h":281.6}' />
+                                            <input type="text" data-type="cropper" data-image="image-to-crop3" data-width="500" data-ratio="1" value='{"x":547.84,"y":0,"x2":1013.76,"y2":465.92,"w":465.92,"h":465.92}' />
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
                                         <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop&quot; /&gt;
-&lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop&quot; data-width=&quot;500&quot; value='{&quot;x&quot;:314.88,&quot;y&quot;:220.16,&quot;x2&quot;:596.48,&quot;y2&quot;:501.76,&quot;w&quot;:281.6,&quot;h&quot;:281.6}' /&gt;</code>
+&lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop&quot; data-width=&quot;500&quot; data-ratio=&quot;1&quot; value='{&quot;x&quot;:314.88,&quot;y&quot;:220.16,&quot;x2&quot;:596.48,&quot;y2&quot;:501.76,&quot;w&quot;:281.6,&quot;h&quot;:281.6}' /&gt;</code>
+                                    </div>
+                                    <h4>With Min and Max sizes</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <img src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg" id="image-to-crop-with-min-and-max" />
+                                            <input type="text" data-type="cropper" data-image="image-to-crop-with-min-and-max" data-width="500" data-min-sizes="80,80" data-max-sizes="300,300" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop-with-min-and-max&quot; /&gt;
+&lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop-with-min-and-max&quot; data-width=&quot;500&quot; data-min-sizes=&quot;80,80&quot; data-max-sizes=&quot;300,300&quot; /&gt;</code>
                                     </div>
                                     <h4>Call handler</h4>
                                     <p>To execute a javascript function every time the cropper is moved</p>

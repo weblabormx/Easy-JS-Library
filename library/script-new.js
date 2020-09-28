@@ -942,15 +942,18 @@ function EasyJsLibrary() {
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'cropper',
-            js: "https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/js/jquery.Jcrop.min.js",
-            css: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css'
+            js: "https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.15/js/jquery.Jcrop.min.js",
+            css: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.15/css/jquery.Jcrop.min.css'
         }, function(item) {
             var value = item.val();
             var image = item.attr("data-image");
             var box_width = 0;
             var box_height = 0;
-            var ratio = null;
+            var ratio = 0;
             var handler = null;
+            var minSize = [0,0];
+            var maxSize = [0,0];
+
             if ( typeof item.attr("data-width") !== typeof undefined ) {
                 box_width = item.attr("data-width");
             }
@@ -962,6 +965,16 @@ function EasyJsLibrary() {
             }
             if ( typeof item.attr("data-handler") !== typeof undefined ) {
                 handler = item.attr("data-handler");
+            }
+            if ( typeof item.attr("data-min-sizes") !== typeof undefined ) {
+                minSize = item.attr("data-min-sizes").split(',').map(function (x) { 
+                    return parseInt(x, 10); 
+                });
+            }
+            if ( typeof item.attr("data-max-sizes") !== typeof undefined ) {
+                maxSize = item.attr("data-max-sizes").split(',').map(function (x) { 
+                    return parseInt(x, 10); 
+                });
             }
 
             function showCoords(c) {
@@ -978,15 +991,24 @@ function EasyJsLibrary() {
             };
 
             var api;
-            $('#'+image).Jcrop({
+            var cropOptions = {
                 onChange: showCoords,
                 onSelect: showCoords,
                 onRelease:  clearCoords,
                 boxWidth: box_width,
                 boxHeight: box_height,
                 aspectRatio: ratio,
-            },function(){
+                minSize: minSize,
+                maxSize: maxSize,
+            };
+            $('#'+image).Jcrop(cropOptions,function(){
                 api = this;
+                if (cropOptions.maxSize && cropOptions.maxSize[0]!=0 && cropOptions.maxSize[1]!=0) {
+                    api.setOptions({
+                        maxSize: [cropOptions.maxSize[0] / api.getScaleFactor()[0], cropOptions.maxSize[1] / api.getScaleFactor()[1]]
+                    })
+                    api.release();
+                }
             });
 
             if(value.length > 0) {
