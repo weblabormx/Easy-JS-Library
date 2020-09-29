@@ -957,6 +957,11 @@ function EasyJsLibrary() {
             if ( typeof item.attr("data-width") !== typeof undefined ) {
                 box_width = item.attr("data-width");
             }
+            if(box_width.includes("%")) {
+                var porcentage = box_width.replace('%', '');
+                var width = $('#'+image).parent().width();
+                box_width = (width / 100) * porcentage;
+            }
             if ( typeof item.attr("data-height") !== typeof undefined ) {
                 box_height = item.attr("data-height");
             }
