@@ -40,7 +40,7 @@
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Documentation</h1>
-                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: September 24th, 2020</div>
+                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: January 23rd, 2021</div>
                 </div><!--//doc-header-->
                 <div class="doc-body">
                     <div class="doc-content">
@@ -1889,12 +1889,179 @@ print json_encode($res);
                                     </div>
 
                                 </div>
+                                <div id="popups" class="section-block">
+                                    <h3>Popups</h3>
+                                    <p>
+                                        Automatic popups easily
+                                    </p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://dimsemenov.com/plugins/magnific-popup/" target="_blank">
+                                                        Magnific Popup
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>v1.0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>a</em>, <em>div</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-popup-type</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-popup-link-class</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Ajax</h4>
+                                    <p>Load a website in a popup</p>
+                                    <p>If you want to load a popup inside the ajax content just add the class .js-link to the links.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <a href="popupexample.html" data-type="popup" data-popup-type="ajax">Click here</a>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;a href=&quot;popupexample.html&quot; data-type=&quot;popup&quot; data-popup-type=&quot;ajax&quot;&gt;Click here&lt;/a&gt;</code>
+                                    </div>
+                                    <h4>Image</h4>
+                                    <p>Load an image in a popup</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <a href="logo.png" data-type="popup" data-popup-type="image" title="Mi Logo">Click here</a>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;a href=&quot;logo.png&quot; data-type=&quot;popup&quot; data-popup-type=&quot;image&quot; title=&quot;Mi Logo&quot;&gt;Click here&lt;/a&gt;</code>
+                                    </div>
+                                    <h4>Image Group</h4>
+                                    <p>Load a lot of images at the same time in a popup. Will add the popup to all links on the div.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type="popup" data-popup-type="image">
+                                                <a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="Example">Click here</a>
+                                                <a href="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg" title="Example2">Click here</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type=&quot;popup&quot; data-popup-type=&quot;image&quot;&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg&quot; title=&quot;Example&quot;&gt;Click here&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg&quot; title=&quot;Example2&quot;&gt;Click here&lt;/a&gt;
+&lt;/div&gt;</code>
+                                    </div>
+                                    <p>If you want to select which classes to use</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type="popup" data-popup-type="image" data-popup-link-class="link">
+                                                <a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="Example" class="link">Click here</a>
+                                                <a href="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg" title="Example2" class="link">Click here</a>
+                                                <a href="http://google.com">This is a normal link</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type=&quot;popup&quot; data-popup-type=&quot;image&quot; data-popup-link-class=&quot;link&quot;&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg&quot; title=&quot;Example&quot; class=&quot;link&quot;&gt;Click here&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg&quot; title=&quot;Example2&quot; class=&quot;link&quot;&gt;Click here&lt;/a&gt;
+    &lt;a href=&quot;http://google.com&quot;&gt;This is a normal link&lt;/a&gt;
+&lt;/div&gt;</code>
+                                    </div>
+                                    <h4>Image Gallery</h4>
+                                    <p>Load a lot of images at the same time but with option to change between results. You can use <em>data-popup-link-class</em> attribute also</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type="popup-gallery" data-popup-type="image">
+                                                <a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="Example <small>Works with html</small>">Click here</a>
+                                                <a href="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg" title="Example2">Click here</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type=&quot;popup-gallery&quot; data-popup-type=&quot;image&quot;&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg&quot; title=&quot;Example&quot;&gt;Click here&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg&quot; title=&quot;Example2&quot;&gt;Click here&lt;/a&gt;
+&lt;/div&gt;</code>
+                                    </div>
+                                    <h4>Iframe</h4>
+                                    <p>Works with Vimeo, Youtube and Google Maps</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <a href="https://www.youtube.com/watch?v=9bZkp7q19f0" data-type="popup" data-popup-type="iframe">Click here</a>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;a href=&quot;https://www.youtube.com/watch?v=MVvIlcXudK8&quot; data-type=&quot;popup&quot; data-popup-type=&quot;iframe&quot;&gt;Click here&lt;/a&gt;</code>
+                                    </div>
+                                    <h4>Inline</h4>
+                                    <p>To load the info on html inside the code</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div id="popup1" style="background:#fff; width:300px; margin: 0 auto;position:relative;padding:20px;">
+                                                <h1>Hola Mundo</h1>
+                                                <p>This is a inline popup!</p>
+                                            </div>
+                                            <a href="#popup1" data-type="popup" data-popup-type="inline">Click here</a>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div id=&quot;popup1&quot; style=&quot;background:#fff; width:300px; margin: 0 auto;position:relative;padding:20px;&quot;&gt;
+    &lt;h1&gt;Hola Mundo&lt;/h1&gt;
+    &lt;p&gt;This is a inline popup!&lt;/p&gt;
+&lt;/div&gt;
+&lt;a href=&quot;#popup1&quot; data-type=&quot;popup&quot; data-popup-type=&quot;inline&quot;&gt;Click here&lt;/a</code>
+                                    </div>
+                                    <h4>Inline Automatic Every x days</h4>
+                                    <p>To execute a popup automatically And wait to show again</p>
+                                    <p>If you want to execute automatically without waiting just dont put the data-days attribute.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div id="popup2" style="background:#fff; width:300px; margin: 0 auto;position:relative;padding:20px;">
+                                                <h1>Hola Mundo automatico</h1>
+                                                <p>This is a inline popup automatic!!</p>
+                                            </div>
+                                            <a data-type="popup" data-popup-type="inline" data-automatic="true" data-days="15" href="#popup2"></a>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div id=&quot;popup2&quot; style=&quot;background:#fff; width:300px; margin: 0 auto;position:relative;padding:20px;&quot;&gt;
+    &lt;h1&gt;Hola Mundo automatico&lt;/h1&gt;
+    &lt;p&gt;This is a inline popup automatic!!&lt;/p&gt;
+&lt;/div&gt;
+&lt;a data-type=&quot;popup&quot; data-popup-type=&quot;inline&quot; data-automatic=&quot;true&quot; data-days=&quot;15&quot; href=&quot;#popup2&quot;&gt;Click&lt;/a&gt;</code>
+                                    </div>
+                                </div>
                             </section>
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar hidden-xs">
                         <nav id="doc-nav">
-                            <ul id="doc-menu" class="nav doc-menu" data-spy="affix">
+                            <ul id="doc-menu" class="nav doc-menu" data-spy="affix" style="overflow-y: scroll; height: 100%;">
                                 <li><a class="scrollto" href="#use-section">Use</a></li>
                                 <li>
                                     <a class="scrollto" href="#forms-section">Forms</a>
@@ -1930,6 +2097,7 @@ print json_encode($res);
                                     <a class="scrollto" href="#complements-section">Complements</a>
                                     <ul class="nav doc-sub-menu">
                                         <li><a class="scrollto" href="#sortable">Sortable</a></li>
+                                        <li><a class="scrollto" href="#popups">Popups</a></li>
                                     </ul>
                                 </li>
                             </ul><!--//doc-menu-->

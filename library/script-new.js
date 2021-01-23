@@ -840,6 +840,99 @@ function EasyJsLibrary() {
             });
         });
 
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'popup',
+            js: this.url+"magnific-popup/jquery.magnific-popup.min.js",
+            css: this.url+'magnific-popup/magnific-popup.css'
+        }, function(item) {
+            var type = item.attr("data-popup-type");
+            var tag_name = item.prop("tagName").toLowerCase();
+            if(tag_name=='a') {
+                var type = item.attr("data-popup-type");
+                if (type=="inline") {
+                    var href = item.attr("href");
+                    $(href).addClass("mfp-hide");
+                } else if(type=='ajax') {
+                    $(document).on('click', '.js-link', function(e) { 
+                        var url = $(this).attr('href'); 
+                        $.magnificPopup.close(); 
+                        $.magnificPopup.open({ items: { src: url, type: 'ajax' } }); 
+                        e.preventDefault(); 
+                    });
+                }
+                item.magnificPopup({
+                    type: type
+                });
+                var automatic = item.attr("data-automatic");
+                if (typeof automatic !== typeof undefined && automatic !== false) {
+                    var days = item.attr("data-days");
+                    if (typeof days !== typeof undefined && days !== false) {
+                        if (document.cookie.indexOf('visited=true') == -1) {
+                            var days = 1000*60*60*24*days;
+                            var expires = new Date((new Date()).valueOf() + days);
+                            document.cookie = "visited=true;expires=" + expires.toUTCString();
+                            item.magnificPopup('open');
+                        }
+                    } else {
+                        item.magnificPopup('open');
+                    }
+                }
+            } else {
+                var delegate = "a";
+                if ( typeof item.attr("data-popup-link-class") !== typeof undefined ) {
+                    delegate = delegate+'.'+item.attr("data-popup-link-class");
+                }
+                var type = item.attr("data-popup-type");
+                item.magnificPopup({
+                    type: type,
+                    delegate: delegate,
+                });
+            }
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'popup-gallery',
+            js: this.url+"magnific-popup/jquery.magnific-popup.min.js",
+            css: this.url+'magnific-popup/magnific-popup.css'
+        }, function(item) {
+            var type = item.attr("data-popup-type");
+            var delegate = "a";
+            if ( typeof item.attr("data-popup-link-class") !== typeof undefined ) {
+                delegate = delegate+'.'+item.attr("data-popup-link-class");
+            }
+            var title_src = 'title';
+            item.magnificPopup({
+                type: type,
+                delegate: delegate,
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: false,
+                    preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                },
+                image: {
+                    // options for image content type
+                    titleSrc: function(item) {
+                        text_url = item.el.attr('data-text-url');
+                        if (typeof text_url !== typeof undefined && text_url !== false) {
+                            var text = null;
+                            $.ajax({
+                                url: text_url,
+                                type: 'get',
+                                dataType: 'html',
+                                async: false,
+                                success: function(data) {
+                                    result = data;
+                                } 
+                            });
+                            return result;
+                        }
+                        return item.el.attr('title');
+                    }
+                  }
+            });
+        });
     }
 
     this.loadMessages = function() {
