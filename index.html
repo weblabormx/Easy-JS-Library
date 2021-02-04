@@ -1135,14 +1135,14 @@ print json_encode($res);
                                             <tr>
                                                 <th scope="row">Library Name</th>
                                                 <td>
-                                                    <a href="https://github.com/renvrant/conditionize.js" target="_blank">
-                                                        Conditionize.js
+                                                    <a href="https://github.com/rguliev/conditionize2.js" target="_blank">
+                                                        Conditionize2.js
                                                     </a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>Unknown</td>
+                                                <td>2.0.1</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -1160,25 +1160,25 @@ print json_encode($res);
                                             <label><input type="radio" name="example1" value="yes"><span></span> Yes</label>
                                             <label><input type="radio" name="example1" value="no"><span></span> No</label>
 
-                                            <div data-type="conditional" data-cond-option="example1" data-cond-value="yes">
-                                                <label><input type="checkbox" name="example2"><span></span> Are you sure?</label>
+                                            <div data-type="conditional2" data-condition="example1=='yes'">
+                                                <label><input type="checkbox" name="example2" id="ex2"><span></span> Are you sure?</label>
                                                 <label><input type="checkbox" name="example3"><span></span> Really super sure?</label>
                                                 
-                                                <div data-type="conditional" data-cond-option="example2" data-cond-value="on">
+                                                <div data-type="conditional2" data-condition="#ex2">
                                                     Hooray!
                                                 </div>
-                                                <div data-type="conditional" data-cond-option="example3" data-cond-value="on">
+                                                <div data-type="conditional2" data-condition="example3">
                                                     Don't get cocky!
                                                 </div>
                                             </div>
                                             
-                                            <div data-type="conditional" data-cond-option="example1" data-cond-value="no">
+                                            <div data-type="conditional2" data-condition="example1=='no'">
                                                 <p>That's a shame. Will you change your mind?</p>
                                                 
                                                 <label><input type="radio" name="example4" value="yes"><span></span> Yes</label>
                                                 <label><input type="radio" name="example4" value="no"><span></span> No</label>
                                                 
-                                                <div data-type="conditional" data-cond-option="example4" data-cond-value="yes">
+                                                <div data-type="conditional2" data-condition="example4=='yes'">
                                                     Great!
                                                 </div>
                                             </div>
@@ -1191,14 +1191,14 @@ print json_encode($res);
                                                     <option value="no">No!</option>
                                                 </select>
                                             </p>
-                                            <div data-type="conditional" data-cond-option="example5" data-cond-value="yes">
+                                            <div data-type="conditional2" data-condition="example5=='yes'">
                                                 Works with selects!
                                             </div>
                                              <p>
                                                 <label>or type:</label>
                                                 <input type="text" name="example6" placeholder="yay">
                                             </p>
-                                            <div data-type="conditional" data-cond-option="example6" data-cond-value="yay">
+                                            <div data-type="conditional2" data-condition="example6=='yay'">
                                                 Works with text input
                                             </div>
                                         </div>
@@ -1206,49 +1206,49 @@ print json_encode($res);
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
                                         <code data-type="codeeditor" data-lang="html">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
-&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
+    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example1&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
 
-&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example1&quot; data-cond-value=&quot;yes&quot;&gt;
-    &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example2&quot;&gt;&lt;span&gt;&lt;/span&gt; Are you sure?&lt;/label&gt;
-    &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example3&quot;&gt;&lt;span&gt;&lt;/span&gt; Really super sure?&lt;/label&gt;
-    
-    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example2&quot; data-cond-value=&quot;on&quot;&gt;
-        Hooray!
+    &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example1==&#39;yes&#39;&quot;&gt;
+        &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example2&quot; id=&quot;ex2&quot;&gt;&lt;span&gt;&lt;/span&gt; Are you sure?&lt;/label&gt;
+        &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example3&quot;&gt;&lt;span&gt;&lt;/span&gt; Really super sure?&lt;/label&gt;
+        
+        &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;#ex2&quot;&gt;
+            Hooray!
+        &lt;/div&gt;
+        &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example3&quot;&gt;
+            Don&#39;t get cocky!
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example3&quot; data-cond-value=&quot;on&quot;&gt;
-        Don't get cocky!
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example1&quot; data-cond-value=&quot;no&quot;&gt;
-    &lt;p&gt;That's a shame. Will you change your mind?&lt;/p&gt;
     
-    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
-    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
-    
-    &lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example4&quot; data-cond-value=&quot;yes&quot;&gt;
-        Great!
+    &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example1==&#39;no&#39;&quot;&gt;
+        &lt;p&gt;That&#39;s a shame. Will you change your mind?&lt;/p&gt;
+        
+        &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
+        &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
+        
+        &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example4==&#39;yes&#39;&quot;&gt;
+            Great!
+        &lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;
-    &lt;label&gt;or choose:&lt;/label&gt;
-    &lt;select class=&quot;select&quot; name=&quot;example5&quot;&gt;
-        &lt;option&gt;Pick one!&lt;/option&gt;
-        &lt;option value=&quot;yes&quot;&gt;Yes!&lt;/option&gt;
-        &lt;option value=&quot;no&quot;&gt;No!&lt;/option&gt;
-    &lt;/select&gt;
-&lt;/p&gt;
-&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example5&quot; data-cond-value=&quot;yes&quot;&gt;
-    Works with selects!
-&lt;/div&gt;
- &lt;p&gt;
-    &lt;label&gt;or type:&lt;/label&gt;
-    &lt;input type=&quot;text&quot; name=&quot;example6&quot; placeholder=&quot;yay&quot;&gt;
-&lt;/p&gt;
-&lt;div data-type=&quot;conditional&quot; data-cond-option=&quot;example6&quot; data-cond-value=&quot;yay&quot;&gt;
-    Works with text input
-&lt;/div&gt;</code>
+    
+    &lt;p&gt;
+        &lt;label&gt;or choose:&lt;/label&gt;
+        &lt;select class=&quot;select&quot; name=&quot;example5&quot;&gt;
+            &lt;option&gt;Pick one!&lt;/option&gt;
+            &lt;option value=&quot;yes&quot;&gt;Yes!&lt;/option&gt;
+            &lt;option value=&quot;no&quot;&gt;No!&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/p&gt;
+    &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example5==&#39;yes&#39;&quot;&gt;
+        Works with selects!
+    &lt;/div&gt;
+     &lt;p&gt;
+        &lt;label&gt;or type:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; name=&quot;example6&quot; placeholder=&quot;yay&quot;&gt;
+    &lt;/p&gt;
+    &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example6==&#39;yay&#39;&quot;&gt;
+        Works with text input
+    &lt;/div&gt;</code>
                                     </div>
                                 </div>
 

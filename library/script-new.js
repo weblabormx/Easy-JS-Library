@@ -652,6 +652,16 @@ function EasyJsLibrary() {
 
         this.controller.addFunctionality({
             type: 'oneByOne',
+            data_type: 'conditional2',
+            selector: 'div',
+            js: "https://cdn.jsdelivr.net/gh/rguliev/conditionize2.js@2.0.1/jquery.conditionize2.min.js"
+        }, function(item) {
+            console.log('Entra');
+            item.conditionize();
+        });
+
+        this.controller.addFunctionality({
+            type: 'oneByOne',
             data_type: 'conditional',
             selector: 'div',
             js: this.url+"conditionize/conditionize.jquery.js"
