@@ -279,16 +279,11 @@ function EasyJsLibrary() {
             data_type: 'tagsinput',
             selector: 'input',
             js: [
-                'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/typeahead.bundle.min.js',
-                'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.js'
+                'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/js/bundle/demo.js',
             ],
-            css: 'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/mab-jquery-taginput.css'
+            css: 'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/css/demo.css'
         }, function(item) {
-            item.tagInput({
-                tagDataSeparator: '|',
-                allowDuplicates: false,
-                typeahead: false
-            });
+            item.addClass('tag-input');
         });
 
         this.controller.addFunctionality({
@@ -656,7 +651,6 @@ function EasyJsLibrary() {
             selector: 'div',
             js: "https://cdn.jsdelivr.net/gh/rguliev/conditionize2.js@2.0.1/jquery.conditionize2.min.js"
         }, function(item) {
-            console.log('Entra');
             item.conditionize();
         });
 
@@ -942,6 +936,14 @@ function EasyJsLibrary() {
                     }
                   }
             });
+        });
+
+        this.controller.addFunctionality({
+            type: 'createAndDestroy',
+            data_type: 'fitty',
+            js: "https://cdnjs.cloudflare.com/ajax/libs/fitty/2.3.3/fitty.min.js",
+        }, function(item) {
+            fitty('[data-type=fitty');
         });
     }
 
