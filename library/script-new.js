@@ -278,9 +278,7 @@ function EasyJsLibrary() {
             type: 'oneByOne',
             data_type: 'tagsinput',
             selector: 'input',
-            js: [
-                'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/js/bundle/demo.js',
-            ],
+            js: 'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/js/bundle/demo.js',
             css: 'https://www.jqueryscript.net/demo/jQuery-Tags-Input-Plugin-with-Autocomplete-Support-Mab-Tag-Input/css/demo.css'
         }, function(item) {
             item.addClass('tag-input');
