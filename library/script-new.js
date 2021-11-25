@@ -943,6 +943,24 @@ function EasyJsLibrary() {
         }, function(item) {
             fitty('[data-type=fitty');
         });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'zoom',
+            js: this.url+'zoom/jquery.zoom.js',
+        }, function(item) {
+            item.zoom();
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'clickOnChange'
+        }, function(item) {
+            var id = item.attr("id");
+            item.change(function(e){
+                $("[for="+id+"]").trigger('click');    
+            });
+        });
     }
 
     this.loadMessages = function() {
