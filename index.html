@@ -2165,6 +2165,35 @@ print json_encode($res);
 &lt;/div&gt;</code>
                                     </div>
                                 </div>
+                                <div id="clickOnChange" class="section-block">
+                                    <h3>Click On Change</h3>
+                                    <p>Automatically make a click on something once an input changes</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>input</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Normal use</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <form action="envia.php">
+                                                <input data-type="clickOnChange" type="file" id="coc" name="archivos[]" multiple="true"/>
+                                                <input type="submit" for="coc" style="display:none;" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;form action=&quot;envia.php&quot;&gt;
+    &lt;input data-type=&quot;clickOnChange&quot; type=&quot;file&quot; id=&quot;coc&quot; name=&quot;archivos[]&quot; multiple=&quot;true&quot;/&gt;
+    &lt;input type=&quot;submit&quot; for=&quot;coc&quot; style=&quot;display:none;&quot; /&gt;
+&lt;/form&gt;</code>
+                                    </div>
+                                </div>
                             </section>
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
