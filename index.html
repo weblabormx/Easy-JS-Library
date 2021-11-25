@@ -2132,6 +2132,39 @@ print json_encode($res);
 }&lt;/code&gt;</code>
                                     </div>
                                 </div>
+                                <div id="changeOnClick" class="section-block">
+                                    <h3>Change on Click</h3>
+                                    <p>Change the view of a div when we make a click</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>div</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Normal use</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div id="country" data-type="changeOnClick">
+                                                <img src="https://i.imgur.com/zzJn75K.png" />México
+                                            </div>
+                                            <div for="country">
+                                                <input data-type="autocomplete" name="aut2" src="autocomplete.php" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div id=&quot;country&quot; data-type=&quot;changeOnClick&quot;&gt;
+    &lt;img src=&quot;http://www.ssn.unam.mx/imagenes/bandera-mexico.png&quot; /&gt;México
+&lt;/div&gt;
+&lt;div for=&quot;country&quot;&gt;
+    &lt;input data-type=&quot;autocomplete&quot; name=&quot;aut2&quot; src=&quot;autocomplete.php&quot; /&gt;
+&lt;/div&gt;</code>
+                                    </div>
+                                </div>
                             </section>
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
@@ -2176,6 +2209,9 @@ print json_encode($res);
                                         <li><a class="scrollto" href="#popups">Popups</a></li>
                                         <li><a class="scrollto" href="#fitty">Fitty</a></li>
                                         <li><a class="scrollto" href="#show-code">Show Code</a></li>
+                                        <li><a class="scrollto" href="#changeOnClick">Change on click</a></li>
+                                        <li><a class="scrollto" href="#clickOnChange">Click on change</a></li>
+                                        <li><a class="scrollto" href="#zoom">Zoom</a></li>
                                     </ul>
                                 </li>
                             </ul><!--//doc-menu-->
