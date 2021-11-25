@@ -174,15 +174,6 @@ function loadEJL($) {
             });
         });
     }
-    if($('[data-type~=clickOnChange]').length) {
-        $("[data-type~=clickOnChange]").each(function(cont){
-            var id = $(this).attr("id");
-
-            $(this).change(function(e){
-                    $("[for="+id+"]").trigger('click');    
-            });
-        });
-    }
     if($('form[data-type~=ajax]').length) {
         $("form[data-type~=ajax]").each(function(cont){
             $( this ).submit(function( e ) {
@@ -535,16 +526,6 @@ function loadEJL($) {
         $.getScript(url+'photo-sphere/doT.min.js', function(){ executePS(); });
         $.getScript(url+'photo-sphere/uevent.min.js', function(){ executePS(); });
     }
-
-    loadZoom();
-    function loadZoom() {
-        if($('[data-type~=zoom]').length) {
-            $.getScript(url+'zoom/jquery.zoom.js', function(){
-                $('[data-type~=zoom]').zoom();
-            });
-        }
-    }
-        
 }
 jQuery(document).ready(function($){
     loadEJL($);
