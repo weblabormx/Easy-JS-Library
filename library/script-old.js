@@ -304,64 +304,6 @@ function loadEJL($) {
         });
     }
    
-    // Owl
-    if($('[data-type~=carousel]').length) {
-        $('head').append('<link rel="stylesheet" href="'+url+'owl-carousel/owl.carousel.css" type="text/css" />');
-        $.getScript(url+"owl-carousel/owl.carousel.min.js", function(){
-            $("[data-type~=carousel]").each(function(cont){
-                $(this).addClass("owl-carousel");
-                var id = $(this).attr("id");
-                var owl = $(this);
-                var time = false;
-                if ( typeof $(this).attr("data-carousel-time") !== typeof undefined ) {
-                    var time = $(this).attr("data-carousel-time");
-                }
-                var items = 5;
-                if ( typeof $(this).attr("data-carousel-items") !== typeof undefined ) {
-                    items = $(this).attr("data-carousel-items");
-                }
-                var items2 = false;
-                if ( typeof $(this).attr("data-carousel-items-desktop") !== typeof undefined ) {
-                    items2 = new Array(1000, $(this).attr("data-carousel-items-desktop"));
-                }
-                var items3 = false;
-                if ( typeof $(this).attr("data-carousel-items-desktop-small") !== typeof undefined ) {
-                    items3 = new Array(900, $(this).attr("data-carousel-items-desktop-small"));
-                }
-                var items4 = false;
-                if ( typeof $(this).attr("data-carousel-items-tablet") !== typeof undefined ) {
-                    items4 = new Array(600, $(this).attr("data-carousel-items-tablet"));
-                }
-                var items5 = false;
-                if ( typeof $(this).attr("data-carousel-items-mobile") !== typeof undefined ) {
-                    items5 = new Array(400, $(this).attr("data-carousel-items-mobile"));
-                }
-                owl.owlCarousel({
-                    autoPlay: time,
-                    items: items,
-                    itemsDesktop: items2,
-                    itemsDesktopSmall: items3,
-                    itemsTablet: items4,
-                    itemsMobile: items5
-                });
-
-                // Custom Navigation Events
-                $("[data-carousel-type=next][for="+id+"]").click(function(){
-                    owl.trigger('owl.next');
-                })
-                $("[data-carousel-type=prev][for="+id+"]").click(function(){
-                    owl.trigger('owl.prev');
-                })
-                $("[data-carousel-type=play][for="+id+"]").click(function(){
-                    owl.trigger('owl.play',1000); //owl.play event accept autoPlay speed as second parameter
-                })
-                $("[data-carousel-type=stop][for="+id+"]").click(function(){
-                    owl.trigger('owl.stop');
-                })
-            });
-        });
-    }
-
     //Sidr
     if($('[data-type~=mobmenu]').length) {
         $('head').append('<link rel="stylesheet" href="'+url+'sidr/jquery.sidr.dark.css" type="text/css" />');

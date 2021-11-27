@@ -40,7 +40,7 @@
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Documentation</h1>
-                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: January 23rd, 2021</div>
+                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: November 27th, 2021</div>
                 </div><!--//doc-header-->
                 <div class="doc-body">
                     <div class="doc-content">
@@ -800,7 +800,7 @@ echo json_encode(getChildsOf($id)); // Call method for getting childs in base of
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>v1.11.4</td>
+                                                <td>v1.12.1</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -901,7 +901,7 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>v1.11.4</td>
+                                                <td>v1.12.1</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -974,7 +974,7 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>v1.11.4</td>
+                                                <td>v1.12.1</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -1796,7 +1796,7 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>v1.11.4</td>
+                                                <td>v1.12.1</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -2233,6 +2233,122 @@ print json_encode($res);
 &lt;/div&gt;</code>
                                     </div>
                                 </div>
+                                <div id="tooltip" class="section-block">
+                                    <h3>Tooltip</h3>
+                                    <p>Add a tooltip to any element</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://jqueryui.com" target="_blank">
+                                                        Jquery UI
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>1.12.1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>div</em>, <em>input</em>, <em>form</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Normal use</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <input title="Selecciona una fecha" name="tooltip" data-type="tooltip" />
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;input title=&quot;Selecciona una fecha&quot; name=&quot;tooltip&quot; data-type=&quot;tooltip&quot; /&gt;</code>
+                                    </div>
+                                </div>
+                                <div id="carousel" class="section-block">
+                                    <h3>Carousel</h3>
+                                    <p>Makes an automatically carousel</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://owlcarousel2.github.io/OwlCarousel2/" target="_blank">
+                                                        Owl Carousel
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>1.3.3</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>div</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Optional Attributes</th>
+                                                <td><em>data-carousel-items-desktop</em>, <em>data-carousel-items-desktop-small</em>, <em>data-carousel-items-tablet</em>, <em>data-carousel-items-mobile</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Normal use</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type="carousel" data-carousel-time="1000" data-carousel-items="10" data-carousel-items-tablet="5" id="carousel">
+                                                <div class="item"><h1>1</h1></div>
+                                                <div class="item"><h1>2</h1></div>
+                                                <div class="item"><h1>3</h1></div>
+                                                <div class="item"><h1>4</h1></div>
+                                                <div class="item"><h1>5</h1></div>
+                                                <div class="item"><h1>6</h1></div>
+                                                <div class="item"><h1>7</h1></div>
+                                                <div class="item"><h1>8</h1></div>
+                                                <div class="item"><h1>9</h1></div>
+                                                <div class="item"><h1>10</h1></div>
+                                                <div class="item"><h1>11</h1></div>
+                                                <div class="item"><h1>12</h1></div>
+                                                <div class="item"><h1>13</h1></div>
+                                                <div class="item"><h1>14</h1></div>
+                                                <div class="item"><h1>15</h1></div>
+                                                <div class="item"><h1>16</h1></div>
+                                            </div>
+                                            <span data-carousel-type="prev" for="carousel">Previous</span>
+                                            <span data-carousel-type="next" for="carousel">Next</span>
+                                            <span data-carousel-type="play" for="carousel">Autoplay</span>
+                                            <span data-carousel-type="stop" for="carousel">Stop</span>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type=&quot;carousel&quot; data-carousel-time=&quot;1000&quot; data-carousel-items=&quot;10&quot; data-carousel-items-tablet=&quot;5&quot; id=&quot;carousel&quot;&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;1&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;2&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;3&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;4&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;5&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;6&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;7&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;8&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;9&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;10&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;11&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;12&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;13&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;14&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;15&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;&lt;h1&gt;16&lt;/h1&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;span data-carousel-type=&quot;prev&quot; for=&quot;carousel&quot;&gt;Previous&lt;/span&gt;
+&lt;span data-carousel-type=&quot;next&quot; for=&quot;carousel&quot;&gt;Next&lt;/span&gt;
+&lt;span data-carousel-type=&quot;play&quot; for=&quot;carousel&quot;&gt;Autoplay&lt;/span&gt;
+&lt;span data-carousel-type=&quot;stop&quot; for=&quot;carousel&quot;&gt;Stop&lt;/span&gt;</code>
+                                    </div>
+                                </div>
                             </section>
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
@@ -2280,6 +2396,8 @@ print json_encode($res);
                                         <li><a class="scrollto" href="#changeOnClick">Change on click</a></li>
                                         <li><a class="scrollto" href="#clickOnChange">Click on change</a></li>
                                         <li><a class="scrollto" href="#zoom">Zoom</a></li>
+                                        <li><a class="scrollto" href="#tooltip">Tooltip</a></li>
+                                        <li><a class="scrollto" href="#carousel">Carousel</a></li>
                                     </ul>
                                 </li>
                             </ul><!--//doc-menu-->
