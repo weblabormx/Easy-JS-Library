@@ -961,6 +961,63 @@ function EasyJsLibrary() {
                 $("[for="+id+"]").trigger('click');    
             });
         });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'carousel',
+            js: this.url+"owl-carousel/owl.carousel.min.js",
+            css: this.url+"owl-carousel/owl.carousel.css"
+        }, function(item) {
+            item.addClass("owl-carousel");
+            var id = item.attr("id");
+            var owl = item;
+            var time = false;
+            if ( typeof item.attr("data-carousel-time") !== typeof undefined ) {
+                var time = item.attr("data-carousel-time");
+            }
+            var items = 5;
+            if ( typeof item.attr("data-carousel-items") !== typeof undefined ) {
+                items = item.attr("data-carousel-items");
+            }
+            var items2 = false;
+            if ( typeof item.attr("data-carousel-items-desktop") !== typeof undefined ) {
+                items2 = new Array(1000, item.attr("data-carousel-items-desktop"));
+            }
+            var items3 = false;
+            if ( typeof item.attr("data-carousel-items-desktop-small") !== typeof undefined ) {
+                items3 = new Array(900, item.attr("data-carousel-items-desktop-small"));
+            }
+            var items4 = false;
+            if ( typeof item.attr("data-carousel-items-tablet") !== typeof undefined ) {
+                items4 = new Array(600, item.attr("data-carousel-items-tablet"));
+            }
+            var items5 = false;
+            if ( typeof item.attr("data-carousel-items-mobile") !== typeof undefined ) {
+                items5 = new Array(400, item.attr("data-carousel-items-mobile"));
+            }
+            owl.owlCarousel({
+                autoPlay: time,
+                items: items,
+                itemsDesktop: items2,
+                itemsDesktopSmall: items3,
+                itemsTablet: items4,
+                itemsMobile: items5
+            });
+
+            // Custom Navigation Events
+            $("[data-carousel-type=next][for="+id+"]").click(function(){
+                owl.trigger('owl.next');
+            })
+            $("[data-carousel-type=prev][for="+id+"]").click(function(){
+                owl.trigger('owl.prev');
+            })
+            $("[data-carousel-type=play][for="+id+"]").click(function(){
+                owl.trigger('owl.play',1000); //owl.play event accept autoPlay speed as second parameter
+            })
+            $("[data-carousel-type=stop][for="+id+"]").click(function(){
+                owl.trigger('owl.stop');
+            })
+        });
     }
 
     this.loadMessages = function() {
