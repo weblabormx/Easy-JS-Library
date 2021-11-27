@@ -25,5 +25,8 @@ You can see all the available options on the documentation website
 ## Collaboration
 If you want to collaborate adding another libraries to this package you are free to do it, just work on the implementation and make a pull request. On the video tutorial there are some videos about how to collaborate.
 
-## Premium Support
-If you'd like to implement this package in your project and need our help, or you just want to help this package to continue being develop please write us to carlosescobar@weblabor.mx and we can talk about prices for premium support.
+## Support us
+If this package has been helpful for you or your company please consider make some donations to help these packages to be improved everyday. Also if you'd like to implement this package in your project and need our help we can help you
+
+- Support us on Patreon - https://www.patreon.com/weblabormx
+- Support us with a Paypal donation - https://paypal.me/weblabormx 
