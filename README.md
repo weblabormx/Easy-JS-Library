@@ -3,6 +3,7 @@
 **Description:** Javascript and Jquery Library to make easy to implement all kind of libraries. It makes a mix of others libraries to make an only one big library.
 
 **Documentation** https://weblabormx.github.io/Easy-JS-Library
+
 **Video Tutorial (In Spanish)** https://youtube.com/playlist?list=PLaNIrZvXgrTWDJKOtFQ8OaZItfbjpiWKV
 
 ## How to use it
