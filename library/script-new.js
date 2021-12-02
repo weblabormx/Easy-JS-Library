@@ -964,6 +964,79 @@ function EasyJsLibrary() {
 
         this.controller.addFunctionality({
             type: 'each',
+            data_type: 'image-viewer',
+            selector: 'img',
+            js: [
+                "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js",
+                this.url + "leaflet/leaflet.js",
+                this.url + "img-viewer/imgViewer2.min.js"
+            ],
+            css: [
+                'http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css',
+                this.url + "leaflet/leaflet.css",
+                this.url + "img-viewer/imgViewer2.css",
+            ]
+        }, function (item) {
+
+            let dragable = true;
+            let zoomable = true;
+            let zoomMax = item.attr("data-zoom-max") ?? null;
+            let zoomStep = item.attr("data-zoom-step") ?? 0.5;
+            let notes = [];
+
+            if (typeof item.attr("data-dragable") !== typeof undefined) {
+                dragable = (item.attr("data-dragable") != 'false');
+            }
+            if (typeof item.attr("data-zoom") !== typeof undefined) {
+                zoomable = (item.attr("data-zoom") != 'false');
+            }
+            if (typeof item.attr("data-notes") !== typeof undefined) {
+                notes = item.attr("data-notes");
+                notes = JSON.parse(notes);
+            };
+
+            $.widget("wgm.imgNotes2", $.wgm.imgViewer2, {
+                options: {
+                    addNote: function (data) {
+                        var map = this.map, loc = this.relposToLatLng(data.x, data.y);
+                        var marker = L.marker(loc).addTo(map).bindPopup(data.note + "</br><input type='button' value='Delete' class='marker-delete-button'/>");
+                        marker.on("popupopen", function () {
+                            var temp = this;
+                            $(".marker-delete-button:visible").click(function () {
+                                temp.remove();
+                            });
+                        });
+                    }
+                },
+                import: function (notes) {
+                    if (this.ready) {
+                        var self = this;
+                        $.each(notes, function () {
+                            self.options.addNote.call(self, this);
+                        });
+                    }
+                }
+            });
+
+            item.imgNotes2({
+                onReady: function () {
+                    this.import(notes);
+                },
+                dragable: dragable,
+                zoomable: zoomable,
+                zoomStep: zoomStep,
+                zoomMax: zoomMax,
+            });
+
+            $(window).on('load', function () {
+                setTimeout(function () {
+                    item[0].nextElementSibling.style.top = `${item[0].offsetTop}px`
+                }, 500);
+            });
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
             data_type: 'carousel',
             js: this.url+"owl-carousel/owl.carousel.min.js",
             css: this.url+"owl-carousel/owl.carousel.css"
