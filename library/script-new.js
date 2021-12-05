@@ -50,23 +50,30 @@ function LibraryLoaded() {
 
 function EasyController() {
 
-    this.scripts   = [];
-    this.css       = [];
-    this.libraries = [];
+    this.scripts_to_load = [];
+    this.scripts         = [];
+    this.css             = [];
+    this.libraries       = [];
 
     this.addScript = function(url, library_id) {
 
         var library = this.libraries[library_id];
-        if(this.scripts.indexOf(url)!==-1) {
+
+        // If already exist the library dont load it again
+        if(this.scripts_to_load.indexOf(url) >= 0) {
             library.js_loaded++;
-            if(library.js_loaded != library.js_total)
+            if(library.js_loaded != library.js_total) {
                 return;
+            }
             
             library.executeFunction();
             return;
         }
+
         var these = this;
+        this.scripts_to_load.push(url);
         $.holdReady(true);
+
         return $.getScript(url, function(){
             these.scripts.push(url);
             library.js_loaded++;
