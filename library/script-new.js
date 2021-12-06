@@ -54,42 +54,67 @@ function EasyController() {
     this.scripts         = [];
     this.css             = [];
     this.libraries       = [];
+    this.key             = 0;
 
     this.addScript = function(url, library_id) {
 
-        var library = this.libraries[library_id];
-
-        // If already exist the library dont load it again
-        if(this.scripts_to_load.indexOf(url) >= 0) {
-            library.js_loaded++;
-            if(library.js_loaded != library.js_total) {
-                return;
-            }
-            
-            library.executeFunction();
-            return;
+        if(!Array.isArray(this.scripts_to_load[url])) {
+            this.scripts_to_load[url] = [];
         }
 
-        var these = this;
-        this.scripts_to_load.push(url);
-        $.holdReady(true);
-
-        return $.getScript(url, function(){
-            these.scripts.push(url);
-            library.js_loaded++;
-            if(library.js_loaded == library.js_total) {
-                library.loaded = true;
-                library.executeFunction();
-                //console.log('EJL: '+url+' js loaded');
-            }
-            $.holdReady(false);
-        });
+        this.scripts_to_load[url].push(library_id);
 
     }
 
-    this.addCss = function(url) {
-        if(this.css.indexOf(url)!=-1)
+    this.executeScripts = function() {
+
+        var scripts = [];
+        for(let key in this.scripts_to_load) {
+            const item = scripts[key];
+            scripts.push([key, this.scripts_to_load[key]]);
+        }
+
+        scripts.sort((a, b) => a[1] - b[1]);
+        this.scripts_to_load = scripts;
+        this.executeScript();
+        
+    }
+
+    this.executeScript = function() {
+
+        if(!Array.isArray(this.scripts_to_load[this.key])) {
             return;
+        }
+
+        var valor = this.scripts_to_load[this.key];
+        this.key++;
+
+        var these = this;
+        var url = valor[0];
+        var libraries = valor[1].map(function(item) {
+            return these.libraries[item];
+        });
+        $.getScript(url).done(function(data, status) {
+            //console.log('EJL: '+url+' js loaded');
+            these.executeScript();
+            these.scripts.push(url);
+            libraries.forEach(function(library) {
+                library.js_loaded++;
+                if(library.js_loaded == library.js_total) {
+                    library.loaded = true;
+                    library.executeFunction();
+                }
+            });
+            $.holdReady(false);
+        }).fail(function(jqxhr, settings, e) {
+            console.log('EJL: Failed when trying to load '+url);
+        });
+    }
+
+    this.addCss = function(url) {
+        if(this.css.indexOf(url)!=-1) {
+            return;
+        }
         this.css.push(url);
         $('head').append('<link rel="stylesheet" href="'+url+'" type="text/css" />');
         //console.log('EJL: '+url+' css loaded');
@@ -264,10 +289,15 @@ function EasyJsLibrary() {
     //this.url = "http://easy-js-library.test/library/";
     this.controller = new EasyController();
 
-    this.execute = function() { 
+    this.load = function() { 
         this.loadForms();
         this.loadComplements();
         this.loadMessages();
+    }
+
+    this.execute = function() { 
+        this.load();
+        this.controller.executeScripts();
     }
 
     this.loadForms = function() { 
@@ -707,7 +737,7 @@ function EasyJsLibrary() {
             data_type: 'multiple',
             js: this.url+"weblabormx/multipleDiv.js"
         }, function(item) {
-            item.multipleDiv(function() { these.execute(); });
+            item.multipleDiv(function() { these.load(); });
         });
 
         this.controller.addFunctionality({
@@ -715,7 +745,7 @@ function EasyJsLibrary() {
             data_type: 'bimultiple',
             js: this.url+"weblabormx/biMultiple.js"
         }, function(item) {
-            item.biMultiple(function() { these.execute(); });
+            item.biMultiple(function() { these.load(); });
         });
 
         this.controller.addFunctionality({
@@ -979,7 +1009,7 @@ function EasyJsLibrary() {
                 this.url + "img-viewer/imgViewer2.min.js"
             ],
             css: [
-                'http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css',
+                'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
                 this.url + "leaflet/leaflet.css",
                 this.url + "img-viewer/imgViewer2.css",
             ]
