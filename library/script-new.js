@@ -1017,6 +1017,8 @@ function EasyJsLibrary() {
 
             let dragable = true;
             let zoomable = true;
+            let button = true;
+            let iconUrl;
             let zoomMax = item.attr("data-zoom-max") ?? null;
             let zoomStep = item.attr("data-zoom-step") ?? 0.5;
             let notes = [];
@@ -1027,23 +1029,46 @@ function EasyJsLibrary() {
             if (typeof item.attr("data-zoom") !== typeof undefined) {
                 zoomable = (item.attr("data-zoom") != 'false');
             }
+            if (typeof item.attr("data-button") !== typeof undefined) {
+                // Always true unless false
+                button = !(item.attr("data-button") == 'false');
+            }
             if (typeof item.attr("data-notes") !== typeof undefined) {
                 notes = item.attr("data-notes");
                 notes = JSON.parse(notes);
+            };
+            if (typeof item.attr("data-icon") !== typeof undefined) {
+                iconUrl = item.attr("data-icon");
             };
 
             $.widget("wgm.imgNotes2", $.wgm.imgViewer2, {
                 options: {
                     addNote: function (data) {
                         var map = this.map, loc = this.relposToLatLng(data.x, data.y);
-                        var marker = L.marker(loc).addTo(map).bindPopup(data.note + "</br><input type='button' value='Delete' class='marker-delete-button'/>");
+                        const options = iconUrl == undefined ? {} :
+                        { 
+                            icon: new L.Icon({iconUrl: iconUrl})
+                        };
+
+                        var marker = L.marker(loc, options).addTo(map);
+                        
+                        if (typeof data.url !== typeof undefined) {
+                            marker.bindTooltip(`${data.url} &rarr;`);
+                            marker.on("click", function () { window.location.href = data.url });
+                            return;
+                        }
+
+                        const buttonElement = button == true ? "</br><input type='button' value='Delete' class='marker-delete-button'/>" : "";
+
+                        marker.bindPopup(data.note + buttonElement);
                         marker.on("popupopen", function () {
                             var temp = this;
                             $(".marker-delete-button:visible").click(function () {
                                 temp.remove();
                             });
                         });
-                    }
+                        
+                    },
                 },
                 import: function (notes) {
                     if (this.ready) {
@@ -1052,11 +1077,20 @@ function EasyJsLibrary() {
                             self.options.addNote.call(self, this);
                         });
                     }
+                },
+                checkOptions: function () {
+                    if (this.ready) {
+                        if (!zoomable) {
+                            this.map.removeControl(this.map.zoomControl);
+                        }
+                        
+                    }
                 }
             });
 
             item.imgNotes2({
                 onReady: function () {
+                    this.checkOptions();
                     this.import(notes);
                 },
                 dragable: dragable,
@@ -1065,11 +1099,10 @@ function EasyJsLibrary() {
                 zoomMax: zoomMax,
             });
 
-            $(window).on('load', function () {
-                setTimeout(function () {
-                    item[0].nextElementSibling.style.top = `${item[0].offsetTop}px`
-                }, 500);
-            });
+            // Fix for height-readjusting pages
+            setTimeout(function () {
+                item[0].nextElementSibling.style.top = `${item[0].offsetTop}px`
+            }, 1000);
         });
 
         this.controller.addFunctionality({
