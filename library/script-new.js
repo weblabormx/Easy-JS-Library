@@ -285,7 +285,7 @@ function EasyController() {
 
 function EasyJsLibrary() {
     
-    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    this.url = "http://localhost:5000/library/";
     //this.url = "http://easy-js-library.test/library/";
     this.controller = new EasyController();
 
@@ -1017,7 +1017,7 @@ function EasyJsLibrary() {
 
             let dragable = true;
             let zoomable = true;
-            let button = true;
+            let hasButton = true;
             let iconUrl;
             let zoomMax = item.attr("data-zoom-max") ?? null;
             let zoomStep = item.attr("data-zoom-step") ?? 0.5;
@@ -1027,11 +1027,11 @@ function EasyJsLibrary() {
                 dragable = (item.attr("data-dragable") != 'false');
             }
             if (typeof item.attr("data-zoom") !== typeof undefined) {
-                zoomable = (item.attr("data-zoom") != 'false');
+                zoomable = !(item.attr("data-zoom") == 'false' || item.attr("data-zoom") == '0');
             }
             if (typeof item.attr("data-delete-button") !== typeof undefined) {
                 // Always true unless false
-                button = !(item.attr("data-delete-button") == 'false');
+                hasButton = !(item.attr("data-delete-button") == 'false');
             }
             if (typeof item.attr("data-notes") !== typeof undefined) {
                 notes = item.attr("data-notes");
@@ -1045,22 +1045,30 @@ function EasyJsLibrary() {
                 options: {
                     addNote: function (data) {
                         var map = this.map, loc = this.relposToLatLng(data.x, data.y);
+                        const url = data.url;
+                        const tooltip = data.tooltip ?? `${url} &rarr;`;
+                        const note = data.note ?? "";
+
                         const options = iconUrl == undefined ? {} :
                         { 
                             icon: new L.Icon({iconUrl: iconUrl})
                         };
 
                         var marker = L.marker(loc, options).addTo(map);
+
+                        // Since the const tooltip will always be something I compare the data.tooltip
+                        if (typeof url !== typeof undefined || typeof data.tooltip !== typeof undefined) {
+                            marker.bindTooltip(tooltip);
+                        }
                         
-                        if (typeof data.url !== typeof undefined) {
-                            marker.bindTooltip(`${data.url} &rarr;`);
-                            marker.on("click", function () { window.location.href = data.url });
+                        if (typeof url !== typeof undefined) {
+                            marker.on("click", function () { window.location.href = url });
                             return;
                         }
 
-                        const buttonElement = button == true ? "</br><input type='button' value='Delete' class='marker-delete-button'/>" : "";
+                        const buttonElement = hasButton == true ? "</br><input type='button' value='Delete' class='marker-delete-button'/>" : "";
 
-                        marker.bindPopup(data.note + buttonElement);
+                        marker.bindPopup(note + buttonElement);
                         marker.on("popupopen", function () {
                             var temp = this;
                             $(".marker-delete-button:visible").click(function () {
@@ -1102,7 +1110,7 @@ function EasyJsLibrary() {
             // Fix for height-readjusting pages
             setTimeout(function () {
                 item[0].nextElementSibling.style.top = `${item[0].offsetTop}px`
-            }, 1000);
+            }, 2000);
         });
 
         this.controller.addFunctionality({

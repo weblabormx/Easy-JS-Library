@@ -2389,10 +2389,11 @@ print json_encode($res);
                                     <h4>Normal Use</h4>
                                     <p>Feed to <em>data-notes</em> a JSON array with an object for each marker. The object needs to have an X and Y coordinate represented by a number between 0 to 1, zero is the start of the image and one is the end. For example, <em>"x": "0.5","y": "0.5"</em> will put the marker on the center, you can think of it as a percentage.</p>
                                     <p>If you want to show a note when clicking the marker you can add a <em>"note": "My message"</em> property to the object with the content you want to show (supports HTML). If you want to go to a site instead you can add an <em>"url": "https://weblabor.mx"</em> property with the destination, <b>this will override</b> the <em>"note":</em> property if there's any.</p>
+                                    <p>To add more flavor to your markers you can add a tooltip with <em>"tooltip": "My tooltip!"</em>, this will override the default tooltip from the markers with <em>"url":</em>.</p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <img data-type="image-viewer" data-notes='[{"x": "0.5","y": "0.5","url": "https://weblabor.mx"},{"x": "0.322","y": "0.269","note": "Easy JS is a cool library!"},{"x": "0.824","y": "0.593","note": "Check our repository on <a href=\"https://github.com/weblabormx/Easy-JS-Library\">Github</a>!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
+                                            <img data-type="image-viewer" data-notes='[{"x": "0.5","y": "0.5","url": "https://weblabor.mx", "tooltip": "URL with tooltip &rarr;"},{"x": "0.322","y": "0.269","note": "Easy JS is a cool library!"},{"x": "0.824","y": "0.593","note": "Check our repository on <a href=\"https://github.com/weblabormx/Easy-JS-Library\">Github</a>!","tooltip": "Note with tooltip"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
                                         </div>
                                     </div>
                                     <div class="code-block">
