@@ -285,7 +285,7 @@ function EasyController() {
 
 function EasyJsLibrary() {
 
-    this.url = "http://localhost:5000/library/";
+    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
     //this.url = "http://easy-js-library.test/library/";
     this.controller = new EasyController();
 
@@ -1044,21 +1044,39 @@ function EasyJsLibrary() {
             $.widget("wgm.imgNotes2", $.wgm.imgViewer2, {
                 options: {
                     addNote: function (data) {
-                        var map = this.map, loc = this.relposToLatLng(data.x, data.y);
+                        const map = this.map;
+                        const loc = this.relposToLatLng(data.x, data.y);
                         const url = data.url;
                         const tooltip = data.tooltip ?? `${url} &rarr;`;
                         const note = data.note ?? "";
 
-                        const options = iconUrl == undefined ? {} :
-                            {
-                                icon: new L.Icon({ iconUrl: iconUrl })
-                            };
+                        // Set options
+                        const options = {};
+
+                        if (typeof iconUrl !== typeof undefined) {
+                            options.icon = new L.Icon({
+                                iconUrl: iconUrl,
+                            });
+                        }
 
                         var marker = L.marker(loc, options).addTo(map);
+
+                        // Check options
 
                         // Since the const tooltip will always be something I compare the data.tooltip
                         if (typeof url !== typeof undefined || typeof data.tooltip !== typeof undefined) {
                             marker.bindTooltip(tooltip);
+                        }
+
+                        if (typeof iconUrl !== typeof undefined) {
+                            marker._icon.onload = function () {
+                                const anchorX = marker._icon.width / 2;
+                                const anchorY = marker._icon.height / 2;
+                                marker.setIcon(new L.Icon({
+                                    iconUrl: marker.options.icon.options.iconUrl,
+                                    iconAnchor: [anchorX, anchorY]
+                                }));
+                            };
                         }
 
                         if (typeof url !== typeof undefined) {
@@ -1066,16 +1084,17 @@ function EasyJsLibrary() {
                             return;
                         }
 
+                        // Note only
+
                         const buttonElement = hasButton == true ? "</br><input type='button' value='Delete' class='marker-delete-button'/>" : "";
 
                         marker.bindPopup(note + buttonElement);
                         marker.on("popupopen", function () {
-                            var temp = this;
+
                             $(".marker-delete-button:visible").click(function () {
-                                temp.remove();
+                                marker.remove();
                             });
                         });
-
                     },
                 },
                 import: function (notes) {
