@@ -2375,6 +2375,7 @@ print json_encode($res);
                                             </tr>
                                             <th scope="row">Optional Attributes</th>
                                                 <td>
+                                                    <em>data-notes</em>: JSON data for the markers.<br>
                                                     <em>data-dragable</em>: set false to disable image dragging<br>
                                                     <em>data-icon</em>: url of custom icon image<br>
                                                     <em>data-button</em>: set false to disable destroy button<br>
@@ -2385,16 +2386,59 @@ print json_encode($res);
                                             </th>
                                         </tbody>
                                     </table>
+                                    <h4>Normal Use</h4>
+                                    <p>Feed to <em>data-notes</em> a JSON array with an object for each marker. The object needs to have an X and Y coordinate represented by a number between 0 to 1, zero is the start of the image and one is the end. For example, <em>"x": "0.5","y": "0.5"</em> will put the marker on the center, you can think of it as a percentage.</p>
+                                    <p>If you want to show a note when clicking the marker you can add a <em>"note": "My message"</em> property to the object with the content you want to show (supports HTML). If you want to go to a site instead you can add an <em>"url": "https://weblabor.mx"</em> property with the destination, <b>this will override</b> the <em>"note":</em> property if there's any.</p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <img data-type="image-viewer" data-notes='[{"x": "0.5","y": "0.5","url": "https://weblabor.mx"},{"x": "0.322","y": "0.269","note": "<center><b>Brisbane Lions Flag</b><br/></center><a href=\"http://www.lions.com.au/\" target=\"blank\">The Brisbane Lions</a> is an <a href=\"http://en.wikipedia.org/wiki/Australian_rules_football\" target=\"blank\">Australian rules football club.</a>"},{"x": "0.824","y": "0.593","note": "Fluffy microphone"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
+                                            <img data-type="image-viewer" data-notes='[{"x": "0.5","y": "0.5","url": "https://weblabor.mx"},{"x": "0.322","y": "0.269","note": "Easy JS is a cool library!"},{"x": "0.824","y": "0.593","note": "Check our repository on <a href=\"https://github.com/weblabormx/Easy-JS-Library\">Github</a>!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&#x3C;img data-type=&quot;image-viewer&quot; data-notes='[{&quot;x&quot;: &quot;0.5&quot;,&quot;y&quot;: &quot;0.5&quot;,&quot;url&quot;: &quot;https://weblabor.mx&quot;},{&quot;x&quot;: &quot;0.322&quot;,&quot;y&quot;: &quot;0.269&quot;,&quot;note&quot;: &quot;&lt;center&gt;&lt;b&gt;Brisbane Lions Flag&lt;/b&gt;&lt;br/&gt;&lt;/center&gt;&lt;a href=&quot;http://www.lions.com.au/&quot; target=&quot;blank&quot;&gt;The Brisbane Lions&lt;/a&gt; is an &lt;a href=&quot;http://en.wikipedia.org/wiki/Australian_rules_football&quot; target=&quot;blank&quot;&gt;Australian rules football club.&lt;/a&gt;&quot;},{&quot;x&quot;: &quot;0.824&quot;,&quot;y&quot;: &quot;0.593&quot;,&quot;note&quot;: &quot;Fluffy microphone&quot;}]' src=&quot;https://waynegm.github.io/imgViewer2/images/test_image.jpg&quot; src=&quot;https://waynegm.github.io/imgViewer2/images/test_image.jpg&quot; width=&quot;100&percnt;&quot; alt=&quot;&quot;&#x3E;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-notes='[{"x": "0.5","y": "0.5","url": "https://weblabor.mx"},{"x": "0.322","y": "0.269","note": "Easy JS is a cool library!"},{"x": "0.824","y": "0.593","note": "Check our repository on &lt;a href=\"https://github.com/weblabormx/Easy-JS-Library\"&gt;Github&lt;/a&gt;!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
                                     </div>
+                                    <h4>Customizing</h4>
+                                    <!-- Icon -->
+                                    <p>Using <em>data-icon="https://yoururl.com/icon.jpg"</em> will allow you to customize the icon. And with <em>data-button="false"</em> you can remove the delete button from the notes.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <img data-type="image-viewer" data-button="false" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-button="false" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
+                                    </div>
+                                    <!-- Dragable -->
+                                    <h4>Removing drag</h4>
+                                    <p>You can choose to remove the dragging of the image with <em>data-dragable="false"</em>, try zooming and moving the image around.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <img data-type="image-viewer" data-dragable="false" src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-dragable="false" src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
+                                    </div>
+                                    <!-- Zoom -->
+                                    <h4>Removing zoom</h4>
+                                    <p>You can remove the zoom ability with <em>data-zoom="false"</em>.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <img data-type="image-viewer" data-zoom="false" data-notes='[{"x": "0.5","y": "0.5","note": "Enjoy the component!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-zoom="false" data-notes='[{"x": "0.5","y": "0.5","note": "Enjoy the component!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
+                                    </div>
+                                    
                                 </div>
                             </section>
                         </div><!--//content-inner-->
