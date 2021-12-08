@@ -2378,7 +2378,7 @@ print json_encode($res);
                                                     <em>data-notes</em>: JSON data for the markers.<br>
                                                     <em>data-dragable</em>: set false to disable image dragging<br>
                                                     <em>data-icon</em>: url of custom icon image<br>
-                                                    <em>data-button</em>: set false to disable destroy button<br>
+                                                    <em>data-delete-button</em>: set false to disable destroy button<br>
                                                     <em>data-zoom</em>: set false to disable image zooming<br>
                                                     <em>data-zoom-max</em>: maximum zoom level of the image<br>
                                                     <em>data-zoom-step</em>: the zoom factor on mouse wheel
@@ -2401,16 +2401,16 @@ print json_encode($res);
                                     </div>
                                     <h4>Customizing</h4>
                                     <!-- Icon -->
-                                    <p>Using <em>data-icon="https://yoururl.com/icon.jpg"</em> will allow you to customize the icon. And with <em>data-button="false"</em> you can remove the delete button from the notes.</p>
+                                    <p>Using <em>data-icon="https://yoururl.com/icon.jpg"</em> will allow you to customize the icon. And with <em>data-delete-button="false"</em> you can remove the delete button from the notes.</p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <img data-type="image-viewer" data-button="false" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
+                                            <img data-type="image-viewer" data-delete-button="false" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-button="false" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
+                                        <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-delete-button="false" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
                                     </div>
                                     <!-- Dragable -->
                                     <h4>Removing drag</h4>

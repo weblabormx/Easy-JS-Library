@@ -1029,9 +1029,9 @@ function EasyJsLibrary() {
             if (typeof item.attr("data-zoom") !== typeof undefined) {
                 zoomable = (item.attr("data-zoom") != 'false');
             }
-            if (typeof item.attr("data-button") !== typeof undefined) {
+            if (typeof item.attr("data-delete-button") !== typeof undefined) {
                 // Always true unless false
-                button = !(item.attr("data-button") == 'false');
+                button = !(item.attr("data-delete-button") == 'false');
             }
             if (typeof item.attr("data-notes") !== typeof undefined) {
                 notes = item.attr("data-notes");
