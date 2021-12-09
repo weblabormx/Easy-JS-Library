@@ -1019,6 +1019,7 @@ function EasyJsLibrary() {
             let zoomable = true;
             let hasButton = true;
             let iconUrl;
+            let iconRetina;
             let zoomMax = item.attr("data-zoom-max") ?? null;
             let zoomStep = item.attr("data-zoom-step") ?? 0.5;
             let notes = [];
@@ -1040,6 +1041,9 @@ function EasyJsLibrary() {
             if (typeof item.attr("data-icon") !== typeof undefined) {
                 iconUrl = item.attr("data-icon");
             };
+            if (typeof item.attr("data-icon-retina") !== typeof undefined) {
+                iconRetina = item.attr("data-icon-retina");
+            };
 
             $.widget("wgm.imgNotes2", $.wgm.imgViewer2, {
                 options: {
@@ -1052,11 +1056,19 @@ function EasyJsLibrary() {
 
                         // Set options
                         const options = {};
+                        const iconOptions = {}
 
                         if (typeof iconUrl !== typeof undefined) {
-                            options.icon = new L.Icon({
-                                iconUrl: iconUrl,
-                            });
+                            iconOptions.iconUrl = iconUrl;
+                        }
+
+                        if (typeof iconRetina !== typeof undefined) {
+                            iconOptions.iconRetinaUrl = iconRetina;
+                        }
+
+                        if (Object.keys(iconOptions).length > 0) {
+                            console.log(iconOptions);
+                            options.icon = L.icon(iconOptions);
                         }
 
                         var marker = L.marker(loc, options).addTo(map);
