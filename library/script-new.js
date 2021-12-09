@@ -285,7 +285,7 @@ function EasyController() {
 
 function EasyJsLibrary() {
 
-    this.url = "http://localhost:5000/library/";
+    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
     //this.url = "http://easy-js-library.test/library/";
     this.controller = new EasyController();
 
@@ -1046,6 +1046,22 @@ function EasyJsLibrary() {
                 iconRetina = item.attr("data-icon-retina");
             };
 
+            // Set options for custom icon
+            const options = {};
+            const iconOptions = {}
+
+            if (typeof iconUrl !== typeof undefined) {
+                iconOptions.iconUrl = iconUrl;
+            }
+
+            if (typeof iconRetina !== typeof undefined) {
+                iconOptions.iconRetinaUrl = iconRetina;
+            }
+
+            if (Object.keys(iconOptions).length > 0) {
+                options.icon = L.icon(iconOptions);
+            }
+
             $.widget("wgm.imgNotes2", $.wgm.imgViewer2, {
                 options: {
                     addNote: function (data) {
@@ -1055,25 +1071,7 @@ function EasyJsLibrary() {
                         const tooltip = data.tooltip ?? `${url} &rarr;`;
                         const note = data.note ?? "";
 
-                        // Set options
-                        const options = {};
-                        const iconOptions = {}
-
-                        if (typeof iconUrl !== typeof undefined) {
-                            iconOptions.iconUrl = iconUrl;
-                        }
-
-                        if (typeof iconRetina !== typeof undefined) {
-                            iconOptions.iconRetinaUrl = iconRetina;
-                        }
-
-                        if (Object.keys(iconOptions).length > 0) {
-                            options.icon = L.icon(iconOptions);
-                        }
-
                         var marker = L.marker(loc, options).addTo(map);
-
-                        // Check options
 
                         // Since the const tooltip will always be something I compare the data.tooltip
                         if (typeof url !== typeof undefined || typeof data.tooltip !== typeof undefined) {
