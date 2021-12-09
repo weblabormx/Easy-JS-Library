@@ -2420,6 +2420,7 @@ print json_encode($res);
                                                 <em>data-dragable</em>: set false to disable image dragging<br>
                                                 <em>data-icon</em>: url of custom icon image<br>
                                                 <em>data-icon-retina</em>: url of custom icon image for retina display devices<br>
+                                                <em>data-icon-scale</em>: scale factor for mobile screens. <em>0.5</em> a half, <em>1</em> default.<br>
                                                 <em>data-delete-button</em>: set false to disable destroy button<br>
                                                 <em>data-zoom</em>: set false to disable image zooming<br>
                                                 <em>data-zoom-max</em>: maximum zoom level of the image<br>
@@ -2446,10 +2447,11 @@ print json_encode($res);
                                     <h4>Customizing</h4>
                                     <!-- Icon -->
                                     <p>Using <em>data-icon="https://yoururl.com/icon.jpg"</em> will allow you to customize the icon. And with <em>data-delete-button="false"</em> you can remove the delete button from the notes.</p>
+                                    <p>Use <em>data-icon-scale</em> to scale the image on mobile screens. 1 is the original size, 0.5 is a half of the original size.</p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <img data-type="image-viewer" data-delete-button="false" data-icon-retina="http://localhost:5000/library/leaflet/images/marker-icon-2x.png" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
+                                            <img data-type="image-viewer" data-delete-button="false" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-icon-scale="0.5" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt="">
                                         </div>
                                     </div>
                                     <div class="code-block">

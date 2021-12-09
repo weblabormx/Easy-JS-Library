@@ -285,7 +285,7 @@ function EasyController() {
 
 function EasyJsLibrary() {
 
-    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    this.url = "http://localhost:5000/library/";
     //this.url = "http://easy-js-library.test/library/";
     this.controller = new EasyController();
 
@@ -1020,6 +1020,7 @@ function EasyJsLibrary() {
             let hasButton = true;
             let iconUrl;
             let iconRetina;
+            let iconScale = parseFloat(item.attr("data-icon-scale") ?? 1);
             let zoomMax = item.attr("data-zoom-max") ?? null;
             let zoomStep = item.attr("data-zoom-step") ?? 0.5;
             let notes = [];
@@ -1067,7 +1068,6 @@ function EasyJsLibrary() {
                         }
 
                         if (Object.keys(iconOptions).length > 0) {
-                            console.log(iconOptions);
                             options.icon = L.icon(iconOptions);
                         }
 
@@ -1082,12 +1082,21 @@ function EasyJsLibrary() {
 
                         if (typeof iconUrl !== typeof undefined) {
                             marker._icon.onload = function () {
-                                const anchorX = marker._icon.width / 2;
-                                const anchorY = marker._icon.height / 2;
+                                const scale = window.screen.width < 800 ? iconScale : 1;
+
+                                const width = marker._icon.width * scale;
+                                const height = marker._icon.height * scale;
+
+                                const anchorX = width / 2;
+                                const anchorY = height / 2;
+
                                 marker.setIcon(new L.Icon({
                                     iconUrl: marker.options.icon.options.iconUrl,
+                                    iconSize: [width, height],
                                     iconAnchor: [anchorX, anchorY]
                                 }));
+
+                                marker._icon.onload = undefined;
                             };
                         }
 
