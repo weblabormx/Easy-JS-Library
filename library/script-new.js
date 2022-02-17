@@ -1393,4 +1393,11 @@ function EasyJsLibrary() {
 jQuery(document).ready(function($){
     window.script = new EasyJsLibrary();
     script.execute();
+    if (typeof Livewire !== 'undefined') {
+        Livewire.hook('message.processed', (message, component) => 
+        {
+            script.execute();
+        })
+    }
+        
 });
