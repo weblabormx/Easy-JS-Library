@@ -285,8 +285,8 @@ function EasyController() {
 
 function EasyJsLibrary() {
 
-    // this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-    this.url = "http://localhost:8080/library/";
+    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    // this.url = "http://localhost:8080/library/";
     this.controller = new EasyController();
 
     this.load = function () {
