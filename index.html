@@ -2408,7 +2408,7 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>3.0.0</td>
+                                                <td>1.2.0</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
@@ -2485,7 +2485,7 @@ print json_encode($res);
                                 </div>
                                 <div id="image-tile-viewer" class="section-block">
                                     <h3>Image Tile Viewer</h3>
-                                    <p>Display large images with Deep Zoom images.</p>
+                                    <p>Display large images with Deep Zoom technology.</p>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
@@ -2498,15 +2498,20 @@ print json_encode($res);
                                             </tr>
                                             <tr>
                                                 <th scope="row">Library Version</th>
-                                                <td>1.2.0</td>
+                                                <td>3.0.0</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Works on</th>
-                                                <td><em>img</em></td>
+                                                <td><em>div</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-dzi</em>: The url of the DZI file</td>
                                             </tr>
                                             <th scope="row">Optional Attributes</th>
                                             <td>
-                                                <em>data-markers</em>: <br>
+                                                <em>data-markers</em>: JSON data for the markers.<br>
+                                                <em>data-prefix</em>: Prefix URL to prepend on the navigation images<br>
                                                 <em>data-icon</em>: url of custom marker icon image<br>
                                                 <em>data-icon-size</em>: size of the marker icon image<br>
                                                 <em>data-icon-offset</em>: offset size % of the marker from its coordinates<br>
@@ -2520,7 +2525,6 @@ print json_encode($res);
                                         </tbody>
                                     </table>
                                     <h4>Normal Use</h4>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi maiores autem error tempore cumque provident minima laboriosam, adipisci id consequuntur expedita, atque illo ducimus! Excepturi veniam dolore distinctio omnis consequatur?</p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
@@ -2529,7 +2533,7 @@ print json_encode($res);
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type=&quot;image-tile-viewer&quot; data-custom-controls=&quot;true&quot; data-markers='[{&quot;x&quot;: 2000,&quot;y&quot;: 2000,&quot;note&quot;: &quot;Enjoy the component! &lt;a&gt;Link&lt;/a&gt;&quot;,&quot;tooltip&quot;: &quot;I am a tooltip!&quot;, &quot;eval&quot;: &quot;alert(`Hello!`)&quot; }]' style=&quot;height: 500px;&quot;&gt;&lt;/div&gt;</code>
                                     </div>
 
                                 </div>
@@ -2586,6 +2590,7 @@ print json_encode($res);
                                         <li><a class="scrollto" href="#tooltip">Tooltip</a></li>
                                         <li><a class="scrollto" href="#carousel">Carousel</a></li>
                                         <li><a class="scrollto" href="#image-viewer">Image Viewer</a></li>
+                                        <li><a class="scrollto" href="#image-tile-viewer">Image Tile Viewer</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -285,8 +285,8 @@ function EasyController() {
 
 function EasyJsLibrary() {
 
-    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-    // this.url = "http://localhost:8080/library/";
+    // this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    this.url = "http://localhost:8080/library/";
     this.controller = new EasyController();
 
     this.load = function () {
@@ -1165,7 +1165,7 @@ function EasyJsLibrary() {
             // console.log(markers[0]);
             // markers = JSON.parse(markers);
 
-            const prefixUrl = item.data("prefix") ?? "https://openseadragon.github.io/openseadragon/images/";
+            const prefixUrl = item.data("prefix") ?? "/images/";
             const tileSources = item.data("dzi") ?? "https://openseadragon.github.io/example-images/duomo/duomo.dzi";
             const zoomDefault = item.data("zoom-default") ?? 0;
             const zoomMin = item.data("zoom-min") ?? 0.4;
