@@ -2445,7 +2445,6 @@ print json_encode($res);
                                             data-lang="html">&lt;img data-type="image-viewer" data-notes='[{"x": "0.5","y": "0.5","url": "https://weblabor.mx", "tooltip": "URL with tooltip &rarr;"},{"x": "0.322","y": "0.269","note": "Easy JS is a cool library!"},{"x": "0.824","y": "0.593","note": "Check our repository on &lt;a href=\"https://github.com/weblabormx/Easy-JS-Library\"&gt;Github&lt;/a&gt;!", "tooltip": "Note with tooltip"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
                                     </div>
                                     <h4>Customizing</h4>
-                                    <!-- Icon -->
                                     <p>Using <em>data-icon="https://yoururl.com/icon.jpg"</em> will allow you to customize the icon. And with <em>data-delete-button="false"</em> you can remove the delete button from the notes.</p>
                                     <p>Use <em>data-icon-scale</em> to scale the image on mobile screens. 1 is the original size, 0.5 is a half of the original size.</p>
                                     <div class="result-block">
@@ -2458,7 +2457,6 @@ print json_encode($res);
                                         <h6>HTML Code</h6>
                                         <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-delete-button="false" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-icon-scale="0.5" data-notes='[{"x": "0.5","y": "0.5","note": "I cannot be erased!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
                                     </div>
-                                    <!-- Dragable -->
                                     <h4>Removing drag</h4>
                                     <p>You can choose to remove the dragging of the image with <em>data-dragable="false"</em>, try zooming and moving the image around.</p>
                                     <div class="result-block">
@@ -2471,7 +2469,6 @@ print json_encode($res);
                                         <h6>HTML Code</h6>
                                         <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-dragable="false" src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
                                     </div>
-                                    <!-- Zoom -->
                                     <h4>Removing zoom</h4>
                                     <p>You can remove the zoom ability with <em>data-zoom="false"</em>.</p>
                                     <div class="result-block">
@@ -2483,6 +2480,60 @@ print json_encode($res);
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
                                         <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-zoom="false" data-notes='[{"x": "0.5","y": "0.5","note": "Enjoy the component!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
+                                    </div>
+
+                                </div>
+                                <div id="image-tile-viewer" class="section-block">
+                                    <h3>Image Tile Viewer</h3>
+                                    <p>Display large images with Deep Zoom technology.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://openseadragon.github.io/" target="_blank">
+                                                        OpenSeadragon
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>3.0.0</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>div</em></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Required Attributes</th>
+                                                <td><em>data-dzi</em>: The url of the DZI file</td>
+                                            </tr>
+                                            <th scope="row">Optional Attributes</th>
+                                            <td>
+                                                <em>data-markers</em>: JSON data for the markers.<br>
+                                                <em>data-prefix</em>: Prefix URL to prepend on the navigation images<br>
+                                                <em>data-icon</em>: url of custom marker icon image<br>
+                                                <em>data-icon-size</em>: size of the marker icon image<br>
+                                                <em>data-icon-offset</em>: offset size % of the marker from its coordinates<br>
+                                                <em>data-disable-zoom</em>: set true to disable zooming<br>
+                                                <em>data-zoom-default</em>: default zoom level of the viewer<br>
+                                                <em>data-zoom-min</em>: minimum zoom level of the viewer<br>
+                                                <em>data-zoom-max</em>: maximum zoom level of the viewer<br>
+                                                <em>data-custom-controls</em>: set true to show custom made controls<br>
+                                            </td>
+                                            </th>
+                                        </tbody>
+                                    </table>
+                                    <h4>Normal Use</h4>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type="image-tile-viewer" data-custom-controls="true" data-markers='[{"x": 2000,"y": 2000,"note": "Enjoy the component! &lt;a&gt;Link&lt;/a&gt;","tooltip": "I am a tooltip!", "eval": "alert(`Hello!`)" }]' style="height: 500px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type=&quot;image-tile-viewer&quot; data-custom-controls=&quot;true&quot; data-markers='[{&quot;x&quot;: 2000,&quot;y&quot;: 2000,&quot;note&quot;: &quot;Enjoy the component! &lt;a&gt;Link&lt;/a&gt;&quot;,&quot;tooltip&quot;: &quot;I am a tooltip!&quot;, &quot;eval&quot;: &quot;alert(`Hello!`)&quot; }]' style=&quot;height: 500px;&quot;&gt;&lt;/div&gt;</code>
                                     </div>
 
                                 </div>
@@ -2539,6 +2590,7 @@ print json_encode($res);
                                         <li><a class="scrollto" href="#tooltip">Tooltip</a></li>
                                         <li><a class="scrollto" href="#carousel">Carousel</a></li>
                                         <li><a class="scrollto" href="#image-viewer">Image Viewer</a></li>
+                                        <li><a class="scrollto" href="#image-tile-viewer">Image Tile Viewer</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -286,7 +286,7 @@ function EasyController() {
 function EasyJsLibrary() {
 
     this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-    //this.url = "http://easy-js-library.test/library/";
+    // this.url = "http://localhost:8080/library/";
     this.controller = new EasyController();
 
     this.load = function () {
@@ -1149,6 +1149,272 @@ function EasyJsLibrary() {
             setTimeout(function () {
                 item[0].nextElementSibling.style.top = `${item[0].offsetTop}px`
             }, 2000);
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'image-tile-viewer',
+            selector: 'div',
+            js: [
+                this.url + "openseadragon/openseadragon.min.js",
+                this.url + "openseadragon/openseadragonElements.js",
+            ],
+            css: []
+        }, function (item) {
+            let markers = item.data("markers");
+            // console.log(markers[0]);
+            // markers = JSON.parse(markers);
+
+            const prefixUrl = item.data("prefix") ?? "/images/";
+            const tileSources = item.data("dzi") ?? "https://openseadragon.github.io/example-images/duomo/duomo.dzi";
+            const zoomDefault = item.data("zoom-default") ?? 0;
+            const zoomMin = item.data("zoom-min") ?? 0.4;
+            const zoomMax = item.data("zoom-max") ?? 8;
+            const customControls = item.data("custom-controls") ?? false;
+            const disableZoom = item.data("disable-zoom")
+            const gestureSettings = disableZoom ? {
+                scrollToZoom: false,
+                clickToZoom: false,
+            } : { clickToZoom: false, dblClickToZoom: true };
+            const extraOptions = {
+                showNavigationControl: !customControls
+            };
+            const markerImage = item.data("icon") ?? "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png";
+            const markerSize = item.data("icon-size") ?? [0, 0];
+            const markerOffset = item.data("icon-offset") ?? [0, -50];
+            let markerWidth = markerSize[0];
+            let markerHeight = markerSize[1];
+
+            const openSeaDragonElement = item[0];
+            const openSeaDragonId = "osd-" + (Math.round(Math.random() * 99999 + 10000));
+
+            openSeaDragonElement.id = openSeaDragonId;
+
+            const openSeadragon = OpenSeadragon({
+                element: item[0],
+                prefixUrl: prefixUrl,
+                tileSources: tileSources,
+                defaultZoomLevel: zoomDefault,
+                minZoomLevel: zoomMin,
+                maxZoomLevel: zoomMax,
+
+                // Verbose but there's no better way
+                gestureSettingsMouse: gestureSettings,
+                gestureSettingsTouch: gestureSettings,
+                gestureSettingsPen: gestureSettings,
+                gestureSettingsUnknown: gestureSettings,
+
+                showZoomControl: !disableZoom,
+                ...extraOptions
+            });
+
+            const elementManager = openSeadragon.HTMLelements()
+
+            const setTransform = (element, transform) => {
+                element.style.webkitTransform = transform;
+                element.style.MozTransform = transform;
+                element.style.msTransform = transform;
+                element.style.OTransform = transform;
+                element.style.transform = transform;
+            }
+
+            const createMarker = (src, width, height, transform = "translateY(-50%)") => {
+                const image = new Image(width != 0 ? width : undefined, height != 0 ? height : undefined);
+                image.src = src;
+
+                if (width == 0 && height == 0) {
+                    image.width = image.naturalWidth;
+                    image.height = image.naturalHeight;
+                }
+
+                setTransform(image, transform);
+                image.style.cursor = "pointer";
+
+                return image;
+            }
+            const createPopupWrapper = (id, top = "-100%", right = null, bottom = null, left = "50%", transform = "translate(-50%,-100%)") => {
+                const wrapper = document.createElement("div");
+                wrapper.id = id;
+                wrapper.style.position = "absolute";
+                wrapper.style.top = top;
+                wrapper.style.right = right;
+                wrapper.style.bottom = bottom;
+                wrapper.style.left = left;
+                wrapper.style.display = "none"
+                wrapper.style.width = "max-content";
+                wrapper.style.maxWidth = "300px";
+                setTransform(wrapper, transform);
+
+                return wrapper;
+            }
+            const createPopup = (note, background = "#fff", padding = "20px") => {
+                const popup = document.createElement("div");
+                popup.style.background = background;
+                popup.style.padding = padding;
+                popup.style.borderRadius = "12px";
+                // To appear on top of the tip
+                popup.style.transform = "rotate(0)";
+                popup.innerHTML = note;
+                popup.innerHTML += "";
+
+                return popup;
+            }
+            const createPopupTip = (background = "#fff", top = null, right = null, bottom = null, left = "50%", transform = "translate(-50%, 50%)") => {
+                const tip = document.createElement("div");
+                tip.style.padding = "10px";
+                tip.style.background = background;
+                tip.style.width = "0";
+                tip.style.height = "0";
+                tip.style.position = "absolute";
+                tip.style.top = top;
+                tip.style.right = right;
+                tip.style.bottom = bottom;
+                tip.style.left = left;
+                tip.style.bottom = "0";
+                setTransform(tip, transform + " rotate(45deg)");
+
+                return tip;
+            }
+            const createPopupButton = () => {
+                const button = document.createElement("button");
+                button.style.border = "none";
+                button.style.background = "none";
+                button.style.position = "absolute";
+                button.style.right = "0";
+                button.style.top = "0";
+                button.style.fontSize = "1.5em";
+                button.style.padding = "0px 10px";
+                button.innerHTML = "&times;";
+                return button;
+            }
+
+            markers.forEach((marker, index) => {
+                const markerElement = createMarker(markerImage, markerWidth, markerHeight, `translate(${markerOffset[0]}%, ${markerOffset[1]}%)`);
+
+                elementManager.addElement({
+                    id: index,
+                    element: markerElement,
+                    x: marker.x,
+                    y: marker.y,
+                    width: markerElement.width,
+                    height: markerElement.height,
+                });
+
+                const elementWrapper = markerElement.parentElement;
+
+                const togglePopup = (popup) => {
+                    popup.style.display = popup.style.display == "none" ? "block" : "none";
+                }
+
+                if (marker.url != null) {
+                    markerElement.addEventListener("click", () => { window.location.href = marker.url })
+                }
+
+                const popupWrapper = marker.note == null || marker.url != null ? null : createPopupWrapper(`${openSeaDragonId}-marker-${index}`);
+                if (popupWrapper) {
+                    const popup = createPopup(marker.note);
+                    const tip = createPopupTip();
+                    const button = createPopupButton();
+
+                    button.addEventListener("click", () => { togglePopup(popupWrapper) });
+                    markerElement.addEventListener("click", () => { togglePopup(popupWrapper) });
+
+                    popupWrapper.appendChild(tip);
+                    popupWrapper.appendChild(popup);
+                    popupWrapper.appendChild(button);
+
+                    elementWrapper.appendChild(popupWrapper)
+                }
+
+                const tooltip = marker.tooltip == null ? marker.url == null ? null : `<u>${marker.url}</u>&rarr;` : marker.tooltip;
+
+                const tooltipWrapper = tooltip == null ? tooltip : createPopupWrapper(`${openSeaDragonId}-tooltip-${index}`, "-50%", null, null, "-30px", "translate(-100%,0%)");
+                if (tooltipWrapper) {
+                    const popup = createPopup(tooltip, "#fff", "10px");
+                    const tip = createPopupTip("#fff", "50%", "0", null, null, "translate(40%,-50%)");
+
+                    tooltipWrapper.style.opacity = "75%";
+
+                    markerElement.addEventListener("mouseenter", () => { togglePopup(tooltipWrapper) });
+                    markerElement.addEventListener("mouseleave", () => { togglePopup(tooltipWrapper) });
+
+                    tooltipWrapper.appendChild(tip);
+                    tooltipWrapper.appendChild(popup);
+
+                    elementWrapper.appendChild(tooltipWrapper);
+                }
+
+                if (marker.eval != null) {
+                    markerElement.addEventListener("click", () => {
+                        eval(marker.eval);
+                    });
+                }
+            });
+
+            if (!customControls) {
+                return;
+            }
+
+            const layoutZoom = !disableZoom ? `
+            <div style="padding: 10px;background-color: #000;border-radius: 5px;width: min-content;height: 32rem;position: relative;display: flex;flex-direction: column;justify-content: space-between;">
+                <button id="${openSeaDragonId}-button-zoomin" style="padding: 0;background: 0;border: 0;color: white;font-size: 32px;font-weight: 900;text-align: center;width: 100%;">+</button>
+                <input id="${openSeaDragonId}-range-zoom" type="range" style="min-width: 20rem;position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%) rotate(-90deg);">
+                <button id="${openSeaDragonId}-button-zoomout" style="padding: 0;background: 0;border: 0;color: white;font-size: 32px;font-weight: 900;text-align: center;width: 100%;">-</button>
+            </div>
+            ` : '';
+
+            const openSeaDragonNavbar = document.createElement("div");
+            openSeaDragonNavbar.innerHTML = `
+            <div style="position: absolute;top: 50%;left: 50px;transform: translateY(-50%); opacity: 0.8">
+                ${layoutZoom}
+                <div style="padding: 17px;background-color: transparent;border-radius: 50%;position: absolute;top: 0;left: 50%;transform: translate(-50%, calc(-100% + 10px));border: solid #000 30px;">
+                    <button id="${openSeaDragonId}-button-top" style="outline:none;border-left: 7px solid transparent;border-right: 7px solid transparent;border-top: transparent;display: inline-block;background: none;padding: 0;border-bottom: 15px solid #fff;position: absolute;top: -50%;left: 50%;transform: translate(-50%,-50%);"></button>
+                    <button id="${openSeaDragonId}-button-right" style="outline:none;border-left: 15px solid #fff;border-right: transparent;border-top: 7px solid transparent;display: inline-block;background: none;padding: 0;border-bottom: 7px solid transparent;position: absolute;top: 50%;right: -50%;transform: translate(50%,-50%);"></button>
+                    <button id="${openSeaDragonId}-button-bottom" style="outline:none;border-left: 7px solid transparent;border-right: 7px solid transparent;border-top: 15px solid #fff;display: inline-block;background: none;padding: 0;border-bottom: transparent;position: absolute;bottom: -50%;left: 50%;transform: translate(-50%,50%);"></button>
+                    <button id="${openSeaDragonId}-button-left" style="outline:none;border-left: transparent;border-right: 15px solid #fff;border-top: 7px solid transparent;display: inline-block;background: none;padding: 0;border-bottom: 7px solid transparent;position: absolute;top: 50%;left: -50%;transform: translate(-50%,-50%);"></button>
+                </div>
+            </div>`
+            openSeaDragonElement.appendChild(openSeaDragonNavbar);
+
+            if (!disableZoom) {
+                const range = document.getElementById(`${openSeaDragonId}-range-zoom`);
+
+                range.max = openSeadragon.viewport.getMaxZoom();
+                range.min = openSeadragon.viewport.getMinZoom();
+                range.value = openSeadragon.viewport.getZoom();
+                range.step = 0.1;
+
+                range.addEventListener("input", () => {
+                    openSeadragon.viewport.zoomTo(range.value);
+                    openSeadragon.viewport.applyConstraints();
+                });
+
+                $(`#${openSeaDragonId}-button-zoomin`).on("click", () => {
+                    openSeadragon.viewport.zoomBy(2);
+                    openSeadragon.viewport.applyConstraints();
+
+                    range.value = openSeadragon.viewport.getZoom();
+                });
+                $(`#${openSeaDragonId}-button-zoomout`).on("click", () => {
+                    openSeadragon.viewport.zoomBy(1 / 2);
+                    openSeadragon.viewport.applyConstraints();
+
+                    range.value = openSeadragon.viewport.getZoom();
+                });
+            }
+
+            $(`#${openSeaDragonId}-button-top`).on("click", () => {
+                openSeadragon.viewport.panBy(new OpenSeadragon.Point(0, -0.05));
+            });
+            $(`#${openSeaDragonId}-button-left`).on("click", () => {
+                openSeadragon.viewport.panBy(new OpenSeadragon.Point(-0.05, 0));
+            });
+            $(`#${openSeaDragonId}-button-bottom`).on("click", () => {
+                openSeadragon.viewport.panBy(new OpenSeadragon.Point(0, 0.05));
+            });
+            $(`#${openSeaDragonId}-button-right`).on("click", () => {
+                openSeadragon.viewport.panBy(new OpenSeadragon.Point(0.05, 0));
+            });
         });
 
         this.controller.addFunctionality({
