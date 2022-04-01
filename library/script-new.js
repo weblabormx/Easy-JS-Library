@@ -1703,4 +1703,18 @@ function EasyJsLibrary() {
 jQuery(document).ready(function ($) {
     window.script = new EasyJsLibrary();
     script.execute();
+    if (typeof Livewire !== 'undefined') {
+        Livewire.hook('message.processed', (message, component) => 
+        {
+            script.execute();
+        })
+    }
 });
+
+// Function to work with livewire, add on the submit button with on click action.
+function triggerEvents()
+{
+    $("[data-type]").each(function(index) {
+        this.dispatchEvent(new Event('input'));
+    });
+}
