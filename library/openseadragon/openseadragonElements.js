@@ -65,6 +65,7 @@
                         e.height
                     )
                 }
+                console.log(el);
                 this.elements.push(el)
                 repositionElement(el, this.viewer)
             }
@@ -95,7 +96,7 @@
             const e = this.getElementById(id)
             if (e !== null) {
                 const vpRect = this.viewer.viewport.imageToViewportRectangle(e.rect)
-                const vpPos = viewer.viewport.imageToViewportCoordinates(
+                const vpPos = this.viewer.viewport.imageToViewportCoordinates(
                     e.rect.x,
                     e.rect.y
                 )
@@ -160,13 +161,9 @@ function repositionElements(es, viewer) {
 }
 
 function repositionElement(e, viewer) {
-    // Disabled element zooming
-
-    // const newRect = viewer.viewport.viewportToViewerElementRectangle(
-    //     viewer.viewport.imageToViewportRectangle(e.rect)
-    // )
-
-    const newRect = e.rect;
+    const newRect = viewer.viewport.viewportToViewerElementRectangle(
+        viewer.viewport.imageToViewportRectangle(e.rect)
+    )
     const point = viewer.viewport.getFlip()
         ? flipPoint(
             { x: e.rect.x, y: e.rect.y },

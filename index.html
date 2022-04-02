@@ -2393,7 +2393,7 @@ print json_encode($res);
                                     </div>
                                 </div>
 
-                                <div id="image-viewer" class="section-block">
+                                <!-- <div id="image-viewer" class="section-block">
                                     <h3>Image Viewer</h3>
                                     <p>Display markers and notes on an image</p>
                                     <table class="table descriptional">
@@ -2482,7 +2482,8 @@ print json_encode($res);
                                         <code data-type="codeeditor" data-lang="html">&lt;img data-type="image-viewer" data-zoom="false" data-notes='[{"x": "0.5","y": "0.5","note": "Enjoy the component!"}]' src="https://waynegm.github.io/imgViewer2/images/test_image.jpg" width="100%" alt=""&gt;</code>
                                     </div>
 
-                                </div>
+                                </div> -->
+
                                 <div id="image-tile-viewer" class="section-block">
                                     <h3>Image Tile Viewer</h3>
                                     <p>Display large images with Deep Zoom technology.</p>
@@ -2516,6 +2517,8 @@ print json_encode($res);
                                                 <em>data-icon-size</em>: size of the marker icon image<br>
                                                 <em>data-icon-offset</em>: offset size % of the marker from its coordinates<br>
                                                 <em>data-disable-zoom</em>: set true to disable zooming<br>
+                                                <em>data-disable-pan</em>: set true to disable panning<br>
+                                                <em>data-disable-controls</em>: set true to disable controls<br>
                                                 <em>data-zoom-default</em>: default zoom level of the viewer<br>
                                                 <em>data-zoom-min</em>: minimum zoom level of the viewer<br>
                                                 <em>data-zoom-max</em>: maximum zoom level of the viewer<br>
@@ -2525,15 +2528,57 @@ print json_encode($res);
                                         </tbody>
                                     </table>
                                     <h4>Normal Use</h4>
+                                    <p>Feed to <em>data-markers</em> a JSON array with an object for each marker. The object needs to have X and Y pixel-based coordinates. Example: <em>"x": "1000","y": "1000"</em> will put the marker one thousand pixels from the left and from the top.</p>
+                                    <p>If you want to show a note when clicking the marker you can add a <em>"note": "My message"</em> property to the object with the content you want to show (supports HTML). If you want to go to a site instead you can add an <em>"url": "https://weblabor.mx"</em> property with the destination, <b>this will override</b> the <em>"note":</em> property if there's any.</p>
+                                    <p>To add more flavor to your markers you can add a tooltip with <em>"tooltip": "My tooltip!"</em>, this will override the default tooltip from the markers with <em>"url":</em>.</p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <div data-type="image-tile-viewer" data-custom-controls="true" data-markers='[{"x": 2000,"y": 2000,"note": "Enjoy the component! &lt;a&gt;Link&lt;/a&gt;","tooltip": "I am a tooltip!", "eval": "alert(`Hello!`)" }]' style="height: 500px;"></div>
+                                            <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]"
+                                                data-markers='[{"x": "1000","y": "1000","url": "https://weblabor.mx", "tooltip": "URL with tooltip &rarr;"},{"x": "2000","y": "2000","note": "Easy JS is a cool library!"},{"x": "2000","y": "3000","note": "Check our repository on <a href=\"https://github.com/weblabormx/Easy-JS-Library\">Github</a>!","tooltip": "Note with tooltip"}]' style="height: 500px;"></div>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type=&quot;image-tile-viewer&quot; data-custom-controls=&quot;true&quot; data-markers='[{&quot;x&quot;: 2000,&quot;y&quot;: 2000,&quot;note&quot;: &quot;Enjoy the component! &lt;a&gt;Link&lt;/a&gt;&quot;,&quot;tooltip&quot;: &quot;I am a tooltip!&quot;, &quot;eval&quot;: &quot;alert(`Hello!`)&quot; }]' style=&quot;height: 500px;&quot;&gt;&lt;/div&gt;</code>
+                                        <code data-type="codeeditor"
+                                            data-lang="html">&lt;div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-markers='[{"x": "1000","y": "1000","url": "https://weblabor.mx", "tooltip": "URL with tooltip &rarr;"},{"x": "2000","y": "2000","note": "Easy JS is a cool library!"},{"x": "2000","y": "3000","note": "Check our repository on &lt;a href=\"https://github.com/weblabormx/Easy-JS-Library\"&gt;Github&lt;/a&gt;!", "tooltip": "Note with tooltip"}]' style="height: 500px;"&gt;&lt;/div&gt;</code>
+                                    </div>
+                                    <h4>Customizing</h4>
+                                    <p>Using <em>data-icon="https://yoururl.com/icon.jpg"</em> will allow you to customize the icon. And with <em>data-custom-controls="true"</em> you can choose to use a different type of controls.</p>
+                                    <p>To change the size of the markers use <em>data-icon-size</em> passing the width and height as a tuple. Example: <em>[1000,1640]</em>.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[1000,1640]" data-custom-controls="true" data-markers='[{"x": "4000","y": "5000","note": "I am big!"}]' style="height: 500px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[1000,1640]" data-custom-controls="true" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-markers='[{"x": "4000","y": "5000","note": "I am big!"}]' style="height: 500px;"&gt;&lt;/div&gt;</code>
+                                    </div>
+                                    <h4>Removing drag</h4>
+                                    <p>You can choose to remove the dragging of the image with <em>data-disable-pan="true"</em>, try moving the image around.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-disable-pan="true" style="height: 500px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-disable-pan="true" style="height: 500px;"&gt;&lt;/div&gt;</code>
+                                    </div>
+                                    <h4>Removing zoom</h4>
+                                    <p>You can remove the zoom ability with <em>data-disable-zoom="true"</em>, and use <em>data-disable-controls="true"</em> to hide the controls.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-disable-zoom="true" data-disable-controls="true" data-markers='[{"x": "5000","y": "2000","note": "Enjoy the component!"}]' style="height: 500px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-disable-zoom="true" data-disable-controls="true" data-markers='[{"x": 5000","y": "2000","note": "Enjoy the component!"}]' style="height: 500px;"&gt;&lt;/div&gt;</code>
                                     </div>
 
                                 </div>
