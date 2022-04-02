@@ -1165,19 +1165,24 @@ function EasyJsLibrary() {
             // console.log(markers[0]);
             // markers = JSON.parse(markers);
 
-            const prefixUrl = item.data("prefix") ?? "/images/";
-            const tileSources = item.data("dzi") ?? "https://openseadragon.github.io/example-images/duomo/duomo.dzi";
+            const prefixUrl = item.data("prefix") ?? `/library/openseadragon/images/`;
+            const tileSources = item.data("dzi");
             const zoomDefault = item.data("zoom-default") ?? 0;
             const zoomMin = item.data("zoom-min") ?? 0.4;
             const zoomMax = item.data("zoom-max") ?? 8;
             const customControls = item.data("custom-controls") ?? false;
-            const disableZoom = item.data("disable-zoom")
-            const gestureSettings = disableZoom ? {
-                scrollToZoom: false,
+            const disableZoom = item.data("disable-zoom") ?? false;
+            const disablePan = item.data("disable-pan") ?? false;
+            const disableControls = item.data("disable-controls") ?? false;
+            const gestureSettings = {
                 clickToZoom: false,
-            } : { clickToZoom: false, dblClickToZoom: true };
+                scrollToZoom: !disableZoom,
+                dblClickToZoom: !disableZoom,
+                pinchToZoom: !disableZoom,
+                dragToPan: !disablePan
+            };
             const extraOptions = {
-                showNavigationControl: !customControls
+                showNavigationControl: !(customControls || disableControls)
             };
             const markerImage = item.data("icon") ?? "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png";
             const markerSize = item.data("icon-size") ?? [0, 0];
@@ -1208,7 +1213,7 @@ function EasyJsLibrary() {
                 ...extraOptions
             });
 
-            const elementManager = openSeadragon.HTMLelements()
+            const elementManager = openSeadragon.viewport.viewer.HTMLelements()
 
             const setTransform = (element, transform) => {
                 element.style.webkitTransform = transform;
@@ -1288,68 +1293,77 @@ function EasyJsLibrary() {
                 return button;
             }
 
-            markers.forEach((marker, index) => {
-                const markerElement = createMarker(markerImage, markerWidth, markerHeight, `translate(${markerOffset[0]}%, ${markerOffset[1]}%)`);
+            if (markers != undefined) {
+                markers.forEach((marker, index) => {
+                    const markerElement = createMarker(markerImage, markerWidth, markerHeight, `translate(${markerOffset[0]}%, ${markerOffset[1]}%)`);
+                    const markerId = `${openSeaDragonId}-popup-${index}`;
 
-                elementManager.addElement({
-                    id: index,
-                    element: markerElement,
-                    x: marker.x,
-                    y: marker.y,
-                    width: markerElement.width,
-                    height: markerElement.height,
-                });
-
-                const elementWrapper = markerElement.parentElement;
-
-                const togglePopup = (popup) => {
-                    popup.style.display = popup.style.display == "none" ? "block" : "none";
-                }
-
-                if (marker.url != null) {
-                    markerElement.addEventListener("click", () => { window.location.href = marker.url })
-                }
-
-                const popupWrapper = marker.note == null || marker.url != null ? null : createPopupWrapper(`${openSeaDragonId}-marker-${index}`);
-                if (popupWrapper) {
-                    const popup = createPopup(marker.note);
-                    const tip = createPopupTip();
-                    const button = createPopupButton();
-
-                    button.addEventListener("click", () => { togglePopup(popupWrapper) });
-                    markerElement.addEventListener("click", () => { togglePopup(popupWrapper) });
-
-                    popupWrapper.appendChild(tip);
-                    popupWrapper.appendChild(popup);
-                    popupWrapper.appendChild(button);
-
-                    elementWrapper.appendChild(popupWrapper)
-                }
-
-                const tooltip = marker.tooltip == null ? marker.url == null ? null : `<u>${marker.url}</u>&rarr;` : marker.tooltip;
-
-                const tooltipWrapper = tooltip == null ? tooltip : createPopupWrapper(`${openSeaDragonId}-tooltip-${index}`, "-50%", null, null, "-30px", "translate(-100%,0%)");
-                if (tooltipWrapper) {
-                    const popup = createPopup(tooltip, "#fff", "10px");
-                    const tip = createPopupTip("#fff", "50%", "0", null, null, "translate(40%,-50%)");
-
-                    tooltipWrapper.style.opacity = "75%";
-
-                    markerElement.addEventListener("mouseenter", () => { togglePopup(tooltipWrapper) });
-                    markerElement.addEventListener("mouseleave", () => { togglePopup(tooltipWrapper) });
-
-                    tooltipWrapper.appendChild(tip);
-                    tooltipWrapper.appendChild(popup);
-
-                    elementWrapper.appendChild(tooltipWrapper);
-                }
-
-                if (marker.eval != null) {
-                    markerElement.addEventListener("click", () => {
-                        eval(marker.eval);
+                    // console.log(marker.x);
+                    elementManager.addElement({
+                        id: markerId,
+                        element: markerElement,
+                        x: parseFloat(marker.x),
+                        y: parseFloat(marker.y),
+                        width: markerElement.width,
+                        height: markerElement.height,
                     });
-                }
-            });
+
+                    const elementWrapper = markerElement.parentElement;
+
+                    const togglePopup = (popup) => {
+                        popup.style.display = popup.style.display == "none" ? "block" : "none";
+                    }
+
+                    if (marker.url != null) {
+                        markerElement.addEventListener("click", () => { window.location.href = marker.url })
+                    }
+
+                    const popupWrapper = marker.note == null || marker.url != null ? null : createPopupWrapper(`${openSeaDragonId}-popup-${index}`);
+                    if (popupWrapper) {
+                        const popup = createPopup(marker.note);
+                        const tip = createPopupTip();
+                        const button = createPopupButton();
+
+                        button.addEventListener("click", () => {
+                            togglePopup(popupWrapper);
+                        });
+                        markerElement.addEventListener("click", () => {
+                            togglePopup(popupWrapper);
+                            // elementManager.goToElementLocation(markerId, true);
+                        });
+
+                        popupWrapper.appendChild(tip);
+                        popupWrapper.appendChild(popup);
+                        popupWrapper.appendChild(button);
+
+                        elementWrapper.appendChild(popupWrapper)
+                    }
+
+                    const tooltip = marker.tooltip == null ? marker.url == null ? null : `<u>${marker.url}</u>&rarr;` : marker.tooltip;
+
+                    const tooltipWrapper = tooltip == null ? tooltip : createPopupWrapper(`${openSeaDragonId}-tooltip-${index}`, "-50%", null, null, "-30px", "translate(-100%,0%)");
+                    if (tooltipWrapper) {
+                        const popup = createPopup(tooltip, "#fff", "10px");
+                        const tip = createPopupTip("#fff", "50%", "0", null, null, "translate(40%,-50%)");
+
+                        tooltipWrapper.style.opacity = "75%";
+
+                        markerElement.addEventListener("mouseenter", () => { togglePopup(tooltipWrapper) });
+                        markerElement.addEventListener("mouseleave", () => { togglePopup(tooltipWrapper) });
+
+                        tooltipWrapper.appendChild(tip);
+                        tooltipWrapper.appendChild(popup);
+
+                        elementWrapper.appendChild(tooltipWrapper);
+                    }
+
+                    if (marker.eval != null) {
+                        markerElement.addEventListener("click", () => {
+                            eval(marker.eval);
+                        });
+                    }
+                });
+            }
 
             if (!customControls) {
                 return;
@@ -1387,6 +1401,18 @@ function EasyJsLibrary() {
                 range.addEventListener("input", () => {
                     openSeadragon.viewport.zoomTo(range.value);
                     openSeadragon.viewport.applyConstraints();
+                });
+
+                $(openSeadragon.container).on("load", () => {
+                    range.value = openSeadragon.viewport.getZoom();
+                });
+
+                $(openSeadragon.container).on("wheel", () => {
+                    range.value = openSeadragon.viewport.getZoom();
+                });
+
+                $(openSeadragon.container).on("click", () => {
+                    range.value = openSeadragon.viewport.getZoom();
                 });
 
                 $(`#${openSeaDragonId}-button-zoomin`).on("click", () => {
