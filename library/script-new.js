@@ -901,7 +901,34 @@ function EasyJsLibrary() {
                     });
                 }
                 item.magnificPopup({
-                    type: type
+                    type: type,
+                    iframe: {
+
+                        patterns: {
+                            vimeo: {
+                                index: "vimeo.com/",
+                                id: function (url) {
+                                    const regex = /^(?:http:\/\/|https:\/\/|\/\/)?vimeo.com\/(\w+)\/?(?:(\w+)\/?)?$/;
+                                    const match = url.match(regex);
+
+                                    let id = "";
+                                    let separator = '?';
+
+                                    if (match.length < 2) return;
+
+                                    if (match.length == 2) {
+                                        id = match[1];
+                                    } else if (match.length == 3) {
+                                        separator = "&";
+                                        id = `${match[1]}?h=${match[2]}`
+                                    }
+
+                                    return `${id}${separator}autoplay=1`
+                                },
+                                src: '//player.vimeo.com/video/%id%'
+                            }
+                        }
+                    }
                 });
                 var automatic = item.attr("data-automatic");
                 if (typeof automatic !== typeof undefined && automatic !== false) {
