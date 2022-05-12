@@ -285,8 +285,8 @@ function EasyController() {
 
 function EasyJsLibrary() {
 
-    // this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-    this.url = "http://localhost:8080/library/";
+    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    // this.url = "http://localhost:8080/library/";
     this.controller = new EasyController();
 
     this.load = function () {
@@ -1349,7 +1349,7 @@ function EasyJsLibrary() {
 
                     if (marker.url != null) {
                         new OpenSeadragon.MouseTracker({
-                            element: markerWrapper,
+                            element: markerElement,
                             clickHandler: () => {
                                 window.location.assign(marker.url)
                             }
@@ -1407,6 +1407,13 @@ function EasyJsLibrary() {
                                 eval(marker.eval);
                             }
                         });
+                    }
+                    if (marker.size != null) {
+                        markerElement.src = marker.icon;
+                    }
+                    if (marker.size != null) {
+                        markerElement.width = marker.size[0];
+                        markerElement.height = marker.size[1];
                     }
                 });
             }
