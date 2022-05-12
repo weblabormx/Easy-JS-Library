@@ -1192,7 +1192,7 @@ function EasyJsLibrary() {
             // console.log(markers[0]);
             // markers = JSON.parse(markers);
 
-            const prefixUrl = item.data("prefix") ?? `/library/openseadragon/images/`;
+            const prefixUrl = item.data("prefix") ?? `https://weblabormx.github.io/Easy-JS-Library/library/openseadragon/images/`;
             const tileSources = item.data("dzi");
             const zoomDefault = item.data("zoom-default") ?? 0;
             const zoomMin = item.data("zoom-min") ?? 0.4;
