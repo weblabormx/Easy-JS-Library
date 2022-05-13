@@ -2531,6 +2531,7 @@ print json_encode($res);
                                     <p>Feed to <em>data-markers</em> a JSON array with an object for each marker. The object needs to have X and Y pixel-based coordinates. Example: <em>"x": "1000","y": "1000"</em> will put the marker one thousand pixels from the left and from the top.</p>
                                     <p>If you want to show a note when clicking the marker you can add a <em>"note": "My message"</em> property to the object with the content you want to show (supports HTML). If you want to go to a site instead you can add an <em>"url": "https://weblabor.mx"</em> property with the destination, <b>this will override</b> the <em>"note":</em> property if there's any.</p>
                                     <p>To add more flavor to your markers you can add a tooltip with <em>"tooltip": "My tooltip!"</em>, this will override the default tooltip from the markers with <em>"url":</em>.</p>
+                                    <p>Finally, you can replace individual markers icon using <em>"icon": "https://mywebsite.com/myicon.jpg"</em>.</p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
