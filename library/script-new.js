@@ -1325,6 +1325,7 @@ function EasyJsLibrary() {
             }
 
             if (markers != undefined) {
+                markers.sort((a, b) => a.y - b.y || a.x - b.x);
                 markers.forEach((marker, index) => {
                     const markerElement = createMarker(markerImage, markerWidth, markerHeight, '');
                     const markerId = `${openSeaDragonId}-popup-${index}`;
@@ -1340,8 +1341,6 @@ function EasyJsLibrary() {
                         width: markerWidth,
                         height: markerHeight,
                     });
-
-                    const elementWrapper = markerWrapper.parentElement;
 
                     const togglePopup = (popup) => {
                         popup.style.display = popup.style.display == "none" ? "block" : "none";
@@ -1384,7 +1383,7 @@ function EasyJsLibrary() {
 
                     const tooltip = marker.tooltip == null ? marker.url == null ? null : `<u>${marker.url}</u>&rarr;` : marker.tooltip;
 
-                    const tooltipWrapper = tooltip == null ? tooltip : createPopupWrapper(`${openSeaDragonId}-tooltip-${index}`, "-50%", null, null, "-30px", "translate(-100%,0%)");
+                    const tooltipWrapper = tooltip == null ? tooltip : createPopupWrapper(`${openSeaDragonId}-tooltip-${index}`, "50%", null, null, "-30px", "translate(-100%,-50%)");
                     if (tooltipWrapper) {
                         const popup = createPopup(tooltip, "#fff", "10px", `translate(-${markerOffset[0]}%, -${markerOffset[1]}%)`);
                         const tip = createPopupTip("#fff", "50%", "0", null, null, "translate(40%,-50%)");
@@ -1397,7 +1396,7 @@ function EasyJsLibrary() {
                         tooltipWrapper.appendChild(tip);
                         tooltipWrapper.appendChild(popup);
 
-                        elementWrapper.appendChild(tooltipWrapper);
+                        markerWrapper.appendChild(tooltipWrapper);
                     }
 
                     if (marker.eval != null) {
@@ -1408,7 +1407,7 @@ function EasyJsLibrary() {
                             }
                         });
                     }
-                    if (marker.size != null) {
+                    if (marker.icon != null) {
                         markerElement.src = marker.icon;
                     }
                     if (marker.size != null) {
