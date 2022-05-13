@@ -65,7 +65,6 @@
                         e.height
                     )
                 }
-                console.log(el);
                 this.elements.push(el)
                 repositionElement(el, this.viewer)
             }

@@ -285,8 +285,8 @@ function EasyController() {
 
 function EasyJsLibrary() {
 
-    // this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-    this.url = "http://localhost:8080/library/";
+    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
+    // this.url = "http://localhost:8080/library/";
     this.controller = new EasyController();
 
     this.load = function () {
@@ -1325,6 +1325,7 @@ function EasyJsLibrary() {
             }
 
             if (markers != undefined) {
+                markers.sort((a, b) => a.y - b.y || a.x - b.x);
                 markers.forEach((marker, index) => {
                     const markerElement = createMarker(markerImage, markerWidth, markerHeight, '');
                     const markerId = `${openSeaDragonId}-popup-${index}`;
