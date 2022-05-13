@@ -1408,7 +1408,7 @@ function EasyJsLibrary() {
                             }
                         });
                     }
-                    if (marker.size != null) {
+                    if (marker.icon != null) {
                         markerElement.src = marker.icon;
                     }
                     if (marker.size != null) {
