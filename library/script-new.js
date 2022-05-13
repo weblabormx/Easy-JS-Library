@@ -1192,7 +1192,7 @@ function EasyJsLibrary() {
             // console.log(markers[0]);
             // markers = JSON.parse(markers);
 
-            const prefixUrl = item.data("prefix") ?? `/library/openseadragon/images/`;
+            const prefixUrl = item.data("prefix") ?? `https://weblabormx.github.io/Easy-JS-Library/library/openseadragon/images/`;
             const tileSources = item.data("dzi");
             const zoomDefault = item.data("zoom-default") ?? 0;
             const zoomMin = item.data("zoom-min") ?? 0.4;
@@ -1213,7 +1213,7 @@ function EasyJsLibrary() {
             };
             const markerImage = item.data("icon") ?? "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png";
             const markerSize = item.data("icon-size") ?? [0, 0];
-            const markerOffset = item.data("icon-offset") ?? [0, -50];
+            const markerOffset = item.data("icon-offset") ?? [-50, -50];
             let markerWidth = markerSize[0];
             let markerHeight = markerSize[1];
 
@@ -1221,6 +1221,7 @@ function EasyJsLibrary() {
             const openSeaDragonId = "osd-" + (Math.round(Math.random() * 99999 + 10000));
 
             openSeaDragonElement.id = openSeaDragonId;
+            openSeaDragonElement.style.overflow = 'hidden';
 
             const openSeadragon = OpenSeadragon({
                 element: item[0],
@@ -1258,6 +1259,8 @@ function EasyJsLibrary() {
                     image.width = image.naturalWidth;
                     image.height = image.naturalHeight;
                 }
+                image.style.maxWidth = "100%";
+                image.style.maxHeight = "100%";
 
                 setTransform(image, transform);
                 image.style.cursor = "pointer";
@@ -1279,13 +1282,13 @@ function EasyJsLibrary() {
 
                 return wrapper;
             }
-            const createPopup = (note, background = "#fff", padding = "20px") => {
+            const createPopup = (note, background = "#fff", padding = "20px", transform = "rotate(0)") => {
                 const popup = document.createElement("div");
                 popup.style.background = background;
                 popup.style.padding = padding;
                 popup.style.borderRadius = "12px";
                 // To appear on top of the tip
-                popup.style.transform = "rotate(0)";
+                popup.style.transform = transform;
                 popup.innerHTML = note;
                 popup.innerHTML += "";
 
@@ -1316,33 +1319,41 @@ function EasyJsLibrary() {
                 button.style.top = "0";
                 button.style.fontSize = "1.5em";
                 button.style.padding = "0px 10px";
+                button.style.cursor = "pointer";
                 button.innerHTML = "&times;";
                 return button;
             }
 
             if (markers != undefined) {
                 markers.forEach((marker, index) => {
-                    const markerElement = createMarker(markerImage, markerWidth, markerHeight, `translate(${markerOffset[0]}%, ${markerOffset[1]}%)`);
+                    const markerElement = createMarker(markerImage, markerWidth, markerHeight, '');
                     const markerId = `${openSeaDragonId}-popup-${index}`;
-
+                    const markerWrapper = document.createElement("div");
+                    markerWrapper.style.transform = `translate(${markerOffset[0]}%, ${markerOffset[1]}%)`;
+                    markerWrapper.appendChild(markerElement);
                     // console.log(marker.x);
                     elementManager.addElement({
                         id: markerId,
-                        element: markerElement,
+                        element: markerWrapper,
                         x: parseFloat(marker.x),
                         y: parseFloat(marker.y),
-                        width: markerElement.width,
-                        height: markerElement.height,
+                        width: markerWidth,
+                        height: markerHeight,
                     });
 
-                    const elementWrapper = markerElement.parentElement;
+                    const elementWrapper = markerWrapper.parentElement;
 
                     const togglePopup = (popup) => {
                         popup.style.display = popup.style.display == "none" ? "block" : "none";
                     }
 
                     if (marker.url != null) {
-                        markerElement.addEventListener("click", () => { window.location.href = marker.url })
+                        new OpenSeadragon.MouseTracker({
+                            element: markerElement,
+                            clickHandler: () => {
+                                window.location.assign(marker.url)
+                            }
+                        });
                     }
 
                     const popupWrapper = marker.note == null || marker.url != null ? null : createPopupWrapper(`${openSeaDragonId}-popup-${index}`);
@@ -1351,26 +1362,31 @@ function EasyJsLibrary() {
                         const tip = createPopupTip();
                         const button = createPopupButton();
 
-                        button.addEventListener("click", () => {
-                            togglePopup(popupWrapper);
+                        new OpenSeadragon.MouseTracker({
+                            element: button,
+                            clickHandler: () => {
+                                togglePopup(popupWrapper);
+                            }
                         });
-                        markerElement.addEventListener("click", () => {
-                            togglePopup(popupWrapper);
-                            // elementManager.goToElementLocation(markerId, true);
+                        new OpenSeadragon.MouseTracker({
+                            element: markerElement,
+                            clickHandler: () => {
+                                togglePopup(popupWrapper);
+                            }
                         });
 
                         popupWrapper.appendChild(tip);
                         popupWrapper.appendChild(popup);
                         popupWrapper.appendChild(button);
 
-                        elementWrapper.appendChild(popupWrapper)
+                        markerWrapper.appendChild(popupWrapper)
                     }
 
                     const tooltip = marker.tooltip == null ? marker.url == null ? null : `<u>${marker.url}</u>&rarr;` : marker.tooltip;
 
                     const tooltipWrapper = tooltip == null ? tooltip : createPopupWrapper(`${openSeaDragonId}-tooltip-${index}`, "-50%", null, null, "-30px", "translate(-100%,0%)");
                     if (tooltipWrapper) {
-                        const popup = createPopup(tooltip, "#fff", "10px");
+                        const popup = createPopup(tooltip, "#fff", "10px", `translate(-${markerOffset[0]}%, -${markerOffset[1]}%)`);
                         const tip = createPopupTip("#fff", "50%", "0", null, null, "translate(40%,-50%)");
 
                         tooltipWrapper.style.opacity = "75%";
@@ -1385,9 +1401,19 @@ function EasyJsLibrary() {
                     }
 
                     if (marker.eval != null) {
-                        markerElement.addEventListener("click", () => {
-                            eval(marker.eval);
+                        new OpenSeadragon.MouseTracker({
+                            element: markerElement,
+                            clickHandler: () => {
+                                eval(marker.eval);
+                            }
                         });
+                    }
+                    if (marker.size != null) {
+                        markerElement.src = marker.icon;
+                    }
+                    if (marker.size != null) {
+                        markerElement.width = marker.size[0];
+                        markerElement.height = marker.size[1];
                     }
                 });
             }
@@ -1397,7 +1423,7 @@ function EasyJsLibrary() {
             }
 
             const layoutZoom = !disableZoom ? `
-            <div style="padding: 10px;background-color: #000;border-radius: 5px;width: min-content;height: 32rem;position: relative;display: flex;flex-direction: column;justify-content: space-between;">
+            <div style="padding: 10px;background-color: #000;border-radius: 5px;width: min-content;height: 32rem;position: relative;display: flex;flex-direction: column;justify-content: space-between;margin: 0 auto;">
                 <button id="${openSeaDragonId}-button-zoomin" style="padding: 0;background: 0;border: 0;color: white;font-size: 32px;font-weight: 900;text-align: center;width: 100%;">+</button>
                 <input id="${openSeaDragonId}-range-zoom" type="range" style="min-width: 20rem;position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%) rotate(-90deg);">
                 <button id="${openSeaDragonId}-button-zoomout" style="padding: 0;background: 0;border: 0;color: white;font-size: 32px;font-weight: 900;text-align: center;width: 100%;">-</button>
@@ -1406,14 +1432,14 @@ function EasyJsLibrary() {
 
             const openSeaDragonNavbar = document.createElement("div");
             openSeaDragonNavbar.innerHTML = `
-            <div style="position: absolute;top: 50%;left: 50px;transform: translateY(-50%); opacity: 0.8">
-                ${layoutZoom}
-                <div style="padding: 17px;background-color: transparent;border-radius: 50%;position: absolute;top: 0;left: 50%;transform: translate(-50%, calc(-100% + 10px));border: solid #000 30px;">
+            <div style="position: absolute;top: 50%;left: 10px;transform: translateY(-50%); opacity: 0.8; display: flex; flex-direction: column;">
+                <div style="padding: 17px;background-color: transparent;border-radius: 50%;transform: translateY(10px);border: solid #000 30px;z-index: 1;">
                     <button id="${openSeaDragonId}-button-top" style="outline:none;border-left: 7px solid transparent;border-right: 7px solid transparent;border-top: transparent;display: inline-block;background: none;padding: 0;border-bottom: 15px solid #fff;position: absolute;top: -50%;left: 50%;transform: translate(-50%,-50%);"></button>
                     <button id="${openSeaDragonId}-button-right" style="outline:none;border-left: 15px solid #fff;border-right: transparent;border-top: 7px solid transparent;display: inline-block;background: none;padding: 0;border-bottom: 7px solid transparent;position: absolute;top: 50%;right: -50%;transform: translate(50%,-50%);"></button>
                     <button id="${openSeaDragonId}-button-bottom" style="outline:none;border-left: 7px solid transparent;border-right: 7px solid transparent;border-top: 15px solid #fff;display: inline-block;background: none;padding: 0;border-bottom: transparent;position: absolute;bottom: -50%;left: 50%;transform: translate(-50%,50%);"></button>
                     <button id="${openSeaDragonId}-button-left" style="outline:none;border-left: transparent;border-right: 15px solid #fff;border-top: 7px solid transparent;display: inline-block;background: none;padding: 0;border-bottom: 7px solid transparent;position: absolute;top: 50%;left: -50%;transform: translate(-50%,-50%);"></button>
                 </div>
+                ${layoutZoom}
             </div>`
             openSeaDragonElement.appendChild(openSeaDragonNavbar);
 
