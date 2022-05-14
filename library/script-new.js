@@ -639,7 +639,7 @@ function EasyJsLibrary() {
             var cont = item.html();
             $("<div class='codeeditortext' id='" + ide + "'></div>").insertAfter(item);
             item.css("display", "none");
-            $("#" + ide).html(cont);
+            $(document.getElementById(ide)).html(cont);
             var typec = item.attr("data-lang");
 
             // Color
