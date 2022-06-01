@@ -1287,6 +1287,7 @@ function EasyJsLibrary() {
                 popup.style.background = background;
                 popup.style.padding = padding;
                 popup.style.borderRadius = "12px";
+                popup.style.position = "relative";
                 // To appear on top of the tip
                 popup.style.transform = transform;
                 popup.innerHTML = note;
@@ -1343,7 +1344,13 @@ function EasyJsLibrary() {
                     });
 
                     const togglePopup = (popup) => {
-                        popup.style.display = popup.style.display == "none" ? "block" : "none";
+                        $(`[id^=${openSeaDragonId}-popup-]`).each((_, el) => {
+                            if (popup == el) {
+                                $(popup).toggle();
+                                return;
+                            }
+                            $(el).hide();
+                        });
                     }
 
                     if (marker.url != null) {
@@ -1390,8 +1397,8 @@ function EasyJsLibrary() {
 
                         tooltipWrapper.style.opacity = "75%";
 
-                        markerElement.addEventListener("mouseenter", () => { togglePopup(tooltipWrapper) });
-                        markerElement.addEventListener("mouseleave", () => { togglePopup(tooltipWrapper) });
+                        markerElement.addEventListener("mouseenter", () => { $(tooltipWrapper).toggle() });
+                        markerElement.addEventListener("mouseleave", () => { $(tooltipWrapper).toggle() });
 
                         tooltipWrapper.appendChild(tip);
                         tooltipWrapper.appendChild(popup);
