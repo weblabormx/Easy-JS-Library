@@ -302,6 +302,8 @@ function EasyJsLibrary() {
 
     this.loadForms = function () {
 
+        var these = this;
+
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'color',
@@ -413,10 +415,14 @@ function EasyJsLibrary() {
                 $(thisg).optionTree(tree, options).change(displayParents);
                 $(thisg).val("");
             })
-                .fail(function (jqxhr, textStatus, error) {
-                    var err = textStatus + ", " + error;
-                    console.log("Request Failed: " + err);
-                });
+            .fail(function (jqxhr, textStatus, error) {
+                var err = textStatus + ", " + error;
+                console.log("Request Failed: " + err);
+            });
+
+            item.change(function (e) {
+                these.load();
+            });
         });
 
         this.controller.addFunctionality({
@@ -626,7 +632,6 @@ function EasyJsLibrary() {
             });
         });
 
-        var these = this;
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'codeeditor',
@@ -681,7 +686,7 @@ function EasyJsLibrary() {
         });
 
         this.controller.addFunctionality({
-            type: 'oneByOne',
+            type: 'createAndDestroy',
             data_type: 'conditional2',
             selector: 'div',
             js: "https://cdn.jsdelivr.net/gh/rguliev/conditionize2.js@2.0.1/jquery.conditionize2.min.js"
@@ -844,7 +849,6 @@ function EasyJsLibrary() {
             });
         });
 
-        var these = this;
         this.controller.addFunctionality({
             type: 'each',
             data_type: 'codeeditor',
