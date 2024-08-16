@@ -415,10 +415,10 @@ function EasyJsLibrary() {
                 $(thisg).optionTree(tree, options).change(displayParents);
                 $(thisg).val("");
             })
-            .fail(function (jqxhr, textStatus, error) {
-                var err = textStatus + ", " + error;
-                console.log("Request Failed: " + err);
-            });
+                .fail(function (jqxhr, textStatus, error) {
+                    var err = textStatus + ", " + error;
+                    console.log("Request Failed: " + err);
+                });
 
             item.change(function (e) {
                 these.load();
@@ -598,7 +598,7 @@ function EasyJsLibrary() {
         });
 
         this.controller.addFunctionality({
-            type: 'oneByOne',
+            type: 'createAndDestroy',
             data_type: 'wysiwyg',
             selector: 'textarea',
             js: this.url + 'froala/plugins.min.js',
@@ -625,11 +625,22 @@ function EasyJsLibrary() {
                 imageUploadMethod: 'POST',
                 heightMin: 250,
             });
+            item.on('froalaEditor.contentChanged', function () {
+                const content = item.froalaEditor('html.get');
+                item.text(content);
+                item.val(content);
+
+                item[0].dispatchEvent(new Event('input'));
+            });
+
             $('.fr-box a').each(function () {
                 if ($(this).text() == 'Unlicensed Froala Editor') {
                     $(this).css('visibility', 'hidden');
                 }
             });
+        }, function (item) {
+            const editor = item.data('froala.editor');
+            if (editor) editor.destroy();
         });
 
         this.controller.addFunctionality({
@@ -1792,18 +1803,17 @@ function EasyJsLibrary() {
 jQuery(document).ready(function ($) {
     window.script = new EasyJsLibrary();
     script.execute();
+
     if (typeof Livewire !== 'undefined') {
-        Livewire.hook('message.processed', (message, component) => 
-        {
+        Livewire.hook('message.processed', (message, component) => {
             script.execute();
         })
     }
 });
 
 // Function to work with livewire, add on the submit button with on click action.
-function triggerEvents()
-{
-    $("[data-type]").each(function(index) {
+function triggerEvents() {
+    $("[data-type]").each(function (index) {
         this.dispatchEvent(new Event('input'));
     });
 }
