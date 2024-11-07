@@ -1597,8 +1597,9 @@ function EasyJsLibrary() {
                 data = item.attr("data-variables");
                 data = JSON.parse(data);
             };
-            if (typeof item.attr("data-redirection") !== typeof undefined)
+            if (typeof item.attr("data-redirection") !== typeof undefined) {
                 redirection = item.attr("data-redirection");
+            }
 
             item.click(function () {
                 Lobibox.confirm({
@@ -1624,6 +1625,23 @@ function EasyJsLibrary() {
                                 } else {
                                     window.location = redirection;
                                 }
+                            }).fail(function() {
+                                if (action.startsWith("https://")) {
+                                    action = action.replace("https://", "http://");
+                                } else if (action.startsWith("http://")) {
+                                    action = action.replace("http://", "https://");
+                                }
+                                $.ajax({
+                                    type: 'POST',
+                                    url: action,
+                                    data: data
+                                }).done(function (msg) {
+                                    if (redirection == "") {
+                                        location.reload();
+                                    } else {
+                                        window.location = redirection;
+                                    }
+                                });
                             });
                         };
                     }
