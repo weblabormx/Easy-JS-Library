@@ -57,7 +57,8 @@
                                 <!--//icon-holder-->
                                 <div class="content">
                                     <h4 class="callout-title">Library actually migrating</h4>
-                                    <p>The full library is being improved. Because of the quantity of libraries this is being made by steps. The old version can be accesed from <a href="index-old.html">here</a>, there you will be able to see libraries that are not in the new version. In our side we are mixing this 2 versions (old and new) to continue having all the features. So you dont need to change anything on your code.</p>
+                                    <p>The full library is being improved. Because of the quantity of libraries this is being made by steps. The old version can be accesed from <a href="index-old.html">here</a>, there you will be able to see libraries that are not in the new version. In our side we
+                                        are mixing this 2 versions (old and new) to continue having all the features. So you dont need to change anything on your code.</p>
                                     <p>Once we finished, all the documentation will be on this single page.</p>
                                 </div>
                                 <!--//content-->
@@ -399,7 +400,8 @@ $array = json_encode($array);
                                         <h6>Result</h6>
                                         <div class="result">
                                             <span id="multiple5-add-row">Add row</span>
-                                            <ul data-type="bimultiple" data-name="multiple5" data-values='[{"color":["rgb(255, 255, 255)","rgb(0, 0, 0)","rgb(221, 221, 221)"]},{"color":["rgb(51, 51, 51)","rgb(255, 255, 255)","rgb(221, 221, 221)","rgb(136, 136, 136)"]},{"color":["rgb(204, 204, 204)"]}]'>
+                                            <ul data-type="bimultiple" data-name="multiple5"
+                                                data-values='[{"color":["rgb(255, 255, 255)","rgb(0, 0, 0)","rgb(221, 221, 221)"]},{"color":["rgb(51, 51, 51)","rgb(255, 255, 255)","rgb(221, 221, 221)","rgb(136, 136, 136)"]},{"color":["rgb(204, 204, 204)"]}]'>
                                                 <li>
                                                     <ul>
                                                         <li>
@@ -540,7 +542,8 @@ $array = json_encode($array);
 
                                 <div id="hierarchical" class="section-block">
                                     <h3>Hierarchical</h3>
-                                    <p>Sends <em>$_GET["id"]</em> to file, you need to send a json with key and value (title). Add <em>data-parent</em> attribute to select who should be the default parent. With <em>data-value-parent</em> will select automatically the value, add "," to separate actions.</p>
+                                    <p>Sends <em>$_GET["id"]</em> to file, you need to send a json with key and value (title). Add <em>data-parent</em> attribute to select who should be the default parent. With <em>data-value-parent</em> will select automatically the value, add "," to separate
+                                        actions.</p>
                                     <table class="table descriptional">
                                         <tbody>
                                             <tr>
@@ -585,11 +588,11 @@ $array = json_encode($array);
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;input 
-    type=&quot;text&quot; 
-    name=&quot;category&quot; 
-    data-type=&quot;hselect&quot; 
-    src=&quot;get-subtree.php&quot; 
+                                        <code data-type="codeeditor" data-lang="html">&lt;input
+    type=&quot;text&quot;
+    name=&quot;category&quot;
+    data-type=&quot;hselect&quot;
+    src=&quot;get-subtree.php&quot;
     data-value-select=&quot;220,226&quot;
 /&gt;</code>
                                     </div>
@@ -861,12 +864,12 @@ print json_encode($res);
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;input 
-    data-type=&quot;autocomplete&quot; 
-    data-selected-text=&quot;Hola&quot; 
-    data-selected-value=&quot;valor&quot; 
+                                        <code data-type="codeeditor" data-lang="html">&lt;input
+    data-type=&quot;autocomplete&quot;
+    data-selected-text=&quot;Hola&quot;
+    data-selected-value=&quot;valor&quot;
     name=&quot;aut20&quot;
-    src=&quot;autocomplete.php&quot; 
+    src=&quot;autocomplete.php&quot;
 /&gt;</code>
                                     </div>
                                     <h4>With reload and with action</h4>
@@ -1005,7 +1008,8 @@ print json_encode($res);
                                         </tbody>
                                     </table>
                                     <h4>Range</h4>
-                                    <p>To show the values dynamictly you should call <em>name+'min'</em> or <em>name+'max'</em>. For example if the name of the input is <em>example</em> to show the minimum value selected you shoud add <em>&#x3C;span id=&#x22;example-min&#x22;&#x3E;&#x3C;/span&#x3E;</em></p>
+                                    <p>To show the values dynamictly you should call <em>name+'min'</em> or <em>name+'max'</em>. For example if the name of the input is <em>example</em> to show the minimum value selected you shoud add <em>&#x3C;span
+                                            id=&#x22;example-min&#x22;&#x3E;&#x3C;/span&#x3E;</em></p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
@@ -1219,7 +1223,7 @@ print json_encode($res);
     &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example1==&#39;yes&#39;&quot;&gt;
         &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example2&quot; id=&quot;ex2&quot;&gt;&lt;span&gt;&lt;/span&gt; Are you sure?&lt;/label&gt;
         &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;example3&quot;&gt;&lt;span&gt;&lt;/span&gt; Really super sure?&lt;/label&gt;
-        
+
         &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;#ex2&quot;&gt;
             Hooray!
         &lt;/div&gt;
@@ -1227,18 +1231,18 @@ print json_encode($res);
             Don&#39;t get cocky!
         &lt;/div&gt;
     &lt;/div&gt;
-    
+
     &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example1==&#39;no&#39;&quot;&gt;
         &lt;p&gt;That&#39;s a shame. Will you change your mind?&lt;/p&gt;
-        
+
         &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;yes&quot;&gt;&lt;span&gt;&lt;/span&gt; Yes&lt;/label&gt;
         &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;example4&quot; value=&quot;no&quot;&gt;&lt;span&gt;&lt;/span&gt; No&lt;/label&gt;
-        
+
         &lt;div data-type=&quot;conditional2&quot; data-condition=&quot;example4==&#39;yes&#39;&quot;&gt;
             Great!
         &lt;/div&gt;
     &lt;/div&gt;
-    
+
     &lt;p&gt;
         &lt;label&gt;or choose:&lt;/label&gt;
         &lt;select class=&quot;select&quot; name=&quot;example5&quot;&gt;
@@ -1599,12 +1603,12 @@ print json_encode($res);
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop2&quot; /&gt; 
-&lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop2&quot; data-width=&quot;500&quot; data-handler=&quot;functionName&quot; /&gt; 
-&lt;script type=&quot;text/javascript&quot;&gt; 
-    function functionName(c) { 
-        console.log('Entra'); 
-    } 
+                                        <code data-type="codeeditor" data-lang="html">&lt;img src=&quot;https://fengyuanchen.github.io/cropperjs/images/picture.jpg&quot; id=&quot;image-to-crop2&quot; /&gt;
+&lt;input type=&quot;text&quot; data-type=&quot;cropper&quot; data-image=&quot;image-to-crop2&quot; data-width=&quot;500&quot; data-handler=&quot;functionName&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    function functionName(c) {
+        console.log('Entra');
+    }
 &lt;/script&gt;</code>
                                     </div>
                                 </div>
@@ -1715,12 +1719,12 @@ print json_encode($res);
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;button 
-    data-type=&quot;confirm&quot; 
-    title=&quot;Are you sure?&quot; 
-    data-info=&quot;This will delete all the data&quot; 
-    data-button-yes=&quot;Yep&quot; 
-    data-button-no=&quot;Noup&quot; 
+                                        <code data-type="codeeditor" data-lang="html">&lt;button
+    data-type=&quot;confirm&quot;
+    title=&quot;Are you sure?&quot;
+    data-info=&quot;This will delete all the data&quot;
+    data-button-yes=&quot;Yep&quot;
+    data-button-no=&quot;Noup&quot;
     data-action=&quot;README.md&quot;&gt;
         Delete
 &lt;/button&gt;</code>
@@ -1772,11 +1776,11 @@ print json_encode($res);
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;button 
-    data-type=&quot;prompt&quot; 
-    title=&quot;Whats your name&quot; 
-    data-button-ok=&quot;Chido one&quot; 
-    data-button-cancel=&quot;Nopi&quot; 
+                                        <code data-type="codeeditor" data-lang="html">&lt;button
+    data-type=&quot;prompt&quot;
+    title=&quot;Whats your name&quot;
+    data-button-ok=&quot;Chido one&quot;
+    data-button-cancel=&quot;Nopi&quot;
     data-action=&quot;README.md&quot;&gt;
         Add a name
 &lt;/button&gt;</code>
@@ -2529,14 +2533,16 @@ print json_encode($res);
                                     </table>
                                     <h4>Normal Use</h4>
                                     <p>Feed to <em>data-markers</em> a JSON array with an object for each marker. The object needs to have X and Y pixel-based coordinates. Example: <em>"x": "1000","y": "1000"</em> will put the marker one thousand pixels from the left and from the top.</p>
-                                    <p>If you want to show a note when clicking the marker you can add a <em>"note": "My message"</em> property to the object with the content you want to show (supports HTML). If you want to go to a site instead you can add an <em>"url": "https://weblabor.mx"</em> property with the destination, <b>this will override</b> the <em>"note":</em> property if there's any.</p>
+                                    <p>If you want to show a note when clicking the marker you can add a <em>"note": "My message"</em> property to the object with the content you want to show (supports HTML). If you want to go to a site instead you can add an <em>"url": "https://weblabor.mx"</em>
+                                        property with the destination, <b>this will override</b> the <em>"note":</em> property if there's any.</p>
                                     <p>To add more flavor to your markers you can add a tooltip with <em>"tooltip": "My tooltip!"</em>, this will override the default tooltip from the markers with <em>"url":</em>.</p>
                                     <p>Finally, you can replace individual markers icon using <em>"icon": "https://mywebsite.com/myicon.jpg"</em>.</p>
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
                                             <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]"
-                                                data-markers='[{"x": "1000","y": "1000","url": "https://weblabor.mx", "tooltip": "URL with tooltip &rarr;"},{"x": "2000","y": "2000","note": "Easy JS is a cool library!"},{"x": "2000","y": "3000","note": "Check our repository on <a href=\"https://github.com/weblabormx/Easy-JS-Library\">Github</a>!","tooltip": "Note with tooltip"}]' style="height: 500px;"></div>
+                                                data-markers='[{"x": "1000","y": "1000","url": "https://weblabor.mx", "tooltip": "URL with tooltip &rarr;"},{"x": "2000","y": "2000","note": "Easy JS is a cool library!"},{"x": "2000","y": "3000","note": "Check our repository on <a href=\"https://github.com/weblabormx/Easy-JS-Library\">Github</a>!","tooltip": "Note with tooltip"}]'
+                                                style="height: 500px;"></div>
                                         </div>
                                     </div>
                                     <div class="code-block">
@@ -2550,12 +2556,14 @@ print json_encode($res);
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[1000,1640]" data-custom-controls="true" data-markers='[{"x": "4000","y": "5000","note": "I am big!"}]' style="height: 500px;"></div>
+                                            <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[1000,1640]" data-custom-controls="true" data-markers='[{"x": "4000","y": "5000","note": "I am big!"}]' style="height: 500px;">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[1000,1640]" data-custom-controls="true" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-markers='[{"x": "4000","y": "5000","note": "I am big!"}]' style="height: 500px;"&gt;&lt;/div&gt;</code>
+                                        <code data-type="codeeditor"
+                                            data-lang="html">&lt;div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[1000,1640]" data-custom-controls="true" data-icon="https://tiuswebs.s3-us-west-1.amazonaws.com/30/multimedia/V3UkyvIdH.png" data-markers='[{"x": "4000","y": "5000","note": "I am big!"}]' style="height: 500px;"&gt;&lt;/div&gt;</code>
                                     </div>
                                     <h4>Removing drag</h4>
                                     <p>You can choose to remove the dragging of the image with <em>data-disable-pan="true"</em>, try moving the image around.</p>
@@ -2574,14 +2582,99 @@ print json_encode($res);
                                     <div class="result-block">
                                         <h6>Result</h6>
                                         <div class="result">
-                                            <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-disable-zoom="true" data-disable-controls="true" data-markers='[{"x": "5000","y": "2000","note": "Enjoy the component!"}]' style="height: 500px;"></div>
+                                            <div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-disable-zoom="true" data-disable-controls="true"
+                                                data-markers='[{"x": "5000","y": "2000","note": "Enjoy the component!"}]' style="height: 500px;"></div>
                                         </div>
                                     </div>
                                     <div class="code-block">
                                         <h6>HTML Code</h6>
-                                        <code data-type="codeeditor" data-lang="html">&lt;div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-disable-zoom="true" data-disable-controls="true" data-markers='[{"x": 5000","y": "2000","note": "Enjoy the component!"}]' style="height: 500px;"&gt;&lt;/div&gt;</code>
+                                        <code data-type="codeeditor"
+                                            data-lang="html">&lt;div data-type="image-tile-viewer" data-dzi="https://openseadragon.github.io/example-images/duomo/duomo.dzi" data-icon-size="[250,410]" data-disable-zoom="true" data-disable-controls="true" data-markers='[{"x": 5000","y": "2000","note": "Enjoy the component!"}]' style="height: 500px;"&gt;&lt;/div&gt;</code>
                                     </div>
 
+                                </div>
+
+                                <div id="toast-editor" class="section-block">
+                                    <h3>Toast Editor</h3>
+                                    <p>Markdown WYSIWYG editor.</p>
+                                    <table class="table descriptional">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Library Name</th>
+                                                <td>
+                                                    <a href="https://ui.toast.com/tui-editor/" target="_blank">
+                                                        Toast UI Editor
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Library Version</th>
+                                                <td>3.2.2</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Works on</th>
+                                                <td><em>div</em>, <em>code</em>, <em>textarea</em></td>
+                                            </tr>
+                                            <th scope="row">Optional Attributes</th>
+                                            <td>
+                                                <em>data-height</em>: The height of the editor, defaults to <em>400px</em>.<br>
+                                                <em>data-value</em>: The initial content, this will take precedence over the element text content.<br>
+                                                <em>data-preview</em>: The style of the preview <em>tab</em> or <em>vertical</em>.<br>
+                                                <em>data-lang</em>: Accepts either <em>wysiwyg</em> or <em>markdown</em>.<br>
+                                                <em>data-no-trim</em>: Prevents initial content trimming that happens by default.<br>
+                                                <em>data-hide-switch</em>: Hides Markdown/WYSIWYG mode switch.<br>
+                                                <em>data-dark</em>: Uses dark theme.<br>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                    <h4>Normal Use</h4>
+                                    <p>Toast Editor supports <em>div</em> by default, but you can also use <em>code</em> and <em>textarea</em> to write code in a pleasant way.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <textarea data-type="toast-editor">
+# Lorem Ipsum
+Lorem ipsum dolor [sit amet](https://weblabor.mx) consectetur.
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor"
+                                            data-lang="html">&#60;textarea data-type="toast-editor"&#62;
+# Lorem Ipsum
+Lorem ipsum dolor [sit amet](https://weblabor.mx) consectetur.
+&#60;/textarea&#62;</code>
+                                    </div>
+                                    <h4>Advanced Use</h4>
+                                    <p>By disabling the mode switch and setting it to use <em>wysiwyg</em>, you can get a typical content editor for your website.</p>
+                                    <div class="result-block">
+                                        <h6>Result</h6>
+                                        <div class="result">
+                                            <textarea data-type="toast-editor"
+                                                data-height="500px"
+                                                data-preview="vertical"
+                                                data-lang="wysiwyg"
+                                                data-hide-switch
+                                                data-dark>
+# WYSIWYG Editor
+Lorem ipsum dolor [sit amet](https://weblabor.mx) consectetur.
+                                        </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>HTML Code</h6>
+                                        <code data-type="codeeditor"
+                                            data-lang="html">&#60;textarea data-type="toast-editor"
+    data-height="500px"
+    data-preview="vertical"
+    data-lang="wysiwyg"
+    data-hide-switch
+    data-dark&#62;
+# WYSIWYG Editor
+Lorem ipsum dolor [sit amet](https://weblabor.mx) consectetur.
+&#60;/textarea&#62;</code>
+                                    </div>
                                 </div>
                             </section>
                         </div>
@@ -2637,6 +2730,7 @@ print json_encode($res);
                                         <li><a class="scrollto" href="#carousel">Carousel</a></li>
                                         <li><a class="scrollto" href="#image-viewer">Image Viewer</a></li>
                                         <li><a class="scrollto" href="#image-tile-viewer">Image Tile Viewer</a></li>
+                                        <li><a class="scrollto" href="#toast-editor">Toast Editor</a></li>
                                     </ul>
                                 </li>
                             </ul>

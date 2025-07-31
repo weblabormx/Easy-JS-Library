@@ -48,6 +48,19 @@ function LibraryLoaded() {
 
 }
 
+const EasyJsUrl = "https://weblabormx.github.io/Easy-JS-Library/library/";
+// const EasyJsUrl = "http://localhost:8080/library/";
+
+const EasyJsLoadedStylesheets = new Set();
+function LoadEasyJsStylesheet(url) {
+    if (EasyJsLoadedStylesheets.has(url)) {
+        return;
+    }
+
+    $('head').append('<link rel="stylesheet" href="' + url + '" type="text/css" />');
+    EasyJsLoadedStylesheets.add(url);
+}
+
 function EasyController() {
 
     this.scripts_to_load = [];
@@ -111,14 +124,7 @@ function EasyController() {
         });
     }
 
-    this.addCss = function (url) {
-        if (this.css.indexOf(url) != -1) {
-            return;
-        }
-        this.css.push(url);
-        $('head').append('<link rel="stylesheet" href="' + url + '" type="text/css" />');
-        //console.log('EJL: '+url+' css loaded');
-    }
+    this.addCss = LoadEasyJsStylesheet;
 
     this.addFunctionality = function (variables, function_ex, remove_func = null) {
 
@@ -284,9 +290,7 @@ function EasyController() {
 }
 
 function EasyJsLibrary() {
-
-    this.url = "https://weblabormx.github.io/Easy-JS-Library/library/";
-    // this.url = "http://localhost:8080/library/";
+    this.url = EasyJsUrl;
     this.controller = new EasyController();
 
     this.load = function () {
@@ -1625,7 +1629,7 @@ function EasyJsLibrary() {
                                 } else {
                                     window.location = redirection;
                                 }
-                            }).fail(function() {
+                            }).fail(function () {
                                 if (action.startsWith("https://")) {
                                     action = action.replace("https://", "http://");
                                 } else if (action.startsWith("http://")) {
@@ -1814,6 +1818,77 @@ function EasyJsLibrary() {
                 var y = Math.round(value[1] / diff);
                 $('#' + image).parent().find('.marker').css('left', x - 10).css('top', y - 10).show();
             }
+        });
+
+        this.controller.addFunctionality({
+            type: 'each',
+            data_type: 'toast-editor',
+            js: this.url + 'toast-ui/toastui-editor-all.min.js',
+            css: this.url + 'toast-ui/toastui-editor.min.css',
+        }, function (item) {
+            const [originalElement] = item.get();
+            const height = item.attr('data-height') ?? '400px';
+            const initialValue = item.attr('data-value') ?? originalElement.textContent ?? originalElement.value ?? '';
+            const previewStyle = item.attr('data-preview') ?? 'tab';
+            const initialEditType = item.attr('data-lang') ?? 'markdown';
+            const dontTrim = item.attr('data-no-trim') !== undefined;
+            const hideModeSwitch = item.attr('data-hide-switch') !== undefined;
+            let isDark = item.attr('data-dark');
+            isDark = isDark === '' ? true : !!isDark;
+
+            const id = item.attr('id');
+            const name = item.attr('name');
+
+            item.removeAttr('id');
+            item.removeAttr('name');
+
+            if (isDark) {
+                LoadEasyJsStylesheet(EasyJsUrl + 'toast-ui/toastui-editor-dark.min.css');
+            }
+
+            const theme = isDark ? 'dark' : undefined;
+
+            if (originalElement.tagName !== 'div') {
+                const div = $('<div><div>');
+                item.replaceWith(div);
+                item = div;
+
+                for (const attribute of originalElement.attributes) {
+                    item.attr(attribute.name, attribute.value);
+                }
+            }
+
+            const [el] = item.get();
+
+            let markdownContent;
+
+            const textarea = $('<textarea />');
+            textarea.attr('id', id);
+            textarea.attr('name', name);
+            textarea.hide();
+
+            const update = () => {
+                markdownContent = editor.getMarkdown();
+                textarea.val(markdownContent);
+            };
+
+            const editor = new toastui.Editor({
+                el,
+                height,
+                initialValue: dontTrim ? initialValue : initialValue.trim(),
+                initialEditType,
+                previewStyle,
+                hideModeSwitch,
+                theme,
+                events: {
+                    change() {
+                        update();
+                    }
+                },
+            });
+
+            item.append(textarea);
+            update();
         });
     }
 }
