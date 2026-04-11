@@ -1872,23 +1872,6 @@ function EasyJsLibrary() {
                 textarea.val(markdownContent);
             };
 
-            const hiddenTools = [];
-            if (item.attr('data-hide-image') !== undefined) hiddenTools.push('image');
-            if (item.attr('data-hide-link') !== undefined) hiddenTools.push('link');
-            if (item.attr('data-hide-table') !== undefined) hiddenTools.push('table');
-            let toolbarItems = [
-                ['heading', 'bold', 'italic', 'strike'],
-                ['hr', 'quote'],
-                ['ul', 'ol'],
-                ['table', 'image', 'link']
-            ];
-
-            if (hiddenTools.length > 0) {
-                toolbarItems = toolbarItems
-                    .map(group => group.filter(tool => !hiddenTools.includes(tool)))
-                    .filter(group => group.length > 0);
-            }
-
             const editor = new toastui.Editor({
                 el,
                 height,
@@ -1897,7 +1880,6 @@ function EasyJsLibrary() {
                 previewStyle,
                 hideModeSwitch,
                 theme,
-                toolbarItems,
                 events: {
                     change() {
                         update();
